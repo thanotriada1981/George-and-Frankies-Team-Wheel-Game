@@ -1,0 +1,83 @@
+{
+  "teams": [
+    {
+      "id": "ARI",
+      "name": "Arizona Diamondbacks",
+      "fullName": "Arizona Diamondbacks",
+      "abbreviation": "ARI",
+      "city": "Arizona",
+      "league": "National League",
+      "division": "West",
+      "primaryColor": "#A71930",
+      "secondaryColor": "#E3D4A7",
+      "logo": "assets/logos/mlb/arizona_diamondbacks.svg",
+      "founded": 1998,
+      "stadium": "Chase Field"
+    },
+    {
+      "id": "ATL",
+      "name": "Atlanta Braves",
+      "fullName": "Atlanta Braves",
+      "abbreviation": "ATL",
+      "city": "Atlanta",
+      "league": "National League",
+      "division": "East",
+      "primaryColor": "#CE1141",
+      "secondaryColor": "#13274F",
+      "logo": "assets/logos/mlb/atlanta_braves.svg",
+      "founded": 1871,
+      "stadium": "Truist Park"
+    },
+    {
+      "id": "BAL",
+      "name": "Baltimore Orioles",
+      "fullName": "Baltimore Orioles",
+      "abbreviation": "BAL",
+      "city": "Baltimore",
+      "league": "American League",
+      "division": "East",
+      "primaryColor": "#DF4601",
+      "secondaryColor": "#000000",
+      "logo": "assets/logos/mlb/baltimore_orioles.svg",
+      "founded": 1901,
+      "stadium": "Oriole Park at Camden Yards"
+    },
+    {
+      "id": "BOS",
+      "name": "Boston Red Sox",
+      "fullName": "Boston Red Sox",
+      "abbreviation": "BOS",
+      "city": "Boston",
+      "league": "American League",
+      "division": "East",
+      "primaryColor": "#BD3039",
+      "secondaryColor": "#0C2340",
+      "logo": "assets/logos/mlb/boston_red_sox.svg",
+      "founded": 1901,
+      "stadium": "Fenway Park"
+    }
+  ],
+  "leagues": {
+    "American League": {
+      "divisions": {
+        "East": ["BAL", "BOS", "NYY", "TB", "TOR"],
+        "Central": ["CWS", "CLE", "DET", "KC", "MIN"],
+        "West": ["HOU", "LAA", "OAK", "SEA", "TEX"]
+      }
+    },
+    "National League": {
+      "divisions": {
+        "East": ["ATL", "MIA", "NYM", "PHI", "WAS"],
+        "Central": ["CHC", "CIN", "MIL", "PIT", "STL"],
+        "West": ["ARI", "COL", "LAD", "SD", "SF"]
+      }
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2024-12-11",
+    "totalTeams": 30,
+    "season": "2024",
+    "source": "MLB Official Data",
+    "status": "Template - Ready for expansion"
+  }
+} 

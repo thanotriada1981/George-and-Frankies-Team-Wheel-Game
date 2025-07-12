@@ -1,0 +1,85 @@
+{
+  "teams": [
+    {
+      "id": "ARI",
+      "name": "Arizona Cardinals",
+      "fullName": "Arizona Cardinals",
+      "abbreviation": "ARI",
+      "city": "Arizona",
+      "conference": "NFC",
+      "division": "West",
+      "primaryColor": "#97233F",
+      "secondaryColor": "#000000",
+      "logo": "assets/logos/nfl/arizona_cardinals.svg",
+      "founded": 1898,
+      "stadium": "State Farm Stadium"
+    },
+    {
+      "id": "ATL",
+      "name": "Atlanta Falcons",
+      "fullName": "Atlanta Falcons",
+      "abbreviation": "ATL",
+      "city": "Atlanta",
+      "conference": "NFC",
+      "division": "South",
+      "primaryColor": "#A71930",
+      "secondaryColor": "#000000",
+      "logo": "assets/logos/nfl/atlanta_falcons.svg",
+      "founded": 1965,
+      "stadium": "Mercedes-Benz Stadium"
+    },
+    {
+      "id": "BAL",
+      "name": "Baltimore Ravens",
+      "fullName": "Baltimore Ravens",
+      "abbreviation": "BAL",
+      "city": "Baltimore",
+      "conference": "AFC",
+      "division": "North",
+      "primaryColor": "#241773",
+      "secondaryColor": "#000000",
+      "logo": "assets/logos/nfl/baltimore_ravens.svg",
+      "founded": 1996,
+      "stadium": "M&T Bank Stadium"
+    },
+    {
+      "id": "BUF",
+      "name": "Buffalo Bills",
+      "fullName": "Buffalo Bills",
+      "abbreviation": "BUF",
+      "city": "Buffalo",
+      "conference": "AFC",
+      "division": "East",
+      "primaryColor": "#00338D",
+      "secondaryColor": "#C60C30",
+      "logo": "assets/logos/nfl/buffalo_bills.svg",
+      "founded": 1960,
+      "stadium": "Highmark Stadium"
+    }
+  ],
+  "conferences": {
+    "AFC": {
+      "divisions": {
+        "East": ["BUF", "MIA", "NE", "NYJ"],
+        "North": ["BAL", "CIN", "CLE", "PIT"],
+        "South": ["HOU", "IND", "JAX", "TEN"],
+        "West": ["DEN", "KC", "LV", "LAC"]
+      }
+    },
+    "NFC": {
+      "divisions": {
+        "East": ["DAL", "NYG", "PHI", "WAS"],
+        "North": ["CHI", "DET", "GB", "MIN"],
+        "South": ["ATL", "CAR", "NO", "TB"],
+        "West": ["ARI", "LAR", "SF", "SEA"]
+      }
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2024-12-11",
+    "totalTeams": 32,
+    "season": "2024-25",
+    "source": "NFL Official Data",
+    "status": "Template - Ready for expansion"
+  }
+} 
