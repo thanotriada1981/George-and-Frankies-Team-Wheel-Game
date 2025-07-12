@@ -20,7 +20,7 @@ class PlayerRatingLookup {
     async initialize() {
         try {
             // Load the ratings data from JSON file
-            const response = await fetch('./database/player-ratings/nba-2k25-master-ratings.json');
+            const response = await fetch('./database/nba/players/nba-2k25-master-ratings.json');
             this.ratingsData = await response.json();
             
             // Build player index for fast lookups

@@ -150,6 +150,119 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
+        
+        .start-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .game-type-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .type-button {
+            background: white;
+            border: 3px solid #ddd;
+            padding: 25px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .type-button:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .type-button strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .type-button small {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .invite-link-container {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .invite-link-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9em;
+            background: white;
+        }
+        
+        .copy-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+        
+        .copy-button:hover {
+            background: #218838;
+        }
+        
+        .invite-instructions {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9em;
+        }
+        
+        .joined-players {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .joined-players h4 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .player-joined {
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px 0;
+            display: inline-block;
+            font-size: 0.9em;
+        }
 
         .team-summary {
             display: grid;
@@ -755,6 +868,45 @@
               </div>
             </div>
             
+            <div class="setup-step" id="game-type-step" style="display: none;">
+              <h3>How do you want to play?</h3>
+              <div class="game-type-buttons">
+                <button class="type-button" onclick="selectGameType('local')">
+                  📱 <strong>Play on This Device</strong><br>
+                  <small>Pass the device around to take turns</small>
+                </button>
+                <button class="type-button" onclick="selectGameType('online')">
+                  🌐 <strong>Invite Friends Online</strong><br>
+                  <small>Share a link for friends to join remotely</small>
+                </button>
+              </div>
+            </div>
+            
+            <div class="setup-step" id="invite-step" style="display: none;">
+              <h3>🎉 Invite Your Friends!</h3>
+              <p>Share this link with your friends so they can join the game:</p>
+              <div class="invite-link-container">
+                <input type="text" id="inviteLink" readonly class="invite-link-input">
+                <button class="copy-button" onclick="copyInviteLink()">📋 Copy Link</button>
+              </div>
+              <p class="invite-instructions">
+                <strong>Instructions:</strong><br>
+                1. Click "Copy Link" above<br>
+                2. Send the link to your friends via text, email, or social media<br>
+                3. Wait for them to join using the link<br>
+                4. Once everyone joins, you can start the game!
+              </p>
+              <div class="joined-players">
+                <h4>Players Joined:</h4>
+                <div id="joinedPlayersList">
+                  <div class="player-joined">🎮 You (Host)</div>
+                </div>
+              </div>
+              <button class="start-button" id="startOnlineGame" onclick="startOnlineGame()" disabled>
+                🚀 Start Game! (Waiting for players...)
+              </button>
+            </div>
+            
             <div class="setup-step" id="player-names-step" style="display: none;">
               <h3>Enter Player Names</h3>
               <div id="player-name-inputs"></div>
@@ -969,12 +1121,131 @@
             });
             event.target.classList.add('selected');
             
-            // Show player name inputs
+            // Show game type selection
             setTimeout(() => {
                 document.getElementById('player-count-step').style.display = 'none';
-                document.getElementById('player-names-step').style.display = 'block';
-                createPlayerNameInputs(count);
+                document.getElementById('game-type-step').style.display = 'block';
             }, 500);
+        }
+        
+        function selectGameType(type) {
+            gameState.gameType = type;
+            
+            if (type === 'local') {
+                // Show player name inputs for local play
+                setTimeout(() => {
+                    document.getElementById('game-type-step').style.display = 'none';
+                    document.getElementById('player-names-step').style.display = 'block';
+                    createPlayerNameInputs(gameState.numPlayers);
+                }, 500);
+            } else if (type === 'online') {
+                // Show invite step for online play
+                setTimeout(() => {
+                    document.getElementById('game-type-step').style.display = 'none';
+                    document.getElementById('invite-step').style.display = 'block';
+                    generateInviteLink();
+                }, 500);
+            }
+        }
+        
+        function generateInviteLink() {
+            // Generate a unique game room ID
+            const roomId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            const gameUrl = `${window.location.origin}${window.location.pathname}?room=${roomId}&players=${gameState.numPlayers}`;
+            
+            // Update the invite link input
+            document.getElementById('inviteLink').value = gameUrl;
+            
+            // Store the room ID for later use
+            gameState.roomId = roomId;
+            
+            console.log('🎮 Generated game room:', roomId);
+        }
+        
+        function copyInviteLink() {
+            const inviteLink = document.getElementById('inviteLink');
+            inviteLink.select();
+            inviteLink.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                document.execCommand('copy');
+                
+                // Update button text temporarily
+                const copyButton = document.querySelector('.copy-button');
+                const originalText = copyButton.textContent;
+                copyButton.textContent = '✅ Copied!';
+                copyButton.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.style.background = '#28a745';
+                }, 2000);
+                
+                console.log('📋 Invite link copied to clipboard');
+            } catch (err) {
+                console.error('❌ Failed to copy invite link:', err);
+                alert('Unable to copy automatically. Please copy the link manually.');
+            }
+        }
+        
+        function startOnlineGame() {
+            // For now, simulate starting the game
+            // In a real implementation, this would check if all players have joined
+            const playerNames = [`Player 1 (Host)`];
+            for (let i = 1; i < gameState.numPlayers; i++) {
+                playerNames.push(`Player ${i + 1}`);
+            }
+            
+            // Initialize game state
+            gameState.players = playerNames.map(name => ({ name, teamComplete: false }));
+            gameState.dreamTeams = playerNames.map(() => ({
+                pg: null, sg: null, sf: null, pf: null, c: null,
+                sixth: null, seventh: null, coach: null
+            }));
+            gameState.currentPlayerIndex = 0;
+            gameState.currentRound = 1;
+            gameState.phase = 'multiplayer';
+            
+            // Hide setup and show game
+            document.getElementById('setup-phase').style.display = 'none';
+            document.getElementById('mode-selection').style.display = 'block';
+            
+            // Auto-select multiplayer mode
+            switchMode('multiplayer');
+            
+            console.log('🎮 Online multiplayer game started with players:', playerNames);
+        }
+        
+        // Check if player is joining an existing game
+        function checkForInviteLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roomId = urlParams.get('room');
+            const playerCount = urlParams.get('players');
+            
+            if (roomId && playerCount) {
+                console.log('🎮 Joining game room:', roomId);
+                
+                // Show joining message
+                document.getElementById('setup-phase').innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h2>🎮 Joining Game...</h2>
+                        <p>Room ID: ${roomId}</p>
+                        <p>Players: ${playerCount}</p>
+                        <p>Please wait while we connect you to the game...</p>
+                        <div style="margin-top: 30px;">
+                            <button class="start-button" onclick="location.href='${window.location.origin}${window.location.pathname}'">
+                                🏠 Create New Game Instead
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // In a real implementation, this would connect to the game server
+                // For now, just show a message
+                setTimeout(() => {
+                    alert('🎮 Multiplayer functionality will be fully implemented soon! For now, create a new game.');
+                }, 2000);
+            }
         }
         
         function createPlayerNameInputs(count) {
@@ -1148,6 +1419,9 @@
         // Initialize the game
         window.onload = function() {
             console.log("🏀 George and Frankie's Dream Team Builder Game Loading...");
+            
+            // Check if player is joining via invite link
+            checkForInviteLink();
             
             // Load NBA teams data
             loadNBATeams()
