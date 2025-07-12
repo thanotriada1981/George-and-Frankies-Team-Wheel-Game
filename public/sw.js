@@ -3,7 +3,7 @@
  * Enables offline functionality for George & Frankie
  */
 
-const CACHE_NAME = 'nba-team-wheel-v1.0';
+const CACHE_NAME = 'nba-team-wheel-v1.2';
 const urlsToCache = [
   '/',
   '/index.html',
