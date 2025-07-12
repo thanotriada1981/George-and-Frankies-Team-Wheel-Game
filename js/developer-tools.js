@@ -244,6 +244,24 @@ function testNBA2K25Ratings() {
         });
 }
 
+// Test wheel formatting and logo positioning
+function testWheelFormatting() {
+    console.log("🎨 Testing wheel formatting and logo positioning...");
+    
+    // Skip to classic mode first
+    skipToClassicMode();
+    
+    // Give it a moment to load, then provide feedback
+    setTimeout(() => {
+        if (nbaTeams.length > 0) {
+            alert("🎨 Wheel Formatting Test:\n\n✅ Wheel loaded with improved positioning\n🏀 Team logos moved closer to center\n📝 Team abbreviations positioned below logos\n🎯 Larger, more readable text and logos\n\nCheck the wheel - logos and text should now be clearly visible in the middle of each pie slice!");
+            console.log("✅ Wheel formatting test complete - logos and text repositioned for better visibility");
+        } else {
+            alert("⚠️ Teams still loading - try again in a moment");
+        }
+    }, 1000);
+}
+
 // Export functions for global use
 window.testDataLoading = testDataLoading;
 window.testDirectJSONLoad = testDirectJSONLoad;
@@ -252,4 +270,5 @@ window.testAtlantaHawks = testAtlantaHawks;
 window.testBattleSystem = testBattleSystem;
 window.skipToClassicMode = skipToClassicMode;
 window.testRealPlayerRosters = testRealPlayerRosters;
-window.testNBA2K25Ratings = testNBA2K25Ratings; 
+window.testNBA2K25Ratings = testNBA2K25Ratings;
+window.testWheelFormatting = testWheelFormatting; 

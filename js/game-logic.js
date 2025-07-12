@@ -130,10 +130,10 @@ function updateWheelSegments(wheelId) {
             const logo = document.createElement('img');
             logo.src = team.logo_file;
             logo.style.position = 'absolute';
-            logo.style.left = '110px';
-            logo.style.top = '-15px';
-            logo.style.width = '24px';
-            logo.style.height = '24px';
+            logo.style.left = '70px';  // Moved closer to center
+            logo.style.top = '5px';    // Moved down for better centering
+            logo.style.width = '28px'; // Slightly larger for visibility
+            logo.style.height = '28px';
             logo.style.objectFit = 'contain';
             logo.style.filter = 'drop-shadow(1px 1px 2px rgba(0,0,0,0.8))';
             logo.style.transform = 'rotate(6deg)';
