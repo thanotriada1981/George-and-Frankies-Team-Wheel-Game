@@ -36,6 +36,15 @@ function startBattle() {
         return;
     }
     
+    // Create tournament structure for multiple players
+    if (gameState.numPlayers > 2) {
+        startTournamentBattle();
+    } else {
+        startSingleBattle();
+    }
+}
+
+function startSingleBattle() {
     // Set up team objects for battle
     const team1 = {
         playerName: gameState.players[0].name,
@@ -53,12 +62,96 @@ function startBattle() {
     const battleResult = battleSystemManager.conductDetailedBattle(team1, team2);
     
     if (battleResult) {
+        // Save to records
+        saveBattleRecord(battleResult);
         displayBattleResult(battleResult);
     } else {
         // Fallback to simple battle
         const winner = Math.random() > 0.5 ? team1 : team2;
-        alert(`🏆 ${winner.playerName} wins! Great team building!`);
+        const simpleResult = {
+            winner: { name: winner.playerName },
+            teams: { team1: { name: team1.playerName }, team2: { name: team2.playerName } },
+            battleType: 'Simple Battle',
+            margin: Math.floor(Math.random() * 20) + 1
+        };
+        saveBattleRecord(simpleResult);
+        displayBattleResult(simpleResult);
     }
+}
+
+function startTournamentBattle() {
+    console.log('🏆 Starting tournament battle with', gameState.numPlayers, 'players');
+    
+    const teams = gameState.players.map((player, index) => ({
+        playerName: player.name,
+        ...gameState.dreamTeams[index]
+    }));
+    
+    // Create tournament bracket
+    const tournamentResults = conductTournament(teams);
+    displayTournamentResults(tournamentResults);
+}
+
+function conductTournament(teams) {
+    const results = {
+        bracket: [],
+        champion: null,
+        allBattles: []
+    };
+    
+    let currentRound = [...teams];
+    let roundNumber = 1;
+    
+    while (currentRound.length > 1) {
+        const roundResults = [];
+        const nextRound = [];
+        
+        // Pair up teams for battles
+        for (let i = 0; i < currentRound.length; i += 2) {
+            if (i + 1 < currentRound.length) {
+                const team1 = currentRound[i];
+                const team2 = currentRound[i + 1];
+                
+                const battleResult = battleSystemManager.conductDetailedBattle(team1, team2);
+                const winner = battleResult ? battleResult.winner : (Math.random() > 0.5 ? team1 : team2);
+                
+                roundResults.push({
+                    team1: team1.playerName,
+                    team2: team2.playerName,
+                    winner: winner.name || winner.playerName,
+                    details: battleResult
+                });
+                
+                results.allBattles.push(battleResult || {
+                    winner: winner,
+                    teams: { team1, team2 },
+                    battleType: `Tournament Round ${roundNumber}`,
+                    margin: Math.floor(Math.random() * 20) + 1
+                });
+                
+                // Winner advances
+                nextRound.push(winner.name ? teams.find(t => t.playerName === winner.name) : winner);
+            } else {
+                // Odd number, team gets bye
+                nextRound.push(currentRound[i]);
+            }
+        }
+        
+        results.bracket.push({
+            round: roundNumber,
+            battles: roundResults
+        });
+        
+        currentRound = nextRound;
+        roundNumber++;
+    }
+    
+    results.champion = currentRound[0];
+    
+    // Save all battles to records
+    results.allBattles.forEach(battle => saveBattleRecord(battle));
+    
+    return results;
 }
 
 // Display detailed battle results
@@ -179,8 +272,161 @@ function startOnlineGame() {
     alert('🌐 Online multiplayer coming soon! For now, try the local multiplayer mode.');
 }
 
+// Battle record keeping system
+let battleRecords = JSON.parse(localStorage.getItem('nba-wheel-battle-records') || '[]');
+
+function saveBattleRecord(battleResult) {
+    const record = {
+        id: Date.now() + Math.random(),
+        timestamp: new Date().toISOString(),
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        winner: battleResult.winner.name || battleResult.winner.playerName,
+        loser: battleResult.teams.team2.name === battleResult.winner.name ? 
+               battleResult.teams.team1.name : battleResult.teams.team2.name,
+        margin: battleResult.margin || 0,
+        battleType: battleResult.battleType || 'Standard Battle',
+        teams: {
+            team1: {
+                name: battleResult.teams.team1.name || battleResult.teams.team1.playerName,
+                rating: battleResult.teams.team1.rating?.total || 0
+            },
+            team2: {
+                name: battleResult.teams.team2.name || battleResult.teams.team2.playerName,
+                rating: battleResult.teams.team2.rating?.total || 0
+            }
+        }
+    };
+    
+    battleRecords.unshift(record); // Add to beginning
+    
+    // Keep only last 100 records
+    if (battleRecords.length > 100) {
+        battleRecords = battleRecords.slice(0, 100);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('nba-wheel-battle-records', JSON.stringify(battleRecords));
+    
+    console.log('📊 Battle record saved:', record);
+}
+
+function displayTournamentResults(tournamentResults) {
+    const battleSection = document.getElementById('battleSection');
+    
+    battleSection.innerHTML = `
+        <div class="tournament-results">
+            <h2>🏆 Tournament Results 🏆</h2>
+            
+            <div class="champion-announcement">
+                <h3>🥇 Champion: ${tournamentResults.champion.playerName || tournamentResults.champion.name}!</h3>
+            </div>
+            
+            <div class="tournament-bracket">
+                <h4>📋 Tournament Bracket:</h4>
+                ${tournamentResults.bracket.map(round => `
+                    <div class="tournament-round">
+                        <h5>Round ${round.round}:</h5>
+                        ${round.battles.map(battle => `
+                            <div class="bracket-battle">
+                                <span class="battle-matchup">${battle.team1} vs ${battle.team2}</span>
+                                <span class="battle-winner">Winner: ${battle.winner}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div class="records-summary">
+                <h4>📊 Updated Records:</h4>
+                <button onclick="showBattleRecords()" class="battle-button secondary">📈 View All Records</button>
+            </div>
+            
+            <div class="battle-actions">
+                <button onclick="startBattle()" class="battle-button">⚔️ BATTLE AGAIN! ⚔️</button>
+                <button onclick="resetMultiplayerGame()" class="battle-button secondary">🔄 New Game</button>
+            </div>
+        </div>
+    `;
+    
+    // Play celebration sound and effects
+    SoundManager.playCelebrationSound();
+    VisualEffects.createConfetti();
+}
+
+function showBattleRecords() {
+    const recordsData = getHeadToHeadRecords();
+    
+    const popup = document.getElementById('popup');
+    const popupResult = document.getElementById('popupResult');
+    
+    popupResult.innerHTML = `
+        <div class="battle-records">
+            <h3>📊 Battle Records</h3>
+            
+            <div class="records-stats">
+                <p><strong>Total Battles:</strong> ${battleRecords.length}</p>
+                <p><strong>Recent Activity:</strong> ${battleRecords.slice(0, 5).length} recent battles</p>
+            </div>
+            
+            <div class="head-to-head">
+                <h4>👥 Head-to-Head Records:</h4>
+                ${Object.entries(recordsData.headToHead).map(([player, data]) => `
+                    <div class="player-record">
+                        <strong>${player}:</strong> ${data.wins}W - ${data.losses}L 
+                        (Win Rate: ${((data.wins / (data.wins + data.losses)) * 100).toFixed(1)}%)
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div class="recent-battles">
+                <h4>🕒 Recent Battles:</h4>
+                ${battleRecords.slice(0, 10).map(record => `
+                    <div class="battle-record">
+                        <span class="record-date">${record.date}</span>
+                        <span class="record-result">${record.winner} defeated ${record.loser}</span>
+                        <span class="record-margin">+${record.margin}pts</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    popup.style.display = 'block';
+}
+
+function getHeadToHeadRecords() {
+    const headToHead = {};
+    const matchups = {};
+    
+    battleRecords.forEach(record => {
+        // Initialize players
+        if (!headToHead[record.winner]) {
+            headToHead[record.winner] = { wins: 0, losses: 0 };
+        }
+        if (!headToHead[record.loser]) {
+            headToHead[record.loser] = { wins: 0, losses: 0 };
+        }
+        
+        // Update win/loss records
+        headToHead[record.winner].wins++;
+        headToHead[record.loser].losses++;
+        
+        // Track specific matchups
+        const matchupKey = [record.winner, record.loser].sort().join(' vs ');
+        if (!matchups[matchupKey]) {
+            matchups[matchupKey] = { battles: [], record: {} };
+        }
+        matchups[matchupKey].battles.push(record);
+    });
+    
+    return { headToHead, matchups };
+}
+
 // Export functions for global use
 window.startBattle = startBattle;
 window.displayBattleResult = displayBattleResult;
 window.resetMultiplayerGame = resetMultiplayerGame;
-window.startOnlineGame = startOnlineGame; 
+window.startOnlineGame = startOnlineGame;
+window.showBattleRecords = showBattleRecords;
+window.saveBattleRecord = saveBattleRecord; 

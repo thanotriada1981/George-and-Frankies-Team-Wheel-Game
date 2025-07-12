@@ -130,12 +130,12 @@ function updateWheelSegments(wheelId) {
             const logo = document.createElement('img');
             logo.src = team.logo_file;
             logo.style.position = 'absolute';
-            logo.style.left = '70px';  // Moved closer to center
-            logo.style.top = '5px';    // Moved down for better centering
-            logo.style.width = '28px'; // Slightly larger for visibility
-            logo.style.height = '28px';
+            logo.style.left = '50px';  // Much closer to center
+            logo.style.top = '15px';   // Better vertical centering
+            logo.style.width = '32px'; // Larger for better visibility
+            logo.style.height = '32px';
             logo.style.objectFit = 'contain';
-            logo.style.filter = 'drop-shadow(1px 1px 2px rgba(0,0,0,0.8))';
+            logo.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.9))';
             logo.style.transform = 'rotate(6deg)';
             logo.alt = team.abbreviation;
             section.appendChild(logo);

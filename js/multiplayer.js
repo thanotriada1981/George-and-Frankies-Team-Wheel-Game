@@ -362,27 +362,61 @@ function assignPlayer(position) {
 }
 
 function nextPlayerTurn() {
-    // Move to next player
-    gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % gameState.numPlayers;
+    // Check if current team is complete (all 8 positions filled)
+    const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+    const filledPositions = Object.values(currentTeam).filter(player => player !== null).length;
     
-    // If we've completed a full round, increment round counter
-    if (gameState.currentPlayerIndex === 0) {
+    console.log(`🎯 ${gameState.players[gameState.currentPlayerIndex].name} has ${filledPositions}/8 positions filled`);
+    
+    // If current team is complete, move to next player
+    if (filledPositions === 8) {
+        console.log(`✅ ${gameState.players[gameState.currentPlayerIndex].name}'s team is complete!`);
+        
+        // Move to next player
+        gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % gameState.numPlayers;
+        
+        // Check if all teams are complete
+        if (areAllTeamsComplete()) {
+            startBattlePhase();
+            return;
+        }
+    } else {
+        // Current player needs more players, increment round but stay with same player
         gameState.currentRound++;
+        console.log(`🔄 ${gameState.players[gameState.currentPlayerIndex].name} needs ${8 - filledPositions} more players`);
     }
     
-    // Check if all teams are complete
-    if (gameState.currentRound > gameState.maxRounds) {
-        // All teams complete, start battle phase
-        startBattlePhase();
-        return;
-    }
-    
-    // Update display for next player
+    // Update display for current player
     updateMultiplayerDisplay();
     
     // Re-enable spin button
     document.getElementById('dreamSpinButton').disabled = false;
     document.getElementById('dreamSpinButton').textContent = '🎯 SPIN FOR PLAYER! 🎯';
+    
+    // Update spin counter
+    updateSpinCounter();
+}
+
+function areAllTeamsComplete() {
+    for (let i = 0; i < gameState.numPlayers; i++) {
+        const team = gameState.dreamTeams[i];
+        const filledPositions = Object.values(team).filter(player => player !== null).length;
+        if (filledPositions < 8) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function updateSpinCounter() {
+    const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+    const filledPositions = Object.values(currentTeam).filter(player => player !== null).length;
+    const spinsLeft = 8 - filledPositions;
+    
+    const counter = document.getElementById('spinCounter');
+    if (counter) {
+        counter.textContent = `${gameState.players[gameState.currentPlayerIndex].name} - Positions Left: ${spinsLeft}`;
+    }
 }
 
 function startBattlePhase() {
