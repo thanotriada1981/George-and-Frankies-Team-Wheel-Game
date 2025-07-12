@@ -15,12 +15,13 @@ body {
 .container {
     background: white;
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     text-align: center;
     max-width: 1200px;
     width: 100%;
     position: relative;
+    margin: 10px;
 }
 
 h1 {
@@ -36,10 +37,11 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Game Mode Buttons */
+/* Game Mode Buttons - Mobile First Design */
 .game-modes {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     margin-bottom: 30px;
 }
@@ -84,9 +86,11 @@ h1 {
 
 .player-count-buttons {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .count-button {
@@ -261,10 +265,13 @@ h1 {
 /* Wheel Styles */
 .wheel-container {
     position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto 30px;
-    transition: all 0.3s ease;
+    width: 250px;
+    height: 250px;
+    margin: 30px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .wheel-container.spinning-glow {
@@ -419,8 +426,8 @@ h1 {
 
 .positions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 15px;
     margin-top: 20px;
 }
 
@@ -499,19 +506,20 @@ h1 {
 .position-buttons {
     display: flex;
     gap: 10px;
-    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .position-btn {
-    background: #4CAF50;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 0.9em;
     transition: all 0.3s;
 }
 
@@ -675,43 +683,6 @@ h1 {
     100% {
         transform: translate(-50%, -100px) scale(1);
         opacity: 0;
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        margin: 10px;
-        padding: 20px;
-    }
-    
-    .wheel-container {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .positions-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .game-modes {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .player-count-buttons {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-    
-    .position-buttons {
-        justify-content: center;
-    }
-    
-    .position-btn {
-        padding: 8px 16px;
-        font-size: 0.8em;
     }
 }
 
