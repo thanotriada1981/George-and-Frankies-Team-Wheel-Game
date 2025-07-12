@@ -21,20 +21,7 @@
     <div class="container">
         <h1>🏀 George and Frankie's Dream Team Builder Game 🏀</h1>
         
-        <!-- Sound Toggle Button -->
-        <div style="position: absolute; top: 15px; left: 15px;">
-            <button id="soundToggle" onclick="SoundManager.toggle()" title="Sound ON - Click to mute" style="
-                background: #4CAF50;
-                color: white;
-                border: none;
-                padding: 6px 10px;
-                border-radius: 15px;
-                cursor: pointer;
-                font-size: 12px;
-                transition: all 0.3s ease;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-            ">🔊</button>
-        </div>
+
         
         <!-- Game Setup Phase -->
         <div id="setup-phase" class="setup-section">
@@ -217,6 +204,9 @@
         <details>
             <summary>🔧 Developer Tools (Click to expand)</summary>
             <div class="developer-tools-buttons">
+                <button id="soundToggle" onclick="SoundManager.toggle()" title="Sound ON - Click to mute" style="background: #4CAF50;">
+                    🔊 Sound Toggle
+                </button>
                 <button onclick="testDataLoading()" style="background: #ff9800;">
                     🔍 Test Data Loading
                 </button>
