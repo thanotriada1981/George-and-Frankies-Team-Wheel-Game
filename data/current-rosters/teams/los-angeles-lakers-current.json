@@ -1,0 +1,137 @@
+{
+  "team": {
+    "name": "Los Angeles Lakers",
+    "abbreviation": "LAL",
+    "city": "Los Angeles",
+    "conference": "Western",
+    "division": "Pacific"
+  },
+  "data_source": {
+    "website": "https://www.espn.com/nba/players",
+    "collection_date": "2025-01-06",
+    "season": "2024-25",
+    "notes": "Template - Current roster with all trades and signings"
+  },
+  "roster": [
+    {
+      "name": "LeBron James",
+      "position": "SF",
+      "jersey_number": 23,
+      "status": "Active",
+      "years_pro": 22,
+      "college": "St. Vincent-St. Mary HS",
+      "roster_status": "Starter"
+    },
+    {
+      "name": "Anthony Davis",
+      "position": "PF",
+      "jersey_number": 3,
+      "status": "Active", 
+      "years_pro": 13,
+      "college": "Kentucky",
+      "roster_status": "Starter"
+    },
+    {
+      "name": "Austin Reaves",
+      "position": "SG",
+      "jersey_number": 15,
+      "status": "Active",
+      "years_pro": 4,
+      "college": "Oklahoma",
+      "roster_status": "Starter"
+    },
+    {
+      "name": "D'Angelo Russell",
+      "position": "PG",
+      "jersey_number": 1,
+      "status": "Active",
+      "years_pro": 10,
+      "college": "Ohio State",
+      "roster_status": "Starter"
+    },
+    {
+      "name": "Rui Hachimura",
+      "position": "PF",
+      "jersey_number": 28,
+      "status": "Active",
+      "years_pro": 6,
+      "college": "Gonzaga",
+      "roster_status": "Starter"
+    },
+    {
+      "name": "Gabe Vincent",
+      "position": "PG",
+      "jersey_number": 7,
+      "status": "Active",
+      "years_pro": 7,
+      "college": "UC Santa Barbara",
+      "roster_status": "Bench"
+    },
+    {
+      "name": "Dalton Knecht",
+      "position": "SG", 
+      "jersey_number": 4,
+      "status": "Active",
+      "years_pro": 1,
+      "college": "Tennessee",
+      "roster_status": "Bench"
+    },
+    {
+      "name": "Jaxson Hayes",
+      "position": "C",
+      "jersey_number": 11,
+      "status": "Active",
+      "years_pro": 6,
+      "college": "Texas",
+      "roster_status": "Bench"
+    },
+    {
+      "name": "Christian Wood",
+      "position": "C",
+      "jersey_number": 35,
+      "status": "Active",
+      "years_pro": 10,
+      "college": "UNLV",
+      "roster_status": "Bench"
+    },
+    {
+      "name": "Jarred Vanderbilt",
+      "position": "PF",
+      "jersey_number": 2,
+      "status": "Injured",
+      "years_pro": 7,
+      "college": "Kentucky", 
+      "roster_status": "Bench"
+    },
+    {
+      "name": "Cam Reddish",
+      "position": "SF",
+      "jersey_number": 5,
+      "status": "Active",
+      "years_pro": 6,
+      "college": "Duke",
+      "roster_status": "Bench"
+    },
+    {
+      "name": "Max Christie",
+      "position": "SG",
+      "jersey_number": 10,
+      "status": "Active",
+      "years_pro": 3,
+      "college": "Michigan State",
+      "roster_status": "Bench"
+    }
+  ],
+  "roster_stats": {
+    "total_players": 12,
+    "active_players": 11,
+    "injured_players": 1,
+    "starters_identified": true,
+    "last_updated": "2025-01-06"
+  },
+  "notable_changes": [
+    "Template file - Replace with actual current roster data",
+    "Check ESPN for latest trades and signings",
+    "Verify jersey numbers and status updates"
+  ]
+} 
