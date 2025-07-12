@@ -110,6 +110,47 @@
 
 ---
 
+## 📊 **NEW: CURRENT NBA ROSTERS FROM ESPN**
+
+### **System Created:**
+- **Data Source:** ESPN NBA Players (https://www.espn.com/nba/players)
+- **Purpose:** Update all team rosters with current 2024-25 season data
+- **Collection:** Browser script for systematic data extraction
+- **Integration:** Connects with existing database and battle system
+
+### **Why This Is Needed:**
+- **Problem:** Current rosters are from early 2024-25 season
+- **Reality:** Players have been traded, signed, and moved teams
+- **Solution:** Fresh roster data from ESPN with all current changes
+
+### **Collection Progress:**
+- ✅ **Infrastructure:** Complete collection system ready
+- ✅ **Template:** Lakers template file created
+- 🚧 **Data Collection:** 1/30 teams (need 29 more)
+- 📊 **Priority:** Warriors, Celtics, Heat, Mavericks first
+
+### **Collection Process:**
+1. 🌐 **Navigate to ESPN NBA players page**
+2. 🏀 **Click on each team** to view current roster
+3. 🖥️ **Run browser script** in console to extract data
+4. 💾 **Save JSON output** to team-specific files
+5. ✅ **Validate data** for completeness and accuracy
+
+### **Benefits for Game:**
+- **Current Team Affiliations:** Players on correct teams after trades
+- **Accurate Lineups:** Starting lineups reflect current reality
+- **Injury Status:** Know which players are currently injured/active
+- **Realistic Battles:** Team chemistry based on actual current teammates
+- **No Outdated Data:** Eliminate confusion from old roster information
+
+### **Next Steps:**
+1. 🔍 **Start with popular teams:** Warriors, Celtics, Heat, Mavericks
+2. 🔍 **Use collection script** on ESPN for each team systematically
+3. 🔍 **Validate roster changes** against recent NBA news
+4. 🔍 **Update integration** to prioritize current roster data
+
+---
+
 ## 📝 **Notes for Future Debugging:**
 - Local version consistently works, suggesting code is correct
 - Issue appears to be Vercel-specific deployment or caching problem
