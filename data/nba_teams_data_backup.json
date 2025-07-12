@@ -1,0 +1,554 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "name": "Atlanta Hawks",
+      "abbreviation": "ATL",
+      "city": "Atlanta",
+      "state": "Georgia",
+      "conference": "Eastern",
+      "division": "Southeast",
+      "color_primary": "#E03A3E",
+      "color_secondary": "#C1D32F",
+      "logo_file": "logos/atlanta_hawks.png",
+      "roster": [
+        {
+          "name": "Trae Young",
+          "position": "Point Guard",
+          "number": 11,
+          "height": "6'1\"",
+          "weight": "164 lbs",
+          "experience": "6 years"
+        },
+        {
+          "name": "Dejounte Murray",
+          "position": "Point Guard",
+          "number": 5,
+          "height": "6'4\"",
+          "weight": "180 lbs",
+          "experience": "8 years"
+        },
+        {
+          "name": "Bogdan Bogdanovic",
+          "position": "Shooting Guard",
+          "number": 13,
+          "height": "6'6\"",
+          "weight": "225 lbs",
+          "experience": "7 years"
+        },
+        {
+          "name": "De'Andre Hunter",
+          "position": "Small Forward",
+          "number": 12,
+          "height": "6'8\"",
+          "weight": "225 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Saddiq Bey",
+          "position": "Small Forward",
+          "number": 41,
+          "height": "6'7\"",
+          "weight": "215 lbs",
+          "experience": "4 years"
+        },
+        {
+          "name": "Jalen Johnson",
+          "position": "Power Forward",
+          "number": 1,
+          "height": "6'9\"",
+          "weight": "220 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Clint Capela",
+          "position": "Center",
+          "number": 15,
+          "height": "6'10\"",
+          "weight": "240 lbs",
+          "experience": "10 years"
+        },
+        {
+          "name": "Onyeka Okongwu",
+          "position": "Center",
+          "number": 17,
+          "height": "6'8\"",
+          "weight": "235 lbs",
+          "experience": "4 years"
+        },
+        {
+          "name": "Garrison Mathews",
+          "position": "Shooting Guard",
+          "number": 25,
+          "height": "6'5\"",
+          "weight": "215 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Vit Krejci",
+          "position": "Point Guard",
+          "number": 27,
+          "height": "6'8\"",
+          "weight": "195 lbs",
+          "experience": "2 years"
+        },
+        {
+          "name": "Bruno Fernando",
+          "position": "Center",
+          "number": 24,
+          "height": "6'9\"",
+          "weight": "240 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Quin Snyder",
+          "position": "Head Coach",
+          "number": null,
+          "height": null,
+          "weight": null,
+          "experience": "Coach - 25 years"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Boston Celtics",
+      "abbreviation": "BOS",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "conference": "Eastern",
+      "division": "Atlantic",
+      "color_primary": "#007A33",
+      "color_secondary": "#BA9653",
+      "logo_file": "logos/boston_celtics.png",
+      "roster": [
+        {
+          "name": "Jayson Tatum",
+          "position": "Small Forward",
+          "number": 0,
+          "height": "6'8\"",
+          "weight": "210 lbs",
+          "experience": "7 years"
+        },
+        {
+          "name": "Jaylen Brown",
+          "position": "Shooting Guard",
+          "number": 7,
+          "height": "6'6\"",
+          "weight": "223 lbs",
+          "experience": "8 years"
+        },
+        {
+          "name": "Kristaps Porzingis",
+          "position": "Power Forward",
+          "number": 8,
+          "height": "7'2\"",
+          "weight": "240 lbs",
+          "experience": "9 years"
+        },
+        {
+          "name": "Derrick White",
+          "position": "Point Guard",
+          "number": 9,
+          "height": "6'4\"",
+          "weight": "190 lbs",
+          "experience": "7 years"
+        },
+        {
+          "name": "Jrue Holiday",
+          "position": "Point Guard",
+          "number": 4,
+          "height": "6'3\"",
+          "weight": "205 lbs",
+          "experience": "15 years"
+        },
+        {
+          "name": "Al Horford",
+          "position": "Center",
+          "number": 42,
+          "height": "6'9\"",
+          "weight": "240 lbs",
+          "experience": "17 years"
+        },
+        {
+          "name": "Sam Hauser",
+          "position": "Small Forward",
+          "number": 30,
+          "height": "6'7\"",
+          "weight": "217 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Payton Pritchard",
+          "position": "Point Guard",
+          "number": 11,
+          "height": "6'1\"",
+          "weight": "195 lbs",
+          "experience": "4 years"
+        },
+        {
+          "name": "Luke Kornet",
+          "position": "Center",
+          "number": 40,
+          "height": "7'2\"",
+          "weight": "250 lbs",
+          "experience": "7 years"
+        },
+        {
+          "name": "Neemias Queta",
+          "position": "Center",
+          "number": 88,
+          "height": "7'0\"",
+          "weight": "250 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Xavier Tillman",
+          "position": "Power Forward",
+          "number": 26,
+          "height": "6'8\"",
+          "weight": "245 lbs",
+          "experience": "4 years"
+        },
+        {
+          "name": "Joe Mazzulla",
+          "position": "Head Coach",
+          "number": null,
+          "height": null,
+          "weight": null,
+          "experience": "Coach - 2 years"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Brooklyn Nets",
+      "abbreviation": "BKN",
+      "city": "Brooklyn",
+      "state": "New York",
+      "conference": "Eastern",
+      "division": "Atlantic",
+      "color_primary": "#000000",
+      "color_secondary": "#FFFFFF",
+      "logo_file": "logos/brooklyn_nets.png",
+      "roster": [
+        {
+          "name": "Mikal Bridges",
+          "position": "Small Forward",
+          "number": 1,
+          "height": "6'6\"",
+          "weight": "209 lbs",
+          "experience": "6 years"
+        },
+        {
+          "name": "Cam Thomas",
+          "position": "Shooting Guard",
+          "number": 24,
+          "height": "6'3\"",
+          "weight": "210 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Nic Claxton",
+          "position": "Center",
+          "number": 33,
+          "height": "6'11\"",
+          "weight": "215 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Dennis Schroder",
+          "position": "Point Guard",
+          "number": 17,
+          "height": "6'1\"",
+          "weight": "172 lbs",
+          "experience": "11 years"
+        },
+        {
+          "name": "Dorian Finney-Smith",
+          "position": "Power Forward",
+          "number": 28,
+          "height": "6'7\"",
+          "weight": "220 lbs",
+          "experience": "8 years"
+        },
+        {
+          "name": "Ben Simmons",
+          "position": "Point Guard",
+          "number": 10,
+          "height": "6'10\"",
+          "weight": "240 lbs",
+          "experience": "7 years"
+        },
+        {
+          "name": "Cameron Johnson",
+          "position": "Small Forward",
+          "number": 2,
+          "height": "6'8\"",
+          "weight": "210 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Day'Ron Sharpe",
+          "position": "Center",
+          "number": 20,
+          "height": "6'9\"",
+          "weight": "265 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Lonnie Walker IV",
+          "position": "Shooting Guard",
+          "number": 4,
+          "height": "6'4\"",
+          "weight": "204 lbs",
+          "experience": "6 years"
+        },
+        {
+          "name": "Trendon Watford",
+          "position": "Power Forward",
+          "number": 2,
+          "height": "6'9\"",
+          "weight": "237 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Keon Johnson",
+          "position": "Shooting Guard",
+          "number": 45,
+          "height": "6'5\"",
+          "weight": "186 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Jordi Fernandez",
+          "position": "Head Coach",
+          "number": null,
+          "height": null,
+          "weight": null,
+          "experience": "Coach - 1 year"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Los Angeles Lakers",
+      "abbreviation": "LAL",
+      "city": "Los Angeles",
+      "state": "California",
+      "conference": "Western",
+      "division": "Pacific",
+      "color_primary": "#552583",
+      "color_secondary": "#FDB927",
+      "logo_file": "logos/los_angeles_lakers.png",
+      "roster": [
+        {
+          "name": "LeBron James",
+          "position": "Small Forward",
+          "number": 23,
+          "height": "6'9\"",
+          "weight": "250 lbs",
+          "experience": "22 years"
+        },
+        {
+          "name": "Anthony Davis",
+          "position": "Power Forward",
+          "number": 3,
+          "height": "6'10\"",
+          "weight": "253 lbs",
+          "experience": "12 years"
+        },
+        {
+          "name": "Austin Reaves",
+          "position": "Shooting Guard",
+          "number": 15,
+          "height": "6'5\"",
+          "weight": "197 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "D'Angelo Russell",
+          "position": "Point Guard",
+          "number": 1,
+          "height": "6'4\"",
+          "weight": "193 lbs",
+          "experience": "9 years"
+        },
+        {
+          "name": "Rui Hachimura",
+          "position": "Power Forward",
+          "number": 28,
+          "height": "6'8\"",
+          "weight": "230 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Jarred Vanderbilt",
+          "position": "Power Forward",
+          "number": 2,
+          "height": "6'8\"",
+          "weight": "214 lbs",
+          "experience": "6 years"
+        },
+        {
+          "name": "Christian Wood",
+          "position": "Center",
+          "number": 35,
+          "height": "6'10\"",
+          "weight": "214 lbs",
+          "experience": "9 years"
+        },
+        {
+          "name": "Gabe Vincent",
+          "position": "Point Guard",
+          "number": 7,
+          "height": "6'3\"",
+          "weight": "200 lbs",
+          "experience": "5 years"
+        },
+        {
+          "name": "Taurean Prince",
+          "position": "Small Forward",
+          "number": 12,
+          "height": "6'7\"",
+          "weight": "218 lbs",
+          "experience": "8 years"
+        },
+        {
+          "name": "Max Christie",
+          "position": "Shooting Guard",
+          "number": 10,
+          "height": "6'6\"",
+          "weight": "190 lbs",
+          "experience": "2 years"
+        },
+        {
+          "name": "Dalton Knecht",
+          "position": "Shooting Guard",
+          "number": 4,
+          "height": "6'6\"",
+          "weight": "213 lbs",
+          "experience": "Rookie"
+        },
+        {
+          "name": "JJ Redick",
+          "position": "Head Coach",
+          "number": null,
+          "height": null,
+          "weight": null,
+          "experience": "Coach - 1 year"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Golden State Warriors",
+      "abbreviation": "GSW",
+      "city": "San Francisco",
+      "state": "California",
+      "conference": "Western",
+      "division": "Pacific",
+      "color_primary": "#1D428A",
+      "color_secondary": "#FFC72C",
+      "logo_file": "logos/golden_state_warriors.png",
+      "roster": [
+        {
+          "name": "Stephen Curry",
+          "position": "Point Guard",
+          "number": 30,
+          "height": "6'2\"",
+          "weight": "185 lbs",
+          "experience": "15 years"
+        },
+        {
+          "name": "Klay Thompson",
+          "position": "Shooting Guard",
+          "number": 11,
+          "height": "6'6\"",
+          "weight": "220 lbs",
+          "experience": "13 years"
+        },
+        {
+          "name": "Draymond Green",
+          "position": "Power Forward",
+          "number": 23,
+          "height": "6'6\"",
+          "weight": "230 lbs",
+          "experience": "12 years"
+        },
+        {
+          "name": "Andrew Wiggins",
+          "position": "Small Forward",
+          "number": 22,
+          "height": "6'7\"",
+          "weight": "197 lbs",
+          "experience": "10 years"
+        },
+        {
+          "name": "Jonathan Kuminga",
+          "position": "Power Forward",
+          "number": 0,
+          "height": "6'7\"",
+          "weight": "225 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Moses Moody",
+          "position": "Shooting Guard",
+          "number": 4,
+          "height": "6'6\"",
+          "weight": "211 lbs",
+          "experience": "3 years"
+        },
+        {
+          "name": "Brandin Podziemski",
+          "position": "Point Guard",
+          "number": 2,
+          "height": "6'5\"",
+          "weight": "205 lbs",
+          "experience": "1 year"
+        },
+        {
+          "name": "Trayce Jackson-Davis",
+          "position": "Center",
+          "number": 32,
+          "height": "6'9\"",
+          "weight": "245 lbs",
+          "experience": "1 year"
+        },
+        {
+          "name": "Gary Payton II",
+          "position": "Point Guard",
+          "number": 0,
+          "height": "6'3\"",
+          "weight": "190 lbs",
+          "experience": "8 years"
+        },
+        {
+          "name": "Kevon Looney",
+          "position": "Center",
+          "number": 5,
+          "height": "6'9\"",
+          "weight": "222 lbs",
+          "experience": "9 years"
+        },
+        {
+          "name": "Buddy Hield",
+          "position": "Shooting Guard",
+          "number": 7,
+          "height": "6'4\"",
+          "weight": "220 lbs",
+          "experience": "8 years"
+        },
+        {
+          "name": "Steve Kerr",
+          "position": "Head Coach",
+          "number": null,
+          "height": null,
+          "weight": null,
+          "experience": "Coach - 10 years"
+        }
+      ]
+    }
+  ]
+} 

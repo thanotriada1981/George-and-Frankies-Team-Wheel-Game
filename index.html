@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George and Frankie's Dream Team Builder Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .game-modes {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .mode-button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .mode-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .mode-button.active {
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+        }
+
+        .setup-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .setup-step h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .player-count-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .count-button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .count-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .count-button.selected {
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+        }
+
+        .player-name-inputs {
+            display: grid;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        .name-input {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .start-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .team-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .team-card {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .team-card h4 {
+            color: #333;
+            margin: 0 0 10px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .team-positions {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .position-summary {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .position-summary strong {
+            color: #333;
+            min-width: 40px;
+            display: inline-block;
+        }
+
+        .game-area {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .wheel-section-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-builder-bottom {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .team-builder-bottom h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        
+        .wheel-section {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .wheel-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+        }
+        
+        #wheel, #wheel-dream {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 12px solid #2c3e50;
+            transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
+            background: #f0f0f0;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3), inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .wheel-segment {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 0;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wheel-segment img {
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.7));
+        }
+
+        .wheel-section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            transform-origin: 0 0;
+            pointer-events: none;
+        }
+
+        .wheel-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0.8) 70%, transparent);
+            transform-origin: 0 0;
+        }
+
+        .wheel-section::after {
+            content: var(--team-name);
+            position: absolute;
+            left: 120px;
+            top: -8px;
+            width: 60px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-align: center;
+            line-height: 1;
+            transform: rotate(6deg);
+            pointer-events: none;
+        }
+
+        .wheel-section:nth-child(1) { transform: rotate(6deg); --team-name: "ATL"; }
+        .wheel-section:nth-child(2) { transform: rotate(18deg); --team-name: "BOS"; }
+        .wheel-section:nth-child(3) { transform: rotate(30deg); --team-name: "BKN"; }
+        .wheel-section:nth-child(4) { transform: rotate(42deg); --team-name: "CHA"; }
+        .wheel-section:nth-child(5) { transform: rotate(54deg); --team-name: "CHI"; }
+        .wheel-section:nth-child(6) { transform: rotate(66deg); --team-name: "CLE"; }
+        .wheel-section:nth-child(7) { transform: rotate(78deg); --team-name: "DAL"; }
+        .wheel-section:nth-child(8) { transform: rotate(90deg); --team-name: "DEN"; }
+        .wheel-section:nth-child(9) { transform: rotate(102deg); --team-name: "DET"; }
+        .wheel-section:nth-child(10) { transform: rotate(114deg); --team-name: "GSW"; }
+        .wheel-section:nth-child(11) { transform: rotate(126deg); --team-name: "HOU"; }
+        .wheel-section:nth-child(12) { transform: rotate(138deg); --team-name: "IND"; }
+        .wheel-section:nth-child(13) { transform: rotate(150deg); --team-name: "LAC"; }
+        .wheel-section:nth-child(14) { transform: rotate(162deg); --team-name: "LAL"; }
+        .wheel-section:nth-child(15) { transform: rotate(174deg); --team-name: "MEM"; }
+        .wheel-section:nth-child(16) { transform: rotate(186deg); --team-name: "MIA"; }
+        .wheel-section:nth-child(17) { transform: rotate(198deg); --team-name: "MIL"; }
+        .wheel-section:nth-child(18) { transform: rotate(210deg); --team-name: "MIN"; }
+        .wheel-section:nth-child(19) { transform: rotate(222deg); --team-name: "NOP"; }
+        .wheel-section:nth-child(20) { transform: rotate(234deg); --team-name: "NYK"; }
+        .wheel-section:nth-child(21) { transform: rotate(246deg); --team-name: "OKC"; }
+        .wheel-section:nth-child(22) { transform: rotate(258deg); --team-name: "ORL"; }
+        .wheel-section:nth-child(23) { transform: rotate(270deg); --team-name: "PHI"; }
+        .wheel-section:nth-child(24) { transform: rotate(282deg); --team-name: "PHX"; }
+        .wheel-section:nth-child(25) { transform: rotate(294deg); --team-name: "POR"; }
+        .wheel-section:nth-child(26) { transform: rotate(306deg); --team-name: "SAC"; }
+        .wheel-section:nth-child(27) { transform: rotate(318deg); --team-name: "SAS"; }
+        .wheel-section:nth-child(28) { transform: rotate(330deg); --team-name: "TOR"; }
+        .wheel-section:nth-child(29) { transform: rotate(342deg); --team-name: "UTA"; }
+        .wheel-section:nth-child(30) { transform: rotate(354deg); --team-name: "WAS"; }
+        
+        .pointer {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #e74c3c;
+            z-index: 10;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .pointer::after {
+            content: '';
+            position: absolute;
+            top: -38px;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #c0392b;
+            z-index: 11;
+        }
+        
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            border-radius: 50%;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.1);
+            border: 4px solid #ecf0f1;
+        }
+        
+        .spin-button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .spin-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .spin-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .team-builder {
+            flex: 1;
+            max-width: 600px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-builder h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .spin-counter {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .position-slot {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .position-slot.filled {
+            border-color: #4CAF50;
+            background: #f0f8f0;
+        }
+
+        .position-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .position-player {
+            color: #666;
+            font-size: 0.9em;
+            min-height: 40px;
+        }
+
+        .position-player.filled {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .player-selection {
+            display: none;
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px solid #ffc107;
+        }
+
+        .player-selection.show {
+            display: block;
+        }
+
+        .player-dropdown {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        .position-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .position-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .position-btn:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .position-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .battle-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            border: 2px solid #ffc107;
+        }
+
+        .battle-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .battle-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .battle-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+        
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .popup h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .close-popup {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        .classic-mode {
+            display: block;
+        }
+
+        .dream-team-mode {
+            display: none;
+        }
+
+        .dream-team-mode.active {
+            display: block;
+        }
+
+        .classic-mode.active {
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .game-area {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .wheel-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+                  <h1>🏀 George and Frankie's Dream Team Builder Game 🏀</h1>
+        
+        <!-- Game Setup Phase -->
+        <div id="setup-phase" class="setup-section">
+            <h2>🎮 Game Setup</h2>
+            <div class="setup-step" id="player-count-step">
+              <h3>How many players want to play?</h3>
+              <div class="player-count-buttons">
+                <button class="count-button" onclick="selectPlayerCount(2)">2 Players</button>
+                <button class="count-button" onclick="selectPlayerCount(3)">3 Players</button>
+                <button class="count-button" onclick="selectPlayerCount(4)">4 Players</button>
+              </div>
+            </div>
+            
+            <div class="setup-step" id="player-names-step" style="display: none;">
+              <h3>Enter Player Names</h3>
+              <div id="player-name-inputs"></div>
+              <button class="start-button" onclick="startMultiplayerGame()">🚀 Start Game!</button>
+            </div>
+        </div>
+        
+        <!-- Game Mode Selection -->
+        <div class="game-modes" id="mode-selection" style="display: none;">
+            <button class="mode-button active" onclick="switchMode('classic')">🎯 Classic Spin</button>
+            <button class="mode-button" onclick="switchMode('multiplayer')">🏆 Multiplayer Dream Team Builder</button>
+        </div>
+
+        <!-- Classic Mode -->
+        <div id="classic-mode" class="classic-mode">
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <div id="wheel">
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                    <div class="wheel-section"></div>
+                <div class="center-circle">NBA</div>
+            </div>
+        </div>
+        
+            <div class="result" id="classic-result">Click "Spin the Wheel" to start!</div>
+        
+            <button class="spin-button" id="classicSpinButton" onclick="spinWheel()">
+            🎯 SPIN THE WHEEL! 🎯
+        </button>
+        </div>
+
+        <!-- Dream Team Builder Mode -->
+        <div id="dream-team-mode" class="dream-team-mode">
+            <!-- Wheel Section - Centered at Top -->
+            <div class="wheel-section-container">
+                <div class="wheel-container">
+                    <div class="pointer"></div>
+                    <div id="wheel-dream">
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="wheel-section"></div>
+                        <div class="center-circle">NBA</div>
+                    </div>
+                </div>
+                
+                <div class="result" id="dream-result">Ready to build your dream team!</div>
+                
+                <button class="spin-button" id="dreamSpinButton" onclick="spinForDreamTeam()">
+                    🎯 SPIN FOR PLAYER! 🎯
+                </button>
+
+                <!-- Player Selection Interface -->
+                <div class="player-selection" id="playerSelection">
+                    <h3>🏀 Select Your Player!</h3>
+                    <p>You landed on: <span id="selectedTeamName"></span></p>
+                    <select class="player-dropdown" id="playerDropdown">
+                        <option value="">Loading players...</option>
+                    </select>
+                    <p><strong>Choose a position for this player:</strong></p>
+                    <div class="position-buttons" id="positionButtons">
+                        <button class="position-btn" onclick="assignPlayer('pg')">Point Guard</button>
+                        <button class="position-btn" onclick="assignPlayer('sg')">Shooting Guard</button>
+                        <button class="position-btn" onclick="assignPlayer('sf')">Small Forward</button>
+                        <button class="position-btn" onclick="assignPlayer('pf')">Power Forward</button>
+                        <button class="position-btn" onclick="assignPlayer('c')">Center</button>
+                        <button class="position-btn" onclick="assignPlayer('sixth')">6th Man</button>
+                        <button class="position-btn" onclick="assignPlayer('seventh')">7th Man</button>
+                        <button class="position-btn" onclick="assignPlayer('coach')">Coach</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Builder Section - Below Wheel -->
+            <div class="team-builder-bottom">
+                <h2>🏆 Your Dream Team</h2>
+                <div class="spin-counter" id="spinCounter">Spins Left: 8</div>
+                
+                <div class="positions-grid">
+                    <div class="position-slot" id="slot-pg">
+                        <div class="position-title">🎯 Point Guard</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-sg">
+                        <div class="position-title">🎯 Shooting Guard</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-sf">
+                        <div class="position-title">🎯 Small Forward</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-pf">
+                        <div class="position-title">🎯 Power Forward</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-c">
+                        <div class="position-title">🎯 Center</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-sixth">
+                        <div class="position-title">🎯 6th Man</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-seventh">
+                        <div class="position-title">🎯 7th Man</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                    <div class="position-slot" id="slot-coach">
+                        <div class="position-title">🎯 Coach</div>
+                        <div class="position-player">Empty</div>
+                    </div>
+                </div>
+
+                <div class="battle-section" id="battleSection" style="display: none;">
+                    <h3>🔥 Ready for Battle!</h3>
+                    <p>Your dream team is complete! Ready to face the competition?</p>
+                    <button class="battle-button" onclick="startBattle()">⚔️ START BATTLE! ⚔️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>🎉 Result! 🎉</h2>
+            <p id="popupResult"></p>
+            <button class="close-popup" onclick="closePopup()">Awesome!</button>
+        </div>
+    </div>
+
+    <!-- Include NBA Data Framework -->
+    <script src="nba_data.js"></script>
+    <script>
+        // Game State
+        let gameState = {
+            phase: 'setup', // setup, classic, multiplayer, battle
+            mode: 'classic',
+            numPlayers: 2,
+            players: [],
+            currentPlayerIndex: 0,
+            currentRound: 1,
+            maxRounds: 8,
+            dreamTeams: [], // Array to store each player's team
+            currentTeam: null,
+            currentPlayers: [],
+            isSpinning: false
+        };
+
+        // NBA Teams Data - Will be loaded from JSON file
+        let nbaTeams = [];
+        
+        // Multiplayer Setup Functions
+        function selectPlayerCount(count) {
+            gameState.numPlayers = count;
+            
+            // Update button states
+            document.querySelectorAll('.count-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+            
+            // Show player name inputs
+            setTimeout(() => {
+                document.getElementById('player-count-step').style.display = 'none';
+                document.getElementById('player-names-step').style.display = 'block';
+                createPlayerNameInputs(count);
+            }, 500);
+        }
+        
+        function createPlayerNameInputs(count) {
+            const container = document.getElementById('player-name-inputs');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'name-input';
+                input.placeholder = `Enter Player ${i + 1} Name`;
+                input.id = `player-name-${i}`;
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const nextInput = document.getElementById(`player-name-${i + 1}`);
+                        if (nextInput) {
+                            nextInput.focus();
+                        } else {
+                            startMultiplayerGame();
+                        }
+                    }
+                });
+                container.appendChild(input);
+            }
+            
+            // Focus on first input
+            document.getElementById('player-name-0').focus();
+        }
+        
+        function startMultiplayerGame() {
+            // Collect player names
+            const names = [];
+            for (let i = 0; i < gameState.numPlayers; i++) {
+                const name = document.getElementById(`player-name-${i}`).value.trim();
+                if (name === '') {
+                    alert(`Please enter a name for Player ${i + 1}`);
+                    document.getElementById(`player-name-${i}`).focus();
+                    return;
+                }
+                names.push(name);
+            }
+            
+            // Initialize game state
+            gameState.players = names.map(name => ({ name, teamComplete: false }));
+            gameState.dreamTeams = names.map(() => ({
+                pg: null, sg: null, sf: null, pf: null, c: null,
+                sixth: null, seventh: null, coach: null
+            }));
+            gameState.currentPlayerIndex = 0;
+            gameState.currentRound = 1;
+            gameState.phase = 'multiplayer';
+            
+            // Hide setup and show game
+            document.getElementById('setup-phase').style.display = 'none';
+            document.getElementById('mode-selection').style.display = 'block';
+            
+            // Auto-select multiplayer mode
+            switchMode('multiplayer');
+            
+            console.log('🎮 Multiplayer game started with players:', names);
+        }
+        
+        // Load NBA teams data from JSON file
+        async function loadNBATeams() {
+            try {
+                console.log("🏀 Loading NBA teams from JSON file...");
+                const response = await fetch('data/nba_teams_data.json');
+                const data = await response.json();
+                
+                // Transform the data to match our format
+                nbaTeams = data.teams.map(team => ({
+                    id: team.id,
+                    name: team.name,
+                    abbreviation: team.abbreviation,
+                    color: team.color_primary,
+                    color_secondary: team.color_secondary,
+                    logo_file: team.logo_file,
+                    city: team.city,
+                    state: team.state,
+                    conference: team.conference,
+                    division: team.division,
+                    roster: team.roster
+                }));
+                
+                console.log(`✅ Successfully loaded ${nbaTeams.length} NBA teams`);
+                
+                // Draw the wheel with logos
+                drawWheelWithLogos();
+                
+                return nbaTeams;
+            } catch (error) {
+                console.error('❌ Error loading NBA teams:', error);
+                // Fallback to basic team data
+                nbaTeams = [
+                    {name: "Atlanta Hawks", color: "#E03A3E", abbreviation: "ATL"},
+                    {name: "Boston Celtics", color: "#007A33", abbreviation: "BOS"},
+                    {name: "Brooklyn Nets", color: "#000000", abbreviation: "BKN"},
+                    {name: "Charlotte Hornets", color: "#1D1160", abbreviation: "CHA"},
+                    {name: "Chicago Bulls", color: "#CE1141", abbreviation: "CHI"},
+                    {name: "Cleveland Cavaliers", color: "#860038", abbreviation: "CLE"},
+                    {name: "Dallas Mavericks", color: "#00538C", abbreviation: "DAL"},
+                    {name: "Denver Nuggets", color: "#0E2240", abbreviation: "DEN"},
+                    {name: "Detroit Pistons", color: "#C8102E", abbreviation: "DET"},
+                    {name: "Golden State Warriors", color: "#1D428A", abbreviation: "GSW"}
+                ];
+                return nbaTeams;
+            }
+        }
+
+        // Test function to check if data is loaded (call from console)
+        function testDataLoading() {
+            console.log("🔍 Testing data loading...");
+            console.log("📊 Teams loaded:", nbaTeams.length);
+            console.log("🏆 First team:", nbaTeams[0]);
+            console.log("👥 First team roster:", nbaTeams[0]?.roster?.length || 0, "players");
+            console.log("🎯 Sample player:", nbaTeams[0]?.roster?.[0]);
+            
+            // Test loading a specific team
+            if (nbaTeams.length > 0) {
+                loadPlayersForTeam(nbaTeams[0])
+                    .then(players => {
+                        console.log("✅ Test successful! Loaded", players.length, "players");
+                        console.log("🏆 First player:", players[0]);
+                        
+                        // Display results on the page
+                        alert(`Test Results:\n\n✅ Teams loaded: ${nbaTeams.length}\n🏆 First team: ${nbaTeams[0]?.name}\n👥 Players: ${players.length}\n🎯 First player: ${players[0]?.full_name || players[0]?.first_name + ' ' + players[0]?.last_name}`);
+                    })
+                    .catch(error => {
+                        console.error("❌ Test failed:", error);
+                        alert("❌ Test failed - check console for details");
+                    });
+            } else {
+                alert("❌ No teams loaded!");
+            }
+        }
+
+        // Direct test of JSON loading
+        async function testDirectJSONLoad() {
+            try {
+                console.log("🔍 Testing direct JSON load...");
+                const response = await fetch('data/nba_teams_data.json');
+                const data = await response.json();
+                console.log("✅ JSON loaded successfully");
+                console.log("📊 Teams in JSON:", data.teams.length);
+                console.log("🏆 First team in JSON:", data.teams[0].name);
+                console.log("👥 First team roster:", data.teams[0].roster.length);
+                console.log("🎯 First player:", data.teams[0].roster[0]);
+                
+                alert(`Direct JSON Test:\n\n✅ Teams in file: ${data.teams.length}\n🏆 First team: ${data.teams[0].name}\n👥 Players: ${data.teams[0].roster.length}\n🎯 First player: ${data.teams[0].roster[0].name}`);
+            } catch (error) {
+                console.error("❌ Direct JSON test failed:", error);
+                alert("❌ Direct JSON test failed - check console");
+            }
+        }
+
+        // Force test a specific team (Atlanta Hawks)
+        function testAtlantaHawks() {
+            console.log("🔍 Testing Atlanta Hawks specifically...");
+            
+            // Create a mock team object to test
+            const atlantaTeam = {
+                name: "Atlanta Hawks",
+                color: "#E03A3E",
+                abbreviation: "ATL"
+            };
+            
+            console.log("🏀 Testing team:", atlantaTeam);
+            showPlayerSelection(atlantaTeam);
+        }
+
+        // Initialize the game
+        window.onload = function() {
+            console.log("🏀 George and Frankie's Dream Team Builder Game Loading...");
+            
+            // Load NBA teams data
+            loadNBATeams()
+                .then(() => {
+                    console.log("✅ George and Frankie's Dream Team Builder Game Ready!");
+                    console.log("📊 Total teams loaded:", nbaTeams.length);
+                    console.log("🏆 First team has", nbaTeams[0]?.roster?.length || 0, "roster members");
+                    console.log("🎯 Type 'testDataLoading()' in console to test data loading");
+                })
+                .catch(error => {
+                    console.error("❌ Error initializing George and Frankie's Dream Team Builder Game:", error);
+                });
+            
+            // Initialize NBA data framework
+            if (typeof NBAData !== 'undefined') {
+                NBAData.initialize()
+                    .then(() => {
+                        console.log("✅ NBA Data Framework Ready!");
+                    })
+                    .catch(error => {
+                        console.warn("⚠️ NBA Data Framework not available, using mock data");
+                        // Game will still work with mock data
+                    });
+            } else {
+                console.warn("⚠️ NBA Data Framework not loaded, using mock data");
+            }
+        };
+
+        // Draw wheel with team logos
+        function drawWheelWithLogos() {
+            if (nbaTeams.length === 0) {
+                console.log("⚠️ No teams loaded yet, skipping wheel drawing");
+                return;
+            }
+            
+            console.log("🎨 Drawing wheel with logos for", nbaTeams.length, "teams");
+            
+            // Update both wheels (classic and dream team)
+            updateWheelSegments('wheel');
+            updateWheelSegments('wheel-dream');
+        }
+        
+        // Update wheel segments with team data
+        function updateWheelSegments(wheelId) {
+            const wheel = document.getElementById(wheelId);
+            if (!wheel) return;
+            
+            // Clear existing segments but keep wheel-sections for CSS compatibility
+            const existingSections = wheel.querySelectorAll('.wheel-section');
+            existingSections.forEach(section => section.remove());
+            
+            const totalTeams = nbaTeams.length;
+            const anglePerSegment = 360 / totalTeams;
+            
+            // Create segments using the existing wheel-section structure
+            for (let i = 0; i < totalTeams; i++) {
+                const team = nbaTeams[i];
+                const rotation = (i * anglePerSegment) + (anglePerSegment / 2);
+                
+                // Create section element
+                const section = document.createElement('div');
+                section.className = 'wheel-section';
+                section.style.transform = `rotate(${rotation}deg)`;
+                section.style.setProperty('--team-name', `"${team.abbreviation}"`);
+                
+                // Add logo if available
+                if (team.logo_file) {
+                    const logo = document.createElement('img');
+                    logo.src = team.logo_file;
+                    logo.style.position = 'absolute';
+                    logo.style.left = '100px';
+                    logo.style.top = '-12px';
+                    logo.style.width = '20px';
+                    logo.style.height = '20px';
+                    logo.style.objectFit = 'contain';
+                    logo.style.filter = 'drop-shadow(1px 1px 2px rgba(0,0,0,0.7))';
+                    logo.style.transform = 'rotate(6deg)';
+                    section.appendChild(logo);
+                }
+                
+                wheel.appendChild(section);
+            }
+            
+            // Update the background to show team colors
+            const colorStops = [];
+            for (let i = 0; i < totalTeams; i++) {
+                const team = nbaTeams[i];
+                const startAngle = i * anglePerSegment;
+                const endAngle = (i + 1) * anglePerSegment;
+                colorStops.push(`${team.color} ${startAngle}deg ${endAngle}deg`);
+            }
+            
+            wheel.style.background = `conic-gradient(from 0deg, ${colorStops.join(', ')})`;
+        }
+
+        // Switch between game modes
+        function switchMode(mode) {
+            gameState.mode = mode;
+            
+            // Update button states
+            document.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (mode === 'classic') {
+                document.getElementById('classic-mode').style.display = 'block';
+                document.getElementById('dream-team-mode').style.display = 'none';
+                document.querySelector('.mode-button').classList.add('active');
+            } else if (mode === 'multiplayer') {
+                document.getElementById('classic-mode').style.display = 'none';
+                document.getElementById('dream-team-mode').style.display = 'block';
+                document.querySelectorAll('.mode-button')[1].classList.add('active');
+                initializeMultiplayerMode();
+            }
+        }
+        
+        // Initialize multiplayer mode
+        function initializeMultiplayerMode() {
+            updateMultiplayerDisplay();
+            resetCurrentTeam();
+        }
+        
+        // Update multiplayer display
+        function updateMultiplayerDisplay() {
+            const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+            const spinCounter = document.getElementById('spinCounter');
+            const dreamResult = document.getElementById('dream-result');
+            
+            spinCounter.textContent = `${currentPlayer.name}'s Turn - Round ${gameState.currentRound}/8`;
+            dreamResult.textContent = `${currentPlayer.name}, spin the wheel to get your next player!`;
+            
+            // Show current player's team
+            displayCurrentPlayerTeam();
+        }
+        
+        // Display current player's team
+        function displayCurrentPlayerTeam() {
+            const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+            const positions = ['pg', 'sg', 'sf', 'pf', 'c', 'sixth', 'seventh', 'coach'];
+            
+            positions.forEach(pos => {
+                const slot = document.getElementById(`slot-${pos}`);
+                const playerDiv = slot.querySelector('.position-player');
+                
+                if (currentTeam[pos]) {
+                    playerDiv.textContent = currentTeam[pos].full_name || `${currentTeam[pos].first_name} ${currentTeam[pos].last_name}`;
+                    playerDiv.classList.add('filled');
+                    slot.classList.add('filled');
+                } else {
+                    playerDiv.textContent = 'Empty';
+                    playerDiv.classList.remove('filled');
+                    slot.classList.remove('filled');
+                }
+            });
+        }
+        
+        // Reset current team display
+        function resetCurrentTeam() {
+            document.querySelectorAll('.position-slot').forEach(slot => {
+                slot.classList.remove('filled');
+                const playerDiv = slot.querySelector('.position-player');
+                playerDiv.textContent = 'Empty';
+                playerDiv.classList.remove('filled');
+            });
+        }
+
+        // Classic wheel spin
+        function spinWheel() {
+            if (gameState.isSpinning) return;
+            
+            gameState.isSpinning = true;
+            const spinButton = document.getElementById('classicSpinButton');
+            const result = document.getElementById('classic-result');
+            
+            spinButton.disabled = true;
+            spinButton.textContent = 'Spinning...';
+            result.textContent = '🎯 Spinning the wheel... 🎯';
+            
+            const spins = Math.floor(Math.random() * 5) + 5;
+            const finalAngle = Math.random() * 360;
+            const totalRotation = (spins * 360) + finalAngle;
+            
+            const wheel = document.getElementById('wheel');
+            wheel.style.transform = 'rotate(' + totalRotation + 'deg)';
+            
+            setTimeout(function() {
+                const selectedTeam = getSelectedTeam(finalAngle);
+                
+                result.innerHTML = '🏀 <span style="color: ' + selectedTeam.color + '">' + selectedTeam.name + '</span> 🏀';
+                
+                document.getElementById('popupResult').innerHTML = 'The wheel landed on:<br><br><strong style="color: ' + selectedTeam.color + '; font-size: 1.5em;">' + selectedTeam.name + '</strong>';
+                document.getElementById('popup').style.display = 'block';
+                
+                spinButton.disabled = false;
+                spinButton.textContent = '🎯 SPIN AGAIN! 🎯';
+                gameState.isSpinning = false;
+            }, 3000);
+        }
+
+        // Dream team wheel spin
+        function spinForDreamTeam() {
+            if (gameState.isSpinning) return;
+            
+            gameState.isSpinning = true;
+            const spinButton = document.getElementById('dreamSpinButton');
+            const result = document.getElementById('dream-result');
+            const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+            
+            spinButton.disabled = true;
+            spinButton.textContent = 'Spinning...';
+            result.textContent = `🎯 ${currentPlayer.name} is spinning for their next player... 🎯`;
+            
+            const spins = Math.floor(Math.random() * 5) + 5;
+            const finalAngle = Math.random() * 360;
+            const totalRotation = (spins * 360) + finalAngle;
+            
+            const wheel = document.getElementById('wheel-dream');
+            wheel.style.transform = 'rotate(' + totalRotation + 'deg)';
+            
+            setTimeout(function() {
+                const selectedTeam = getSelectedTeam(finalAngle);
+                gameState.currentTeam = selectedTeam;
+                
+                result.innerHTML = `🏀 ${currentPlayer.name} landed on <span style="color: ${selectedTeam.color}">${selectedTeam.name}</span>! 🏀`;
+                
+                // Show player selection
+                showPlayerSelection(selectedTeam);
+                
+                spinButton.disabled = false;
+                spinButton.textContent = '🎯 SPIN FOR PLAYER! 🎯';
+                gameState.isSpinning = false;
+            }, 3000);
+        }
+        
+        // Get selected team based on angle
+        function getSelectedTeam(finalAngle) {
+            const normalizedAngle = (360 - (finalAngle % 360)) % 360;
+            const sectionAngle = 360 / nbaTeams.length;
+            const selectedIndex = Math.floor(normalizedAngle / sectionAngle);
+            return nbaTeams[selectedIndex];
+        }
+
+        // Show player selection interface
+        function showPlayerSelection(team) {
+            const playerSelection = document.getElementById('playerSelection');
+            const teamNameSpan = document.getElementById('selectedTeamName');
+            const dropdown = document.getElementById('playerDropdown');
+            const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+            
+            // Update the selection header
+            const selectionHeader = playerSelection.querySelector('h3');
+            selectionHeader.textContent = `🏀 ${currentPlayer.name}, Select Your Player!`;
+            
+            teamNameSpan.textContent = team.name;
+            teamNameSpan.style.color = team.color;
+            
+            // Clear dropdown
+            dropdown.innerHTML = '<option value="">Loading players...</option>';
+            
+            // Debug: Show what team data we have
+            console.log("🔍 DEBUG: Selected team:", team);
+            console.log("🔍 DEBUG: Available teams count:", nbaTeams.length);
+            console.log("🔍 DEBUG: First few team names:", nbaTeams.slice(0, 5).map(t => t.name));
+            
+            // Load players for this team
+            loadPlayersForTeam(team)
+                .then(players => {
+                    gameState.currentPlayers = players;
+                    populatePlayerDropdown(players);
+                    updatePositionButtons(); // Update buttons after loading players
+                })
+                .catch(error => {
+                    console.error('Error loading players:', error);
+                    // Use mock data as fallback
+                    const mockPlayers = generateMockPlayers(team.name);
+                    gameState.currentPlayers = mockPlayers;
+                    populatePlayerDropdown(mockPlayers);
+                    updatePositionButtons(); // Update buttons after loading players
+                });
+            
+            playerSelection.classList.add('show');
+        }
+
+        // Load players for a team
+        async function loadPlayersForTeam(team) {
+            try {
+                console.log("🏀 Loading players for team:", team.name);
+                
+                // First check if we have the team data in our loaded nbaTeams array
+                const fullTeamData = nbaTeams.find(t => t.name === team.name);
+                
+                if (fullTeamData && fullTeamData.roster && fullTeamData.roster.length > 0) {
+                    console.log("✅ Using pre-loaded roster data for", team.name, "- Found", fullTeamData.roster.length, "roster members");
+                    console.log("🏆 Sample player:", fullTeamData.roster[0]);
+                    
+                    // Include all roster members (players and coaches)
+                    return fullTeamData.roster.map(player => ({
+                        id: player.number || Math.random(),
+                        first_name: player.name.split(' ')[0] || '',
+                        last_name: player.name.split(' ').slice(1).join(' ') || '',
+                        position: player.position,
+                        height_feet: player.height ? parseInt(player.height.split("'")[0]) : null,
+                        height_inches: player.height ? parseInt(player.height.split("'")[1]) : null,
+                        weight_pounds: player.weight ? parseInt(player.weight.replace(' lbs', '')) : null,
+                        team: { full_name: team.name },
+                        number: player.number,
+                        experience: player.experience,
+                        full_name: player.name,
+                        isCoach: player.position.includes('Coach') || player.position.includes('Head Coach')
+                    }));
+                }
+                
+                // If no roster data in loaded teams, try to load from JSON file
+                console.log("📄 Loading from JSON file...");
+                const response = await fetch('data/nba_teams_data.json');
+                const data = await response.json();
+                
+                // Find the team in our data
+                const teamData = data.teams.find(t => t.name === team.name);
+                console.log("🔍 Found team data:", teamData ? "Yes" : "No");
+                
+                if (teamData && teamData.roster) {
+                    console.log("✅ Found roster data in JSON for", team.name, "- Found", teamData.roster.length, "roster members");
+                    console.log("🏆 Sample player:", teamData.roster[0]);
+                    
+                    // Include all roster members (players and coaches)
+                    return teamData.roster.map(player => ({
+                        id: player.number || Math.random(),
+                        first_name: player.name.split(' ')[0] || '',
+                        last_name: player.name.split(' ').slice(1).join(' ') || '',
+                        position: player.position,
+                        height_feet: player.height ? parseInt(player.height.split("'")[0]) : null,
+                        height_inches: player.height ? parseInt(player.height.split("'")[1]) : null,
+                        weight_pounds: player.weight ? parseInt(player.weight.replace(' lbs', '')) : null,
+                        team: { full_name: team.name },
+                        number: player.number,
+                        experience: player.experience,
+                        full_name: player.name,
+                        isCoach: player.position.includes('Coach') || player.position.includes('Head Coach')
+                    }));
+                }
+                
+                // Fallback to mock data
+                console.log("⚠️ No roster data found, using mock data for", team.name);
+                console.log("🔍 Available teams in data:", data.teams ? data.teams.map(t => t.name) : "No teams data");
+                return generateMockPlayers(team.name);
+            } catch (error) {
+                console.error('❌ Error loading team players:', error);
+                return generateMockPlayers(team.name);
+            }
+        }
+
+        // Generate mock players for demonstration
+        function generateMockPlayers(teamName) {
+            const firstNames = ['James', 'Kevin', 'Stephen', 'LeBron', 'Kawhi', 'Giannis', 'Luka', 'Damian', 'Russell', 'Chris', 'Paul', 'Anthony', 'Kyrie', 'Joel', 'Nikola'];
+            const lastNames = ['Johnson', 'Williams', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin', 'Thompson'];
+            const positions = ['Guard', 'Forward', 'Center', 'Guard-Forward', 'Forward-Center'];
+            
+            const players = [];
+            for (let i = 0; i < 12; i++) {
+                const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const position = positions[Math.floor(Math.random() * positions.length)];
+                
+                players.push({
+                    id: i + 1,
+                    first_name: firstName,
+                    last_name: lastName,
+                    position: position,
+                    height_feet: Math.floor(Math.random() * 2) + 6,
+                    height_inches: Math.floor(Math.random() * 12),
+                    weight_pounds: Math.floor(Math.random() * 50) + 180,
+                    team: { full_name: teamName }
+                });
+            }
+            
+            return players;
+        }
+
+        // Populate player dropdown
+        function populatePlayerDropdown(players) {
+            const dropdown = document.getElementById('playerDropdown');
+            dropdown.innerHTML = '<option value="">Choose a player...</option>';
+            
+            console.log("🎯 Populating dropdown with", players.length, "roster members");
+            console.log("🏆 First player:", players[0]);
+            
+            // Separate players and coaches
+            const playersOnly = players.filter(p => !p.isCoach);
+            const coaches = players.filter(p => p.isCoach);
+            
+            // Add players first
+            if (playersOnly.length > 0) {
+                const playerGroup = document.createElement('optgroup');
+                playerGroup.label = 'Players';
+                
+                playersOnly.forEach((player, index) => {
+                    const option = document.createElement('option');
+                    option.value = players.indexOf(player); // Use original index
+                    
+                    const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+                    const number = player.number ? `#${player.number}` : '';
+                    const position = player.position || 'Unknown';
+                    
+                    option.textContent = `${playerName} ${number} - ${position}`;
+                    playerGroup.appendChild(option);
+                });
+                
+                dropdown.appendChild(playerGroup);
+            }
+            
+            // Add coaches
+            if (coaches.length > 0) {
+                const coachGroup = document.createElement('optgroup');
+                coachGroup.label = 'Coaches';
+                
+                coaches.forEach((coach, index) => {
+                    const option = document.createElement('option');
+                    option.value = players.indexOf(coach); // Use original index
+                    
+                    const coachName = coach.full_name || `${coach.first_name} ${coach.last_name}`;
+                    const position = coach.position || 'Coach';
+                    
+                    option.textContent = `${coachName} - ${position}`;
+                    coachGroup.appendChild(option);
+                });
+                
+                dropdown.appendChild(coachGroup);
+            }
+            
+            console.log("✅ Dropdown populated with", playersOnly.length, "players and", coaches.length, "coaches");
+        }
+
+        // Update position buttons based on filled positions and selected player
+        function updatePositionButtons() {
+            const dropdown = document.getElementById('playerDropdown');
+            const selectedIndex = dropdown.value;
+            
+            if (selectedIndex === '') {
+                // No player selected, disable all buttons
+                document.querySelectorAll('.position-btn').forEach(btn => {
+                    btn.disabled = true;
+                });
+                return;
+            }
+            
+            const selectedPlayer = gameState.currentPlayers[selectedIndex];
+            const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+            
+            // Check which positions this player can fill
+            const buttons = document.querySelectorAll('.position-btn');
+            buttons.forEach(btn => {
+                const position = btn.onclick.toString().match(/assignPlayer\('(.+?)'\)/)[1];
+                const isPositionFilled = currentTeam[position] !== null;
+                const canFillPosition = canPlayerFillPosition(selectedPlayer, position);
+                
+                btn.disabled = isPositionFilled || !canFillPosition;
+                btn.style.opacity = btn.disabled ? '0.5' : '1';
+            });
+        }
+        
+        // Check if a player can fill a specific position
+        function canPlayerFillPosition(player, position) {
+            if (player.isCoach) {
+                return position === 'coach';
+            }
+            
+            // For 6th and 7th man, any non-coach can fill
+            if (position === 'sixth' || position === 'seventh') {
+                return true;
+            }
+            
+            // For coach position, only coaches can fill
+            if (position === 'coach') {
+                return false;
+            }
+            
+            // For specific positions, check if player's position matches
+            const playerPosition = player.position.toLowerCase();
+            const positionMap = {
+                'pg': ['point guard', 'guard'],
+                'sg': ['shooting guard', 'guard'],
+                'sf': ['small forward', 'forward'],
+                'pf': ['power forward', 'forward'],
+                'c': ['center']
+            };
+            
+            const validPositions = positionMap[position] || [];
+            return validPositions.some(pos => playerPosition.includes(pos));
+        }
+        
+        // Add dropdown change listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.getElementById('playerDropdown');
+            if (dropdown) {
+                dropdown.addEventListener('change', updatePositionButtons);
+            }
+        });
+
+        // Assign player to position
+        function assignPlayer(position) {
+            const dropdown = document.getElementById('playerDropdown');
+            const selectedIndex = dropdown.value;
+            
+            if (selectedIndex === '') {
+                alert('Please select a player first!');
+                return;
+            }
+            
+            const player = gameState.currentPlayers[selectedIndex];
+            
+            // Check if player can fill this position
+            if (!canPlayerFillPosition(player, position)) {
+                alert(`${player.full_name || player.first_name + ' ' + player.last_name} cannot fill the ${position} position!`);
+                return;
+            }
+            
+            // Assign player to current player's team
+            gameState.dreamTeams[gameState.currentPlayerIndex][position] = player;
+            
+            // Update UI
+            const slot = document.getElementById(`slot-${position}`);
+            const playerDiv = slot.querySelector('.position-player');
+            playerDiv.textContent = player.full_name || `${player.first_name} ${player.last_name}`;
+            playerDiv.classList.add('filled');
+            slot.classList.add('filled');
+            
+            // Hide player selection
+            document.getElementById('playerSelection').classList.remove('show');
+            
+            // Move to next player's turn
+            nextPlayerTurn();
+        }
+        
+        // Move to next player's turn
+        function nextPlayerTurn() {
+            // Move to next player
+            gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % gameState.numPlayers;
+            
+            // If we've completed a full round, increment round counter
+            if (gameState.currentPlayerIndex === 0) {
+                gameState.currentRound++;
+            }
+            
+            // Check if all teams are complete
+            if (gameState.currentRound > gameState.maxRounds) {
+                // All teams complete, start battle phase
+                startBattlePhase();
+                return;
+            }
+            
+            // Update display for next player
+            updateMultiplayerDisplay();
+            
+            // Re-enable spin button
+            document.getElementById('dreamSpinButton').disabled = false;
+            document.getElementById('dreamSpinButton').textContent = '🎯 SPIN FOR PLAYER! 🎯';
+        }
+
+        // Start battle phase
+        function startBattlePhase() {
+            gameState.phase = 'battle';
+            
+            // Show battle section
+            document.getElementById('battleSection').style.display = 'block';
+            
+            // Update battle section content
+            const battleSection = document.getElementById('battleSection');
+            battleSection.innerHTML = `
+                <h3>🔥 All Teams Complete! 🔥</h3>
+                <p>All ${gameState.numPlayers} players have built their dream teams!</p>
+                <div class="team-summary">
+                    ${gameState.players.map((player, index) => `
+                        <div class="team-card">
+                            <h4>${player.name}'s Team</h4>
+                            <div class="team-positions">
+                                ${Object.entries(gameState.dreamTeams[index])
+                                    .filter(([pos, player]) => player !== null)
+                                    .map(([pos, player]) => `
+                                        <div class="position-summary">
+                                            <strong>${pos.toUpperCase()}:</strong> ${player.full_name || player.first_name + ' ' + player.last_name}
+                                        </div>
+                                    `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <button class="battle-button" onclick="startBattle()">⚔️ START BATTLE! ⚔️</button>
+            `;
+            
+            // Disable spin button
+            document.getElementById('dreamSpinButton').disabled = true;
+            document.getElementById('dreamSpinButton').textContent = 'All Teams Complete!';
+        }
+
+        // Start battle
+        function startBattle() {
+            alert('🔥 Battle feature coming soon! Your dream team is ready to dominate! 🏆');
+        }
+
+        // Reset multiplayer game (for new game)
+        function resetMultiplayerGame() {
+            gameState.phase = 'setup';
+            gameState.players = [];
+            gameState.dreamTeams = [];
+            gameState.currentPlayerIndex = 0;
+            gameState.currentRound = 1;
+            
+            // Show setup phase
+            document.getElementById('setup-phase').style.display = 'block';
+            document.getElementById('mode-selection').style.display = 'none';
+            document.getElementById('classic-mode').style.display = 'none';
+            document.getElementById('dream-team-mode').style.display = 'none';
+            
+            // Reset setup steps
+            document.getElementById('player-count-step').style.display = 'block';
+            document.getElementById('player-names-step').style.display = 'none';
+            document.querySelectorAll('.count-button').forEach(btn => btn.classList.remove('selected'));
+            
+            // Reset UI
+            document.getElementById('battleSection').style.display = 'none';
+            document.getElementById('dreamSpinButton').disabled = false;
+            document.getElementById('dreamSpinButton').textContent = '🎯 SPIN FOR PLAYER! 🎯';
+            document.getElementById('playerSelection').classList.remove('show');
+            
+            // Reset all slots
+            document.querySelectorAll('.position-slot').forEach(slot => {
+                slot.classList.remove('filled');
+                const playerDiv = slot.querySelector('.position-player');
+                playerDiv.textContent = 'Empty';
+                playerDiv.classList.remove('filled');
+            });
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+    
+    <!-- Developer Tools Section -->
+    <div style="margin-top: 50px; padding: 20px; background: #f5f5f5; border-top: 2px solid #ddd; text-align: center;">
+        <details>
+            <summary style="cursor: pointer; font-weight: bold; color: #666; margin-bottom: 10px;">
+                🔧 Developer Tools (Click to expand)
+            </summary>
+            <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="testDataLoading()" style="padding: 8px 16px; background: #ff9800; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12px;">
+                    🔍 Test Data Loading
+                </button>
+                <button onclick="testDirectJSONLoad()" style="padding: 8px 16px; background: #e91e63; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12px;">
+                    📄 Test JSON File
+                </button>
+                <button onclick="testAtlantaHawks()" style="padding: 8px 16px; background: #E03A3E; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12px;">
+                    🏀 Test Hawks Team
+                </button>
+            </div>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">
+                These tools are for testing and debugging. Check browser console for detailed results.
+            </p>
+        </details>
+    </div>
+</body>
+</html>
