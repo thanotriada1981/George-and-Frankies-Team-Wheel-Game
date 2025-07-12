@@ -5,7 +5,7 @@
 
 // Game State
 let gameState = {
-    phase: 'setup', // setup, classic, multiplayer, battle
+    phase: 'classic', // setup, classic, multiplayer, battle - Start directly in classic mode
     mode: 'classic',
     numPlayers: 2,
     players: [],
@@ -43,21 +43,24 @@ function initializeGame() {
     // Check if player is joining via invite link
     checkForInviteLink();
     
-    // Make sure setup phase is visible and focus on host name input
+    // Start directly in classic mode (no setup required)
     const setupPhase = document.getElementById('setup-phase');
-    const hostNameInput = document.getElementById('host-name-input');
+    const modeSelection = document.getElementById('mode-selection');
+    const classicMode = document.getElementById('classic-mode');
     
     if (setupPhase) {
-        setupPhase.style.display = 'block';
-        console.log('👋 Setup phase shown');
+        setupPhase.style.display = 'none';
+        console.log('👋 Setup phase hidden - starting in classic mode');
     }
     
-    if (hostNameInput) {
-        // Focus on host name input after a short delay to ensure page is loaded
-        setTimeout(() => {
-            hostNameInput.focus();
-            console.log('🎯 Focused on host name input');
-        }, 100);
+    if (modeSelection) {
+        modeSelection.style.display = 'block';
+        console.log('🎮 Mode selection shown');
+    }
+    
+    if (classicMode) {
+        classicMode.style.display = 'block';
+        console.log('🎯 Classic mode shown');
     }
     
     // Load NBA teams data
@@ -266,6 +269,34 @@ function getSelectedTeam(finalAngle) {
 // Close popup
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
+}
+
+// Show setup phase for multiplayer
+function showSetupPhase() {
+    const setupPhase = document.getElementById('setup-phase');
+    const modeSelection = document.getElementById('mode-selection');
+    const classicMode = document.getElementById('classic-mode');
+    
+    if (setupPhase) {
+        setupPhase.style.display = 'block';
+        console.log('👥 Setup phase shown for multiplayer');
+    }
+    
+    if (modeSelection) {
+        modeSelection.style.display = 'none';
+    }
+    
+    if (classicMode) {
+        classicMode.style.display = 'none';
+    }
+    
+    // Focus on host name input
+    const hostNameInput = document.getElementById('host-name-input');
+    if (hostNameInput) {
+        setTimeout(() => {
+            hostNameInput.focus();
+        }, 100);
+    }
 }
 
 // Switch between game modes
