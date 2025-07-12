@@ -169,10 +169,81 @@ function skipToClassicMode() {
     }
 }
 
+// Test real player roster loading
+function testRealPlayerRosters() {
+    console.log("🧪 Testing real NBA player roster loading...");
+    
+    if (nbaTeams.length === 0) {
+        alert("❌ No NBA teams loaded yet! Try refreshing the page.");
+        return;
+    }
+    
+    // Test loading players for the first few teams
+    const testTeams = nbaTeams.slice(0, 3); // Test first 3 teams
+    let results = [];
+    
+    Promise.all(testTeams.map(team => loadPlayersForTeam(team)))
+        .then(allPlayerData => {
+            allPlayerData.forEach((players, index) => {
+                const team = testTeams[index];
+                results.push(`✅ ${team.name}: ${players.length} roster members`);
+                
+                console.log(`🏀 ${team.name} Roster:`);
+                players.forEach(player => {
+                    console.log(`  - ${player.full_name} (${player.position}) #${player.number || 'N/A'}`);
+                });
+            });
+            
+            // Show detailed results
+            const summary = `Real Player Roster Test Results:\n\n${results.join('\n')}\n\nDetailed roster info logged to console.`;
+            alert(summary);
+        })
+        .catch(error => {
+            console.error("❌ Roster test failed:", error);
+            alert("❌ Roster test failed - check console for details");
+        });
+}
+
+// Test NBA 2K25 ratings integration
+function testNBA2K25Ratings() {
+    console.log("🧪 Testing NBA 2K25 ratings integration...");
+    
+    // Try to load the ratings database and cross-reference with our team data
+    fetch('database/nba/players/nba-2k25-master-ratings.json')
+        .then(response => response.json())
+        .then(ratingsData => {
+            console.log("✅ NBA 2K25 ratings loaded successfully");
+            
+            // Test a specific team's ratings
+            const testTeam = "Boston Celtics";
+            if (ratingsData.teams && ratingsData.teams[testTeam]) {
+                const teamRatings = ratingsData.teams[testTeam].players;
+                console.log(`🏆 ${testTeam} 2K25 Ratings:`);
+                teamRatings.forEach(player => {
+                    console.log(`  - ${player.name}: ${player.overall} overall (${player.position})`);
+                });
+                
+                const topPlayer = teamRatings.reduce((prev, current) => 
+                    (prev.overall > current.overall) ? prev : current
+                );
+                
+                alert(`NBA 2K25 Ratings Test:\n\n✅ ${testTeam} loaded\n📊 ${teamRatings.length} players\n🏆 Top player: ${topPlayer.name} (${topPlayer.overall} overall)\n\nFull ratings logged to console.`);
+            } else {
+                alert("❌ Team ratings not found in 2K25 database");
+            }
+        })
+        .catch(error => {
+            console.error("❌ 2K25 ratings test failed:", error);
+            alert("❌ 2K25 ratings test failed - check console");
+        });
+}
+
 // Export functions for global use
 window.testDataLoading = testDataLoading;
 window.testDirectJSONLoad = testDirectJSONLoad;
 window.testNBA2K25Database = testNBA2K25Database;
 window.testAtlantaHawks = testAtlantaHawks;
 window.testBattleSystem = testBattleSystem;
-window.skipToClassicMode = skipToClassicMode; 
+window.skipToClassicMode = skipToClassicMode;
+window.testRealPlayerRosters = testRealPlayerRosters;
+window.testNBA2K25Ratings = testNBA2K25Ratings; 
