@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Fix Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #1a1a1a; color: white; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #333; border-radius: 8px; }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        button { padding: 10px 20px; margin: 5px; background: #ff6b35; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #e55a2b; }
+        #results { margin-top: 20px; padding: 15px; background: #2a2a2a; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>🔧 NBA Team Wheel - Fix Verification Test</h1>
+    
+    <div class="test-section">
+        <h2>✅ Test 1: Game Initialization (Classic Mode Default)</h2>
+        <p>This tests if the game starts in classic mode instead of setup mode.</p>
+        <button onclick="testGameInitialization()">Test Game Init</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>⚔️ Test 2: Battle System (File Path Fix)</h2>
+        <p>This tests if the NBA 2K25 ratings database loads correctly for battle mode.</p>
+        <button onclick="testBattleSystem()">Test Battle System</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Test 3: JSON Data Loading</h2>
+        <p>This tests if all game data files are accessible.</p>
+        <button onclick="testDataLoading()">Test Data Loading</button>
+    </div>
+    
+    <div id="results">
+        <h3>🔍 Test Results:</h3>
+        <div id="output">Click the test buttons above to run diagnostics...</div>
+    </div>
+
+    <!-- Include the game scripts for testing -->
+    <script src="js/game-logic.js"></script>
+    <script src="database/nba/lookup-functions/player-rating-lookup.js"></script>
+    <script src="database/shared/battle-system-integration.js"></script>
+
+    <script>
+        function log(message, type = 'info') {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : '';
+            output.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+        }
+
+        function clearResults() {
+            document.getElementById('output').innerHTML = '';
+        }
+
+        async function testGameInitialization() {
+            clearResults();
+            log('🔄 Testing game initialization...', 'info');
+            
+            try {
+                // Check if gameState exists and has correct default phase
+                if (typeof gameState !== 'undefined') {
+                    log(`✅ Game state found: phase = "${gameState.phase}"`, 'success');
+                    if (gameState.phase === 'classic') {
+                        log('✅ SUCCESS: Game starts in classic mode (not setup mode)', 'success');
+                    } else {
+                        log(`❌ ISSUE: Game phase is "${gameState.phase}", should be "classic"`, 'error');
+                    }
+                } else {
+                    log('❌ ERROR: gameState not found', 'error');
+                }
+
+                // Test NBA teams data loading
+                const response = await fetch('data/nba_teams_data.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ NBA teams data loaded: ${data.teams.length} teams`, 'success');
+                } else {
+                    log(`❌ Failed to load NBA teams data: ${response.status}`, 'error');
+                }
+
+            } catch (error) {
+                log(`❌ Error in game initialization test: ${error.message}`, 'error');
+            }
+        }
+
+        async function testBattleSystem() {
+            clearResults();
+            log('🔄 Testing battle system...', 'info');
+            
+            try {
+                // Test the NBA 2K25 ratings file path
+                const response = await fetch('database/nba/players/nba-2k25-master-ratings.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    log('✅ NBA 2K25 ratings file loaded successfully', 'success');
+                    log(`✅ Found ${Object.keys(data.teams || {}).length} teams in ratings database`, 'success');
+                    
+                    // Test if PlayerRatingLookup can initialize
+                    if (typeof PlayerRatingLookup !== 'undefined') {
+                        const lookup = new PlayerRatingLookup();
+                        await lookup.initialize();
+                        if (lookup.initialized) {
+                            log('✅ SUCCESS: PlayerRatingLookup initialized correctly', 'success');
+                        } else {
+                            log('⚠️ WARNING: PlayerRatingLookup failed to initialize', 'warning');
+                        }
+                    } else {
+                        log('⚠️ PlayerRatingLookup class not found', 'warning');
+                    }
+                } else {
+                    log(`❌ FAILED: Cannot load NBA 2K25 ratings file (${response.status})`, 'error');
+                    log('❌ This means the battle system will not work', 'error');
+                }
+
+            } catch (error) {
+                log(`❌ Error in battle system test: ${error.message}`, 'error');
+            }
+        }
+
+        async function testDataLoading() {
+            clearResults();
+            log('🔄 Testing all data files...', 'info');
+            
+            const testFiles = [
+                'data/nba_teams_data.json',
+                'database/nba/players/nba-2k25-master-ratings.json',
+                'database/nba/players/rosters.json',
+                'database/nba/teams/team-info.json'
+            ];
+
+            for (let file of testFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const data = await response.json();
+                        log(`✅ ${file} - OK (${JSON.stringify(data).length} bytes)`, 'success');
+                    } else {
+                        log(`❌ ${file} - FAILED (${response.status})`, 'error');
+                    }
+                } catch (error) {
+                    log(`❌ ${file} - ERROR: ${error.message}`, 'error');
+                }
+            }
+        }
+
+        // Auto-run a quick diagnostic on page load
+        window.addEventListener('load', () => {
+            log('🏀 NBA Team Wheel Fix Verification Test Ready!', 'info');
+            log('📝 Both fixes have been applied:', 'info');
+            log('   • Game initialization: Now starts in classic mode', 'info');
+            log('   • Battle system: File path corrected for NBA 2K25 ratings', 'info');
+            log('🚀 Click the test buttons to verify everything is working!', 'info');
+        });
+    </script>
+</body>
+</html> 
