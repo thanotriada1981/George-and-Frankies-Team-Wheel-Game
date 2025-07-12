@@ -24,17 +24,95 @@ class EnhancedBattleSystemManager {
      */
     async initialize() {
         try {
-            // Initialize the player rating lookup system
-            this.playerRatingLookup = new PlayerRatingLookup();
-            await this.playerRatingLookup.initialize();
+            // Check if unified database is available
+            if (typeof window.unifiedNBADB !== 'undefined' && window.unifiedNBADB.initialized) {
+                console.log('🔗 Using Unified NBA Database for battle system');
+                this.unifiedDB = window.unifiedNBADB;
+                this.initialized = true;
+            } else {
+                // Fallback: Initialize the player rating lookup system directly
+                this.playerRatingLookup = new PlayerRatingLookup();
+                await this.playerRatingLookup.initialize();
+                this.initialized = true;
+            }
             
-            this.initialized = true;
             console.log('🎮 Enhanced Battle System initialized with NBA 2K25 ratings!');
             
         } catch (error) {
             console.error('❌ Error initializing Enhanced Battle System:', error);
-            this.initialized = false;
+            console.warn('🔄 Battle system will use fallback ratings');
+            this.initialized = true; // Allow battles with fallback system
         }
+    }
+
+    /**
+     * Get player rating with fallback system
+     * @param {string} playerName - Player name
+     * @param {string} teamName - Team name
+     * @param {string} position - Player position
+     * @returns {Object} Player rating data
+     */
+    getPlayerRatingWithFallback(playerName, teamName = null, position = null) {
+        // Use unified database if available
+        if (this.unifiedDB && this.unifiedDB.initialized) {
+            return this.unifiedDB.getPlayerRatingWithFallback(playerName, teamName, position);
+        }
+
+        // Fallback to direct player rating lookup
+        if (this.playerRatingLookup && this.playerRatingLookup.initialized) {
+            const rating = this.playerRatingLookup.getPlayerRating(playerName);
+            if (rating) {
+                return rating;
+            }
+        }
+
+        // Final fallback: Generate reasonable rating
+        const fallbackRating = this.generateFallbackRating(position);
+        console.log(`🔄 Battle system fallback rating for ${playerName}: ${fallbackRating}`);
+        
+        return {
+            name: playerName,
+            overall: fallbackRating,
+            position: position || 'Unknown',
+            team: teamName || 'Unknown',
+            tier: this.getRatingTier(fallbackRating),
+            isFallback: true
+        };
+    }
+
+    /**
+     * Generate reasonable fallback rating
+     * @param {string} position - Player position
+     * @returns {number} Rating between 70-85
+     */
+    generateFallbackRating(position) {
+        const positionRatings = {
+            'Point Guard': 78,
+            'Shooting Guard': 76,
+            'Small Forward': 77,
+            'Power Forward': 75,
+            'Center': 74,
+            'Head Coach': 80
+        };
+
+        const baseRating = positionRatings[position] || 76;
+        // Add randomness (+/- 5 points)
+        return baseRating + Math.floor(Math.random() * 11) - 5;
+    }
+
+    /**
+     * Get rating tier from overall rating
+     * @param {number} overall - Overall rating
+     * @returns {string} Rating tier
+     */
+    getRatingTier(overall) {
+        if (overall >= 95) return 'Superstar';
+        if (overall >= 90) return 'All-Star';
+        if (overall >= 85) return 'Starter';
+        if (overall >= 80) return 'Role Player';
+        if (overall >= 75) return 'Bench';
+        if (overall >= 70) return 'Reserve';
+        return 'Development';
     }
 
     /**
@@ -67,29 +145,19 @@ class EnhancedBattleSystemManager {
         positions.forEach(position => {
             const player = team[position];
             if (player) {
-                const rating = this.playerRatingLookup.getPlayerRating(player.name);
-                if (rating) {
-                    breakdown.starters.push({
-                        name: player.name,
-                        position: position.toUpperCase(),
-                        overall: rating.overall,
-                        tier: rating.tier
-                    });
-                    breakdown.starterTotal += rating.overall;
-                    breakdown.positionBattles[position] = rating.overall;
-                    playerCount++;
-                } else {
-                    // Fallback for players not in database
-                    breakdown.starters.push({
-                        name: player.name,
-                        position: position.toUpperCase(),
-                        overall: 75, // Default rating
-                        tier: 'Bench'
-                    });
-                    breakdown.starterTotal += 75;
-                    breakdown.positionBattles[position] = 75;
-                    playerCount++;
-                }
+                // Use unified database with fallback system
+                const rating = this.getPlayerRatingWithFallback(player.name, team.playerName, player.position);
+                
+                breakdown.starters.push({
+                    name: player.name,
+                    position: position.toUpperCase(),
+                    overall: rating.overall,
+                    tier: rating.tier,
+                    isFallback: rating.isFallback || false
+                });
+                breakdown.starterTotal += rating.overall;
+                breakdown.positionBattles[position] = rating.overall;
+                playerCount++;
             }
         });
 
@@ -97,24 +165,17 @@ class EnhancedBattleSystemManager {
         benchPositions.forEach(position => {
             const player = team[position];
             if (player) {
-                const rating = this.playerRatingLookup.getPlayerRating(player.name);
-                if (rating) {
-                    breakdown.bench.push({
-                        name: player.name,
-                        position: position,
-                        overall: rating.overall,
-                        tier: rating.tier
-                    });
-                    breakdown.benchTotal += rating.overall * 0.8; // Bench weighted at 80%
-                } else {
-                    breakdown.bench.push({
-                        name: player.name,
-                        position: position,
-                        overall: 72, // Default bench rating
-                        tier: 'Reserve'
-                    });
-                    breakdown.benchTotal += 72 * 0.8;
-                }
+                // Use unified database with fallback system
+                const rating = this.getPlayerRatingWithFallback(player.name, team.playerName, player.position);
+                
+                breakdown.bench.push({
+                    name: player.name,
+                    position: position,
+                    overall: rating.overall,
+                    tier: rating.tier,
+                    isFallback: rating.isFallback || false
+                });
+                breakdown.benchTotal += rating.overall * 0.8; // Bench weighted at 80%
             }
         });
 

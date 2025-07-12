@@ -259,13 +259,18 @@
     <!-- JavaScript Modules -->
     <script src="js/visual-effects.js"></script>
     <script src="js/sound-manager.js"></script>
+    
+    <!-- Database Integration (Load First) -->
+    <script src="database/nba/lookup-functions/player-rating-lookup.js"></script>
+    <script src="js/database-integration.js"></script>
+    
+    <!-- Game Logic (Load After Database) -->
     <script src="js/game-logic.js"></script>
     <script src="js/multiplayer.js"></script>
     <script src="js/data-loader.js"></script>
     <script src="js/developer-tools.js"></script>
     
     <!-- Battle System Integration -->
-    <script src="database/nba/lookup-functions/player-rating-lookup.js"></script>
     <script src="database/shared/battle-system-integration.js"></script>
     
     <!-- PWA Setup -->

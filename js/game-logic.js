@@ -63,8 +63,8 @@ function initializeGame() {
         console.log('🎯 Classic mode shown');
     }
     
-    // Load NBA teams data
-    loadNBATeams()
+    // Initialize unified database system
+    initializeUnifiedDatabase()
         .then(() => {
             console.log("✅ Game Ready!");
             console.log("📊 Total teams loaded:", nbaTeams.length);
@@ -73,6 +73,35 @@ function initializeGame() {
         .catch(error => {
             console.error("❌ Error initializing game:", error);
         });
+}
+
+// Initialize unified database system
+async function initializeUnifiedDatabase() {
+    try {
+        // Initialize the unified database
+        if (typeof window.unifiedNBADB !== 'undefined') {
+            await window.unifiedNBADB.initialize();
+            console.log('🗃️ Unified NBA Database initialized');
+            
+            // Validate database integrity
+            const validation = window.unifiedNBADB.validateDatabaseIntegrity();
+            console.log('📊 Database validation:', validation);
+            
+            if (!validation.isComplete && validation.missingRatings.length > 0) {
+                console.warn('⚠️ Some teams missing ratings data:', validation.missingRatings);
+            }
+        }
+        
+        // Load NBA teams data (fallback for wheel display)
+        await loadNBATeams();
+        
+        return true;
+    } catch (error) {
+        console.error('❌ Error initializing unified database:', error);
+        // Fallback to original loading method
+        await loadNBATeams();
+        return false;
+    }
 }
 
 // Load NBA teams data
