@@ -88,8 +88,9 @@ const SoundManager = {
         this.soundsEnabled = !this.soundsEnabled;
         const soundButton = document.getElementById('soundToggle');
         if (soundButton) {
-            soundButton.textContent = this.soundsEnabled ? '🔊 Sound ON' : '🔇 Sound OFF';
+            soundButton.textContent = this.soundsEnabled ? '🔊' : '🔇';
             soundButton.style.background = this.soundsEnabled ? '#4CAF50' : '#666';
+            soundButton.title = this.soundsEnabled ? 'Sound ON - Click to mute' : 'Sound OFF - Click to enable';
         }
         console.log('🎵 Sound', this.soundsEnabled ? 'enabled' : 'disabled');
     }

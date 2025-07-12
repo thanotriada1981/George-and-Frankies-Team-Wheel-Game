@@ -22,75 +22,75 @@
         <h1>🏀 George and Frankie's Dream Team Builder Game 🏀</h1>
         
         <!-- Sound Toggle Button -->
-        <div style="position: absolute; top: 20px; right: 20px;">
-            <button id="soundToggle" onclick="SoundManager.toggle()" style="
+        <div style="position: absolute; top: 15px; left: 15px;">
+            <button id="soundToggle" onclick="SoundManager.toggle()" title="Sound ON - Click to mute" style="
                 background: #4CAF50;
                 color: white;
                 border: none;
-                padding: 10px 15px;
-                border-radius: 20px;
+                padding: 6px 10px;
+                border-radius: 15px;
                 cursor: pointer;
-                font-size: 14px;
+                font-size: 12px;
                 transition: all 0.3s ease;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            ">🔊 Sound ON</button>
+                box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            ">🔊</button>
         </div>
         
         <!-- Game Setup Phase -->
         <div id="setup-phase" class="setup-section">
             <h2>🎮 Game Setup</h2>
             <div class="setup-step" id="player-count-step">
-                <h3>How many players want to play?</h3>
-                <div class="player-count-buttons">
-                    <button class="count-button" onclick="selectPlayerCount(2)">2 Players</button>
-                    <button class="count-button" onclick="selectPlayerCount(3)">3 Players</button>
-                    <button class="count-button" onclick="selectPlayerCount(4)">4 Players</button>
-                </div>
+              <h3>How many players want to play?</h3>
+              <div class="player-count-buttons">
+                <button class="count-button" onclick="selectPlayerCount(2)">2 Players</button>
+                <button class="count-button" onclick="selectPlayerCount(3)">3 Players</button>
+                <button class="count-button" onclick="selectPlayerCount(4)">4 Players</button>
+              </div>
             </div>
             
             <div class="setup-step" id="game-type-step" style="display: none;">
-                <h3>How do you want to play?</h3>
-                <div class="game-type-buttons">
-                    <button class="type-button" onclick="selectGameType('local')">
-                        📱 <strong>Play on This Device</strong><br>
-                        <small>Pass the device around to take turns</small>
-                    </button>
-                    <button class="type-button" onclick="selectGameType('online')">
-                        🌐 <strong>Invite Friends Online</strong><br>
-                        <small>Share a link for friends to join remotely</small>
-                    </button>
-                </div>
+              <h3>How do you want to play?</h3>
+              <div class="game-type-buttons">
+                <button class="type-button" onclick="selectGameType('local')">
+                  📱 <strong>Play on This Device</strong><br>
+                  <small>Pass the device around to take turns</small>
+                </button>
+                <button class="type-button" onclick="selectGameType('online')">
+                  🌐 <strong>Invite Friends Online</strong><br>
+                  <small>Share a link for friends to join remotely</small>
+                </button>
+              </div>
             </div>
             
             <div class="setup-step" id="invite-step" style="display: none;">
-                <h3>🎉 Invite Your Friends!</h3>
-                <p>Share this link with your friends so they can join the game:</p>
-                <div class="invite-link-container">
-                    <input type="text" id="inviteLink" readonly class="invite-link-input">
-                    <button class="copy-button" onclick="copyInviteLink()">📋 Copy Link</button>
+              <h3>🎉 Invite Your Friends!</h3>
+              <p>Share this link with your friends so they can join the game:</p>
+              <div class="invite-link-container">
+                <input type="text" id="inviteLink" readonly class="invite-link-input">
+                <button class="copy-button" onclick="copyInviteLink()">📋 Copy Link</button>
+              </div>
+              <p class="invite-instructions">
+                <strong>Instructions:</strong><br>
+                1. Click "Copy Link" above<br>
+                2. Send the link to your friends via text, email, or social media<br>
+                3. Wait for them to join using the link<br>
+                4. Once everyone joins, you can start the game!
+              </p>
+              <div class="joined-players">
+                <h4>Players Joined:</h4>
+                <div id="joinedPlayersList">
+                  <div class="player-joined">🎮 You (Host)</div>
                 </div>
-                <p class="invite-instructions">
-                    <strong>Instructions:</strong><br>
-                    1. Click "Copy Link" above<br>
-                    2. Send the link to your friends via text, email, or social media<br>
-                    3. Wait for them to join using the link<br>
-                    4. Once everyone joins, you can start the game!
-                </p>
-                <div class="joined-players">
-                    <h4>Players Joined:</h4>
-                    <div id="joinedPlayersList">
-                        <div class="player-joined">🎮 You (Host)</div>
-                    </div>
-                </div>
-                <button class="start-button" id="startOnlineGame" onclick="startOnlineGame()" disabled>
-                    🚀 Start Game! (Waiting for players...)
-                </button>
+              </div>
+              <button class="start-button" id="startOnlineGame" onclick="startOnlineGame()" disabled>
+                🚀 Start Game! (Waiting for players...)
+              </button>
             </div>
             
             <div class="setup-step" id="player-names-step" style="display: none;">
-                <h3>Enter Player Names</h3>
-                <div id="player-name-inputs"></div>
-                <button class="start-button" onclick="startMultiplayerGame()">🚀 Start Game!</button>
+              <h3>Enter Player Names</h3>
+              <div id="player-name-inputs"></div>
+              <button class="start-button" onclick="startMultiplayerGame()">🚀 Start Game!</button>
             </div>
         </div>
         
@@ -102,18 +102,18 @@
 
         <!-- Classic Mode -->
         <div id="classic-mode" class="classic-mode">
-            <div class="wheel-container">
-                <div class="pointer"></div>
-                <div id="wheel">
-                    <div class="center-circle">NBA</div>
-                </div>
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <div id="wheel">
+                <div class="center-circle">NBA</div>
             </div>
-            
+        </div>
+        
             <div class="result" id="classic-result">Click "Spin the Wheel" to start!</div>
-            
+        
             <button class="spin-button" id="classicSpinButton" onclick="spinWheel()">
-                🎯 SPIN THE WHEEL! 🎯
-            </button>
+            🎯 SPIN THE WHEEL! 🎯
+        </button>
         </div>
 
         <!-- Dream Team Builder Mode -->
@@ -211,7 +211,7 @@
             <button class="close-popup" onclick="closePopup()">Awesome!</button>
         </div>
     </div>
-
+    
     <!-- Developer Tools Section -->
     <div class="developer-tools">
         <details>
@@ -236,7 +236,7 @@
             <p>These tools are for testing and debugging. Check browser console for detailed results.</p>
         </details>
     </div>
-
+    
     <!-- JavaScript Modules -->
     <script src="js/visual-effects.js"></script>
     <script src="js/sound-manager.js"></script>
@@ -254,7 +254,7 @@
     
     <!-- Battle System Enhancement -->
     <script src="js/battle-system.js"></script>
-    
+                    
     <!-- Game initialization is handled by game-logic.js -->
 </body>
-</html> 
+</html>
