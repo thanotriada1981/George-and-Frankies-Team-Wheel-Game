@@ -288,7 +288,7 @@ h1 {
     width: 50%;
     height: 50%;
     transform-origin: 100% 100%;
-    border-right: 2px solid rgba(255,255,255,0.4);  /* Slightly more visible border */
+    border-right: 3px solid rgba(255,255,255,0.8);  /* More visible border */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -297,18 +297,21 @@ h1 {
     color: white;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     overflow: visible;  /* Ensure content isn't clipped */
+    z-index: 5;  /* Proper layering */
 }
 
 .wheel-section::before {
     content: var(--team-name);
     position: absolute;
-    left: 30px;  /* Aligned with centered logo positioning */
-    top: 52px;   /* Positioned below the centered logo */
-    font-size: 11px;  /* Larger for better readability */
-    font-weight: bold;
+    left: 37px;  /* Aligned with logo positioning */
+    top: 68px;   /* Positioned below the larger logo */
+    font-size: 14px;  /* Much larger for better readability */
+    font-weight: 900;  /* Extra bold for maximum visibility */
     transform: rotate(6deg);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.95);  /* Stronger shadow for visibility */
+    text-shadow: 3px 3px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1);  /* Strong outline effect */
     color: white;
+    z-index: 15;  /* Ensure text appears above everything */
+    letter-spacing: 0.5px;  /* Better letter spacing for readability */
 }
 
 .center-circle {

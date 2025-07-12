@@ -130,13 +130,14 @@ function updateWheelSegments(wheelId) {
             const logo = document.createElement('img');
             logo.src = team.logo_file;
             logo.style.position = 'absolute';
-            logo.style.left = '30px';  // More centered in the pie segment
-            logo.style.top = '20px';   // Better vertical centering
-            logo.style.width = '28px'; // Slightly smaller for better balance
-            logo.style.height = '28px';
+            logo.style.left = '35px';  // Better centered positioning
+            logo.style.top = '25px';   // More centered vertically
+            logo.style.width = '40px'; // Much larger for better visibility
+            logo.style.height = '40px';
             logo.style.objectFit = 'contain';
-            logo.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.9))';
+            logo.style.filter = 'drop-shadow(3px 3px 6px rgba(0,0,0,1)) brightness(1.1) contrast(1.2)';
             logo.style.transform = 'rotate(6deg)';
+            logo.style.zIndex = '10';  // Ensure logos appear above background
             logo.alt = team.abbreviation;
             section.appendChild(logo);
         }
