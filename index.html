@@ -556,6 +556,111 @@
             cursor: not-allowed;
             transform: none;
         }
+
+        .battle-button.secondary {
+            background: linear-gradient(45deg, #757575, #616161);
+        }
+
+        .battle-results {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .battle-summary {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .team-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .team-result {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .team-score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 10px 0;
+        }
+
+        .team-breakdown {
+            text-align: left;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .vs-divider {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 0 20px;
+        }
+
+        .position-battles {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .position-battle {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .position {
+            font-weight: bold;
+            min-width: 40px;
+        }
+
+        .battle-result {
+            flex: 1;
+            margin: 0 10px;
+            font-size: 0.9em;
+        }
+
+        .battle-winner {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .battle-analysis {
+            margin: 30px 0;
+            padding: 20px;
+            background: #e8f5e8;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .battle-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
         
         .popup {
             display: none;
@@ -1090,6 +1195,8 @@
             const wheel = document.getElementById(wheelId);
             if (!wheel) return;
             
+            console.log("🎨 Updating wheel segments for", wheelId, "with", nbaTeams.length, "teams");
+            
             // Clear existing segments but keep wheel-sections for CSS compatibility
             const existingSections = wheel.querySelectorAll('.wheel-section');
             existingSections.forEach(section => section.remove());
@@ -1100,7 +1207,7 @@
             // Create segments using the existing wheel-section structure
             for (let i = 0; i < totalTeams; i++) {
                 const team = nbaTeams[i];
-                const rotation = (i * anglePerSegment) + (anglePerSegment / 2);
+                const rotation = (i * anglePerSegment);
                 
                 // Create section element
                 const section = document.createElement('div');
@@ -1113,13 +1220,14 @@
                     const logo = document.createElement('img');
                     logo.src = team.logo_file;
                     logo.style.position = 'absolute';
-                    logo.style.left = '100px';
-                    logo.style.top = '-12px';
-                    logo.style.width = '20px';
-                    logo.style.height = '20px';
+                    logo.style.left = '110px';
+                    logo.style.top = '-15px';
+                    logo.style.width = '24px';
+                    logo.style.height = '24px';
                     logo.style.objectFit = 'contain';
-                    logo.style.filter = 'drop-shadow(1px 1px 2px rgba(0,0,0,0.7))';
+                    logo.style.filter = 'drop-shadow(1px 1px 2px rgba(0,0,0,0.8))';
                     logo.style.transform = 'rotate(6deg)';
+                    logo.alt = team.abbreviation;
                     section.appendChild(logo);
                 }
                 
@@ -1132,10 +1240,12 @@
                 const team = nbaTeams[i];
                 const startAngle = i * anglePerSegment;
                 const endAngle = (i + 1) * anglePerSegment;
-                colorStops.push(`${team.color} ${startAngle}deg ${endAngle}deg`);
+                // Use color_primary from the data structure
+                colorStops.push(`${team.color_primary} ${startAngle}deg ${endAngle}deg`);
             }
             
             wheel.style.background = `conic-gradient(from 0deg, ${colorStops.join(', ')})`;
+            console.log("✅ Wheel background updated with team colors");
         }
 
         // Switch between game modes
@@ -1231,9 +1341,9 @@
             setTimeout(function() {
                 const selectedTeam = getSelectedTeam(finalAngle);
                 
-                result.innerHTML = '🏀 <span style="color: ' + selectedTeam.color + '">' + selectedTeam.name + '</span> 🏀';
+                result.innerHTML = '🏀 <span style="color: ' + selectedTeam.color_primary + '">' + selectedTeam.name + '</span> 🏀';
                 
-                document.getElementById('popupResult').innerHTML = 'The wheel landed on:<br><br><strong style="color: ' + selectedTeam.color + '; font-size: 1.5em;">' + selectedTeam.name + '</strong>';
+                document.getElementById('popupResult').innerHTML = 'The wheel landed on:<br><br><strong style="color: ' + selectedTeam.color_primary + '; font-size: 1.5em;">' + selectedTeam.name + '</strong>';
                 document.getElementById('popup').style.display = 'block';
                 
                 spinButton.disabled = false;
@@ -1266,7 +1376,7 @@
                 const selectedTeam = getSelectedTeam(finalAngle);
                 gameState.currentTeam = selectedTeam;
                 
-                result.innerHTML = `🏀 ${currentPlayer.name} landed on <span style="color: ${selectedTeam.color}">${selectedTeam.name}</span>! 🏀`;
+                result.innerHTML = `🏀 ${currentPlayer.name} landed on <span style="color: ${selectedTeam.color_primary}">${selectedTeam.name}</span>! 🏀`;
                 
                 // Show player selection
                 showPlayerSelection(selectedTeam);
@@ -1297,7 +1407,7 @@
             selectionHeader.textContent = `🏀 ${currentPlayer.name}, Select Your Player!`;
             
             teamNameSpan.textContent = team.name;
-            teamNameSpan.style.color = team.color;
+            teamNameSpan.style.color = team.color_primary;
             
             // Clear dropdown
             dropdown.innerHTML = '<option value="">Loading players...</option>';
@@ -1699,12 +1809,180 @@
                 <button onclick="testAtlantaHawks()" style="padding: 8px 16px; background: #E03A3E; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12px;">
                     🏀 Test Hawks Team
                 </button>
+                <button onclick="testBattleSystem()" style="padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12px;">
+                    ⚔️ Test Battle System
+                </button>
             </div>
             <p style="font-size: 11px; color: #888; margin-top: 10px;">
                 These tools are for testing and debugging. Check browser console for detailed results.
             </p>
         </details>
     </div>
-<script src="setup-pwa.js"></script>
+    
+    <!-- NBA 2K25 Battle System Integration -->
+    <script src="database/nba/lookup-functions/player-rating-lookup.js"></script>
+    <script src="database/shared/battle-system-integration.js"></script>
+    
+    <!-- Battle System Enhancement -->
+    <script>
+        // Enhanced Battle System for NBA 2K25 Ratings
+        let battleSystemManager = null;
+        
+        // Initialize battle system when page loads
+        window.addEventListener('load', async () => {
+            try {
+                battleSystemManager = new EnhancedBattleSystemManager();
+                await battleSystemManager.initialize();
+                console.log('🎮 NBA 2K25 Battle System Ready!');
+            } catch (error) {
+                console.warn('⚠️ Battle System initialization failed, using fallback:', error);
+            }
+        });
+
+        // Enhanced start battle function with NBA 2K25 ratings
+        function startBattle() {
+            if (!battleSystemManager || !battleSystemManager.initialized) {
+                alert('🔥 Battle system loading... Please wait a moment and try again!');
+                return;
+            }
+            
+            if (gameState.dreamTeams.length < 2) {
+                alert('Need at least 2 teams to battle!');
+                return;
+            }
+            
+            // Set up team objects for battle
+            const team1 = {
+                playerName: gameState.players[0].name,
+                ...gameState.dreamTeams[0]
+            };
+            
+            const team2 = {
+                playerName: gameState.players[1].name,
+                ...gameState.dreamTeams[1]
+            };
+            
+            // Conduct the battle using NBA 2K25 ratings
+            console.log('🎯 Starting NBA 2K25 battle between:', team1.playerName, 'vs', team2.playerName);
+            
+            const battleResult = battleSystemManager.conductDetailedBattle(team1, team2);
+            
+            if (battleResult) {
+                displayBattleResult(battleResult);
+            } else {
+                // Fallback to simple battle
+                const winner = Math.random() > 0.5 ? team1 : team2;
+                alert(`🏆 ${winner.playerName} wins! Great team building!`);
+            }
+        }
+        
+        // Display detailed battle results
+        function displayBattleResult(battleResult) {
+            const battleSection = document.getElementById('battleSection');
+            
+            const team1 = battleResult.teams.team1;
+            const team2 = battleResult.teams.team2;
+            const winner = battleResult.winner;
+            
+            battleSection.innerHTML = `
+                <div class="battle-results">
+                    <h2>🏆 Battle Results 🏆</h2>
+                    
+                    <div class="battle-summary">
+                        <h3>${winner.name} Wins!</h3>
+                        <p><strong>Battle Type:</strong> ${battleResult.battleType}</p>
+                        <p><strong>Victory Margin:</strong> ${battleResult.margin} points</p>
+                    </div>
+                    
+                    <div class="team-comparison">
+                        <div class="team-result">
+                            <h4>${team1.name}</h4>
+                            <div class="team-score">⭐ ${team1.rating.total}</div>
+                            <div class="team-breakdown">
+                                <p><strong>Starters:</strong> ${team1.rating.breakdown.starterTotal}</p>
+                                <p><strong>Bench:</strong> ${Math.round(team1.rating.breakdown.benchTotal)}</p>
+                                <p><strong>Chemistry:</strong> ${team1.rating.breakdown.chemistry}</p>
+                                <p><strong>Bonuses:</strong> ${team1.rating.breakdown.bonuses}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="vs-divider">VS</div>
+                        
+                        <div class="team-result">
+                            <h4>${team2.name}</h4>
+                            <div class="team-score">⭐ ${team2.rating.total}</div>
+                            <div class="team-breakdown">
+                                <p><strong>Starters:</strong> ${team2.rating.breakdown.starterTotal}</p>
+                                <p><strong>Bench:</strong> ${Math.round(team2.rating.breakdown.benchTotal)}</p>
+                                <p><strong>Chemistry:</strong> ${team2.rating.breakdown.chemistry}</p>
+                                <p><strong>Bonuses:</strong> ${team2.rating.breakdown.bonuses}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="position-battles">
+                        <h4>🥊 Position Battles:</h4>
+                        ${battleResult.positionBattles ? 
+                            Object.entries(battleResult.positionBattles).map(([pos, battle]) => `
+                                <div class="position-battle">
+                                    <span class="position">${pos.toUpperCase()}:</span>
+                                    <span class="battle-result">${battle.team1.name} (${battle.team1.rating}) vs ${battle.team2.name} (${battle.team2.rating})</span>
+                                    <span class="battle-winner">Winner: ${battle.winner.name}</span>
+                                </div>
+                            `).join('') : ''
+                        }
+                    </div>
+                    
+                    <div class="battle-analysis">
+                        <h4>📊 Battle Analysis:</h4>
+                        <p>${battleResult.summary}</p>
+                    </div>
+                    
+                    <div class="battle-actions">
+                        <button onclick="startBattle()" class="battle-button">⚔️ BATTLE AGAIN! ⚔️</button>
+                        <button onclick="resetMultiplayerGame()" class="battle-button secondary">🔄 New Game</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Test battle system
+        function testBattleSystem() {
+            console.log('🧪 Testing Battle System...');
+            
+            // Create mock teams for testing
+            const testTeam1 = {
+                playerName: 'George',
+                pg: { name: 'Stephen Curry' },
+                sg: { name: 'Klay Thompson' },
+                sf: { name: 'Kevin Durant' },
+                pf: { name: 'Draymond Green' },
+                c: { name: 'Nikola Jokic' },
+                sixth: { name: 'Jordan Poole' },
+                seventh: { name: 'Andrew Wiggins' }
+            };
+            
+            const testTeam2 = {
+                playerName: 'Frankie',
+                pg: { name: 'Luka Doncic' },
+                sg: { name: 'Kyrie Irving' },
+                sf: { name: 'LeBron James' },
+                pf: { name: 'Anthony Davis' },
+                c: { name: 'Joel Embiid' },
+                sixth: { name: 'Russell Westbrook' },
+                seventh: { name: 'Carmelo Anthony' }
+            };
+            
+            if (battleSystemManager && battleSystemManager.initialized) {
+                const result = battleSystemManager.conductDetailedBattle(testTeam1, testTeam2);
+                console.log('🏆 Battle Result:', result);
+                displayBattleResult(result);
+            } else {
+                console.log('⚠️ Battle system not ready yet');
+            }
+        }
+    </script>
+    
+    <script src="setup-pwa.js"></script>
 </body>
 </html>
