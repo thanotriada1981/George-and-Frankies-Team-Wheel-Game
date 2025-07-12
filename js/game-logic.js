@@ -277,13 +277,20 @@ function switchMode(mode) {
     });
     event.target.classList.add('active');
     
-    // Show/hide appropriate mode
+    // Show/hide appropriate mode using CSS classes
+    const classicMode = document.getElementById('classic-mode');
+    const dreamTeamMode = document.getElementById('dream-team-mode');
+    
     if (mode === 'classic') {
-        document.getElementById('classic-mode').style.display = 'block';
-        document.getElementById('dream-team-mode').style.display = 'none';
+        classicMode.classList.add('active');
+        classicMode.style.display = 'block';
+        dreamTeamMode.classList.remove('active');
+        dreamTeamMode.style.display = 'none';
     } else if (mode === 'multiplayer') {
-        document.getElementById('classic-mode').style.display = 'none';
-        document.getElementById('dream-team-mode').style.display = 'block';
+        classicMode.classList.remove('active');
+        classicMode.style.display = 'none';
+        dreamTeamMode.classList.add('active');
+        dreamTeamMode.style.display = 'block';
     }
 }
 

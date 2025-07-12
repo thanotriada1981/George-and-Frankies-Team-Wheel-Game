@@ -152,6 +152,12 @@ function skipToClassicMode() {
     document.getElementById('classic-mode').style.display = 'block';
     document.getElementById('dream-team-mode').style.display = 'none';
     
+    // Set active mode button
+    document.querySelectorAll('.mode-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector('.mode-button[onclick="switchMode(\'classic\')"]').classList.add('active');
+    
     // Set game state
     gameState.phase = 'classic';
     gameState.mode = 'classic';

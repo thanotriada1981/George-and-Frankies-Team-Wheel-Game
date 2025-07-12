@@ -385,6 +385,15 @@ h1 {
     justify-content: center;
 }
 
+/* Classic Mode */
+.classic-mode {
+    display: none;
+}
+
+.classic-mode.active {
+    display: block;
+}
+
 /* Dream Team Mode */
 .dream-team-mode {
     display: none;
