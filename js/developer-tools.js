@@ -140,9 +140,39 @@ function testBattleSystem() {
     }
 }
 
+// Skip setup and go directly to classic spin mode
+function skipToClassicMode() {
+    console.log("🚀 Skipping setup, going directly to classic spin mode...");
+    
+    // Hide setup phase
+    document.getElementById('setup-phase').style.display = 'none';
+    
+    // Show mode selection and classic mode
+    document.getElementById('mode-selection').style.display = 'block';
+    document.getElementById('classic-mode').style.display = 'block';
+    document.getElementById('dream-team-mode').style.display = 'none';
+    
+    // Set game state
+    gameState.phase = 'classic';
+    gameState.mode = 'classic';
+    
+    // Make sure wheel is loaded
+    if (nbaTeams.length === 0) {
+        console.log("⚠️ Loading NBA teams...");
+        loadNBATeams().then(() => {
+            console.log("✅ NBA teams loaded, wheel ready!");
+            alert("✅ Setup skipped! You can now spin the wheel!");
+        });
+    } else {
+        console.log("✅ Setup skipped! Wheel is ready!");
+        alert("✅ Setup skipped! You can now spin the wheel!");
+    }
+}
+
 // Export functions for global use
 window.testDataLoading = testDataLoading;
 window.testDirectJSONLoad = testDirectJSONLoad;
 window.testNBA2K25Database = testNBA2K25Database;
 window.testAtlantaHawks = testAtlantaHawks;
-window.testBattleSystem = testBattleSystem; 
+window.testBattleSystem = testBattleSystem;
+window.skipToClassicMode = skipToClassicMode; 
