@@ -27,16 +27,17 @@ window.addEventListener('load', async () => {
 // Enhanced start battle function with NBA 2K25 ratings
 function startBattle() {
     console.log('🎮 Starting battle system...');
+    console.log('🔍 Checking battle system manager:', battleSystemManager);
     
     if (gameState.dreamTeams.length < 2) {
         alert('Need at least 2 teams to battle!');
         return;
     }
     
-    // Check if battle system is available, if not use fallback
+    // Force initialize battle system if not ready
     if (!battleSystemManager || !battleSystemManager.initialized) {
-        console.warn('⚠️ Advanced battle system not available, using fallback');
-        useFallbackBattleSystem();
+        console.log('🔄 Battle system not initialized, attempting to initialize...');
+        initializeBattleSystemNow();
         return;
     }
     
@@ -45,6 +46,277 @@ function startBattle() {
         startTournamentBattle();
     } else {
         startSingleBattle();
+    }
+}
+
+// Force initialize battle system immediately
+async function initializeBattleSystemNow() {
+    try {
+        console.log('🚀 Force initializing battle system...');
+        
+        // Try to initialize the enhanced battle system
+        if (typeof EnhancedBattleSystemManager !== 'undefined') {
+            battleSystemManager = new EnhancedBattleSystemManager();
+            await battleSystemManager.initialize();
+            
+            if (battleSystemManager.initialized) {
+                console.log('✅ Battle system initialized successfully!');
+                window.battleSystemManager = battleSystemManager;
+                startBattle(); // Retry the battle
+                return;
+            }
+        }
+        
+        // If that fails, try to initialize PlayerRatingLookup directly
+        console.log('🔄 Trying direct PlayerRatingLookup initialization...');
+        if (typeof PlayerRatingLookup !== 'undefined') {
+            const directLookup = new PlayerRatingLookup();
+            await directLookup.initialize();
+            
+            if (directLookup.initialized) {
+                console.log('✅ Direct rating lookup initialized!');
+                startBattleWithDirectRatings(directLookup);
+                return;
+            }
+        }
+        
+        throw new Error('All initialization methods failed');
+        
+    } catch (error) {
+        console.error('❌ Battle system initialization failed:', error);
+        console.log('🎲 Falling back to simple battle system');
+        useFallbackBattleSystem();
+    }
+}
+
+// Battle system using direct rating lookup
+function startBattleWithDirectRatings(ratingLookup) {
+    console.log('⚔️ Starting battle with direct NBA 2K25 ratings!');
+    
+    if (gameState.numPlayers > 2) {
+        startTournamentWithRatings(ratingLookup);
+    } else {
+        startSingleBattleWithRatings(ratingLookup);
+    }
+}
+
+function startSingleBattleWithRatings(ratingLookup) {
+    // Get team data
+    const team1 = {
+        playerName: gameState.players[0].name,
+        ...gameState.dreamTeams[0]
+    };
+    
+    const team2 = {
+        playerName: gameState.players[1].name,
+        ...gameState.dreamTeams[1]
+    };
+    
+    console.log('🏀 Team 1:', team1);
+    console.log('🏀 Team 2:', team2);
+    
+    // Calculate team ratings using real NBA 2K25 data
+    const team1Rating = calculateTeamRatingWithLookup(team1, ratingLookup);
+    const team2Rating = calculateTeamRatingWithLookup(team2, ratingLookup);
+    
+    console.log('📊 Team 1 Rating:', team1Rating);
+    console.log('📊 Team 2 Rating:', team2Rating);
+    
+    // Determine winner based on ratings
+    const winner = team1Rating.total > team2Rating.total ? team1 : team2;
+    const winnerRating = team1Rating.total > team2Rating.total ? team1Rating : team2Rating;
+    const loserRating = team1Rating.total > team2Rating.total ? team2Rating : team1Rating;
+    
+    const margin = Math.abs(team1Rating.total - team2Rating.total);
+    
+    const battleResult = {
+        winner: { name: winner.playerName },
+        teams: { 
+            team1: { 
+                name: team1.playerName, 
+                rating: team1Rating,
+                score: team1Rating.total 
+            }, 
+            team2: { 
+                name: team2.playerName, 
+                rating: team2Rating,
+                score: team2Rating.total 
+            } 
+        },
+        battleType: 'NBA 2K25 Ratings Battle',
+        margin: margin,
+        date: new Date().toLocaleDateString(),
+        winner_rating: winnerRating.total,
+        loser_rating: loserRating.total
+    };
+    
+    console.log('🏆 Battle result with real ratings:', battleResult);
+    saveBattleRecord(battleResult);
+    displayRatingsBattleResult(battleResult);
+}
+
+// Calculate team rating using the rating lookup system
+function calculateTeamRatingWithLookup(team, ratingLookup) {
+    const positions = ['pg', 'sg', 'sf', 'pf', 'c'];
+    const benchPositions = ['sixth', 'seventh'];
+    
+    let totalRating = 0;
+    let starterTotal = 0;
+    let benchTotal = 0;
+    const playerRatings = [];
+    const missingPlayers = [];
+    
+    console.log(`🔍 Calculating rating for ${team.playerName}'s team:`);
+    
+    // Calculate starter ratings
+    positions.forEach(position => {
+        const player = team[position];
+        if (player) {
+            const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+            const rating = ratingLookup.getPlayerRating(playerName);
+            
+            if (rating) {
+                console.log(`✅ ${position.toUpperCase()}: ${playerName} - ${rating.overall} overall`);
+                starterTotal += rating.overall;
+                playerRatings.push({
+                    name: playerName,
+                    position: position.toUpperCase(),
+                    overall: rating.overall,
+                    tier: rating.tier
+                });
+            } else {
+                console.log(`⚠️ ${position.toUpperCase()}: ${playerName} - Not found, using 75 default`);
+                starterTotal += 75;
+                missingPlayers.push(playerName);
+                playerRatings.push({
+                    name: playerName,
+                    position: position.toUpperCase(),
+                    overall: 75,
+                    tier: 'Default'
+                });
+            }
+        }
+    });
+    
+    // Calculate bench ratings
+    benchPositions.forEach(position => {
+        const player = team[position];
+        if (player) {
+            const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+            const rating = ratingLookup.getPlayerRating(playerName);
+            
+            if (rating) {
+                console.log(`✅ ${position.toUpperCase()}: ${playerName} - ${rating.overall} overall`);
+                benchTotal += rating.overall * 0.7; // Bench weighted at 70%
+                playerRatings.push({
+                    name: playerName,
+                    position: position.toUpperCase(),
+                    overall: rating.overall,
+                    tier: rating.tier
+                });
+            } else {
+                console.log(`⚠️ ${position.toUpperCase()}: ${playerName} - Not found, using 72 default`);
+                benchTotal += 72 * 0.7;
+                missingPlayers.push(playerName);
+                playerRatings.push({
+                    name: playerName,
+                    position: position.toUpperCase(),
+                    overall: 72,
+                    tier: 'Default'
+                });
+            }
+        }
+    });
+    
+    // Calculate team chemistry bonus (based on player tiers)
+    const superStars = playerRatings.filter(p => p.overall >= 95).length;
+    const allStars = playerRatings.filter(p => p.overall >= 90).length;
+    const chemistry = superStars * 5 + allStars * 3;
+    
+    // Calculate total rating
+    totalRating = (starterTotal * 0.7) + (benchTotal * 0.2) + (chemistry * 0.1);
+    
+    const result = {
+        total: Math.round(totalRating),
+        starterTotal: starterTotal,
+        benchTotal: Math.round(benchTotal),
+        chemistry: chemistry,
+        playerRatings: playerRatings,
+        missingPlayers: missingPlayers,
+        superStars: superStars,
+        allStars: allStars
+    };
+    
+    console.log(`📊 ${team.playerName} Total Rating: ${result.total}`);
+    console.log(`   - Starters: ${starterTotal}`);
+    console.log(`   - Bench: ${Math.round(benchTotal)}`);
+    console.log(`   - Chemistry: ${chemistry}`);
+    console.log(`   - Superstars (95+): ${superStars}`);
+    console.log(`   - All-Stars (90+): ${allStars}`);
+    
+    return result;
+}
+
+// Display battle results with real ratings
+function displayRatingsBattleResult(battleResult) {
+    const battleSection = document.getElementById('battleSection');
+    
+    battleSection.innerHTML = `
+        <div class="battle-results">
+            <h2>🏆 NBA 2K25 Battle Results 🏆</h2>
+            
+            <div class="battle-summary">
+                <h3>🎉 ${battleResult.winner.name} WINS! 🎉</h3>
+                <p><strong>Battle Type:</strong> ${battleResult.battleType}</p>
+                <p><strong>Rating Advantage:</strong> ${battleResult.margin} points</p>
+                <p><strong>Date:</strong> ${battleResult.date}</p>
+            </div>
+            
+            <div class="ratings-battle-breakdown">
+                <div class="team-rating-result">
+                    <h4>${battleResult.teams.team1.name}</h4>
+                    <div class="team-score">⭐ ${battleResult.teams.team1.rating.total} Overall</div>
+                    <div class="rating-breakdown">
+                        <p><strong>Starters:</strong> ${battleResult.teams.team1.rating.starterTotal} total</p>
+                        <p><strong>Bench:</strong> ${battleResult.teams.team1.rating.benchTotal} weighted</p>
+                        <p><strong>Chemistry:</strong> ${battleResult.teams.team1.rating.chemistry} bonus</p>
+                        <p><strong>Superstars (95+):</strong> ${battleResult.teams.team1.rating.superStars}</p>
+                        <p><strong>All-Stars (90+):</strong> ${battleResult.teams.team1.rating.allStars}</p>
+                    </div>
+                </div>
+                
+                <div class="vs-divider">VS</div>
+                
+                <div class="team-rating-result">
+                    <h4>${battleResult.teams.team2.name}</h4>
+                    <div class="team-score">⭐ ${battleResult.teams.team2.rating.total} Overall</div>
+                    <div class="rating-breakdown">
+                        <p><strong>Starters:</strong> ${battleResult.teams.team2.rating.starterTotal} total</p>
+                        <p><strong>Bench:</strong> ${battleResult.teams.team2.rating.benchTotal} weighted</p>
+                        <p><strong>Chemistry:</strong> ${battleResult.teams.team2.rating.chemistry} bonus</p>
+                        <p><strong>Superstars (95+):</strong> ${battleResult.teams.team2.rating.superStars}</p>
+                        <p><strong>All-Stars (90+):</strong> ${battleResult.teams.team2.rating.allStars}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="battle-actions">
+                <button class="battle-button" onclick="resetMultiplayerGame()">🔄 Build New Teams</button>
+                <button class="battle-button secondary" onclick="showBattleRecords()">📊 View All Records</button>
+            </div>
+        </div>
+    `;
+    
+    battleSection.style.display = 'block';
+    
+    // Play celebration sound if available
+    if (typeof SoundManager !== 'undefined' && SoundManager.playCelebrationSound) {
+        SoundManager.playCelebrationSound();
+    }
+    
+    // Show confetti if available
+    if (typeof VisualEffects !== 'undefined' && VisualEffects.createConfetti) {
+        VisualEffects.createConfetti();
     }
 }
 

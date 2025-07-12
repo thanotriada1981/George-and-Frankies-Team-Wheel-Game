@@ -335,6 +335,22 @@ function assignPlayer(position) {
     
     const player = gameState.currentPlayers[selectedIndex];
     
+    // Check if this player is already on the current team
+    const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+    const isPlayerAlreadySelected = Object.values(currentTeam).some(existingPlayer => {
+        if (!existingPlayer) return false;
+        // Compare by full name or first+last name
+        const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+        const existingPlayerName = existingPlayer.full_name || `${existingPlayer.first_name} ${existingPlayer.last_name}`;
+        return playerName === existingPlayerName;
+    });
+    
+    if (isPlayerAlreadySelected) {
+        const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+        alert(`❌ ${playerName} is already on your team! Please select a different player.`);
+        return;
+    }
+    
     // Check if player can fill this position
     if (!canPlayerFillPosition(player, position)) {
         alert(`${player.full_name || player.first_name + ' ' + player.last_name} cannot fill the ${position} position!`);
@@ -353,6 +369,10 @@ function assignPlayer(position) {
     
     // Play success sound
     SoundManager.playSuccessSound();
+    
+    // Show success message
+    const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+    console.log(`✅ ${playerName} assigned to ${position.toUpperCase()} position`);
     
     // Hide player selection
     document.getElementById('playerSelection').classList.remove('show');
