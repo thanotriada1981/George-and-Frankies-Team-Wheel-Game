@@ -26,13 +26,17 @@ window.addEventListener('load', async () => {
 
 // Enhanced start battle function with NBA 2K25 ratings
 function startBattle() {
-    if (!battleSystemManager || !battleSystemManager.initialized) {
-        alert('🔥 Battle system loading... Please wait a moment and try again!');
-        return;
-    }
+    console.log('🎮 Starting battle system...');
     
     if (gameState.dreamTeams.length < 2) {
         alert('Need at least 2 teams to battle!');
+        return;
+    }
+    
+    // Check if battle system is available, if not use fallback
+    if (!battleSystemManager || !battleSystemManager.initialized) {
+        console.warn('⚠️ Advanced battle system not available, using fallback');
+        useFallbackBattleSystem();
         return;
     }
     
@@ -41,6 +45,17 @@ function startBattle() {
         startTournamentBattle();
     } else {
         startSingleBattle();
+    }
+}
+
+// Fallback battle system when advanced ratings are not available
+function useFallbackBattleSystem() {
+    console.log('🎲 Using simple fallback battle system');
+    
+    if (gameState.numPlayers > 2) {
+        startFallbackTournament();
+    } else {
+        startFallbackSingleBattle();
     }
 }
 
@@ -421,6 +436,165 @@ function getHeadToHeadRecords() {
     });
     
     return { headToHead, matchups };
+}
+
+function startFallbackSingleBattle() {
+    // Simple battle between two teams
+    const team1 = {
+        playerName: gameState.players[0].name,
+        ...gameState.dreamTeams[0]
+    };
+    
+    const team2 = {
+        playerName: gameState.players[1].name,
+        ...gameState.dreamTeams[1]
+    };
+    
+    // Simple random battle with basic logic
+    const team1Score = Math.floor(Math.random() * 30) + 80; // 80-110
+    const team2Score = Math.floor(Math.random() * 30) + 80; // 80-110
+    
+    const winner = team1Score > team2Score ? team1 : team2;
+    const margin = Math.abs(team1Score - team2Score);
+    
+    const battleResult = {
+        winner: { name: winner.playerName },
+        teams: { 
+            team1: { name: team1.playerName, score: team1Score }, 
+            team2: { name: team2.playerName, score: team2Score } 
+        },
+        battleType: 'Simple Battle',
+        margin: margin,
+        date: new Date().toLocaleDateString()
+    };
+    
+    console.log('🏆 Simple battle result:', battleResult);
+    saveBattleRecord(battleResult);
+    displaySimpleBattleResult(battleResult);
+}
+
+function startFallbackTournament() {
+    console.log('🏆 Starting simple tournament with', gameState.numPlayers, 'players');
+    
+    const teams = gameState.players.map((player, index) => ({
+        playerName: player.name,
+        ...gameState.dreamTeams[index]
+    }));
+    
+    const tournamentResults = conductSimpleTournament(teams);
+    displayTournamentResults(tournamentResults);
+}
+
+function conductSimpleTournament(teams) {
+    const results = {
+        bracket: [],
+        champion: null,
+        allBattles: []
+    };
+    
+    let currentRound = [...teams];
+    let roundNumber = 1;
+    
+    while (currentRound.length > 1) {
+        const roundResults = [];
+        const nextRound = [];
+        
+        for (let i = 0; i < currentRound.length; i += 2) {
+            if (i + 1 < currentRound.length) {
+                const team1 = currentRound[i];
+                const team2 = currentRound[i + 1];
+                
+                // Simple random winner
+                const winner = Math.random() > 0.5 ? team1 : team2;
+                const margin = Math.floor(Math.random() * 20) + 1;
+                
+                roundResults.push({
+                    team1: team1.playerName,
+                    team2: team2.playerName,
+                    winner: winner.playerName,
+                    margin: margin
+                });
+                
+                const battleResult = {
+                    winner: { name: winner.playerName },
+                    teams: { team1, team2 },
+                    battleType: `Tournament Round ${roundNumber}`,
+                    margin: margin,
+                    date: new Date().toLocaleDateString()
+                };
+                
+                results.allBattles.push(battleResult);
+                nextRound.push(winner);
+            } else {
+                // Bye to next round
+                nextRound.push(currentRound[i]);
+            }
+        }
+        
+        results.bracket.push({
+            round: roundNumber,
+            battles: roundResults
+        });
+        
+        currentRound = nextRound;
+        roundNumber++;
+    }
+    
+    results.champion = currentRound[0];
+    
+    // Save all battles
+    results.allBattles.forEach(battle => saveBattleRecord(battle));
+    
+    return results;
+}
+
+// Display simple battle results
+function displaySimpleBattleResult(battleResult) {
+    const battleSection = document.getElementById('battleSection');
+    
+    battleSection.innerHTML = `
+        <div class="battle-results">
+            <h2>🏆 Battle Results 🏆</h2>
+            
+            <div class="battle-summary">
+                <h3>${battleResult.winner.name} Wins!</h3>
+                <p><strong>Battle Type:</strong> ${battleResult.battleType}</p>
+                <p><strong>Victory Margin:</strong> ${battleResult.margin} points</p>
+                <p><strong>Date:</strong> ${battleResult.date}</p>
+            </div>
+            
+            <div class="simple-battle-breakdown">
+                <div class="team-simple-result">
+                    <h4>${battleResult.teams.team1.name}</h4>
+                    <div class="team-score">🏀 ${battleResult.teams.team1.score || 'N/A'}</div>
+                </div>
+                
+                <div class="vs-divider">VS</div>
+                
+                <div class="team-simple-result">
+                    <h4>${battleResult.teams.team2.name}</h4>
+                    <div class="team-score">🏀 ${battleResult.teams.team2.score || 'N/A'}</div>
+                </div>
+            </div>
+            
+            <div class="battle-actions">
+                <button class="battle-button" onclick="resetMultiplayerGame()">🔄 Battle Again</button>
+                <button class="battle-button secondary" onclick="showBattleRecords()">📊 View Records</button>
+            </div>
+        </div>
+    `;
+    
+    battleSection.style.display = 'block';
+    
+    // Play celebration sound if available
+    if (typeof SoundManager !== 'undefined' && SoundManager.playCelebrationSound) {
+        SoundManager.playCelebrationSound();
+    }
+    
+    // Show confetti if available
+    if (typeof VisualEffects !== 'undefined' && VisualEffects.createConfetti) {
+        VisualEffects.createConfetti();
+    }
 }
 
 // Export functions for global use

@@ -42,13 +42,53 @@
 
 ---
 
+## 🔴 **SECONDARY ISSUE: Battle Mode Not Working**
+
+### **Problem Description:**
+- **Battle mode process is broken**
+- **Not getting player rankings** 
+- **Not giving decision on a winner**
+- **Battle system incomplete**
+
+### **Root Cause Identified:**
+- **File path issue**: `PlayerRatingLookup` tries to fetch `'./database/nba/players/nba-2k25-master-ratings.json'`
+- **Initialization failure**: `EnhancedBattleSystemManager` fails if ratings don't load
+- **No fallback system**: Battle fails completely instead of using simple random logic
+- **Missing error handling**: Console shows "Battle system loading..." but never recovers
+
+### **Files Involved:**
+- ✅ `database/nba/players/nba-2k25-master-ratings.json` - **File EXISTS and has correct format**
+- ❌ `database/nba/lookup-functions/player-rating-lookup.js` - **File path incorrect**
+- ❌ `database/shared/battle-system-integration.js` - **No fallback when ratings fail**
+- ❌ `js/battle-system.js` - **Doesn't handle initialization failure properly**
+
+### **Specific Fix Needed:**
+1. 🔧 **Fix file path** in PlayerRatingLookup.js line 27: 
+   - Change from: `'./database/nba/players/nba-2k25-master-ratings.json'`
+   - Change to: `'database/nba/players/nba-2k25-master-ratings.json'`
+
+2. 🔧 **Add fallback battle system** when ratings fail to load
+3. 🔧 **Better error handling** in battle initialization
+4. 🔧 **Simple random winner logic** as backup when advanced ratings fail
+
+### **Battle System Status:**
+- **Ratings file**: ✅ **EXISTS** (18KB, 385 lines, proper JSON format)
+- **Battle weights**: ✅ **EXISTS** (found in JSON at line 361)
+- **Team data**: ✅ **EXISTS** (15+ teams with player ratings)
+- **File loading**: ❌ **FAILS** (incorrect path)
+
+---
+
 ## 📝 **Notes for Future Debugging:**
 - Local version consistently works, suggesting code is correct
 - Issue appears to be Vercel-specific deployment or caching problem
 - Mobile interface changes were applied but may not be reflecting online
 - Need to investigate why Vercel behaves differently than localhost
+- **NEW**: Battle mode has specific file path issue that can be easily fixed
+- **Battle system architecture is solid** - just needs path correction and fallbacks
 
 ---
 
 **📧 Contact:** Continue troubleshooting when user returns
-**🎯 Goal:** Make both localhost:8080 and Vercel display identically for sharing with George and Frankie's friends 
+**🎯 Goal:** Make both localhost:8080 and Vercel display identically for sharing with George and Frankie's friends
+**🎯 Goal 2:** Fix battle mode file path and add fallback system for reliable winner determination 

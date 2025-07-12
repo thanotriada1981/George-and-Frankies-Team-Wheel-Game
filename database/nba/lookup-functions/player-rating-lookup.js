@@ -19,8 +19,11 @@ class PlayerRatingLookup {
      */
     async initialize() {
         try {
-            // Load the ratings data from JSON file
-            const response = await fetch('./database/nba/players/nba-2k25-master-ratings.json');
+            // Load the ratings data from JSON file - Fixed path
+            const response = await fetch('database/nba/players/nba-2k25-master-ratings.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             this.ratingsData = await response.json();
             
             // Build player index for fast lookups
@@ -31,9 +34,11 @@ class PlayerRatingLookup {
             
             this.initialized = true;
             console.log('✅ Player Rating Lookup System initialized successfully');
+            console.log(`📊 Loaded ${Object.keys(this.ratingsData.teams).length} teams`);
             
         } catch (error) {
             console.error('❌ Error initializing Player Rating Lookup System:', error);
+            console.warn('🔄 Falling back to basic battle system');
             this.initialized = false;
         }
     }
