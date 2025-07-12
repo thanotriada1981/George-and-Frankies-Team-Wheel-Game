@@ -302,8 +302,8 @@ h1 {
 .wheel-section::before {
     content: var(--team-name);
     position: absolute;
-    left: 45px;  /* Much closer to center */
-    top: 50px;   /* Positioned below the centered logo */
+    left: 30px;  /* Aligned with centered logo positioning */
+    top: 52px;   /* Positioned below the centered logo */
     font-size: 11px;  /* Larger for better readability */
     font-weight: bold;
     transform: rotate(6deg);
