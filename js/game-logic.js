@@ -43,6 +43,23 @@ function initializeGame() {
     // Check if player is joining via invite link
     checkForInviteLink();
     
+    // Make sure setup phase is visible and focus on host name input
+    const setupPhase = document.getElementById('setup-phase');
+    const hostNameInput = document.getElementById('host-name-input');
+    
+    if (setupPhase) {
+        setupPhase.style.display = 'block';
+        console.log('👋 Setup phase shown');
+    }
+    
+    if (hostNameInput) {
+        // Focus on host name input after a short delay to ensure page is loaded
+        setTimeout(() => {
+            hostNameInput.focus();
+            console.log('🎯 Focused on host name input');
+        }, 100);
+    }
+    
     // Load NBA teams data
     loadNBATeams()
         .then(() => {

@@ -3,6 +3,41 @@
  * Handles player management, turn-based gameplay, and team building
  */
 
+// Game state for host name
+let hostName = '';
+
+// Step 1: Set Host Name
+function setHostName() {
+    const hostInput = document.getElementById('host-name-input');
+    const name = hostInput.value.trim();
+    
+    if (name === '') {
+        alert('Please enter your name to continue!');
+        hostInput.focus();
+        return;
+    }
+    
+    if (name.length > 20) {
+        alert('Name must be 20 characters or less!');
+        hostInput.focus();
+        return;
+    }
+    
+    // Store host name
+    hostName = name;
+    
+    // Update displays
+    document.getElementById('host-greeting').textContent = `Hello ${name}!`;
+    document.getElementById('host-name-display').textContent = name;
+    document.getElementById('host-name-local-display').textContent = name;
+    
+    // Move to next step
+    document.getElementById('host-name-step').style.display = 'none';
+    document.getElementById('player-count-step').style.display = 'block';
+    
+    console.log('🎮 Host name set:', name);
+}
+
 // Multiplayer Setup Functions
 function selectPlayerCount(count) {
     gameState.numPlayers = count;
@@ -28,18 +63,37 @@ function selectGameType(type) {
         document.getElementById('game-type-step').style.display = 'none';
         document.getElementById('player-names-step').style.display = 'block';
         
-        // Create input fields for player names
+        // Create input fields for other player names (host already set)
         const container = document.getElementById('player-name-inputs');
         container.innerHTML = '';
         
-        for (let i = 0; i < gameState.numPlayers; i++) {
+        // Create inputs for players 2 through n (skip player 1 since host is already set)
+        for (let i = 1; i < gameState.numPlayers; i++) {
             const input = document.createElement('input');
             input.type = 'text';
             input.className = 'name-input';
             input.placeholder = `Enter Player ${i + 1} Name`;
             input.id = `player-${i + 1}-name`;
             input.maxLength = 20;
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const nextInput = document.getElementById(`player-${i + 2}-name`);
+                    if (nextInput) {
+                        nextInput.focus();
+                    } else {
+                        startMultiplayerGame();
+                    }
+                }
+            });
             container.appendChild(input);
+        }
+        
+        // Focus first input if any additional players needed
+        if (gameState.numPlayers > 1) {
+            const firstInput = document.getElementById('player-2-name');
+            if (firstInput) {
+                firstInput.focus();
+            }
         }
     } else if (type === 'online') {
         // Show online game setup
@@ -99,13 +153,16 @@ function checkForInviteLink() {
 }
 
 function startMultiplayerGame() {
-    // Get player names
-    const playerNames = [];
-    for (let i = 0; i < gameState.numPlayers; i++) {
+    // Start with host name
+    const playerNames = [{ name: hostName, id: 0 }];
+    
+    // Get other player names (skip first since host is already added)
+    for (let i = 1; i < gameState.numPlayers; i++) {
         const input = document.getElementById(`player-${i + 1}-name`);
         const name = input.value.trim();
         if (name === '') {
             alert(`Please enter a name for Player ${i + 1}`);
+            input.focus();
             return;
         }
         playerNames.push({ name: name, id: i });
@@ -393,6 +450,7 @@ function canPlayerFillPosition(player, position) {
 }
 
 // Export functions for global use
+window.setHostName = setHostName;
 window.selectPlayerCount = selectPlayerCount;
 window.selectGameType = selectGameType;
 window.copyInviteLink = copyInviteLink;

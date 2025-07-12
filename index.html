@@ -25,9 +25,21 @@
         
         <!-- Game Setup Phase -->
         <div id="setup-phase" class="setup-section">
-            <h2>🎮 Game Setup</h2>
-            <div class="setup-step" id="player-count-step">
-              <h3>How many players want to play?</h3>
+            <h2>🎮 Welcome to George and Frankie's Dream Team Builder!</h2>
+            
+            <!-- Step 1: Host Name -->
+            <div class="setup-step" id="host-name-step">
+              <h3>👋 What's your name, Player 1?</h3>
+              <div class="player-name-inputs">
+                <input type="text" id="host-name-input" class="name-input" placeholder="Enter your name (Host)" maxlength="20" 
+                       onkeypress="if(event.key==='Enter') setHostName()">
+              </div>
+              <button class="start-button" onclick="setHostName()" id="host-name-button">Continue ➡️</button>
+            </div>
+            
+            <!-- Step 2: Player Count -->
+            <div class="setup-step" id="player-count-step" style="display: none;">
+              <h3>How many players total? (including you)</h3>
               <div class="player-count-buttons">
                 <button class="count-button" onclick="selectPlayerCount(2)">2 Players</button>
                 <button class="count-button" onclick="selectPlayerCount(3)">3 Players</button>
@@ -35,22 +47,24 @@
               </div>
             </div>
             
+            <!-- Step 3: Game Type -->
             <div class="setup-step" id="game-type-step" style="display: none;">
-              <h3>How do you want to play?</h3>
+              <h3><span id="host-greeting">Hello!</span> How do you want to play?</h3>
               <div class="game-type-buttons">
                 <button class="type-button" onclick="selectGameType('local')">
-                  📱 <strong>Play on This Device</strong><br>
-                  <small>Pass the device around to take turns</small>
+                  📱 <strong>Play Locally on This Device</strong><br>
+                  <small>Everyone takes turns on the same device</small>
                 </button>
                 <button class="type-button" onclick="selectGameType('online')">
-                  🌐 <strong>Invite Friends Online</strong><br>
-                  <small>Share a link for friends to join remotely</small>
+                  🌐 <strong>Play Online with Friends</strong><br>
+                  <small>Create a game link to share with remote players</small>
                 </button>
               </div>
             </div>
             
+            <!-- Step 4: Online Game Setup -->
             <div class="setup-step" id="invite-step" style="display: none;">
-              <h3>🎉 Invite Your Friends!</h3>
+              <h3>🎉 <span id="host-name-display">Host</span>, invite your friends!</h3>
               <p>Share this link with your friends so they can join the game:</p>
               <div class="invite-link-container">
                 <input type="text" id="inviteLink" readonly class="invite-link-input">
@@ -74,8 +88,10 @@
               </button>
             </div>
             
+            <!-- Step 5: Local Game Names -->
             <div class="setup-step" id="player-names-step" style="display: none;">
-              <h3>Enter Player Names</h3>
+              <h3>Enter names for the other players</h3>
+              <p><strong>Host:</strong> <span id="host-name-local-display">You</span></p>
               <div id="player-name-inputs"></div>
               <button class="start-button" onclick="startMultiplayerGame()">🚀 Start Game!</button>
             </div>
