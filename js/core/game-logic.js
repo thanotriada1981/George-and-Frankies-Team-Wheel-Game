@@ -119,7 +119,8 @@ async function loadNBATeamsSimple() {
             console.log("🏀 First team:", nbaTeams[0].name, "Color:", nbaTeams[0].color_primary);
             console.log("🏀 Sample teams with colors:", nbaTeams.slice(0, 5).map(t => `${t.abbreviation}: ${t.color_primary}`));
             
-            // Slice-based team selection system now active
+            // Test slice-based selection system
+            setTimeout(() => testSliceSystem(), 1000);
             
             // Verify all teams have required data
             const teamsWithoutColors = nbaTeams.filter(t => !t.color_primary);
@@ -551,7 +552,7 @@ function spinWheel() {
             console.log(`⚠️ Adjustment: Pre-selected ${preSelectedTeam.name}, Actually landed on Slice ${actualResult.sliceNumber}: ${actualResult.name}`);
         }
         
-        result.innerHTML = `🏀 The wheel landed on <span style="color: ${finalTeam.color_primary}">${finalTeam.name}</span>! 🏀`;
+        result.innerHTML = `🏀 The wheel landed on <span style="color: ${finalTeam.color_primary}"> ${finalTeam.name}</span>! 🏀`;
         
         // Add celebration effects
         VisualEffects.createConfetti();
@@ -665,9 +666,11 @@ function selectTeamBySlice(finalAngle) {
             }
         } else {
             // Normal slice within 0-360° range
-            if (adjustedAngle >= startAngle && adjustedAngle < endAngle) {
+            // Use <= for end angle to handle border cases (wheel lands exactly on border)
+            if (adjustedAngle >= startAngle && adjustedAngle <= endAngle) {
                 console.log(`🎯 Landed on Slice ${segment.index + 1}: ${segment.team_name}`);
                 console.log(`📊 Slice angle range: ${startAngle}° - ${endAngle}°`);
+                console.log(`📐 Adjusted angle: ${adjustedAngle}° (within range)`);
                 return {
                     name: segment.team_name,
                     abbreviation: segment.abbreviation,
@@ -704,8 +707,9 @@ function selectWinningTeam() {
         return null;
     }
     
-    // Calculate target angle - aim for middle of the slice
-    const middleOfSlice = (winningSlice.angle_start + winningSlice.angle_end) / 2;
+    // Calculate target angle - aim for EXACT middle of the slice (never on borders)
+    const sliceWidth = winningSlice.angle_end - winningSlice.angle_start;
+    const middleOfSlice = winningSlice.angle_start + (sliceWidth / 2);
     // Adjust for pointer position (subtract 90° since we add it during selection)
     const targetAngle = (middleOfSlice - 90 + 360) % 360;
     
@@ -743,6 +747,57 @@ function getCurrentSport() {
     }
     // Default to 'nba' if sport selector not available
     return 'nba';
+}
+
+// 🧪 Test function to verify slice-based selection system
+function testSliceSystem() {
+    console.log("🧪 TESTING SLICE-BASED SELECTION SYSTEM");
+    
+    if (!window.wheelConfigurations?.nba?.segments) {
+        console.log("⚠️ Wheel configuration not loaded yet");
+        return;
+    }
+    
+    const segments = window.wheelConfigurations.nba.segments;
+    console.log(`📊 Loaded ${segments.length} team segments`);
+    
+    // Show slice boundaries for first few teams
+    console.log("🔍 SLICE BOUNDARIES (first 5 teams):");
+    for (let i = 0; i < Math.min(5, segments.length); i++) {
+        const segment = segments[i];
+        console.log(`  Slice ${segment.index + 1}: ${segment.team_name} → ${segment.angle_start}° - ${segment.angle_end}° (width: ${segment.angle_end - segment.angle_start}°)`);
+    }
+    
+    // Test a few specific angles
+    console.log("\n🎯 TESTING SPECIFIC ANGLES:");
+    const testAngles = [0, 6, 12, 18, 90, 180, 270];
+    
+    for (const angle of testAngles) {
+        const result = selectTeamBySlice(angle);
+        if (result) {
+            console.log(`  Angle ${angle}° → Slice ${result.sliceNumber}: ${result.name}`);
+        } else {
+            console.log(`  Angle ${angle}° → NO RESULT FOUND ❌`);
+        }
+    }
+    
+    // Test the pre-selection system
+    console.log("\n🎲 TESTING PRE-SELECTION:");
+    const winner = selectWinningTeam();
+    if (winner) {
+        console.log(`  Pre-selected: Slice ${winner.sliceNumber} → ${winner.team.name}`);
+        console.log(`  Target angle: ${winner.targetAngle}°`);
+        
+        // Verify the target angle selects the right team
+        const verification = selectTeamBySlice(winner.targetAngle);
+        if (verification && verification.name === winner.team.name) {
+            console.log(`  ✅ VERIFICATION PASSED: Target angle correctly selects ${verification.name}`);
+        } else {
+            console.log(`  ❌ VERIFICATION FAILED: Target angle selects ${verification?.name || 'null'} instead of ${winner.team.name}`);
+        }
+    }
+    
+    console.log("🧪 Slice system test complete!");
 }
 
 // Close popup
