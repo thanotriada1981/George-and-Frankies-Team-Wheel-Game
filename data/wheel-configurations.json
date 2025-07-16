@@ -1,0 +1,604 @@
+{
+  "format_version": "1.0",
+  "last_updated": "2025-01-16",
+  "description": "Pre-built wheel configurations for instant loading. Regenerate only when team data changes.",
+  
+  "nba": {
+    "sport_name": "NBA",
+    "total_teams": 30,
+    "center_text": "NBA",
+    "center_color": "#ff6b35",
+    "wheel_size": 500,
+    "segments": [
+      {
+        "index": 0,
+        "team_name": "Atlanta Hawks",
+        "abbreviation": "ATL",
+        "color_primary": "#E03A3E",
+        "logo_file": "assets/logos/nba/atlanta_hawks.svg",
+        "angle_start": 0,
+        "angle_end": 12,
+        "label_position": {
+          "radius": 80,
+          "angle": 6,
+          "font_size": 12
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 6,
+          "size": 40
+        }
+      },
+      {
+        "index": 1,
+        "team_name": "Boston Celtics",
+        "abbreviation": "BOS",
+        "color_primary": "#007A33",
+        "logo_file": "assets/logos/nba/boston_celtics.svg",
+        "angle_start": 12,
+        "angle_end": 24,
+        "label_position": {
+          "radius": 80,
+          "angle": 18,
+          "font_size": 12
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 18,
+          "size": 40
+        }
+      },
+      {
+        "index": 2,
+        "team_name": "Brooklyn Nets",
+        "abbreviation": "BKN",
+        "color_primary": "#000000",
+        "logo_file": "assets/logos/nba/brooklyn_nets.svg",
+        "angle_start": 24,
+        "angle_end": 36,
+        "label_position": {
+          "radius": 80,
+          "angle": 30,
+          "font_size": 12
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 30,
+          "size": 40
+        }
+      },
+      {
+        "index": 3,
+        "team_name": "Charlotte Hornets",
+        "abbreviation": "CHA",
+        "color_primary": "#1D1160",
+        "logo_file": "assets/logos/nba/charlotte_hornets.svg",
+        "angle_start": 36,
+        "angle_end": 48,
+        "label_position": {
+          "radius": 80,
+          "angle": 42,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 42,
+          "size": 40
+        }
+      },
+      {
+        "index": 4,
+        "team_name": "Chicago Bulls",
+        "abbreviation": "CHI",
+        "color_primary": "#CE1141",
+        "logo_file": "assets/logos/nba/chicago_bulls.svg",
+        "angle_start": 48,
+        "angle_end": 60,
+        "label_position": {
+          "radius": 80,
+          "angle": 54,
+          "font_size": 12
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 54,
+          "size": 40
+        }
+      },
+      {
+        "index": 5,
+        "team_name": "Cleveland Cavaliers",
+        "abbreviation": "CLE",
+        "color_primary": "#860038",
+        "logo_file": "assets/logos/nba/cleveland_cavaliers.svg",
+        "angle_start": 60,
+        "angle_end": 72,
+        "label_position": {
+          "radius": 80,
+          "angle": 66,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 66,
+          "size": 40
+        }
+      },
+      {
+        "index": 6,
+        "team_name": "Dallas Mavericks",
+        "abbreviation": "DAL",
+        "color_primary": "#00538C",
+        "logo_file": "assets/logos/nba/dallas_mavericks.svg",
+        "angle_start": 72,
+        "angle_end": 84,
+        "label_position": {
+          "radius": 80,
+          "angle": 78,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 78,
+          "size": 40
+        }
+      },
+      {
+        "index": 7,
+        "team_name": "Denver Nuggets",
+        "abbreviation": "DEN",
+        "color_primary": "#0E2240",
+        "logo_file": "assets/logos/nba/denver_nuggets.svg",
+        "angle_start": 84,
+        "angle_end": 96,
+        "label_position": {
+          "radius": 80,
+          "angle": 90,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 90,
+          "size": 40
+        }
+      },
+      {
+        "index": 8,
+        "team_name": "Detroit Pistons",
+        "abbreviation": "DET",
+        "color_primary": "#C8102E",
+        "logo_file": "assets/logos/nba/detroit_pistons.svg",
+        "angle_start": 96,
+        "angle_end": 108,
+        "label_position": {
+          "radius": 80,
+          "angle": 102,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 102,
+          "size": 40
+        }
+      },
+      {
+        "index": 9,
+        "team_name": "Golden State Warriors",
+        "abbreviation": "GSW",
+        "color_primary": "#1D428A",
+        "logo_file": "assets/logos/nba/golden_state_warriors.svg",
+        "angle_start": 108,
+        "angle_end": 120,
+        "label_position": {
+          "radius": 80,
+          "angle": 114,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 114,
+          "size": 40
+        }
+      },
+      {
+        "index": 10,
+        "team_name": "Houston Rockets",
+        "abbreviation": "HOU",
+        "color_primary": "#CE1141",
+        "logo_file": "assets/logos/nba/houston_rockets.svg",
+        "angle_start": 120,
+        "angle_end": 132,
+        "label_position": {
+          "radius": 80,
+          "angle": 126,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 126,
+          "size": 40
+        }
+      },
+      {
+        "index": 11,
+        "team_name": "Indiana Pacers",
+        "abbreviation": "IND",
+        "color_primary": "#002D62",
+        "logo_file": "assets/logos/nba/indiana_pacers.svg",
+        "angle_start": 132,
+        "angle_end": 144,
+        "label_position": {
+          "radius": 80,
+          "angle": 138,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 138,
+          "size": 40
+        }
+      },
+      {
+        "index": 12,
+        "team_name": "LA Clippers",
+        "abbreviation": "LAC",
+        "color_primary": "#C8102E",
+        "logo_file": "assets/logos/nba/la_clippers.svg",
+        "angle_start": 144,
+        "angle_end": 156,
+        "label_position": {
+          "radius": 80,
+          "angle": 150,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 150,
+          "size": 40
+        }
+      },
+      {
+        "index": 13,
+        "team_name": "Los Angeles Lakers",
+        "abbreviation": "LAL",
+        "color_primary": "#552583",
+        "logo_file": "assets/logos/nba/los_angeles_lakers.svg",
+        "angle_start": 156,
+        "angle_end": 168,
+        "label_position": {
+          "radius": 80,
+          "angle": 162,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 162,
+          "size": 40
+        }
+      },
+      {
+        "index": 14,
+        "team_name": "Memphis Grizzlies",
+        "abbreviation": "MEM",
+        "color_primary": "#5D76A9",
+        "logo_file": "assets/logos/nba/memphis_grizzlies.svg",
+        "angle_start": 168,
+        "angle_end": 180,
+        "label_position": {
+          "radius": 80,
+          "angle": 174,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 174,
+          "size": 40
+        }
+      },
+      {
+        "index": 15,
+        "team_name": "Miami Heat",
+        "abbreviation": "MIA",
+        "color_primary": "#98002E",
+        "logo_file": "assets/logos/nba/miami_heat.svg",
+        "angle_start": 180,
+        "angle_end": 192,
+        "label_position": {
+          "radius": 80,
+          "angle": 186,
+          "font_size": 12
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 186,
+          "size": 40
+        }
+      },
+      {
+        "index": 16,
+        "team_name": "Milwaukee Bucks",
+        "abbreviation": "MIL",
+        "color_primary": "#00471B",
+        "logo_file": "assets/logos/nba/milwaukee_bucks.svg",
+        "angle_start": 192,
+        "angle_end": 204,
+        "label_position": {
+          "radius": 80,
+          "angle": 198,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 198,
+          "size": 40
+        }
+      },
+      {
+        "index": 17,
+        "team_name": "Minnesota Timberwolves",
+        "abbreviation": "MIN",
+        "color_primary": "#0C2340",
+        "logo_file": "assets/logos/nba/minnesota_timberwolves.svg",
+        "angle_start": 204,
+        "angle_end": 216,
+        "label_position": {
+          "radius": 80,
+          "angle": 210,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 210,
+          "size": 40
+        }
+      },
+      {
+        "index": 18,
+        "team_name": "New Orleans Pelicans",
+        "abbreviation": "NOP",
+        "color_primary": "#0C2340",
+        "logo_file": "assets/logos/nba/new_orleans_pelicans.svg",
+        "angle_start": 216,
+        "angle_end": 228,
+        "label_position": {
+          "radius": 80,
+          "angle": 222,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 222,
+          "size": 40
+        }
+      },
+      {
+        "index": 19,
+        "team_name": "New York Knicks",
+        "abbreviation": "NYK",
+        "color_primary": "#006BB6",
+        "logo_file": "assets/logos/nba/new_york_knicks.svg",
+        "angle_start": 228,
+        "angle_end": 240,
+        "label_position": {
+          "radius": 80,
+          "angle": 234,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 234,
+          "size": 40
+        }
+      },
+      {
+        "index": 20,
+        "team_name": "Oklahoma City Thunder",
+        "abbreviation": "OKC",
+        "color_primary": "#007AC1",
+        "logo_file": "assets/logos/nba/oklahoma_city_thunder.svg",
+        "angle_start": 240,
+        "angle_end": 252,
+        "label_position": {
+          "radius": 80,
+          "angle": 246,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 246,
+          "size": 40
+        }
+      },
+      {
+        "index": 21,
+        "team_name": "Orlando Magic",
+        "abbreviation": "ORL",
+        "color_primary": "#0077C0",
+        "logo_file": "assets/logos/nba/orlando_magic.svg",
+        "angle_start": 252,
+        "angle_end": 264,
+        "label_position": {
+          "radius": 80,
+          "angle": 258,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 258,
+          "size": 40
+        }
+      },
+      {
+        "index": 22,
+        "team_name": "Philadelphia 76ers",
+        "abbreviation": "PHI",
+        "color_primary": "#006BB6",
+        "logo_file": "assets/logos/nba/philadelphia_76ers.svg",
+        "angle_start": 264,
+        "angle_end": 276,
+        "label_position": {
+          "radius": 80,
+          "angle": 270,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 270,
+          "size": 40
+        }
+      },
+      {
+        "index": 23,
+        "team_name": "Phoenix Suns",
+        "abbreviation": "PHX",
+        "color_primary": "#1D1160",
+        "logo_file": "assets/logos/nba/phoenix_suns.svg",
+        "angle_start": 276,
+        "angle_end": 288,
+        "label_position": {
+          "radius": 80,
+          "angle": 282,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 282,
+          "size": 40
+        }
+      },
+      {
+        "index": 24,
+        "team_name": "Portland Trail Blazers",
+        "abbreviation": "POR",
+        "color_primary": "#E03A3E",
+        "logo_file": "assets/logos/nba/portland_trail_blazers.svg",
+        "angle_start": 288,
+        "angle_end": 300,
+        "label_position": {
+          "radius": 80,
+          "angle": 294,
+          "font_size": 9
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 294,
+          "size": 40
+        }
+      },
+      {
+        "index": 25,
+        "team_name": "Sacramento Kings",
+        "abbreviation": "SAC",
+        "color_primary": "#5A2D81",
+        "logo_file": "assets/logos/nba/sacramento_kings.svg",
+        "angle_start": 300,
+        "angle_end": 312,
+        "label_position": {
+          "radius": 80,
+          "angle": 306,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 306,
+          "size": 40
+        }
+      },
+      {
+        "index": 26,
+        "team_name": "San Antonio Spurs",
+        "abbreviation": "SAS",
+        "color_primary": "#C4CED4",
+        "logo_file": "assets/logos/nba/san_antonio_spurs.svg",
+        "angle_start": 312,
+        "angle_end": 324,
+        "label_position": {
+          "radius": 80,
+          "angle": 318,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 318,
+          "size": 40
+        }
+      },
+      {
+        "index": 27,
+        "team_name": "Toronto Raptors",
+        "abbreviation": "TOR",
+        "color_primary": "#CE1141",
+        "logo_file": "assets/logos/nba/toronto_raptors.svg",
+        "angle_start": 324,
+        "angle_end": 336,
+        "label_position": {
+          "radius": 80,
+          "angle": 330,
+          "font_size": 11
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 330,
+          "size": 40
+        }
+      },
+      {
+        "index": 28,
+        "team_name": "Utah Jazz",
+        "abbreviation": "UTA",
+        "color_primary": "#002B5C",
+        "logo_file": "assets/logos/nba/utah_jazz.svg",
+        "angle_start": 336,
+        "angle_end": 348,
+        "label_position": {
+          "radius": 80,
+          "angle": 342,
+          "font_size": 12
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 342,
+          "size": 40
+        }
+      },
+      {
+        "index": 29,
+        "team_name": "Washington Wizards",
+        "abbreviation": "WAS",
+        "color_primary": "#002B5C",
+        "logo_file": "assets/logos/nba/washington_wizards.svg",
+        "angle_start": 348,
+        "angle_end": 360,
+        "label_position": {
+          "radius": 80,
+          "angle": 354,
+          "font_size": 10
+        },
+        "logo_position": {
+          "radius": 180,
+          "angle": 354,
+          "size": 40
+        }
+      }
+    ],
+    "conic_gradient": "conic-gradient(from 0deg, #E03A3E 0deg 12deg, #007A33 12deg 24deg, #000000 24deg 36deg, #1D1160 36deg 48deg, #CE1141 48deg 60deg, #860038 60deg 72deg, #00538C 72deg 84deg, #0E2240 84deg 96deg, #C8102E 96deg 108deg, #1D428A 108deg 120deg, #CE1141 120deg 132deg, #002D62 132deg 144deg, #C8102E 144deg 156deg, #552583 156deg 168deg, #5D76A9 168deg 180deg, #98002E 180deg 192deg, #00471B 192deg 204deg, #0C2340 204deg 216deg, #0C2340 216deg 228deg, #006BB6 228deg 240deg, #007AC1 240deg 252deg, #0077C0 252deg 264deg, #006BB6 264deg 276deg, #1D1160 276deg 288deg, #E03A3E 288deg 300deg, #5A2D81 300deg 312deg, #C4CED4 312deg 324deg, #CE1141 324deg 336deg, #002B5C 336deg 348deg, #002B5C 348deg 360deg)"
+  },
+
+  "nfl": {
+    "sport_name": "NFL",
+    "total_teams": 32,
+    "center_text": "NFL",
+    "center_color": "#663399",
+    "wheel_size": 500,
+    "note": "NFL configuration will be generated based on current NFL team data"
+  },
+
+  "mlb": {
+    "sport_name": "MLB", 
+    "total_teams": 30,
+    "center_text": "MLB",
+    "center_color": "#004225",
+    "wheel_size": 500,
+    "note": "MLB configuration will be generated based on current MLB team data"
+  }
+} 

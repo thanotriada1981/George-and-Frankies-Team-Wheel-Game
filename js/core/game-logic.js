@@ -30,43 +30,56 @@ async function initializeGame() {
     try {
         // Initialize sound system safely
         if (typeof SoundManager !== 'undefined') {
-    SoundManager.init();
+            SoundManager.init();
+        }
+        
+        // Initialize the optimized wheel loader system first
+        console.log("🔧 Initializing optimized wheel loader...");
+        const wheelLoaderReady = await WheelLoader.initialize();
+        
+        if (wheelLoaderReady) {
+            console.log("✅ Pre-built wheel system ready!");
+            
+            // Load NBA team data for compatibility with existing game logic
+            nbaTeams = WheelLoader.getTeamData('nba');
+            window.nbaTeams = nbaTeams; // Keep global reference in sync
+            console.log("📊 Loaded teams data:", nbaTeams.length, "teams");
+            
+            // Render the pre-built NBA wheel immediately
+            WheelLoader.renderPrebuiltWheel('wheel', 'nba');
+        } else {
+            console.warn("⚠️ Pre-built wheel system failed, falling back to dynamic generation...");
+            // Fallback to original system
+            loadNBATeamsSimple();
         }
         
         // Hide setup and show sport selection for immediate play
-    const setupPhase = document.getElementById('setup-phase');
-    const sportSelection = document.getElementById('sport-selection');
-    const modeSelection = document.getElementById('mode-selection');
-    
-    if (setupPhase) {
-        setupPhase.style.display = 'none';
-        console.log('👋 Setup phase hidden - starting in classic mode');
-    }
-    
-    // Initialize and show sport selector
-    if (typeof SportSelector !== 'undefined') {
-        await SportSelector.initialize();
-        if (sportSelection) {
-            sportSelection.style.display = 'block';
-            console.log('🏆 Sport selection shown');
+        const setupPhase = document.getElementById('setup-phase');
+        const sportSelection = document.getElementById('sport-selection');
+        const modeSelection = document.getElementById('mode-selection');
+        
+        if (setupPhase) {
+            setupPhase.style.display = 'none';
+            console.log('👋 Setup phase hidden - starting in classic mode');
         }
-    }
-    
-    if (modeSelection) {
-        modeSelection.style.display = 'block';
-        console.log('🎮 Mode selection shown');
-    }
-    
+        
+        // Initialize and show sport selector
+        if (typeof SportSelector !== 'undefined') {
+            await SportSelector.initialize();
+            if (sportSelection) {
+                sportSelection.style.display = 'block';
+                console.log('🏆 Sport selection shown');
+            }
+        }
+        
+        if (modeSelection) {
+            modeSelection.style.display = 'block';
+            console.log('🎮 Mode selection shown');
+        }
+        
         // Initialize in classic mode
         switchMode('classic');
         console.log('🎯 Classic mode activated');
-        
-        // Show loading wheel initially
-        showLoadingWheel();
-        
-        // Simple direct approach: Load NBA teams data immediately
-        console.log("🚀 Starting NBA teams loading...");
-        loadNBATeamsSimple();
         
     } catch (error) {
         console.error("❌ Error in initializeGame:", error);
@@ -105,6 +118,8 @@ async function loadNBATeamsSimple() {
             console.log("✅ Teams loaded successfully:", nbaTeams.length);
             console.log("🏀 First team:", nbaTeams[0].name, "Color:", nbaTeams[0].color_primary);
             console.log("🏀 Sample teams with colors:", nbaTeams.slice(0, 5).map(t => `${t.abbreviation}: ${t.color_primary}`));
+            
+            // Slice-based team selection system now active
             
             // Verify all teams have required data
             const teamsWithoutColors = nbaTeams.filter(t => !t.color_primary);
@@ -236,9 +251,25 @@ function showErrorWheel() {
     console.log("❌ Error wheel displayed");
 }
 
-// Draw wheel with team logos
+// Draw wheel with team logos - now optimized with pre-built wheels!
 function drawWheelWithLogos() {
-    console.log("🎨 drawWheelWithLogos called");
+    console.log("🎨 drawWheelWithLogos called - checking for pre-built system...");
+    
+    // Try using pre-built wheel system first
+    if (typeof WheelLoader !== 'undefined' && WheelLoader.renderPrebuiltWheel) {
+        console.log("✅ Using optimized pre-built wheel system");
+        const success = WheelLoader.renderPrebuiltWheel('wheel', 'nba');
+        
+        if (success) {
+            console.log("🎯 Pre-built NBA wheel rendered successfully!");
+            return;
+        } else {
+            console.warn("⚠️ Pre-built wheel failed, falling back to dynamic generation");
+        }
+    }
+    
+    // Fallback to original dynamic generation system
+    console.log("🔄 Using fallback dynamic wheel generation...");
     console.log("🔍 Local nbaTeams.length:", nbaTeams.length);
     console.log("🔍 Global window.nbaTeams length:", window.nbaTeams ? window.nbaTeams.length : 'undefined');
     console.log("🔍 nbaTeams === window.nbaTeams:", nbaTeams === window.nbaTeams);
@@ -479,22 +510,52 @@ function spinWheel() {
     SoundManager.playSpinSound();
     VisualEffects.addSpinGlow(wheel.parentElement);
     
-    // Calculate spin parameters
+    // 🎯 NEW NUMBERED SELECTION SYSTEM
+    // Pre-select the winning team and calculate target angle
+    const winnerInfo = selectWinningTeam();
+    if (!winnerInfo) {
+        console.error("❌ Failed to select winning team");
+        gameState.isSpinning = false;
+        spinButton.disabled = false;
+        spinButton.textContent = '🎯 SPIN THE WHEEL! 🎯';
+        return;
+    }
+    
+    // Calculate spin parameters with pre-determined target
     const baseSpins = Math.floor(Math.random() * 4) + 8; // 8-11 full rotations
-    const finalAngle = Math.random() * 360;
-    const totalRotation = (baseSpins * 360) + finalAngle;
+    const targetAngle = winnerInfo.targetAngle;
+    const totalRotation = (baseSpins * 360) + targetAngle;
+    
+    console.log(`🎰 SPIN CALCULATION:`);
+    console.log(`   Base spins: ${baseSpins} (${baseSpins * 360}°)`);
+    console.log(`   Target angle: ${targetAngle}°`);
+    console.log(`   Total rotation: ${totalRotation}°`);
+    console.log(`   Will land on: ${winnerInfo.team.name} (Number ${winnerInfo.number})`);
     
     // Apply the 6-second deceleration animation
     applyRealisticSpin(wheel, totalRotation);
     
     setTimeout(function() {
-        const selectedTeam = getSelectedTeam(finalAngle);
+        // 🎯 SLICE-BASED VERIFICATION: Check where wheel actually landed
+        const actualResult = selectTeamBySlice(totalRotation);
+        const preSelectedTeam = winnerInfo.team;
         
-        result.innerHTML = `🏀 The wheel landed on <span style="color: ${selectedTeam.color_primary}">${selectedTeam.name}</span>! 🏀`;
+        // Use actual result for perfect accuracy, with pre-selected as fallback
+        const finalTeam = actualResult || preSelectedTeam;
+        
+        // 🔍 VERIFICATION LOGGING
+        if (actualResult && preSelectedTeam.name === actualResult.name) {
+            console.log("✅ PERFECT! Pre-selected team matches slice where wheel landed");
+            console.log(`🎯 Slice ${actualResult.sliceNumber}: ${actualResult.name}`);
+        } else if (actualResult) {
+            console.log(`⚠️ Adjustment: Pre-selected ${preSelectedTeam.name}, Actually landed on Slice ${actualResult.sliceNumber}: ${actualResult.name}`);
+        }
+        
+        result.innerHTML = `🏀 The wheel landed on <span style="color: ${finalTeam.color_primary}">${finalTeam.name}</span>! 🏀`;
         
         // Add celebration effects
         VisualEffects.createConfetti();
-        VisualEffects.createFloatingText(`🎉 ${selectedTeam.name}! 🎉`, wheel.parentElement, selectedTeam.color_primary);
+        VisualEffects.createFloatingText(`🎉 ${finalTeam.name}! 🎉`, wheel.parentElement, finalTeam.color_primary);
         
         // Play celebration sound
         SoundManager.playCelebrationSound();
@@ -502,18 +563,24 @@ function spinWheel() {
         // Remove spinning effects
         VisualEffects.removeSpinGlow(wheel.parentElement);
         
+        // Store final team for multiplayer systems
+        if (typeof setCurrentWinner !== 'undefined') {
+            setCurrentWinner(finalTeam);
+        }
+        
         // Check game mode and handle result accordingly
         if (window.onlineMultiplayer && window.onlineMultiplayer.gameData && 
             window.onlineMultiplayer.gameData.gameState === 'playing') {
             // Handle online multiplayer result
-            handleOnlineSpinResult(selectedTeam);
+            handleOnlineSpinResult(finalTeam);
         } else if (gameState.phase === 'playing' && gameState.numPlayers > 1) {
             // Handle local multiplayer result - go directly to player selection
-            console.log(`🎯 Local multiplayer: ${gameState.players[gameState.currentPlayerIndex].name} spun ${selectedTeam.name}`);
-            showPlayerSelection(selectedTeam);
+            console.log(`🎯 Local multiplayer: ${gameState.players[gameState.currentPlayerIndex].name} spun ${finalTeam.name}`);
+            showPlayerSelection(finalTeam);
         } else {
-            // Show normal result popup for classic mode
-            showTeamResult(selectedTeam);
+            // Show normal result popup for classic mode  
+            const sliceInfo = finalTeam.sliceNumber ? `🔢 Slice ${finalTeam.sliceNumber} of 30` : '';
+            showTeamResult(finalTeam, sliceInfo);
         }
         
         spinButton.disabled = false;
@@ -555,17 +622,127 @@ function applyRealisticSpin(wheel, totalRotation) {
     }, 6200);
 }
 
-// Get selected team based on angle
+// 🎯 NEW SLICE-BASED TEAM SELECTION SYSTEM
+// Select team based on which numbered slice (pie piece) the wheel lands on
+function selectTeamBySlice(finalAngle) {
+    // Get wheel configuration for current sport
+    const currentSport = getCurrentSport();
+    const wheelConfig = window.wheelConfigurations?.[currentSport];
+    
+    if (!wheelConfig?.segments) {
+        console.error("❌ No wheel configuration available for slice selection");
+        return null;
+    }
+
+    // Normalize angle to 0-360 range
+    const normalizedAngle = ((finalAngle % 360) + 360) % 360;
+    
+    // Account for pointer at top (12 o'clock) - rotate by 90 degrees
+    const adjustedAngle = (normalizedAngle + 90) % 360;
+    
+    console.log(`🎯 Final angle: ${finalAngle}°`);
+    console.log(`📐 Normalized: ${normalizedAngle}°, Adjusted for pointer: ${adjustedAngle}°`);
+    
+    // Find which slice the angle falls into
+    for (let i = 0; i < wheelConfig.segments.length; i++) {
+        const segment = wheelConfig.segments[i];
+        let startAngle = segment.angle_start;
+        let endAngle = segment.angle_end;
+        
+        // Handle the wrap-around case (e.g., last slice might go from 348° to 360°/0°)
+        if (startAngle > endAngle) {
+            // Slice crosses 0° boundary
+            if (adjustedAngle >= startAngle || adjustedAngle < endAngle) {
+                console.log(`🎯 Landed on Slice ${segment.index + 1}: ${segment.team_name}`);
+                console.log(`📊 Slice angle range: ${startAngle}° - ${endAngle}° (crosses boundary)`);
+                return {
+                    name: segment.team_name,
+                    abbreviation: segment.abbreviation,
+                    color_primary: segment.color_primary,
+                    logo_file: segment.logo_file,
+                    sliceNumber: segment.index + 1
+                };
+            }
+        } else {
+            // Normal slice within 0-360° range
+            if (adjustedAngle >= startAngle && adjustedAngle < endAngle) {
+                console.log(`🎯 Landed on Slice ${segment.index + 1}: ${segment.team_name}`);
+                console.log(`📊 Slice angle range: ${startAngle}° - ${endAngle}°`);
+                return {
+                    name: segment.team_name,
+                    abbreviation: segment.abbreviation,
+                    color_primary: segment.color_primary,
+                    logo_file: segment.logo_file,
+                    sliceNumber: segment.index + 1
+                };
+            }
+        }
+    }
+    
+    // Fallback - should never happen with proper wheel config
+    console.error("❌ No slice found for angle:", adjustedAngle);
+    return wheelConfig.segments[0]; // Return first team as fallback
+}
+
+// Enhanced numbered selection system - pick a winning slice, then calculate target angle
+function selectWinningTeam() {
+    const currentSport = getCurrentSport();
+    const wheelConfig = window.wheelConfigurations?.[currentSport];
+    
+    if (!wheelConfig?.segments) {
+        console.error("❌ No wheel configuration available for team selection");
+        return null;
+    }
+
+    // 🎲 Pick a random slice number (1 to total number of teams)
+    const totalSlices = wheelConfig.segments.length;
+    const winningSliceNumber = Math.floor(Math.random() * totalSlices) + 1;
+    const winningSlice = wheelConfig.segments[winningSliceNumber - 1];
+    
+    if (!winningSlice) {
+        console.error("❌ Invalid slice number:", winningSliceNumber);
+        return null;
+    }
+    
+    // Calculate target angle - aim for middle of the slice
+    const middleOfSlice = (winningSlice.angle_start + winningSlice.angle_end) / 2;
+    // Adjust for pointer position (subtract 90° since we add it during selection)
+    const targetAngle = (middleOfSlice - 90 + 360) % 360;
+    
+    console.log(`🎯 PRE-SELECTED WINNER:`);
+    console.log(`🔢 Winning Slice: ${winningSliceNumber} of ${totalSlices}`);
+    console.log(`🏀 Team: ${winningSlice.team_name}`);
+    console.log(`📐 Slice range: ${winningSlice.angle_start}° - ${winningSlice.angle_end}°`);
+    console.log(`🎯 Target angle: ${targetAngle}°`);
+    
+    return {
+        team: {
+            name: winningSlice.team_name,
+            abbreviation: winningSlice.abbreviation,
+            color_primary: winningSlice.color_primary,
+            logo_file: winningSlice.logo_file,
+            sliceNumber: winningSliceNumber
+        },
+        targetAngle: targetAngle,
+        sliceNumber: winningSliceNumber
+    };
+}
+
+// ⚠️ DEPRECATED: Old angle-based selection system 
+// Now replaced with slice-based system above
 function getSelectedTeam(finalAngle) {
-    // Account for the pointer at the top (12 o'clock position)
-    const adjustedAngle = (360 - (finalAngle % 360) + 90) % 360;
-    const sectionAngle = 360 / nbaTeams.length;
-    const selectedIndex = Math.floor(adjustedAngle / sectionAngle) % nbaTeams.length;
-    
-    console.log(`🎯 Final angle: ${finalAngle}°, Adjusted: ${adjustedAngle}°, Selected index: ${selectedIndex}`);
-    console.log(`🏀 Selected team: ${nbaTeams[selectedIndex].name}`);
-    
-    return nbaTeams[selectedIndex];
+    console.log("⚠️ Using deprecated angle-based selection - switching to slice-based system");
+    return selectTeamBySlice(finalAngle);
+}
+
+// Helper function to get current sport
+function getCurrentSport() {
+    // Check if SportSelector is available
+    if (typeof SportSelector !== 'undefined' && SportSelector.getCurrentSport) {
+        return SportSelector.getCurrentSport();
+    }
+    // Default to 'nba' if sport selector not available
+    return 'nba';
 }
 
 // Close popup
@@ -651,9 +828,6 @@ function showTeamResult(team) {
             <div style="color: ${team.color_primary}; font-size: 1.8em; font-weight: bold; margin-bottom: 10px;">
                 ${team.name}
             </div>
-            <div style="font-size: 1em; color: #666;">
-                ${team.city} • ${team.conference} Conference • ${team.division} Division
-            </div>
         </div>
     `;
     
@@ -676,4 +850,25 @@ if (document.readyState === 'loading') {
 window.spinWheel = spinWheel;
 window.closePopup = closePopup;
 window.switchMode = switchMode;
-window.drawWheelWithLogos = drawWheelWithLogos; 
+window.drawWheelWithLogos = drawWheelWithLogos;
+
+// 🎯 NEW NUMBERED TEAM SELECTION SYSTEM
+// Pre-select winner by number, then calculate angle to land on correct position
+
+// Global variable to store the pre-selected winning team
+let preSelectedWinner = null;
+
+// Get the pre-selected winning team (called after wheel stops)
+function getPreSelectedWinner() {
+    if (!preSelectedWinner) {
+        console.error("❌ No pre-selected winner! Call selectWinningTeam() first.");
+        return nbaTeams[0]; // Fallback to first team
+    }
+    
+    console.log(`✅ WINNER CONFIRMED:`);
+    console.log(`   🎯 Winning Number: ${preSelectedWinner.number}`);
+    console.log(`   🏀 Team: ${preSelectedWinner.team.name}`);
+    console.log(`   📍 Landed at: ${preSelectedWinner.targetAngle}° (Visual: ${preSelectedWinner.wheelConfig.angle_start}° - ${preSelectedWinner.wheelConfig.angle_end}°)`);
+    
+    return preSelectedWinner.team;
+} 

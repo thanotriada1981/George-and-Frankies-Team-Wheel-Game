@@ -512,11 +512,64 @@ function canPlayerFillPosition(player, position) {
     return allowedPositions.some(pos => playerPos.includes(pos));
 }
 
-// Initialize wheel for multiplayer mode
+// Initialize wheel for multiplayer mode - now with optimized pre-built wheels!
 async function initializeMultiplayerWheel() {
-    console.log('🎯 Initializing multiplayer wheel...');
+    console.log('🎯 Initializing multiplayer wheel with pre-built system...');
     
     try {
+        // Try using optimized pre-built wheel system first
+        if (typeof WheelLoader !== 'undefined') {
+            console.log('🔧 WheelLoader is available, initializing...');
+            
+            // First ensure the wheel loader is initialized
+            const wheelLoaderReady = await WheelLoader.initialize();
+            console.log('🔧 WheelLoader initialization result:', wheelLoaderReady);
+            
+            if (wheelLoaderReady && WheelLoader.renderPrebuiltWheel) {
+                console.log('✅ Using optimized pre-built wheel for multiplayer');
+                const success = WheelLoader.renderPrebuiltWheel('dreamWheel', 'nba');
+                console.log('🎨 Wheel render result:', success);
+                
+                if (success) {
+                    console.log('🎯 Multiplayer pre-built NBA wheel rendered successfully!');
+                    
+                    // Load team data for compatibility with game logic
+                    if (typeof WheelLoader.getTeamData === 'function') {
+                        const teams = WheelLoader.getTeamData('nba');
+                        console.log('📊 Retrieved teams from config:', teams.length);
+                        
+                        if (teams && teams.length > 0) {
+                            // Set both local and global references for compatibility
+                            window.nbaTeams = teams;
+                            if (typeof nbaTeams !== 'undefined') {
+                                nbaTeams.length = 0;
+                                nbaTeams.push(...teams);
+                            }
+                            
+                            console.log('📊 Multiplayer teams data loaded from pre-built config:', teams.length, 'teams');
+                            console.log('🏀 Sample teams:', teams.slice(0, 3).map(t => t.name || t.abbreviation));
+                            
+                            console.log('✅ Multiplayer wheel initialized successfully with pre-built system!');
+                            return;
+                        } else {
+                            console.warn('⚠️ No team data retrieved from pre-built config');
+                        }
+                    } else {
+                        console.warn('⚠️ WheelLoader.getTeamData function not available');
+                    }
+                } else {
+                    console.warn('⚠️ Pre-built wheel rendering failed in multiplayer');
+                }
+            } else {
+                console.warn('⚠️ WheelLoader not ready or renderPrebuiltWheel not available');
+            }
+        } else {
+            console.warn('⚠️ WheelLoader not defined, using fallback');
+        }
+        
+        // Fallback to original dynamic generation system
+        console.log('🔄 Using fallback dynamic generation for multiplayer...');
+        
         // Ensure SportSelector is initialized  
         if (typeof SportSelector !== 'undefined') {
             await SportSelector.initialize();
