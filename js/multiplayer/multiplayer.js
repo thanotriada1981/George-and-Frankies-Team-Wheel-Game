@@ -189,12 +189,11 @@ function startMultiplayerGame() {
         });
     }
     
-    // Hide setup and show game
+    // Hide setup and show dream team mode for local multiplayer
     document.getElementById('setup-phase').style.display = 'none';
-    document.getElementById('mode-selection').style.display = 'block';
-    
-    // Auto-select classic mode
-    switchMode('classic');
+    document.getElementById('mode-selection').style.display = 'none';
+    document.getElementById('classic-mode').style.display = 'none';
+    document.getElementById('dream-team-mode').style.display = 'block';
     
     // Update multiplayer display
     updateMultiplayerDisplay();
@@ -209,9 +208,10 @@ function updateMultiplayerDisplay() {
     result.innerHTML = `🎯 <strong style="color: #ff6b6b;">${currentPlayer.name}</strong>, it's your turn! 🎯`;
     
     // Update spin counter
-    const totalSpins = gameState.numPlayers * gameState.maxRounds;
-    const currentSpinNumber = ((gameState.currentRound - 1) * gameState.numPlayers) + gameState.currentPlayerIndex + 1;
-    spinCounter.textContent = `Spin ${currentSpinNumber} of ${totalSpins} - Round ${gameState.currentRound}`;
+    const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+    const filledPositions = Object.values(currentTeam).filter(player => player !== null).length;
+    const positionsNeeded = 8 - filledPositions;
+    spinCounter.textContent = `${currentPlayer.name} - Positions needed: ${positionsNeeded}/8`;
     
     // Update team display for current player
     updateTeamDisplay(gameState.currentPlayerIndex);
@@ -409,12 +409,15 @@ function nextPlayerTurn() {
     // Update display for current player
     updateMultiplayerDisplay();
     
-    // Re-enable spin button
-    document.getElementById('dreamSpinButton').disabled = false;
-    document.getElementById('dreamSpinButton').textContent = '🎯 SPIN FOR PLAYER! 🎯';
+    // Re-enable spin button  
+    const spinButton = document.getElementById('dreamSpinButton');
+    if (spinButton) {
+        spinButton.disabled = false;
+        spinButton.textContent = '🎯 SPIN FOR PLAYER! 🎯';
+    }
     
-    // Update spin counter
-    updateSpinCounter();
+    // Update spin counter (will be handled by updateMultiplayerDisplay)
+    // updateSpinCounter();
 }
 
 function areAllTeamsComplete() {
@@ -470,8 +473,11 @@ function startBattlePhase() {
     `;
     
     // Disable spin button
-    document.getElementById('dreamSpinButton').disabled = true;
-    document.getElementById('dreamSpinButton').textContent = 'All Teams Complete!';
+    const spinButton = document.getElementById('dreamSpinButton');
+    if (spinButton) {
+        spinButton.disabled = true;
+        spinButton.textContent = 'All Teams Complete!';
+    }
 }
 
 function canPlayerFillPosition(player, position) {
@@ -503,6 +509,23 @@ function canPlayerFillPosition(player, position) {
     return allowedPositions.some(pos => playerPos.includes(pos));
 }
 
+// Cancel player selection (return to wheel)
+function cancelPlayerSelection() {
+    const playerSelection = document.getElementById('playerSelection');
+    if (playerSelection) {
+        playerSelection.classList.remove('show');
+    }
+    
+    // Re-enable the spin button
+    const spinButton = document.getElementById('dreamSpinButton');
+    if (spinButton) {
+        spinButton.disabled = false;
+        spinButton.textContent = '🎯 SPIN FOR PLAYER! 🎯';
+    }
+    
+    console.log('❌ Player selection cancelled');
+}
+
 // Export functions for global use
 window.setHostName = setHostName;
 window.selectPlayerCount = selectPlayerCount;
@@ -510,4 +533,5 @@ window.selectGameType = selectGameType;
 window.copyInviteLink = copyInviteLink;
 window.startMultiplayerGame = startMultiplayerGame;
 window.showPlayerSelection = showPlayerSelection;
-window.assignPlayer = assignPlayer; 
+window.assignPlayer = assignPlayer;
+window.cancelPlayerSelection = cancelPlayerSelection; 

@@ -32,16 +32,28 @@ class OnlineMultiplayerSystem {
         }
 
         try {
-            // Firebase config - replace with your actual config
+            // Firebase config - REPLACE WITH YOUR ACTUAL FIREBASE CONFIG
+            // Get this from: https://console.firebase.google.com/ → Project Settings → General → SDK setup
             const firebaseConfig = {
+                // 🔥 TO ENABLE REAL FIREBASE: Replace these with your actual values
                 apiKey: "AIzaSyDemo-replace-with-real-key",
-                authDomain: "nba-team-wheel-demo.firebaseapp.com",
-                databaseURL: "https://nba-team-wheel-demo-default-rtdb.firebaseio.com/",
-                projectId: "nba-team-wheel-demo",
-                storageBucket: "nba-team-wheel-demo.appspot.com",
+                authDomain: "george-frankies-team-wheel.firebaseapp.com", 
+                databaseURL: "https://george-frankies-team-wheel-default-rtdb.firebaseio.com/",
+                projectId: "george-frankies-team-wheel",
+                storageBucket: "george-frankies-team-wheel.appspot.com",
                 messagingSenderId: "123456789",
                 appId: "1:123456789:web:demo123"
             };
+
+            // Check if we're in production or have real config
+            const isRealConfig = !firebaseConfig.apiKey.includes('Demo');
+            
+            if (!isRealConfig) {
+                console.warn('🔥 Using demo Firebase config. Real-time multiplayer disabled.');
+                console.warn('📋 To enable: Replace config in online-multiplayer-firebase.js with your Firebase settings');
+                this.isFirebaseReady = false;
+                return false;
+            }
 
             // Initialize Firebase if not already initialized
             if (!firebase.apps.length) {
@@ -52,10 +64,12 @@ class OnlineMultiplayerSystem {
             this.isFirebaseReady = true;
             
             console.log('🔥 Firebase initialized successfully');
+            console.log('🎮 Real-time multiplayer enabled!');
             return true;
             
         } catch (error) {
             console.error('❌ Failed to initialize Firebase:', error);
+            console.warn('🎮 Falling back to demo mode');
             this.isFirebaseReady = false;
             return false;
         }

@@ -136,6 +136,119 @@
         </div>
     </div>
     
+    <!-- Local Multiplayer Player Selection UI -->
+    <div class="player-selection" id="playerSelection">
+        <div class="player-selection-content">
+            <h3>🏀 Select Your Player!</h3>
+            <p>You landed on: <span id="selectedTeamName" style="font-weight: bold;"></span></p>
+            
+            <select class="player-dropdown" id="playerDropdown">
+                <option value="">Choose a player...</option>
+            </select>
+            
+            <div class="position-buttons">
+                <h4>Select Position for This Player:</h4>
+                <div class="position-grid">
+                    <button class="position-btn" onclick="assignPlayer('pg')">
+                        🎯 Choose Point Guard (PG)
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('sg')">
+                        🎯 Choose Shooting Guard (SG)
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('sf')">
+                        🎯 Choose Small Forward (SF)
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('pf')">
+                        🎯 Choose Power Forward (PF)
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('c')">
+                        🎯 Choose Center (C)
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('sixth')">
+                        🎯 Choose 6th Man
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('seventh')">
+                        🎯 Choose 7th Man
+                    </button>
+                    <button class="position-btn" onclick="assignPlayer('coach')">
+                        🎯 Choose Coach
+                    </button>
+                </div>
+            </div>
+            
+            <button class="cancel-selection" onclick="cancelPlayerSelection()">
+                ❌ Cancel
+            </button>
+        </div>
+    </div>
+    
+    <!-- Multiplayer Dream Team Display -->
+    <div id="dream-team-mode" class="classic-mode" style="display: none;">
+        <div class="multiplayer-header">
+            <div id="dream-result" class="result">
+                👥 Multiplayer Dream Team Building! 👥
+            </div>
+            <div id="spinCounter" class="spin-counter">
+                Spin 1 of 16 - Round 1
+            </div>
+        </div>
+        
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <div id="dreamWheel">
+                <div class="center-circle">NBA</div>
+            </div>
+        </div>
+        
+        <button class="spin-button" id="dreamSpinButton" onclick="spinWheel()">
+            🎯 SPIN FOR PLAYER! 🎯
+        </button>
+        
+        <!-- Dream Team Roster Display -->
+        <div class="dream-team-roster">
+            <h3>🏀 Current Team Roster</h3>
+            <div class="roster-grid">
+                <div class="position-slot" id="slot-pg">
+                    <div class="position-label">Point Guard</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-sg">
+                    <div class="position-label">Shooting Guard</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-sf">
+                    <div class="position-label">Small Forward</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-pf">
+                    <div class="position-label">Power Forward</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-c">
+                    <div class="position-label">Center</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-sixth">
+                    <div class="position-label">6th Man</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-seventh">
+                    <div class="position-label">7th Man</div>
+                    <div class="position-player">Empty</div>
+                </div>
+                <div class="position-slot" id="slot-coach">
+                    <div class="position-label">Coach</div>
+                    <div class="position-player">Empty</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Battle Section -->
+        <div id="battleSection" style="display: none;">
+            <h3>⚔️ Ready for Battle! ⚔️</h3>
+        </div>
+    </div>
+    
     <!-- Developer Tools Section -->
     <div class="developer-tools">
         <details>

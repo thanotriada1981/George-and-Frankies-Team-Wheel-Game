@@ -490,11 +490,15 @@ function spinWheel() {
         // Remove spinning effects
         VisualEffects.removeSpinGlow(wheel.parentElement);
         
-        // Check if we're in online multiplayer mode
+        // Check game mode and handle result accordingly
         if (window.onlineMultiplayer && window.onlineMultiplayer.gameData && 
             window.onlineMultiplayer.gameData.gameState === 'playing') {
             // Handle online multiplayer result
             handleOnlineSpinResult(selectedTeam);
+        } else if (gameState.phase === 'playing' && gameState.numPlayers > 1) {
+            // Handle local multiplayer result - go directly to player selection
+            console.log(`🎯 Local multiplayer: ${gameState.players[gameState.currentPlayerIndex].name} spun ${selectedTeam.name}`);
+            showPlayerSelection(selectedTeam);
         } else {
             // Show normal result popup for classic mode
             showTeamResult(selectedTeam);
