@@ -22,7 +22,7 @@ let gameState = {
 let nbaTeams = [];
 
 // Initialize the game
-function initializeGame() {
+async function initializeGame() {
     console.log("🏀 George and Frankie's Team Wheel Game Loading...");
     
     try {
@@ -31,13 +31,23 @@ function initializeGame() {
     SoundManager.init();
         }
         
-        // Hide setup and show mode selection for immediate play
+        // Hide setup and show sport selection for immediate play
     const setupPhase = document.getElementById('setup-phase');
+    const sportSelection = document.getElementById('sport-selection');
     const modeSelection = document.getElementById('mode-selection');
     
     if (setupPhase) {
         setupPhase.style.display = 'none';
         console.log('👋 Setup phase hidden - starting in classic mode');
+    }
+    
+    // Initialize and show sport selector
+    if (typeof SportSelector !== 'undefined') {
+        await SportSelector.initialize();
+        if (sportSelection) {
+            sportSelection.style.display = 'block';
+            console.log('🏆 Sport selection shown');
+        }
     }
     
     if (modeSelection) {

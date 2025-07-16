@@ -6,6 +6,17 @@
 let sportsConfig = null;
 let currentSport = 'nba'; // Default to NBA (current working sport)
 
+// Sport icons for better UX
+function getSportIcon(sportKey) {
+    const icons = {
+        'nba': '🏀',
+        'nfl': '🏈', 
+        'mlb': '⚾',
+        'soccer': '⚽'
+    };
+    return icons[sportKey] || '🎯';
+}
+
 // Load sports configuration
 async function loadSportsConfig() {
     try {
@@ -112,41 +123,29 @@ function updateSportUI(sportConfig) {
     document.documentElement.style.setProperty('--sport-secondary-color', sportConfig.colors.secondary);
 }
 
-// Get appropriate icon for sport
-function getSportIcon(sportKey) {
-    const icons = {
-        'nba': '🏀',
-        'nfl': '🏈', 
-        'mlb': '⚾',
-        'soccer': '⚽'
-    };
-    return icons[sportKey] || '🏆';
-}
+// getSportIcon function is defined at the top of the file
 
 // Create sport selector UI
 function createSportSelector() {
     if (!sportsConfig) return;
     
-    const selector = document.createElement('div');
-    selector.className = 'sport-selector';
-    selector.innerHTML = `
-        <div class="sport-selector-container">
-            <label for="sport-select">Choose Sport:</label>
-            <select id="sport-select" onchange="handleSportChange(this.value)">
-                ${Object.entries(sportsConfig.available_sports).map(([key, sport]) => 
-                    `<option value="${key}" ${key === currentSport ? 'selected' : ''}>
-                        ${getSportIcon(key)} ${sport.name}
-                    </option>`
-                ).join('')}
-            </select>
+    const sportSelectionDiv = document.getElementById('sport-selection');
+    if (!sportSelectionDiv) return;
+    
+    sportSelectionDiv.innerHTML = `
+        <div class="sport-selector">
+            <div class="sport-selector-container">
+                <label for="sport-select">🏆 Choose Sport:</label>
+                <select id="sport-select" onchange="handleSportChange(this.value)">
+                    ${Object.entries(sportsConfig.available_sports).map(([key, sport]) => 
+                        `<option value="${key}" ${key === currentSport ? 'selected' : ''}>
+                            ${getSportIcon(key)} ${sport.name} (${sport.team_count} teams)
+                        </option>`
+                    ).join('')}
+                </select>
+            </div>
         </div>
     `;
-    
-    // Insert after the main title
-    const mainTitle = document.querySelector('h1');
-    if (mainTitle) {
-        mainTitle.insertAdjacentElement('afterend', selector);
-    }
 }
 
 // Handle sport change from UI
