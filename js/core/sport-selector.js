@@ -77,9 +77,11 @@ async function switchSport(sportKey) {
         if (sportKey === 'nba') {
             // Use existing NBA loading logic
             nbaTeams = data.teams || data;
+            window.nbaTeams = nbaTeams; // Keep global reference in sync
         } else {
             // For new sports, use the same structure
             nbaTeams = data.teams || data; // Keep using nbaTeams variable for compatibility
+            window.nbaTeams = nbaTeams; // Keep global reference in sync
         }
         
         // Update UI

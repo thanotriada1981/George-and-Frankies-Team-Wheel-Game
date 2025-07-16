@@ -529,7 +529,14 @@ async function initializeMultiplayerWheel() {
             // Fallback: Load NBA data directly
             const response = await fetch('./data/nba_teams_data.json');
             const data = await response.json();
-            window.nbaTeams = data.teams || data;
+            const teams = data.teams || data;
+            
+            // Set both local and global references
+            if (typeof window.nbaTeams !== 'undefined') {
+                // Update the global reference to point to the loaded data
+                window.nbaTeams.length = 0; // Clear existing
+                window.nbaTeams.push(...teams); // Add new teams
+            }
             
             // Draw the wheel
             if (typeof window.drawWheelWithLogos === 'function') {
@@ -537,7 +544,15 @@ async function initializeMultiplayerWheel() {
             }
         }
         
-        console.log('✅ Multiplayer wheel initialized with NBA teams');
+        // Verify teams are loaded
+        const finalTeamCount = (window.nbaTeams && window.nbaTeams.length) || 0;
+        console.log('✅ Multiplayer wheel initialized - Teams loaded:', finalTeamCount);
+        
+        if (finalTeamCount === 0) {
+            console.warn('⚠️ No teams loaded! Wheel will be empty.');
+        } else {
+            console.log('🏀 Sample teams:', window.nbaTeams.slice(0, 3).map(t => t.name || t.abbreviation));
+        }
         
     } catch (error) {
         console.error('❌ Failed to initialize multiplayer wheel:', error);

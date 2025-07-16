@@ -20,6 +20,8 @@ let gameState = {
 
 // NBA Teams Data - Will be loaded from JSON file
 let nbaTeams = [];
+// Expose nbaTeams globally for multiplayer access
+window.nbaTeams = nbaTeams;
 
 // Initialize the game
 async function initializeGame() {
@@ -99,6 +101,7 @@ async function loadNBATeamsSimple() {
         
         if (data.teams && Array.isArray(data.teams) && data.teams.length > 0) {
             nbaTeams = data.teams;
+        window.nbaTeams = nbaTeams; // Keep global reference in sync
             console.log("✅ Teams loaded successfully:", nbaTeams.length);
             console.log("🏀 First team:", nbaTeams[0].name, "Color:", nbaTeams[0].color_primary);
             console.log("🏀 Sample teams with colors:", nbaTeams.slice(0, 5).map(t => `${t.abbreviation}: ${t.color_primary}`));
