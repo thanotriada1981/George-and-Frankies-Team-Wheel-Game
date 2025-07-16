@@ -307,19 +307,39 @@ function updateWheelSegments(wheelId) {
         height: 500px;
         border-radius: 50%;
         position: relative;
-        border: 10px solid white;
+        border: none;
         overflow: hidden;
         background: conic-gradient(${createConicGradient(nbaTeams)});
     `;
     
-    // Add team labels
+    // Add team labels (move closer to center, justify, and avoid logo overlap)
     const anglePerSegment = 360 / totalTeams;
+    // Create a hidden span for measuring text width
+    let measureSpan = document.getElementById('label-measure-span');
+    if (!measureSpan) {
+        measureSpan = document.createElement('span');
+        measureSpan.id = 'label-measure-span';
+        measureSpan.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font-weight:bold;pointer-events:none;z-index:-1;';
+        document.body.appendChild(measureSpan);
+    }
+    const LABEL_WIDTH = 90; // px
+    const DEFAULT_FONT_SIZE = 12; // px
+    const MIN_FONT_SIZE = 9; // px
+    const FONT_FAMILY = 'inherit'; // Use default, or specify if needed
     for (let i = 0; i < totalTeams; i++) {
         const team = nbaTeams[i];
         // Adjust angle to properly center text in pie slice
         // CSS conic-gradient starts at 0deg (top), so we need to offset by 90deg
         const angle = ((i * anglePerSegment) + (anglePerSegment / 2)) - 90;
-        
+        // Shrink-to-fit font size logic
+        let fontSize = DEFAULT_FONT_SIZE;
+        measureSpan.style.fontSize = fontSize + 'px';
+        measureSpan.style.fontFamily = FONT_FAMILY;
+        measureSpan.textContent = team.name || team.abbreviation;
+        while (measureSpan.offsetWidth > LABEL_WIDTH && fontSize > MIN_FONT_SIZE) {
+            fontSize--;
+            measureSpan.style.fontSize = fontSize + 'px';
+        }
         const label = document.createElement('div');
         label.className = 'team-label';
         label.style.cssText = `
@@ -327,23 +347,25 @@ function updateWheelSegments(wheelId) {
             left: 50%;
             top: 50%;
             transform-origin: 0 0;
-            transform: rotate(${angle}deg) translate(160px, -8px);
+            transform: rotate(${angle}deg) translate(80px, -10px);
             color: white;
             font-weight: bold;
-            font-size: 10px;
+            font-size: ${fontSize}px;
             text-shadow: 1px 1px 2px black;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 80px;
+            width: ${LABEL_WIDTH}px;
+            height: 20px;
             pointer-events: none;
             z-index: 5;
+            white-space: nowrap;
         `;
-        label.textContent = team.name || team.abbreviation;
+        label.innerHTML = `<span style='width:100%;display:inline-block;text-align:center;'>${team.name || team.abbreviation}</span>`;
         wheelContainer.appendChild(label);
         
-        // Add team logo (positioned outside/further from center than text)
+        // Add team logo (no white background/border)
         const logo = document.createElement('img');
         logo.src = team.logo_file;
         logo.className = 'team-logo-simple';
@@ -352,11 +374,11 @@ function updateWheelSegments(wheelId) {
             left: 50%;
             top: 50%;
             transform-origin: 0 0;
-            transform: rotate(${angle}deg) translate(210px, -12px);
-            width: 24px;
-            height: 24px;
+            transform: rotate(${angle}deg) translate(180px, -20px);
+            width: 40px;
+            height: 40px;
             pointer-events: none;
-            z-index: 5;
+            z-index: 6;
         `;
         logo.onerror = function() {
             this.style.display = 'none';
