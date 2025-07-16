@@ -1,4 +1,4 @@
-# 🏆 George and Frankie's Dream Team Builder Game
+# 🏆 George and Frankie's Team Wheel Game
 
 The ultimate multi-sport team building experience! Starting with NBA and expanding to NFL and MLB.
 

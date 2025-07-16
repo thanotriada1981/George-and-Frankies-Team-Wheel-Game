@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George and Frankie's Dream Team Builder Game</title>
+    <title>George and Frankie's Team Wheel Game</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -19,13 +19,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>🏀 George and Frankie's Dream Team Builder Game 🏀</h1>
+        <h1>🏀 George and Frankie's Team Wheel Game 🏀</h1>
         
 
         
         <!-- Game Setup Phase -->
         <div id="setup-phase" class="setup-section">
-            <h2>🎮 Welcome to George and Frankie's Dream Team Builder!</h2>
+            <h2>🎮 Welcome to George and Frankie's Team Wheel Game!</h2>
             
             <!-- Step 1: Host Name -->
             <div class="setup-step" id="host-name-step">
@@ -55,9 +55,9 @@
                   📱 <strong>Play Locally on This Device</strong><br>
                   <small>Everyone takes turns on the same device</small>
                 </button>
-                <button class="type-button" onclick="selectGameType('online')">
+                <button class="type-button" onclick="selectOnlineMultiplayer()">
                   🌐 <strong>Play Online with Friends</strong><br>
-                  <small>Create a game link to share with remote players</small>
+                  <small>Real-time multiplayer with friends on different devices</small>
                 </button>
               </div>
             </div>
@@ -100,7 +100,6 @@
         <!-- Game Mode Selection -->
         <div class="game-modes" id="mode-selection" style="display: none;">
             <button class="mode-button active" onclick="switchMode('classic')">🎯 Classic Spin</button>
-            <button class="mode-button" onclick="switchMode('multiplayer')">🏆 Multiplayer Dream Team Builder</button>
             <button class="mode-button" onclick="showSetupPhase()" style="background: #ff9800;">👥 Setup Multiplayer Game</button>
         </div>
 
@@ -120,91 +119,7 @@
         </button>
         </div>
 
-        <!-- Dream Team Builder Mode -->
-        <div id="dream-team-mode" class="dream-team-mode">
-            <!-- Wheel Section -->
-            <div class="wheel-section-container">
-                <div class="wheel-container">
-                    <div class="pointer"></div>
-                    <div id="wheel-dream">
-                        <div class="center-circle">NBA</div>
-                    </div>
-                </div>
-                
-                <div class="result" id="dream-result">Ready to build your dream team!</div>
-                
-                <button class="spin-button" id="dreamSpinButton" onclick="spinForDreamTeam()">
-                    🎯 SPIN FOR PLAYER! 🎯
-                </button>
 
-                <!-- Player Selection Interface -->
-                <div class="player-selection" id="playerSelection">
-                    <h3>🏀 Select Your Player!</h3>
-                    <p>You landed on: <span id="selectedTeamName"></span></p>
-                    <select class="player-dropdown" id="playerDropdown">
-                        <option value="">Loading players...</option>
-                    </select>
-                    <p><strong>Choose a position for this player:</strong></p>
-                    <div class="position-buttons" id="positionButtons">
-                        <button class="position-btn" onclick="assignPlayer('pg')">Point Guard</button>
-                        <button class="position-btn" onclick="assignPlayer('sg')">Shooting Guard</button>
-                        <button class="position-btn" onclick="assignPlayer('sf')">Small Forward</button>
-                        <button class="position-btn" onclick="assignPlayer('pf')">Power Forward</button>
-                        <button class="position-btn" onclick="assignPlayer('c')">Center</button>
-                        <button class="position-btn" onclick="assignPlayer('sixth')">6th Man</button>
-                        <button class="position-btn" onclick="assignPlayer('seventh')">7th Man</button>
-                        <button class="position-btn" onclick="assignPlayer('coach')">Coach</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Builder Section -->
-            <div class="team-builder-bottom">
-                <h2>🏆 Your Dream Team</h2>
-                <div class="spin-counter" id="spinCounter">Spins Left: 8</div>
-                
-                <div class="positions-grid">
-                    <div class="position-slot" id="slot-pg">
-                        <div class="position-title">🎯 Point Guard</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-sg">
-                        <div class="position-title">🎯 Shooting Guard</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-sf">
-                        <div class="position-title">🎯 Small Forward</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-pf">
-                        <div class="position-title">🎯 Power Forward</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-c">
-                        <div class="position-title">🎯 Center</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-sixth">
-                        <div class="position-title">🎯 6th Man</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-seventh">
-                        <div class="position-title">🎯 7th Man</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                    <div class="position-slot" id="slot-coach">
-                        <div class="position-title">🎯 Coach</div>
-                        <div class="position-player">Empty</div>
-                    </div>
-                </div>
-
-                <div class="battle-section" id="battleSection" style="display: none;">
-                    <h3>🔥 Ready for Battle!</h3>
-                    <p>Your dream team is complete! Ready to face the competition?</p>
-                    <button class="battle-button" onclick="startBattle()">⚔️ START BATTLE! ⚔️</button>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- Result Popup -->
@@ -256,28 +171,37 @@
         </details>
     </div>
     
-    <!-- JavaScript Modules -->
-    <script src="js/visual-effects.js"></script>
-    <script src="js/sound-manager.js"></script>
+    <!-- Firebase SDK for Online Multiplayer -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    
+    <!-- Core JavaScript Modules (New Organized Structure) -->
+    <!-- Utils -->
+    <script src="js/utils/data-loader.js"></script>
+    <script src="js/utils/database-integration.js"></script>
+    <script src="js/utils/developer-tools.js"></script>
+    
+    <!-- Features -->
+    <script src="js/features/visual-effects.js"></script>
+    <script src="js/features/sound-manager.js"></script>
+    <script src="js/features/battle-system.js"></script>
+    
+    <!-- Core Game Logic -->
+    <script src="js/core/sport-selector.js"></script>
+    <script src="js/core/roster-builder.js"></script>
+    <script src="js/core/game-logic.js"></script>
+    
+    <!-- Multiplayer System -->
+    <script src="js/multiplayer/multiplayer.js"></script>
+    <script src="js/multiplayer/online-multiplayer-firebase.js"></script>
+    <script src="js/multiplayer/online-ui.js"></script>
     
     <!-- Database Integration (Load First) -->
     <script src="database/nba/lookup-functions/player-rating-lookup.js"></script>
-    <script src="js/database-integration.js"></script>
-    
-    <!-- Game Logic (Load After Database) -->
-    <script src="js/game-logic.js"></script>
-    <script src="js/multiplayer.js"></script>
-    <script src="js/data-loader.js"></script>
-    <script src="js/developer-tools.js"></script>
-    
-    <!-- Battle System Integration -->
     <script src="database/shared/battle-system-integration.js"></script>
     
     <!-- PWA Setup -->
     <script src="setup-pwa.js"></script>
-    
-    <!-- Battle System Enhancement -->
-    <script src="js/battle-system.js"></script>
                     
     <!-- Game initialization is handled by game-logic.js -->
 </body>

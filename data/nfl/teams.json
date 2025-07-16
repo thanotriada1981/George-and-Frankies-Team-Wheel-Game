@@ -1,0 +1,109 @@
+{
+  "sport": "nfl",
+  "teams": [
+    {
+      "id": "buf",
+      "name": "Buffalo Bills", 
+      "abbreviation": "BUF",
+      "city": "Buffalo",
+      "state": "New York",
+      "conference": "AFC",
+      "division": "East",
+      "color_primary": "#00338D",
+      "color_secondary": "#C60C30",
+      "logo_file": "assets/logos/nfl/buffalo_bills.svg",
+      "roster": []
+    },
+    {
+      "id": "mia", 
+      "name": "Miami Dolphins",
+      "abbreviation": "MIA",
+      "city": "Miami",
+      "state": "Florida", 
+      "conference": "AFC",
+      "division": "East",
+      "color_primary": "#008E97",
+      "color_secondary": "#FC4C02",
+      "logo_file": "assets/logos/nfl/miami_dolphins.svg",
+      "roster": []
+    },
+    {
+      "id": "ne",
+      "name": "New England Patriots",
+      "abbreviation": "NE", 
+      "city": "Foxborough",
+      "state": "Massachusetts",
+      "conference": "AFC",
+      "division": "East", 
+      "color_primary": "#002244",
+      "color_secondary": "#C60C30",
+      "logo_file": "assets/logos/nfl/new_england_patriots.svg",
+      "roster": []
+    },
+    {
+      "id": "nyj",
+      "name": "New York Jets",
+      "abbreviation": "NYJ",
+      "city": "East Rutherford", 
+      "state": "New Jersey",
+      "conference": "AFC",
+      "division": "East",
+      "color_primary": "#125740",
+      "color_secondary": "#FFFFFF", 
+      "logo_file": "assets/logos/nfl/new_york_jets.svg",
+      "roster": []
+    },
+    {
+      "id": "bal",
+      "name": "Baltimore Ravens",
+      "abbreviation": "BAL",
+      "city": "Baltimore",
+      "state": "Maryland",
+      "conference": "AFC", 
+      "division": "North",
+      "color_primary": "#241773",
+      "color_secondary": "#000000",
+      "logo_file": "assets/logos/nfl/baltimore_ravens.svg",
+      "roster": []
+    },
+    {
+      "id": "cin", 
+      "name": "Cincinnati Bengals",
+      "abbreviation": "CIN",
+      "city": "Cincinnati",
+      "state": "Ohio",
+      "conference": "AFC",
+      "division": "North",
+      "color_primary": "#FB4F14",
+      "color_secondary": "#000000",
+      "logo_file": "assets/logos/nfl/cincinnati_bengals.svg", 
+      "roster": []
+    },
+    {
+      "id": "cle",
+      "name": "Cleveland Browns", 
+      "abbreviation": "CLE",
+      "city": "Cleveland",
+      "state": "Ohio",
+      "conference": "AFC",
+      "division": "North",
+      "color_primary": "#311D00",
+      "color_secondary": "#FF3C00",
+      "logo_file": "assets/logos/nfl/cleveland_browns.svg",
+      "roster": []
+    },
+    {
+      "id": "pit",
+      "name": "Pittsburgh Steelers",
+      "abbreviation": "PIT", 
+      "city": "Pittsburgh",
+      "state": "Pennsylvania",
+      "conference": "AFC",
+      "division": "North",
+      "color_primary": "#FFB612",
+      "color_secondary": "#101820",
+      "logo_file": "assets/logos/nfl/pittsburgh_steelers.svg",
+      "roster": []
+    }
+  ]
+} 

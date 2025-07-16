@@ -193,8 +193,8 @@ function startMultiplayerGame() {
     document.getElementById('setup-phase').style.display = 'none';
     document.getElementById('mode-selection').style.display = 'block';
     
-    // Auto-select multiplayer mode
-    switchMode('multiplayer');
+    // Auto-select classic mode
+    switchMode('classic');
     
     // Update multiplayer display
     updateMultiplayerDisplay();

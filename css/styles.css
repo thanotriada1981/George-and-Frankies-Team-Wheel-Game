@@ -1,4 +1,4 @@
-/* George and Frankie's Dream Team Builder Game - Main Styles */
+/* George and Frankie's Team Wheel Game - Main Styles */
 
 body {
     font-family: Arial, sans-serif;
@@ -262,63 +262,73 @@ h1 {
     color: #2e7d32;
 }
 
-/* Wheel Styles */
+/* Wheel Styles - Redesigned for Better Visibility */
 .wheel-container {
+    width: 500px;  /* Much bigger wheel */
+    height: 500px;
     position: relative;
-    width: 250px;
-    height: 250px;
     margin: 30px auto;
     border-radius: 50%;
     overflow: hidden;
-    border: 5px solid #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 8px solid #fff;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    background: #f8f9fa;
 }
 
 .wheel-container.spinning-glow {
-    box-shadow: 0 0 30px rgba(255, 107, 107, 0.8), 0 0 60px rgba(255, 107, 107, 0.4);
-    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(255, 107, 107, 0.9), 0 0 80px rgba(255, 107, 107, 0.5);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
 }
 
-#wheel, #wheel-dream {
+#wheel {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    border: 8px solid white;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    border: none;  /* Remove inner border to avoid double wheel effect */
+    box-shadow: none;  /* Remove inner shadow */
+    transition: transform 6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .wheel-section {
     position: absolute;
-    width: 50%;
-    height: 50%;
-    transform-origin: 100% 100%;
-    border-right: 3px solid rgba(255,255,255,0.8);  /* More visible border */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-    overflow: visible;  /* Ensure content isn't clipped */
-    z-index: 5;  /* Proper layering */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transform-origin: 250px 250px; /* Center of 500x500 wheel */
+    border-width: 0 0 250px 0;
+    border-color: transparent transparent var(--team-color) transparent;
+    transform: rotate(var(--rotation-angle));
 }
 
-.wheel-section::before {
-    content: var(--team-name);
+.wheel-section .team-logo {
     position: absolute;
-    left: 37px;  /* Aligned with logo positioning */
-    top: 68px;   /* Positioned below the larger logo */
-    font-size: 14px;  /* Much larger for better readability */
-    font-weight: 900;  /* Extra bold for maximum visibility */
-    transform: rotate(6deg);
-    text-shadow: 3px 3px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1);  /* Strong outline effect */
+    left: -15px;  /* Center on the pie slice */
+    top: 150px;   /* Position in the slice */
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8)) brightness(1.2) contrast(1.1);
+    z-index: 10;
+    transform: rotate(calc(-1 * var(--rotation-angle))); /* Counter-rotate logo */
+}
+
+.wheel-section .team-text {
+    position: absolute;
+    left: -20px;  /* Center the text */
+    top: 185px;   /* Position below logo */
     color: white;
-    z-index: 15;  /* Ensure text appears above everything */
-    letter-spacing: 0.5px;  /* Better letter spacing for readability */
+    font-weight: bold;
+    font-size: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
+    z-index: 10;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    text-align: center;
+    width: 40px;
+    transform: rotate(calc(-1 * var(--rotation-angle))); /* Counter-rotate text */
 }
 
 .center-circle {
@@ -326,31 +336,34 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, #ff6b6b, #ff5252);
+    width: 120px;  /* Bigger center circle */
+    height: 120px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
     color: white;
-    font-size: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-weight: bold;
+    font-size: 24px;  /* Larger text */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    z-index: 100;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .pointer {
     position: absolute;
-    top: -10px;
+    top: -15px;  /* Adjust for bigger wheel */
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 30px solid #ff6b6b;
-    z-index: 1000;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #e74c3c;
+    z-index: 200;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 /* Spin Button */
@@ -401,7 +414,7 @@ h1 {
 
 /* Classic Mode */
 .classic-mode {
-    display: none;
+    display: block;
 }
 
 .classic-mode.active {
@@ -866,4 +879,348 @@ h1 {
     font-weight: bold;
     min-width: 60px;
     text-align: right;
+}
+
+/* Sport Selector Styles */
+.sport-selector {
+    margin: 20px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sport-selector-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.sport-selector label {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+#sport-select {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-size: 16px;
+    min-width: 150px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#sport-select:hover {
+    border-color: #ff6b35;
+    box-shadow: 0 2px 5px rgba(255, 107, 53, 0.2);
+}
+
+#sport-select:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+/* Sport-specific color variables */
+:root {
+    --sport-primary-color: #ff6b35;
+    --sport-secondary-color: #1a1a1a;
+}
+
+/* Online Multiplayer Styles */
+.game-link-container {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    align-items: center;
+}
+
+#game-link {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 14px;
+    background: #f8f9fa;
+}
+
+.copy-button {
+    padding: 12px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.player-list {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin: 5px 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.player-item.host {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border: 2px solid #ffd700;
+}
+
+.player-item.ready {
+    border-left: 4px solid #4CAF50;
+}
+
+.player-icon {
+    font-size: 18px;
+}
+
+.player-name {
+    flex: 1;
+    font-weight: bold;
+}
+
+.player-status {
+    font-size: 16px;
+}
+
+.turn-indicator {
+    background: linear-gradient(135deg, #ff6b35, #f7971e);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.turn-indicator.my-turn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.turn-indicator.waiting-turn {
+    background: linear-gradient(135deg, #9E9E9E, #757575);
+    box-shadow: 0 4px 15px rgba(158, 158, 158, 0.3);
+    animation: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.round-info {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.online-game-info {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.rosters-display, .scores-display {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.player-roster {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+.roster-teams {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.roster-team {
+    background: #4CAF50;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.roster-slot-empty {
+    background: #e0e0e0;
+    color: #999;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.scores-table {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.score-row {
+    display: grid;
+    grid-template-columns: 30px 1fr 60px 80px;
+    gap: 10px;
+    align-items: center;
+    padding: 8px;
+    background: white;
+    border-radius: 6px;
+}
+
+.score-row.leader {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    font-weight: bold;
+}
+
+.game-results {
+    text-align: center;
+    padding: 30px;
+}
+
+.final-standings {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.result-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.result-row.winner {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border: 3px solid #ffd700;
+    transform: scale(1.02);
+}
+
+.rank {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.player-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.result-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.waiting-message {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.cancel-button {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+}
+
+/* Mobile responsiveness for online multiplayer */
+@media (max-width: 768px) {
+    .online-game-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-link-container {
+        flex-direction: column;
+    }
+    
+    #game-link {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .result-row {
+        grid-template-columns: 60px 1fr 80px;
+        padding: 10px;
+    }
+    
+    .score-row {
+        grid-template-columns: 25px 1fr 50px 60px;
+    }
 } 

@@ -1,0 +1,133 @@
+{
+  "available_sports": {
+    "nba": {
+      "name": "NBA",
+      "full_name": "National Basketball Association",
+      "team_count": 30,
+      "data_file": "data/nba_teams_data.json",
+      "logo_path": "assets/logos/nba/",
+      "ratings_source": "nba2k25",
+      "colors": {
+        "primary": "#ff6b35",
+        "secondary": "#1a1a1a"
+      },
+      "wheel_config": {
+        "center_text": "NBA",
+        "spin_duration": 6000
+      },
+      "roster_requirements": {
+        "total_positions": 8,
+        "positions": {
+          "PG": { "name": "Point Guard", "count": 1, "abbreviation": "PG" },
+          "SG": { "name": "Shooting Guard", "count": 1, "abbreviation": "SG" },
+          "SF": { "name": "Small Forward", "count": 1, "abbreviation": "SF" },
+          "PF": { "name": "Power Forward", "count": 1, "abbreviation": "PF" },
+          "C": { "name": "Center", "count": 1, "abbreviation": "C" },
+          "UTIL": { "name": "Utility Player", "count": 2, "abbreviation": "UTIL" },
+          "COACH": { "name": "Head Coach", "count": 1, "abbreviation": "HC" }
+        },
+        "draft_order": ["PG", "SG", "SF", "PF", "C", "UTIL", "UTIL", "COACH"]
+      }
+    },
+    "nfl": {
+      "name": "NFL", 
+      "full_name": "National Football League",
+      "team_count": 32,
+      "data_file": "data/nfl/teams.json",
+      "logo_path": "assets/logos/nfl/",
+      "ratings_source": "madden25",
+      "colors": {
+        "primary": "#013369",
+        "secondary": "#d50a0a"
+      },
+      "wheel_config": {
+        "center_text": "NFL",
+        "spin_duration": 6000
+      },
+      "roster_requirements": {
+        "total_positions": 10,
+        "positions": {
+          "QB": { "name": "Quarterback", "count": 1, "abbreviation": "QB" },
+          "RB": { "name": "Running Back", "count": 2, "abbreviation": "RB" },
+          "WR": { "name": "Wide Receiver", "count": 3, "abbreviation": "WR" },
+          "TE": { "name": "Tight End", "count": 1, "abbreviation": "TE" },
+          "K": { "name": "Kicker", "count": 1, "abbreviation": "K" },
+          "DEF": { "name": "Team Defense", "count": 1, "abbreviation": "DEF" },
+          "COACH": { "name": "Head Coach", "count": 1, "abbreviation": "HC" }
+        },
+        "draft_order": ["QB", "RB", "RB", "WR", "WR", "WR", "TE", "K", "DEF", "COACH"]
+      }
+    },
+    "mlb": {
+      "name": "MLB",
+      "full_name": "Major League Baseball", 
+      "team_count": 30,
+      "data_file": "data/mlb/teams.json",
+      "logo_path": "assets/logos/mlb/",
+      "ratings_source": "mlb_the_show",
+      "colors": {
+        "primary": "#041e42",
+        "secondary": "#bf0d3e"
+      },
+      "wheel_config": {
+        "center_text": "MLB",
+        "spin_duration": 6000
+      },
+      "roster_requirements": {
+        "total_positions": 13,
+        "positions": {
+          "C": { "name": "Catcher", "count": 1, "abbreviation": "C" },
+          "1B": { "name": "First Base", "count": 1, "abbreviation": "1B" },
+          "2B": { "name": "Second Base", "count": 1, "abbreviation": "2B" },
+          "3B": { "name": "Third Base", "count": 1, "abbreviation": "3B" },
+          "SS": { "name": "Shortstop", "count": 1, "abbreviation": "SS" },
+          "OF": { "name": "Outfielder", "count": 3, "abbreviation": "OF" },
+          "DH": { "name": "Designated Hitter", "count": 1, "abbreviation": "DH" },
+          "SP": { "name": "Starting Pitcher", "count": 2, "abbreviation": "SP" },
+          "RP": { "name": "Relief Pitcher", "count": 1, "abbreviation": "RP" },
+          "COACH": { "name": "Manager", "count": 1, "abbreviation": "MGR" }
+        },
+        "draft_order": ["C", "1B", "2B", "3B", "SS", "OF", "OF", "OF", "DH", "SP", "SP", "RP", "COACH"]
+      }
+    },
+    "soccer": {
+      "name": "UCL",
+      "full_name": "UEFA Champions League",
+      "team_count": 32,
+      "data_file": "data/soccer/teams.json", 
+      "logo_path": "assets/logos/soccer/",
+      "ratings_source": "fifa25",
+      "colors": {
+        "primary": "#003399",
+        "secondary": "#ffffff"
+      },
+      "wheel_config": {
+        "center_text": "UCL",
+        "spin_duration": 6000
+      },
+      "roster_requirements": {
+        "total_positions": 12,
+        "positions": {
+          "GK": { "name": "Goalkeeper", "count": 1, "abbreviation": "GK" },
+          "DEF": { "name": "Defender", "count": 4, "abbreviation": "DEF" },
+          "MID": { "name": "Midfielder", "count": 4, "abbreviation": "MID" },
+          "FWD": { "name": "Forward", "count": 2, "abbreviation": "FWD" },
+          "COACH": { "name": "Manager", "count": 1, "abbreviation": "MGR" }
+        },
+        "draft_order": ["GK", "DEF", "DEF", "DEF", "DEF", "MID", "MID", "MID", "MID", "FWD", "FWD", "COACH"]
+      }
+    }
+  },
+  "default_sport": "nba",
+  "current_sport": "nba",
+  "universal_schema": {
+    "team": {
+      "required_fields": ["id", "name", "abbreviation", "color_primary", "logo_file"],
+      "optional_fields": ["city", "state", "conference", "division", "color_secondary", "roster", "coach"]
+    },
+    "player": {
+      "required_fields": ["name", "position"],
+      "optional_fields": ["number", "height", "weight", "experience", "rating"]
+    }
+  }
+} 
