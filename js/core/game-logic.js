@@ -330,17 +330,17 @@ function updateWheelSegments(wheelId) {
             transform: rotate(${angle}deg) translate(160px, -8px);
             color: white;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 10px;
             text-shadow: 1px 1px 2px black;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
+            width: 80px;
             pointer-events: none;
             z-index: 5;
         `;
-        label.textContent = team.abbreviation;
+        label.textContent = team.name || team.abbreviation;
         wheelContainer.appendChild(label);
         
         // Add team logo (positioned outside/further from center than text)
@@ -385,7 +385,11 @@ function updateWheelSegments(wheelId) {
         text-shadow: 1px 1px 2px black;
         z-index: 10;
     `;
-    centerCircle.textContent = 'NBA';
+    // Get current sport name
+    const currentSportConfig = (typeof SportSelector !== 'undefined' && SportSelector.getCurrentConfig) 
+        ? SportSelector.getCurrentConfig() 
+        : { wheel_config: { center_text: 'NBA' } };
+    centerCircle.textContent = currentSportConfig.wheel_config.center_text;
     wheelContainer.appendChild(centerCircle);
     
     wheel.appendChild(wheelContainer);
