@@ -238,9 +238,16 @@ function showErrorWheel() {
 
 // Draw wheel with team logos
 function drawWheelWithLogos() {
-    console.log("🎨 drawWheelWithLogos called, nbaTeams.length:", nbaTeams.length);
+    console.log("🎨 drawWheelWithLogos called");
+    console.log("🔍 Local nbaTeams.length:", nbaTeams.length);
+    console.log("🔍 Global window.nbaTeams length:", window.nbaTeams ? window.nbaTeams.length : 'undefined');
+    console.log("🔍 nbaTeams === window.nbaTeams:", nbaTeams === window.nbaTeams);
     
-    if (nbaTeams.length === 0) {
+    // Check both local and global references
+    const teams = nbaTeams.length > 0 ? nbaTeams : (window.nbaTeams || []);
+    console.log("🔍 Using teams array with length:", teams.length);
+    
+    if (teams.length === 0) {
         console.log("⚠️ No teams loaded yet, showing loading wheel");
         showLoadingWheel();
         
@@ -250,10 +257,12 @@ function drawWheelWithLogos() {
         return;
     }
     
-    console.log("🎨 Drawing wheel with logos for", nbaTeams.length, "teams");
+    // Use the teams array for drawing
+    console.log("🎨 Drawing wheel with", teams.length, "teams");
+    console.log("🏀 First few teams:", teams.slice(0, 3).map(t => t.name || t.abbreviation));
     
-    // Update the wheel
-    updateWheelSegments('wheel');
+    // Update the wheel with the teams array
+    updateWheelSegments('wheel', teams);
 }
 
 // Show loading state for wheel
@@ -284,16 +293,16 @@ function showLoadingWheel() {
 }
 
 // Update wheel segments with team data
-function updateWheelSegments(wheelId) {
+function updateWheelSegments(wheelId, teams = nbaTeams) {
     const wheel = document.getElementById(wheelId);
     if (!wheel) {
         console.log("❌ Wheel element not found:", wheelId);
         return;
     }
     
-    const totalTeams = nbaTeams.length;
+    const totalTeams = teams.length;
     console.log("🎡 Creating simple rotating wheel for", totalTeams, "teams");
-    console.log("🏀 Team names:", nbaTeams.map(t => t.abbreviation).join(', '));
+    console.log("🏀 Team names:", teams.map(t => t.abbreviation || t.name).join(', '));
     
     if (totalTeams !== 30) {
         console.warn("⚠️ WARNING: Expected 30 NBA teams, but got", totalTeams);
@@ -312,7 +321,7 @@ function updateWheelSegments(wheelId) {
         position: relative;
         border: none;
         overflow: hidden;
-        background: conic-gradient(${createConicGradient(nbaTeams)});
+        background: conic-gradient(${createConicGradient(teams)});
     `;
     
     // Add team labels (move closer to center, justify, and avoid logo overlap)

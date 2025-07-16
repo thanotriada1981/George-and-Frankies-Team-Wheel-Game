@@ -524,23 +524,33 @@ async function initializeMultiplayerWheel() {
         
         // Switch to NBA (default sport) and ensure data is loaded
         if (SportSelector && typeof SportSelector.switchSport === 'function') {
+            console.log('🔄 Using SportSelector.switchSport to load NBA data...');
             await SportSelector.switchSport('nba');
+            console.log('✅ SportSelector.switchSport completed');
         } else {
+            console.log('🔄 SportSelector not available, loading NBA data directly...');
             // Fallback: Load NBA data directly
             const response = await fetch('./data/nba_teams_data.json');
             const data = await response.json();
             const teams = data.teams || data;
+            console.log('📊 Loaded teams data:', teams.length, 'teams');
+            console.log('🏀 Sample teams:', teams.slice(0, 3).map(t => t.name || t.abbreviation));
             
             // Set both local and global references
             if (typeof window.nbaTeams !== 'undefined') {
+                console.log('🔗 Syncing with global window.nbaTeams...');
                 // Update the global reference to point to the loaded data
                 window.nbaTeams.length = 0; // Clear existing
                 window.nbaTeams.push(...teams); // Add new teams
+                console.log('✅ Global nbaTeams now has', window.nbaTeams.length, 'teams');
             }
             
             // Draw the wheel
             if (typeof window.drawWheelWithLogos === 'function') {
+                console.log('🎨 Calling drawWheelWithLogos...');
                 window.drawWheelWithLogos();
+            } else {
+                console.log('❌ drawWheelWithLogos function not found!');
             }
         }
         
