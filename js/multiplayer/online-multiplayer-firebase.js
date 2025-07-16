@@ -32,17 +32,17 @@ class OnlineMultiplayerSystem {
         }
 
         try {
-            // Firebase config - REPLACE WITH YOUR ACTUAL FIREBASE CONFIG
-            // Get this from: https://console.firebase.google.com/ → Project Settings → General → SDK setup
+            // Firebase config - YOUR ACTUAL FIREBASE CONFIG (Successfully Connected!)
+            // From: https://console.firebase.google.com/ → Project Settings → General → SDK setup
             const firebaseConfig = {
-                // 🔥 TO ENABLE REAL FIREBASE: Replace these with your actual values
-                apiKey: "AIzaSyDemo-replace-with-real-key",
-                authDomain: "george-frankies-team-wheel.firebaseapp.com", 
-                databaseURL: "https://george-frankies-team-wheel-default-rtdb.firebaseio.com/",
+                apiKey: "AIzaSyBgzHZuEcOptsn2omq82pK4Tn6Fg1YNJiY",
+                authDomain: "george-frankies-team-wheel.firebaseapp.com",
+                databaseURL: "https://george-frankies-team-wheel-default-rtdb.firebaseio.com",
                 projectId: "george-frankies-team-wheel",
-                storageBucket: "george-frankies-team-wheel.appspot.com",
-                messagingSenderId: "123456789",
-                appId: "1:123456789:web:demo123"
+                storageBucket: "george-frankies-team-wheel.firebasestorage.app",
+                messagingSenderId: "619120492481",
+                appId: "1:619120492481:web:17d9edfd8fadb30a2d3940",
+                measurementId: "G-8M69J9F2DN"
             };
 
             // Check if we're in production or have real config
