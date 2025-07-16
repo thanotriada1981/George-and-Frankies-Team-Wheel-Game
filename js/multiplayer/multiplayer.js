@@ -523,17 +523,17 @@ async function initializeMultiplayerWheel() {
         }
         
         // Switch to NBA (default sport) and ensure data is loaded
-        if (typeof switchSport === 'function') {
-            await switchSport('nba');
+        if (SportSelector && typeof SportSelector.switchSport === 'function') {
+            await SportSelector.switchSport('nba');
         } else {
             // Fallback: Load NBA data directly
             const response = await fetch('./data/nba_teams_data.json');
             const data = await response.json();
-            nbaTeams = data.teams || data;
+            window.nbaTeams = data.teams || data;
             
             // Draw the wheel
-            if (typeof drawWheelWithLogos === 'function') {
-                drawWheelWithLogos();
+            if (typeof window.drawWheelWithLogos === 'function') {
+                window.drawWheelWithLogos();
             }
         }
         

@@ -663,4 +663,5 @@ if (document.readyState === 'loading') {
 // Export functions for global use
 window.spinWheel = spinWheel;
 window.closePopup = closePopup;
-window.switchMode = switchMode; 
+window.switchMode = switchMode;
+window.drawWheelWithLogos = drawWheelWithLogos; 
