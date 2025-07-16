@@ -552,7 +552,7 @@ function spinWheel() {
             console.log(`⚠️ Adjustment: Pre-selected ${preSelectedTeam.name}, Actually landed on Slice ${actualResult.sliceNumber}: ${actualResult.name}`);
         }
         
-        result.innerHTML = `🏀 The wheel landed on <span style="color: ${finalTeam.color_primary}"> ${finalTeam.name}</span>! 🏀`;
+        result.innerHTML = `🏀 The wheel landed on <span style="color: ${finalTeam.color_primary}; margin-left: 4px;">${finalTeam.name}</span>! 🏀`;
         
         // Add celebration effects
         VisualEffects.createConfetti();
@@ -666,10 +666,15 @@ function selectTeamBySlice(finalAngle) {
             }
         } else {
             // Normal slice within 0-360° range
-            // Use <= for end angle to handle border cases (wheel lands exactly on border)
-            if (adjustedAngle >= startAngle && adjustedAngle <= endAngle) {
+            // Use <= for the last slice (index === length-1) to handle 360° boundary
+            const isLastSlice = (i === wheelConfig.segments.length - 1);
+            const inRange = isLastSlice 
+                ? (adjustedAngle >= startAngle && adjustedAngle <= endAngle)
+                : (adjustedAngle >= startAngle && adjustedAngle < endAngle);
+                
+            if (inRange) {
                 console.log(`🎯 Landed on Slice ${segment.index + 1}: ${segment.team_name}`);
-                console.log(`📊 Slice angle range: ${startAngle}° - ${endAngle}°`);
+                console.log(`📊 Slice angle range: ${startAngle}° - ${endAngle}°${isLastSlice ? ' (last slice)' : ''}`);
                 console.log(`📐 Adjusted angle: ${adjustedAngle}° (within range)`);
                 return {
                     name: segment.team_name,
@@ -716,8 +721,9 @@ function selectWinningTeam() {
     console.log(`🎯 PRE-SELECTED WINNER:`);
     console.log(`🔢 Winning Slice: ${winningSliceNumber} of ${totalSlices}`);
     console.log(`🏀 Team: ${winningSlice.team_name}`);
-    console.log(`📐 Slice range: ${winningSlice.angle_start}° - ${winningSlice.angle_end}°`);
-    console.log(`🎯 Target angle: ${targetAngle}°`);
+    console.log(`📐 Slice range: ${winningSlice.angle_start}° - ${winningSlice.angle_end}° (width: ${sliceWidth}°)`);
+    console.log(`🎯 Middle of slice: ${middleOfSlice}°`);
+    console.log(`🎯 Target angle: ${targetAngle}° (targets exact middle of slice)`);
     
     return {
         team: {
@@ -747,6 +753,24 @@ function getCurrentSport() {
     }
     // Default to 'nba' if sport selector not available
     return 'nba';
+}
+
+// 🎯 Quick test function - run in browser console: testQuickSpin()
+function testQuickSpin() {
+    console.log("🎯 TESTING QUICK SPIN SYSTEM");
+    const winner = selectWinningTeam();
+    if (winner) {
+        console.log(`🏀 Selected: ${winner.team.name} (Slice ${winner.sliceNumber})`);
+        console.log(`🎯 Target angle: ${winner.targetAngle}°`);
+        
+        // Test verification
+        const verification = selectTeamBySlice(winner.targetAngle);
+        if (verification && verification.name === winner.team.name) {
+            console.log(`✅ PERFECT: Target angle correctly selects ${verification.name}`);
+        } else {
+            console.log(`❌ MISMATCH: Target angle selects ${verification?.name || 'null'} instead of ${winner.team.name}`);
+        }
+    }
 }
 
 // 🧪 Test function to verify slice-based selection system
