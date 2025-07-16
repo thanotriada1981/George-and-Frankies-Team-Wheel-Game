@@ -152,7 +152,7 @@ function checkForInviteLink() {
     }
 }
 
-function startMultiplayerGame() {
+async function startMultiplayerGame() {
     // Start with host name
     const playerNames = [{ name: hostName, id: 0 }];
     
@@ -194,6 +194,9 @@ function startMultiplayerGame() {
     document.getElementById('mode-selection').style.display = 'none';
     document.getElementById('classic-mode').style.display = 'none';
     document.getElementById('dream-team-mode').style.display = 'block';
+    
+    // IMPORTANT: Initialize NBA data and wheel for multiplayer
+    await initializeMultiplayerWheel();
     
     // Update multiplayer display
     updateMultiplayerDisplay();
@@ -507,6 +510,38 @@ function canPlayerFillPosition(player, position) {
     
     const allowedPositions = positionMap[position] || [];
     return allowedPositions.some(pos => playerPos.includes(pos));
+}
+
+// Initialize wheel for multiplayer mode
+async function initializeMultiplayerWheel() {
+    console.log('🎯 Initializing multiplayer wheel...');
+    
+    try {
+        // Ensure SportSelector is initialized  
+        if (typeof SportSelector !== 'undefined') {
+            await SportSelector.initialize();
+        }
+        
+        // Switch to NBA (default sport) and ensure data is loaded
+        if (typeof switchSport === 'function') {
+            await switchSport('nba');
+        } else {
+            // Fallback: Load NBA data directly
+            const response = await fetch('./data/nba_teams_data.json');
+            const data = await response.json();
+            nbaTeams = data.teams || data;
+            
+            // Draw the wheel
+            if (typeof drawWheelWithLogos === 'function') {
+                drawWheelWithLogos();
+            }
+        }
+        
+        console.log('✅ Multiplayer wheel initialized with NBA teams');
+        
+    } catch (error) {
+        console.error('❌ Failed to initialize multiplayer wheel:', error);
+    }
 }
 
 // Cancel player selection (return to wheel)
