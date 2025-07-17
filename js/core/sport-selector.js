@@ -87,9 +87,14 @@ async function switchSport(sportKey) {
         // Update UI
         updateSportUI(sportConfig);
         
-        // Redraw wheel with new sport data
+        // Reset wheel state for sport change and force recreation
+        if (typeof WheelManager !== 'undefined') {
+            WheelManager.resetWheelState();
+        }
+        
+        // Redraw wheel with new sport data (force recreation for sport change)
         if (typeof drawWheelWithLogos === 'function') {
-            drawWheelWithLogos();
+            drawWheelWithLogos(sportKey, true); // Force recreation for sport change
         }
         
         console.log(`✅ Successfully switched to ${sportConfig.full_name}`);

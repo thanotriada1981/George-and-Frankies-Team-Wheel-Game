@@ -598,13 +598,8 @@ async function initializeMultiplayerWheel() {
                 console.log('✅ Global nbaTeams now has', window.nbaTeams.length, 'teams');
             }
             
-            // Draw the wheel
-            if (typeof window.drawWheelWithLogos === 'function') {
-                console.log('🎨 Calling drawWheelWithLogos...');
-                window.drawWheelWithLogos();
-            } else {
-                console.log('❌ drawWheelWithLogos function not found!');
-            }
+            // Note: Wheel drawing is handled by WheelManager - no need to redraw for multiplayer mode
+            console.log('🎮 Multiplayer mode: Using existing wheel (no recreation needed)');
         }
         
         // Verify teams are loaded

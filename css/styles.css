@@ -352,18 +352,37 @@ h1 {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.pointer {
+/* Universal Pointer - Works for ALL game modes and ALL sports */
+/* FIXED INDICATOR at TOP of wheel - teams spin to this position */
+.pointer, .wheel-pointer {
     position: absolute;
-    top: -15px;  /* Adjust for bigger wheel */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform-origin: 0 0;
+    /* Fixed pointer at TOP (0°) - teams rotate to align here */
+    transform: translate(-50%, -50%) rotate(0deg) translate(0, -250px);
     width: 0;
     height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 30px solid #e74c3c;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 40px solid #e74c3c;
     z-index: 200;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.7));
+    
+    /* Make pointer more prominent */
+    animation: pointerPulse 2s ease-in-out infinite;
+}
+
+/* Subtle pulsing animation for the pointer */
+@keyframes pointerPulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) rotate(0deg) translate(0, -250px) scale(1);
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.7));
+    }
+    50% { 
+        transform: translate(-50%, -50%) rotate(0deg) translate(0, -250px) scale(1.1);
+        filter: drop-shadow(0 6px 12px rgba(231,76,60,0.8));
+    }
 }
 
 /* Spin Button */
@@ -629,6 +648,19 @@ h1 {
 
 .celebration-popup {
     animation: celebration-bounce 0.6s ease-out;
+}
+
+/* Selected Team Highlight Animation */
+@keyframes selectedTeamPulse {
+    0% { 
+        filter: brightness(1) drop-shadow(0 0 10px gold); 
+    }
+    50% { 
+        filter: brightness(1.3) drop-shadow(0 0 20px gold); 
+    }
+    100% { 
+        filter: brightness(1) drop-shadow(0 0 10px gold); 
+    }
 }
 
 /* Animations */
