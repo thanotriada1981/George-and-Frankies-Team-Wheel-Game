@@ -1,6 +1,6 @@
 {
-  "team": "Boston Celtics",
-  "roster": [
+  "coach": "Joe Mazzulla",
+  "players": [
     {"name": "Derrick White", "jersey": "25", "position": "Point Guard"},
     {"name": "Anfernee Simons", "jersey": "2", "position": "Point Guard"},
     {"name": "Jaylen Brown", "jersey": "7", "position": "Shooting Guard"},

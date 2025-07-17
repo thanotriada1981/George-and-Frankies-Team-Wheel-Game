@@ -1,0 +1,15 @@
+{
+  "coach": "Jason Kidd",
+  "players": [
+    {"name": "Kyrie Irving", "jersey": "11", "position": "Point Guard"},
+    {"name": "D'Angelo Russell", "jersey": "1", "position": "Point Guard"},
+    {"name": "Klay Thompson", "jersey": "11", "position": "Shooting Guard"},
+    {"name": "Max Christie", "jersey": "10", "position": "Shooting Guard"},
+    {"name": "Naji Marshall", "jersey": "8", "position": "Small Forward"},
+    {"name": "Cooper Flagg", "jersey": "N/A", "position": "Small Forward"},
+    {"name": "PJ Washington", "jersey": "25", "position": "Power Forward"},
+    {"name": "Anthony Davis", "jersey": "3", "position": "Power Forward"},
+    {"name": "Daniel Gafford", "jersey": "21", "position": "Center"},
+    {"name": "Derrick Lively II", "jersey": "2", "position": "Center"}
+  ]
+} 

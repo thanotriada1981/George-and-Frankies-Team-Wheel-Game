@@ -1,0 +1,15 @@
+{
+  "coach": "Brian Keefe",
+  "players": [
+    {"name": "Nikola Topic", "jersey": "11", "position": "Point Guard"},
+    {"name": "Malcolm Brogdon", "jersey": "13", "position": "Point Guard"},
+    {"name": "Bennedict Mathurin", "jersey": "00", "position": "Shooting Guard"},
+    {"name": "Corey Kispert", "jersey": "24", "position": "Shooting Guard"},
+    {"name": "Bilal Coulibaly", "jersey": "0", "position": "Small Forward"},
+    {"name": "Deni Avdija", "jersey": "8", "position": "Small Forward"},
+    {"name": "Kyle Kuzma", "jersey": "33", "position": "Power Forward"},
+    {"name": "Marvin Bagley III", "jersey": "35", "position": "Power Forward"},
+    {"name": "Richaun Holmes", "jersey": "22", "position": "Center"},
+    {"name": "Alex Sarr", "jersey": "N/A", "position": "Center"}
+  ]
+} 

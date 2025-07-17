@@ -110,7 +110,7 @@ The new NBA 2K official data integrates with our existing database through:
 Once collected, the NBA 2K official data will:
 
 ### ✅ Enhance Battle System
-- Provide real NBA 2K25 ratings for battles
+  - Provide real NBA 2K26 ratings for battles
 - Include detailed player attributes (3PT, DNK, etc.)
 - Support player type descriptions and archetypes
 
@@ -188,7 +188,7 @@ If you encounter issues during collection:
 
 ---
 
-## 🎯 Goal: Complete NBA 2K25 Database
+## 🎯 Goal: Complete NBA 2K26 Database
 
 **Target:** All 30 NBA teams with complete roster data
 **Timeline:** Systematic collection over time

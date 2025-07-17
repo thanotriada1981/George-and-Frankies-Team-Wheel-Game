@@ -27,7 +27,7 @@ function collect2KRatingsData() {
             data_source: {
                 website: "https://www.2kratings.com/",
                 collection_date: new Date().toISOString().split('T')[0],
-                game_version: "NBA 2K25",
+                game_version: "NBA 2K26",
                 notes: "Collected via automated script"
             },
             roster: [],
@@ -80,7 +80,7 @@ function getTeamName() {
         const element = document.querySelector(selector);
         if (element && element.textContent.includes('NBA')) {
             const text = element.textContent.trim();
-            // Extract team name from title like "Atlanta Hawks NBA 2K25 Ratings"
+            // Extract team name from title like "Atlanta Hawks NBA 2K26 Ratings"
             const match = text.match(/^(.+?)\s+NBA/);
             if (match) return match[1];
         }

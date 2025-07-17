@@ -1,6 +1,6 @@
-# 🏀 NBA 2K25 Official Ratings - Collection Progress
+# 🏀 NBA 2K26 Official Ratings - Collection Progress
 
-## 🎯 Goal: Collect NBA 2K25 ratings for all 30 teams from 2kratings.com
+## 🎯 Goal: Collect NBA 2K26 ratings for all 30 teams from 2kratings.com
 
 ### 📈 Collection Status: 1/30 Teams (3.3%)
 
@@ -128,7 +128,7 @@ Complete the collection:
 - **15 Teams (50%)**: Popular teams included ⏳
 - **20 Teams (67%)**: Eastern Conference complete ⏳
 - **25 Teams (83%)**: Western Conference complete ⏳
-- **30 Teams (100%)**: Full NBA 2K25 database! ⏳
+- **30 Teams (100%)**: Full NBA 2K26 database! ⏳
 
 ---
 
@@ -136,8 +136,8 @@ Complete the collection:
 
 ### What This Gives George & Frankie:
 
-#### ✅ **Real NBA 2K25 Ratings**
-- Exact same ratings as NBA 2K25 video game
+#### ✅ **Real NBA 2K26 Ratings**
+- Exact same ratings as NBA 2K26 video game
 - Official player overall ratings (Trae Young: 91, etc.)
 - Detailed attributes (3-point shooting, dunking, etc.)
 

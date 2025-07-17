@@ -1,0 +1,13 @@
+{
+  "coach": "Willie Green",
+  "players": [
+    {"name": "Dejounte Murray", "jersey": "5", "position": "Point Guard"},
+    {"name": "Jose Alvarado", "jersey": "15", "position": "Point Guard"},
+    {"name": "Jordan Poole", "jersey": "13", "position": "Shooting Guard"},
+    {"name": "Trey Murphy III", "jersey": "25", "position": "Shooting Guard"},
+    {"name": "Herb Jones", "jersey": "5", "position": "Small Forward"},
+    {"name": "Saddiq Bey", "jersey": "41", "position": "Small Forward"},
+    {"name": "Zion Williamson", "jersey": "1", "position": "Power Forward"},
+    {"name": "Kevon Looney", "jersey": "5", "position": "Center"}
+  ]
+} 

@@ -2,7 +2,7 @@
 
 ## 📊 Data Source: [2kratings.com](https://www.2kratings.com/)
 
-This folder contains the official NBA 2K25 player ratings and team data collected directly from 2kratings.com.
+This folder contains the official NBA 2K26 player ratings and team data collected directly from 2kratings.com.
 
 ## 🎯 Data Collection Plan
 
@@ -66,7 +66,7 @@ Use this structure for each team file:
   "data_source": {
     "website": "https://www.2kratings.com/",
     "collection_date": "2025-01-06",
-    "game_version": "NBA 2K25"
+            "game_version": "NBA 2K26"
   },
   "roster": [
     {

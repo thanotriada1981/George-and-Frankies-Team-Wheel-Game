@@ -1,0 +1,15 @@
+{
+  "coach": "Gregg Popovich",
+  "players": [
+    {"name": "De'Aaron Fox", "jersey": "5", "position": "Point Guard"},
+    {"name": "Chris Paul", "jersey": "3", "position": "Point Guard"},
+    {"name": "Stephon Castle", "jersey": "N/A", "position": "Shooting Guard"},
+    {"name": "Devin Vassell", "jersey": "24", "position": "Shooting Guard"},
+    {"name": "Harrison Barnes", "jersey": "40", "position": "Small Forward"},
+    {"name": "Keldon Johnson", "jersey": "3", "position": "Small Forward"},
+    {"name": "Kelly Olynyk", "jersey": "41", "position": "Power Forward"},
+    {"name": "Jeremy Sochan", "jersey": "10", "position": "Power Forward"},
+    {"name": "Victor Wembanyama", "jersey": "1", "position": "Center"},
+    {"name": "Luke Kornet", "jersey": "40", "position": "Center"}
+  ]
+} 
