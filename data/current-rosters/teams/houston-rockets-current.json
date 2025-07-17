@@ -1,10 +1,13 @@
-[
-  {"name": "Fred VanVleet", "jersey": "5", "position": "Point Guard"},
-  {"name": "Amen Thompson", "jersey": "1", "position": "Shooting Guard"},
-  {"name": "Jalen Green", "jersey": "4", "position": "Shooting Guard"},
-  {"name": "Dillon Brooks", "jersey": "9", "position": "Small Forward"},
-  {"name": "Jabari Smith Jr.", "jersey": "10", "position": "Power Forward"},
-  {"name": "Alperen Şengün", "jersey": "28", "position": "Center"},
-  {"name": "Cam Whitmore", "jersey": "7", "position": "Small Forward"},
-  {"name": "Tari Eason", "jersey": "17", "position": "Power Forward"}
-] 
+{
+  "coach": "Ime Udoka",
+  "players": [
+    {"name": "Fred VanVleet", "jersey": "5", "position": "Point Guard"},
+    {"name": "Amen Thompson", "jersey": "1", "position": "Shooting Guard"},
+    {"name": "Jalen Green", "jersey": "4", "position": "Shooting Guard"},
+    {"name": "Dillon Brooks", "jersey": "9", "position": "Small Forward"},
+    {"name": "Jabari Smith Jr.", "jersey": "10", "position": "Power Forward"},
+    {"name": "Alperen Şengün", "jersey": "28", "position": "Center"},
+    {"name": "Cam Whitmore", "jersey": "7", "position": "Small Forward"},
+    {"name": "Tari Eason", "jersey": "17", "position": "Power Forward"}
+  ]
+} 

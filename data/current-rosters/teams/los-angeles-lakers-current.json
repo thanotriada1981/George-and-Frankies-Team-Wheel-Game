@@ -1,10 +1,13 @@
-[
-  {"name": "LeBron James", "jersey": "6", "position": "Small Forward"},
-  {"name": "Austin Reaves", "jersey": "15", "position": "Shooting Guard"},
-  {"name": "Rui Hachimura", "jersey": "28", "position": "Power Forward"},
-  {"name": "Jarred Vanderbilt", "jersey": "2", "position": "Power Forward"},
-  {"name": "Jaxson Hayes", "jersey": "10", "position": "Center"},
-  {"name": "Gabe Vincent", "jersey": "7", "position": "Point Guard"},
-  {"name": "Max Christie", "jersey": "10", "position": "Shooting Guard"},
-  {"name": "Cam Reddish", "jersey": "5", "position": "Small Forward"}
-] 
+{
+  "coach": "JJ Redick",
+  "players": [
+    {"name": "LeBron James", "jersey": "6", "position": "Small Forward"},
+    {"name": "Austin Reaves", "jersey": "15", "position": "Shooting Guard"},
+    {"name": "Rui Hachimura", "jersey": "28", "position": "Power Forward"},
+    {"name": "Jarred Vanderbilt", "jersey": "2", "position": "Power Forward"},
+    {"name": "Jaxson Hayes", "jersey": "10", "position": "Center"},
+    {"name": "Gabe Vincent", "jersey": "7", "position": "Point Guard"},
+    {"name": "Max Christie", "jersey": "10", "position": "Shooting Guard"},
+    {"name": "Cam Reddish", "jersey": "5", "position": "Small Forward"}
+  ]
+} 

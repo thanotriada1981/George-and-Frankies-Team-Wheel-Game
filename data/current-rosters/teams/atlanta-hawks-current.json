@@ -1,10 +1,13 @@
-[
-  {"name": "Trae Young", "jersey": "11", "position": "Point Guard"},
-  {"name": "Kobe Bufkin", "jersey": "4", "position": "Point Guard"},
-  {"name": "Dyson Daniels", "jersey": "11", "position": "Shooting Guard"},
-  {"name": "Nickeil Alexander-Walker", "jersey": "9", "position": "Shooting Guard"},
-  {"name": "Zaccharie Risacher", "jersey": "18", "position": "Small Forward"},
-  {"name": "Jalen Johnson", "jersey": "1", "position": "Power Forward"},
-  {"name": "Kristaps Porziņģis", "jersey": "8", "position": "Center"},
-  {"name": "Onyeka Okongwu", "jersey": "17", "position": "Center"}
-] 
+{
+  "coach": "Quin Snyder",
+  "players": [
+    {"name": "Trae Young", "jersey": "11", "position": "Point Guard"},
+    {"name": "Kobe Bufkin", "jersey": "4", "position": "Point Guard"},
+    {"name": "Dyson Daniels", "jersey": "11", "position": "Shooting Guard"},
+    {"name": "Nickeil Alexander-Walker", "jersey": "9", "position": "Shooting Guard"},
+    {"name": "Zaccharie Risacher", "jersey": "18", "position": "Small Forward"},
+    {"name": "Jalen Johnson", "jersey": "1", "position": "Power Forward"},
+    {"name": "Kristaps Porziņģis", "jersey": "8", "position": "Center"},
+    {"name": "Onyeka Okongwu", "jersey": "17", "position": "Center"}
+  ]
+} 

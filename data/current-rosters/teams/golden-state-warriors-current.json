@@ -1,10 +1,13 @@
-[
-  {"name": "Stephen Curry", "jersey": "30", "position": "Point Guard"},
-  {"name": "Brandin Podziemski", "jersey": "2", "position": "Shooting Guard"},
-  {"name": "Jonathan Kuminga", "jersey": "00", "position": "Small Forward"},
-  {"name": "Draymond Green", "jersey": "23", "position": "Power Forward"},
-  {"name": "Kevon Looney", "jersey": "5", "position": "Center"},
-  {"name": "Moses Moody", "jersey": "4", "position": "Shooting Guard"},
-  {"name": "Andrew Wiggins", "jersey": "22", "position": "Small Forward"},
-  {"name": "Trayce Jackson-Davis", "jersey": "32", "position": "Center"}
-] 
+{
+  "coach": "Steve Kerr",
+  "players": [
+    {"name": "Stephen Curry", "jersey": "30", "position": "Point Guard"},
+    {"name": "Brandin Podziemski", "jersey": "2", "position": "Shooting Guard"},
+    {"name": "Jonathan Kuminga", "jersey": "00", "position": "Small Forward"},
+    {"name": "Draymond Green", "jersey": "23", "position": "Power Forward"},
+    {"name": "Kevon Looney", "jersey": "5", "position": "Center"},
+    {"name": "Moses Moody", "jersey": "4", "position": "Shooting Guard"},
+    {"name": "Andrew Wiggins", "jersey": "22", "position": "Small Forward"},
+    {"name": "Trayce Jackson-Davis", "jersey": "32", "position": "Center"}
+  ]
+} 

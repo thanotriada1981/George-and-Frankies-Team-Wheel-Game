@@ -1,10 +1,13 @@
-[
-  {"name": "Jamal Murray", "jersey": "27", "position": "Point Guard"},
-  {"name": "Collin Gillespie", "jersey": "2", "position": "Point Guard"},
-  {"name": "Christian Braun", "jersey": "0", "position": "Shooting Guard"},
-  {"name": "Kentavious Caldwell-Pope", "jersey": "5", "position": "Shooting Guard"},
-  {"name": "Michael Porter Jr.", "jersey": "1", "position": "Small Forward"},
-  {"name": "Aaron Gordon", "jersey": "50", "position": "Power Forward"},
-  {"name": "Nikola Jokić", "jersey": "15", "position": "Center"},
-  {"name": "Zeke Nnaji", "jersey": "22", "position": "Center"}
-] 
+{
+  "coach": "Michael Malone",
+  "players": [
+    {"name": "Jamal Murray", "jersey": "27", "position": "Point Guard"},
+    {"name": "Collin Gillespie", "jersey": "2", "position": "Point Guard"},
+    {"name": "Christian Braun", "jersey": "0", "position": "Shooting Guard"},
+    {"name": "Kentavious Caldwell-Pope", "jersey": "5", "position": "Shooting Guard"},
+    {"name": "Michael Porter Jr.", "jersey": "1", "position": "Small Forward"},
+    {"name": "Aaron Gordon", "jersey": "50", "position": "Power Forward"},
+    {"name": "Nikola Jokić", "jersey": "15", "position": "Center"},
+    {"name": "Zeke Nnaji", "jersey": "22", "position": "Center"}
+  ]
+} 

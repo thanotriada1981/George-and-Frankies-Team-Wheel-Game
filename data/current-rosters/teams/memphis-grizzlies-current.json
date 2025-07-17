@@ -1,10 +1,13 @@
-[
-  {"name": "Ja Morant", "jersey": "12", "position": "Point Guard"},
-  {"name": "Marcus Smart", "jersey": "36", "position": "Shooting Guard"},
-  {"name": "Desmond Bane", "jersey": "22", "position": "Shooting Guard"},
-  {"name": "Jaren Jackson Jr.", "jersey": "13", "position": "Power Forward"},
-  {"name": "Santi Aldama", "jersey": "7", "position": "Power Forward"},
-  {"name": "Brandon Clarke", "jersey": "15", "position": "Center"},
-  {"name": "Luke Kennard", "jersey": "10", "position": "Small Forward"},
-  {"name": "Xavier Tillman", "jersey": "2", "position": "Center"}
-] 
+{
+  "coach": "Taylor Jenkins",
+  "players": [
+    {"name": "Ja Morant", "jersey": "12", "position": "Point Guard"},
+    {"name": "Marcus Smart", "jersey": "36", "position": "Shooting Guard"},
+    {"name": "Desmond Bane", "jersey": "22", "position": "Shooting Guard"},
+    {"name": "Jaren Jackson Jr.", "jersey": "13", "position": "Power Forward"},
+    {"name": "Santi Aldama", "jersey": "7", "position": "Power Forward"},
+    {"name": "Brandon Clarke", "jersey": "15", "position": "Center"},
+    {"name": "Luke Kennard", "jersey": "10", "position": "Small Forward"},
+    {"name": "Xavier Tillman", "jersey": "2", "position": "Center"}
+  ]
+} 

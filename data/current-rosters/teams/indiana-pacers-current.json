@@ -1,10 +1,13 @@
-[
-  {"name": "Tyrese Haliburton", "jersey": "0", "position": "Point Guard"},
-  {"name": "Andrew Nembhard", "jersey": "2", "position": "Point Guard"},
-  {"name": "Bennedict Mathurin", "jersey": "00", "position": "Shooting Guard"},
-  {"name": "Aaron Nesmith", "jersey": "23", "position": "Small Forward"},
-  {"name": "Pascal Siakam", "jersey": "43", "position": "Power Forward"},
-  {"name": "Myles Turner", "jersey": "33", "position": "Center"},
-  {"name": "Obi Toppin", "jersey": "1", "position": "Power Forward"},
-  {"name": "Jalen Smith", "jersey": "25", "position": "Center"}
-] 
+{
+  "coach": "Rick Carlisle",
+  "players": [
+    {"name": "Tyrese Haliburton", "jersey": "0", "position": "Point Guard"},
+    {"name": "Andrew Nembhard", "jersey": "2", "position": "Point Guard"},
+    {"name": "Bennedict Mathurin", "jersey": "00", "position": "Shooting Guard"},
+    {"name": "Aaron Nesmith", "jersey": "23", "position": "Small Forward"},
+    {"name": "Pascal Siakam", "jersey": "43", "position": "Power Forward"},
+    {"name": "Myles Turner", "jersey": "33", "position": "Center"},
+    {"name": "Obi Toppin", "jersey": "1", "position": "Power Forward"},
+    {"name": "Jalen Smith", "jersey": "25", "position": "Center"}
+  ]
+} 

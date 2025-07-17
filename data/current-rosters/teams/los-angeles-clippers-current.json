@@ -1,10 +1,13 @@
-[
-  {"name": "James Harden", "jersey": "1", "position": "Point Guard"},
-  {"name": "Russell Westbrook", "jersey": "0", "position": "Point Guard"},
-  {"name": "Paul George", "jersey": "13", "position": "Shooting Guard"},
-  {"name": "Kawhi Leonard", "jersey": "2", "position": "Small Forward"},
-  {"name": "Norman Powell", "jersey": "24", "position": "Shooting Guard"},
-  {"name": "Ivica Zubac", "jersey": "40", "position": "Center"},
-  {"name": "Terance Mann", "jersey": "14", "position": "Small Forward"},
-  {"name": "Amir Coffey", "jersey": "7", "position": "Power Forward"}
-] 
+{
+  "coach": "Tyronn Lue",
+  "players": [
+    {"name": "James Harden", "jersey": "1", "position": "Point Guard"},
+    {"name": "Russell Westbrook", "jersey": "0", "position": "Point Guard"},
+    {"name": "Paul George", "jersey": "13", "position": "Shooting Guard"},
+    {"name": "Kawhi Leonard", "jersey": "2", "position": "Small Forward"},
+    {"name": "Norman Powell", "jersey": "24", "position": "Shooting Guard"},
+    {"name": "Ivica Zubac", "jersey": "40", "position": "Center"},
+    {"name": "Terance Mann", "jersey": "14", "position": "Small Forward"},
+    {"name": "Amir Coffey", "jersey": "7", "position": "Power Forward"}
+  ]
+} 

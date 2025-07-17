@@ -1,10 +1,13 @@
-[
-  {"name": "Devin Booker", "jersey": "1", "position": "Point Guard"},
-  {"name": "Bradley Beal", "jersey": "3", "position": "Shooting Guard"},
-  {"name": "Kevin Durant", "jersey": "35", "position": "Small Forward"},
-  {"name": "Bol Bol", "jersey": "10", "position": "Power Forward"},
-  {"name": "Jusuf Nurkić", "jersey": "20", "position": "Center"},
-  {"name": "Grayson Allen", "jersey": "8", "position": "Shooting Guard"},
-  {"name": "Eric Gordon", "jersey": "23", "position": "Shooting Guard"},
-  {"name": "Drew Eubanks", "jersey": "14", "position": "Center"}
-] 
+{
+  "coach": "TBA",
+  "players": [
+    {"name": "Devin Booker", "jersey": "1", "position": "Point Guard"},
+    {"name": "Bradley Beal", "jersey": "3", "position": "Shooting Guard"},
+    {"name": "Kevin Durant", "jersey": "35", "position": "Small Forward"},
+    {"name": "Bol Bol", "jersey": "10", "position": "Power Forward"},
+    {"name": "Jusuf Nurkić", "jersey": "20", "position": "Center"},
+    {"name": "Grayson Allen", "jersey": "8", "position": "Shooting Guard"},
+    {"name": "Eric Gordon", "jersey": "23", "position": "Shooting Guard"},
+    {"name": "Drew Eubanks", "jersey": "14", "position": "Center"}
+  ]
+} 

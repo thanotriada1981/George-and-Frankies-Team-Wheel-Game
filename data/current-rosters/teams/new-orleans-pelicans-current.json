@@ -1,10 +1,13 @@
-[
-  {"name": "CJ McCollum", "jersey": "3", "position": "Point Guard"},
-  {"name": "Herbert Jones", "jersey": "5", "position": "Shooting Guard"},
-  {"name": "Brandon Ingram", "jersey": "14", "position": "Small Forward"},
-  {"name": "Zion Williamson", "jersey": "1", "position": "Power Forward"},
-  {"name": "Jonas Valančiūnas", "jersey": "17", "position": "Center"},
-  {"name": "Trey Murphy III", "jersey": "25", "position": "Small Forward"},
-  {"name": "Larry Nance Jr.", "jersey": "22", "position": "Power Forward"},
-  {"name": "Jose Alvarado", "jersey": "15", "position": "Point Guard"}
-] 
+{
+  "coach": "Willie Green",
+  "players": [
+    {"name": "CJ McCollum", "jersey": "3", "position": "Point Guard"},
+    {"name": "Herbert Jones", "jersey": "5", "position": "Shooting Guard"},
+    {"name": "Brandon Ingram", "jersey": "14", "position": "Small Forward"},
+    {"name": "Zion Williamson", "jersey": "1", "position": "Power Forward"},
+    {"name": "Jonas Valančiūnas", "jersey": "17", "position": "Center"},
+    {"name": "Trey Murphy III", "jersey": "25", "position": "Small Forward"},
+    {"name": "Larry Nance Jr.", "jersey": "22", "position": "Power Forward"},
+    {"name": "Jose Alvarado", "jersey": "15", "position": "Point Guard"}
+  ]
+} 

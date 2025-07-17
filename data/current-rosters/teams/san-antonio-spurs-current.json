@@ -1,10 +1,13 @@
-[
-  {"name": "Tre Jones", "jersey": "33", "position": "Point Guard"},
-  {"name": "Devin Vassell", "jersey": "24", "position": "Shooting Guard"},
-  {"name": "Keldon Johnson", "jersey": "3", "position": "Small Forward"},
-  {"name": "Jeremy Sochan", "jersey": "10", "position": "Power Forward"},
-  {"name": "Victor Wembanyama", "jersey": "1", "position": "Center"},
-  {"name": "Zach Collins", "jersey": "23", "position": "Center"},
-  {"name": "Blake Wesley", "jersey": "14", "position": "Shooting Guard"},
-  {"name": "Cedi Osman", "jersey": "16", "position": "Small Forward"}
-] 
+{
+  "coach": "Gregg Popovich",
+  "players": [
+    {"name": "Tre Jones", "jersey": "33", "position": "Point Guard"},
+    {"name": "Devin Vassell", "jersey": "24", "position": "Shooting Guard"},
+    {"name": "Keldon Johnson", "jersey": "3", "position": "Small Forward"},
+    {"name": "Jeremy Sochan", "jersey": "10", "position": "Power Forward"},
+    {"name": "Victor Wembanyama", "jersey": "1", "position": "Center"},
+    {"name": "Zach Collins", "jersey": "23", "position": "Center"},
+    {"name": "Blake Wesley", "jersey": "14", "position": "Shooting Guard"},
+    {"name": "Cedi Osman", "jersey": "16", "position": "Small Forward"}
+  ]
+} 
