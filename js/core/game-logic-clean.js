@@ -102,6 +102,7 @@ function findTeamByDegree(degree) {
 // ✅ PROVEN METHOD: Spin wheel using successful implementation pattern
 function spinWheel() {
     console.log("🎯 === STARTING PROVEN SPIN METHOD ===");
+    console.log("[DEBUG] spinWheel called. gameState.isSpinning:", gameState.isSpinning);
     
     const wheel = document.getElementById('wheel');
     const spinButton = document.getElementById('classicSpinButton');
@@ -127,7 +128,7 @@ function spinWheel() {
 
     // Prevent multiple spins
     if (gameState.isSpinning) {
-        console.log("⚠️ Already spinning");
+        console.log("⚠️ Already spinning [DEBUG]", gameState.isSpinning);
         return;
     }
 
@@ -199,14 +200,29 @@ function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
         // ✅ NEW: Play completion sound effect
         playCompletionSound();
         
-        // Show result and highlight
+        // Show result and highlight selected team
         showTeamResult(winningTeam);
-        
         // Reset spinning state
         gameState.isSpinning = false;
-        spinButton.disabled = false;
-        spinButton.textContent = "🎯 SPIN THE WHEEL! 🎯";
-        
+        console.log("[DEBUG] Spin complete. gameState.isSpinning set to:", gameState.isSpinning);
+        // For classic spin mode, show 'Spin Again' button and hide original spin button
+        if (gameState.currentMode === 'classic') {
+            const spinButton = document.getElementById('classicSpinButton');
+            if (spinButton) spinButton.style.display = 'none';
+            let againBtn = document.getElementById('spinAgainButton');
+            if (!againBtn) {
+                againBtn = document.createElement('button');
+                againBtn.id = 'spinAgainButton';
+                againBtn.className = 'spin-button';
+                againBtn.textContent = '🔄 Spin Again';
+                againBtn.style.marginTop = '20px';
+                againBtn.onclick = () => location.reload();
+                const result = document.getElementById('classic-result');
+                if (result) result.parentNode.insertBefore(againBtn, result.nextSibling);
+            } else {
+                againBtn.style.display = 'inline-block';
+            }
+        }
         console.log("✅ Spin cycle complete!");
     }, 4000); // Match the 4s transition duration
 }
@@ -509,4 +525,24 @@ function playCompletionSound() {
     } catch (error) {
         console.log("🔇 Audio not supported or blocked:", error.message);
     }
+}
+
+// Fully reset the UI after a spin so the user can spin again
+function resetUIAfterSpin() {
+    const spinButton = document.getElementById('classicSpinButton');
+    if (spinButton) {
+        spinButton.disabled = false;
+        spinButton.textContent = "🎯 SPIN THE WHEEL! 🎯";
+        spinButton.style.display = 'inline-block';
+    }
+    const againBtn = document.getElementById('spinAgainButton');
+    if (againBtn) againBtn.style.display = 'none';
+    const result = document.getElementById('classic-result');
+    if (result) {
+        result.textContent = "🎯 Ready to spin!";
+        result.style.fontSize = '';
+        result.style.color = '';
+        result.style.fontWeight = '';
+    }
+    clearTeamHighlights();
 } 
