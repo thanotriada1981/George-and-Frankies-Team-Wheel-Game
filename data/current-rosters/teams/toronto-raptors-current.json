@@ -1,0 +1,10 @@
+[
+  {"name": "Scottie Barnes", "jersey": "4", "position": "Point Guard"},
+  {"name": "Immanuel Quickley", "jersey": "5", "position": "Shooting Guard"},
+  {"name": "RJ Barrett", "jersey": "9", "position": "Small Forward"},
+  {"name": "Pascal Siakam", "jersey": "43", "position": "Power Forward"},
+  {"name": "Jakob Poeltl", "jersey": "19", "position": "Center"},
+  {"name": "Gary Trent Jr.", "jersey": "33", "position": "Shooting Guard"},
+  {"name": "Chris Boucher", "jersey": "25", "position": "Power Forward"},
+  {"name": "Precious Achiuwa", "jersey": "5", "position": "Center"}
+] 

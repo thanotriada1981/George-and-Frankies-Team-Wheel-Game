@@ -1,0 +1,10 @@
+[
+  {"name": "Mike Conley", "jersey": "10", "position": "Point Guard"},
+  {"name": "Anthony Edwards", "jersey": "5", "position": "Shooting Guard"},
+  {"name": "Jaden McDaniels", "jersey": "3", "position": "Small Forward"},
+  {"name": "Karl-Anthony Towns", "jersey": "32", "position": "Power Forward"},
+  {"name": "Rudy Gobert", "jersey": "27", "position": "Center"},
+  {"name": "Naz Reid", "jersey": "11", "position": "Center"},
+  {"name": "Kyle Anderson", "jersey": "1", "position": "Power Forward"},
+  {"name": "Nickeil Alexander-Walker", "jersey": "9", "position": "Shooting Guard"}
+] 

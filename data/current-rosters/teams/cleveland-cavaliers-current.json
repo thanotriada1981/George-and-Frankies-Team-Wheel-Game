@@ -1,68 +1,12 @@
 [
-  {
-    "name": "Darius Garland",
-    "jersey": "10",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4396907.png"
-  },
-  {
-    "name": "Donovan Mitchell",
-    "jersey": "45",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3908809.png"
-  },
-  {
-    "name": "De'Andre Hunter",
-    "jersey": "12",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4065732.png"
-  },
-  {
-    "name": "Lonzo Ball",
-    "jersey": "N/A",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066421.png"
-  },
-  {
-    "name": "Jarrett Allen",
-    "jersey": "31",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066328.png"
-  },
-  {
-    "name": "Max Strus",
-    "jersey": "1",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4065778.png"
-  },
-  {
-    "name": "Evan Mobley",
-    "jersey": "4",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432158.png"
-  },
-  {
-    "name": "Larry Nance Jr.",
-    "jersey": "22",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2580365.png"
-  },
-  {
-    "name": "Dean Wade",
-    "jersey": "32",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3912848.png"
-  },
-  {
-    "name": "Jaylon Tyson",
-    "jersey": "24",
-    "position": "F",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4683747.png"
-  },
-  {
-    "name": "Sam Merrill",
-    "jersey": "5",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066757.png"
-  }
+  {"name": "Darius Garland", "jersey": "10", "position": "Point Guard"},
+  {"name": "Lonzo Ball", "jersey": "2", "position": "Point Guard"},
+  {"name": "Donovan Mitchell", "jersey": "45", "position": "Shooting Guard"},
+  {"name": "Sam Merrill", "jersey": "5", "position": "Shooting Guard"},
+  {"name": "De'Andre Hunter", "jersey": "12", "position": "Small Forward"},
+  {"name": "Jaylon Tyson", "jersey": "N/A", "position": "Small Forward"},
+  {"name": "Evan Mobley", "jersey": "4", "position": "Power Forward"},
+  {"name": "Dean Wade", "jersey": "32", "position": "Power Forward"},
+  {"name": "Jarrett Allen", "jersey": "31", "position": "Center"},
+  {"name": "Tristan Thompson", "jersey": "13", "position": "Center"}
 ] 

@@ -1,74 +1,12 @@
 [
-  {
-    "name": "Anthony Davis",
-    "jersey": "3",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6583.png"
-  },
-  {
-    "name": "Kyrie Irving",
-    "jersey": "11",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6442.png"
-  },
-  {
-    "name": "D'Angelo Russell",
-    "jersey": "N/A",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3136776.png"
-  },
-  {
-    "name": "Klay Thompson",
-    "jersey": "31",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6475.png"
-  },
-  {
-    "name": "P.J. Washington",
-    "jersey": "25",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4278078.png"
-  },
-  {
-    "name": "Daniel Gafford",
-    "jersey": "21",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4278049.png"
-  },
-  {
-    "name": "Naji Marshall",
-    "jersey": "13",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4278594.png"
-  },
-  {
-    "name": "Caleb Martin",
-    "jersey": "16",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3138160.png"
-  },
-  {
-    "name": "Max Christie",
-    "jersey": "00",
-    "position": "G",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432582.png"
-  },
-  {
-    "name": "Dereck Lively II",
-    "jersey": "2",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4683688.png"
-  },
-  {
-    "name": "Dwight Powell",
-    "jersey": "7",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2531367.png"
-  },
-  {
-    "name": "Dante Exum",
-    "jersey": "0",
-    "position": "G",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3102528.png"
-  }
+  {"name": "Kyrie Irving", "jersey": "11", "position": "Point Guard"},
+  {"name": "D'Angelo Russell", "jersey": "1", "position": "Point Guard"},
+  {"name": "Klay Thompson", "jersey": "11", "position": "Shooting Guard"},
+  {"name": "Max Christie", "jersey": "10", "position": "Shooting Guard"},
+  {"name": "Naji Marshall", "jersey": "8", "position": "Small Forward"},
+  {"name": "Cooper Flagg", "jersey": "N/A", "position": "Small Forward"},
+  {"name": "PJ Washington", "jersey": "25", "position": "Power Forward"},
+  {"name": "Anthony Davis", "jersey": "3", "position": "Power Forward"},
+  {"name": "Daniel Gafford", "jersey": "21", "position": "Center"},
+  {"name": "Derrick Lively II", "jersey": "2", "position": "Center"}
 ] 

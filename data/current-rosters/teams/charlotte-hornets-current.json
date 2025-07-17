@@ -1,74 +1,11 @@
 [
-  {
-    "name": "LaMelo Ball",
-    "jersey": "1",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png"
-  },
-  {
-    "name": "Miles Bridges",
-    "jersey": "0",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066383.png"
-  },
-  {
-    "name": "Grant Williams",
-    "jersey": "2",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066218.png"
-  },
-  {
-    "name": "Josh Green",
-    "jersey": "10",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432811.png"
-  },
-  {
-    "name": "Brandon Miller",
-    "jersey": "24",
-    "position": "F",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4433287.png"
-  },
-  {
-    "name": "Pat Connaughton",
-    "jersey": "24",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2578239.png"
-  },
-  {
-    "name": "Tidjane Salaun",
-    "jersey": "31",
-    "position": "F",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/5211176.png"
-  },
-  {
-    "name": "Tre Mann",
-    "jersey": "23",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432819.png"
-  },
-  {
-    "name": "Nick Smith Jr.",
-    "jersey": "8",
-    "position": "G",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4683686.png"
-  },
-  {
-    "name": "DaQuan Jeffries",
-    "jersey": "3",
-    "position": "SG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3913220.png"
-  },
-  {
-    "name": "Mason Plumlee",
-    "jersey": "22",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2488653.png"
-  },
-  {
-    "name": "Taj Gibson",
-    "jersey": "67",
-    "position": "F",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3986.png"
-  }
+  {"name": "LaMelo Ball", "jersey": "1", "position": "Point Guard"},
+  {"name": "Spencer Dinwiddie", "jersey": "26", "position": "Point Guard"},
+  {"name": "Josh Green", "jersey": "8", "position": "Shooting Guard"},
+  {"name": "Seth Curry", "jersey": "30", "position": "Shooting Guard"},
+  {"name": "Brandon Miller", "jersey": "24", "position": "Small Forward"},
+  {"name": "Miles Bridges", "jersey": "0", "position": "Power Forward"},
+  {"name": "Grant Williams", "jersey": "2", "position": "Power Forward"},
+  {"name": "Mason Plumlee", "jersey": "24", "position": "Center"},
+  {"name": "Kon Knueppel", "jersey": "N/A", "position": "Center"}
 ] 

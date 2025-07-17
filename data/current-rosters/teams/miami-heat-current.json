@@ -1,0 +1,10 @@
+[
+  {"name": "Tyler Herro", "jersey": "14", "position": "Point Guard"},
+  {"name": "Terry Rozier", "jersey": "3", "position": "Shooting Guard"},
+  {"name": "Jimmy Butler", "jersey": "22", "position": "Small Forward"},
+  {"name": "Nikola Jović", "jersey": "5", "position": "Power Forward"},
+  {"name": "Bam Adebayo", "jersey": "13", "position": "Center"},
+  {"name": "Duncan Robinson", "jersey": "55", "position": "Shooting Guard"},
+  {"name": "Jaime Jaquez Jr.", "jersey": "11", "position": "Small Forward"},
+  {"name": "Thomas Bryant", "jersey": "31", "position": "Center"}
+] 

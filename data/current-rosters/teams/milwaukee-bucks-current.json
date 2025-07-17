@@ -1,0 +1,10 @@
+[
+  {"name": "Damian Lillard", "jersey": "0", "position": "Point Guard"},
+  {"name": "Malik Beasley", "jersey": "5", "position": "Shooting Guard"},
+  {"name": "Khris Middleton", "jersey": "22", "position": "Small Forward"},
+  {"name": "Giannis Antetokounmpo", "jersey": "34", "position": "Power Forward"},
+  {"name": "Brook Lopez", "jersey": "11", "position": "Center"},
+  {"name": "Bobby Portis", "jersey": "9", "position": "Power Forward"},
+  {"name": "Jae Crowder", "jersey": "99", "position": "Small Forward"},
+  {"name": "Pat Connaughton", "jersey": "24", "position": "Shooting Guard"}
+] 

@@ -1,86 +1,10 @@
 [
-  {
-    "name": "Nikola Jokic",
-    "jersey": "15",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3112335.png"
-  },
-  {
-    "name": "Jamal Murray",
-    "jersey": "27",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3936299.png"
-  },
-  {
-    "name": "Bruce Brown",
-    "jersey": "N/A",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4065670.png"
-  },
-  {
-    "name": "Aaron Gordon",
-    "jersey": "32",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3064290.png"
-  },
-  {
-    "name": "Cameron Johnson",
-    "jersey": "N/A",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3138196.png"
-  },
-  {
-    "name": "Tim Hardaway Jr.",
-    "jersey": "N/A",
-    "position": "SF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2528210.png"
-  },
-  {
-    "name": "Jonas Valanciunas",
-    "jersey": "17",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6477.png"
-  },
-  {
-    "name": "Zeke Nnaji",
-    "jersey": "22",
-    "position": "PF",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4431690.png"
-  },
-  {
-    "name": "Russell Westbrook",
-    "jersey": "4",
-    "position": "PG",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3468.png"
-  },
-  {
-    "name": "Christian Braun",
-    "jersey": "0",
-    "position": "G",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4431767.png"
-  },
-  {
-    "name": "DaRon Holmes II",
-    "jersey": "14",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4433607.png"
-  },
-  {
-    "name": "Julian Strawther",
-    "jersey": "3",
-    "position": "G",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432181.png"
-  },
-  {
-    "name": "Peyton Watson",
-    "jersey": "8",
-    "position": "F",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4576087.png"
-  },
-  {
-    "name": "DeAndre Jordan",
-    "jersey": "6",
-    "position": "C",
-    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3442.png"
-  }
+  {"name": "Jamal Murray", "jersey": "27", "position": "Point Guard"},
+  {"name": "Collin Gillespie", "jersey": "2", "position": "Point Guard"},
+  {"name": "Christian Braun", "jersey": "0", "position": "Shooting Guard"},
+  {"name": "Kentavious Caldwell-Pope", "jersey": "5", "position": "Shooting Guard"},
+  {"name": "Michael Porter Jr.", "jersey": "1", "position": "Small Forward"},
+  {"name": "Aaron Gordon", "jersey": "50", "position": "Power Forward"},
+  {"name": "Nikola Jokić", "jersey": "15", "position": "Center"},
+  {"name": "Zeke Nnaji", "jersey": "22", "position": "Center"}
 ] 

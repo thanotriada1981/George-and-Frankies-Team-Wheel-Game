@@ -1,0 +1,10 @@
+[
+  {"name": "Markelle Fultz", "jersey": "20", "position": "Point Guard"},
+  {"name": "Jalen Suggs", "jersey": "4", "position": "Shooting Guard"},
+  {"name": "Franz Wagner", "jersey": "22", "position": "Small Forward"},
+  {"name": "Paolo Banchero", "jersey": "5", "position": "Power Forward"},
+  {"name": "Wendell Carter Jr.", "jersey": "34", "position": "Center"},
+  {"name": "Cole Anthony", "jersey": "50", "position": "Point Guard"},
+  {"name": "Jonathan Isaac", "jersey": "1", "position": "Power Forward"},
+  {"name": "Moritz Wagner", "jersey": "21", "position": "Center"}
+] 
