@@ -2,12 +2,14 @@
   "coach": "Mike Brown",
   "players": [
     {"name": "Jalen Brunson", "jersey": "11", "position": "Point Guard"},
-    {"name": "Donte DiVincenzo", "jersey": "0", "position": "Shooting Guard"},
-    {"name": "RJ Barrett", "jersey": "9", "position": "Small Forward"},
-    {"name": "Julius Randle", "jersey": "30", "position": "Power Forward"},
-    {"name": "Mitchell Robinson", "jersey": "23", "position": "Center"},
-    {"name": "Josh Hart", "jersey": "3", "position": "Small Forward"},
-    {"name": "Isaiah Hartenstein", "jersey": "55", "position": "Center"},
-    {"name": "Miles McBride", "jersey": "2", "position": "Point Guard"}
+    {"name": "Miles McBride", "jersey": "2", "position": "Point Guard"},
+    {"name": "Josh Hart", "jersey": "3", "position": "Shooting Guard"},
+    {"name": "Jordan Clarkson", "jersey": "00", "position": "Shooting Guard"},
+    {"name": "Mikal Bridges", "jersey": "1", "position": "Small Forward"},
+    {"name": "PJ Tucker", "jersey": "17", "position": "Small Forward"},
+    {"name": "OG Anunoby", "jersey": "8", "position": "Power Forward"},
+    {"name": "Precious Achiuwa", "jersey": "5", "position": "Power Forward"},
+    {"name": "Karl-Anthony Towns", "jersey": "32", "position": "Center"},
+    {"name": "Mitchell Robinson", "jersey": "23", "position": "Center"}
   ]
 } 

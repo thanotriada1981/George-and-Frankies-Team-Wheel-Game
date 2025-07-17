@@ -2,12 +2,14 @@
   "coach": "Will Hardy",
   "players": [
     {"name": "Collin Sexton", "jersey": "2", "position": "Point Guard"},
-    {"name": "Jordan Clarkson", "jersey": "00", "position": "Shooting Guard"},
-    {"name": "Lauri Markkanen", "jersey": "23", "position": "Small Forward"},
-    {"name": "John Collins", "jersey": "20", "position": "Power Forward"},
+    {"name": "Keyonte George", "jersey": "3", "position": "Point Guard"},
+    {"name": "Walter Clayton Jr.", "jersey": "N/A", "position": "Shooting Guard"},
+    {"name": "Ace Bailey", "jersey": "N/A", "position": "Shooting Guard"},
+    {"name": "Cody Williams", "jersey": "N/A", "position": "Small Forward"},
+    {"name": "Kyle Anderson", "jersey": "1", "position": "Small Forward"},
+    {"name": "Lauri Markkanen", "jersey": "23", "position": "Power Forward"},
+    {"name": "Kevin Love", "jersey": "0", "position": "Power Forward"},
     {"name": "Walker Kessler", "jersey": "24", "position": "Center"},
-    {"name": "Kris Dunn", "jersey": "11", "position": "Point Guard"},
-    {"name": "Taylor Hendricks", "jersey": "0", "position": "Power Forward"},
-    {"name": "Omer Yurtseven", "jersey": "77", "position": "Center"}
+    {"name": "Kyle Filipowski", "jersey": "N/A", "position": "Center"}
   ]
 } 

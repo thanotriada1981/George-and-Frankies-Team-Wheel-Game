@@ -2,12 +2,14 @@
   "coach": "Taylor Jenkins",
   "players": [
     {"name": "Ja Morant", "jersey": "12", "position": "Point Guard"},
-    {"name": "Marcus Smart", "jersey": "36", "position": "Shooting Guard"},
-    {"name": "Desmond Bane", "jersey": "22", "position": "Shooting Guard"},
+    {"name": "Ty Jerome", "jersey": "2", "position": "Point Guard"},
+    {"name": "Kentavious Caldwell-Pope", "jersey": "1", "position": "Shooting Guard"},
+    {"name": "Scotty Pippen Jr.", "jersey": "14", "position": "Shooting Guard"},
+    {"name": "Jaylen Wells", "jersey": "N/A", "position": "Small Forward"},
+    {"name": "GG Jackson", "jersey": "45", "position": "Small Forward"},
     {"name": "Jaren Jackson Jr.", "jersey": "13", "position": "Power Forward"},
-    {"name": "Santi Aldama", "jersey": "7", "position": "Power Forward"},
-    {"name": "Brandon Clarke", "jersey": "15", "position": "Center"},
-    {"name": "Luke Kennard", "jersey": "10", "position": "Small Forward"},
-    {"name": "Xavier Tillman", "jersey": "2", "position": "Center"}
+    {"name": "Brandon Clarke", "jersey": "15", "position": "Power Forward"},
+    {"name": "Zach Edey", "jersey": "N/A", "position": "Center"},
+    {"name": "Santi Aldama", "jersey": "7", "position": "Center"}
   ]
 } 

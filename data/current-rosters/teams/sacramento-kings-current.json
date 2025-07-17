@@ -5,9 +5,7 @@
     {"name": "Malik Monk", "jersey": "0", "position": "Shooting Guard"},
     {"name": "Harrison Barnes", "jersey": "40", "position": "Small Forward"},
     {"name": "Keegan Murray", "jersey": "13", "position": "Power Forward"},
-    {"name": "Domantas Sabonis", "jersey": "10", "position": "Center"},
-    {"name": "Kevin Huerter", "jersey": "9", "position": "Shooting Guard"},
     {"name": "Trey Lyles", "jersey": "41", "position": "Power Forward"},
-    {"name": "Davion Mitchell", "jersey": "15", "position": "Point Guard"}
+    {"name": "Domantas Sabonis", "jersey": "10", "position": "Center"}
   ]
 } 
