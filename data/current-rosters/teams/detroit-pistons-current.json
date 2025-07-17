@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Tobias Harris",
+    "jersey": "12",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6440.png"
+  },
+  {
+    "name": "Duncan Robinson",
+    "jersey": "N/A",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3157465.png"
+  },
+  {
+    "name": "Caris LeVert",
+    "jersey": "N/A",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2991043.png"
+  },
+  {
+    "name": "Isaiah Stewart",
+    "jersey": "28",
+    "position": "C",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432810.png"
+  },
+  {
+    "name": "Cade Cunningham",
+    "jersey": "2",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png"
+  },
+  {
+    "name": "Ausar Thompson",
+    "jersey": "9",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4684742.png"
+  },
+  {
+    "name": "Ronald Holland II",
+    "jersey": "00",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4683771.png"
+  },
+  {
+    "name": "Jaden Ivey",
+    "jersey": "23",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4433218.png"
+  },
+  {
+    "name": "Malik Beasley",
+    "jersey": "5",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3907822.png"
+  },
+  {
+    "name": "Jalen Duren",
+    "jersey": "0",
+    "position": "C",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4433621.png"
+  },
+  {
+    "name": "Marcus Sasser",
+    "jersey": "25",
+    "position": "G",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432107.png"
+  }
+] 

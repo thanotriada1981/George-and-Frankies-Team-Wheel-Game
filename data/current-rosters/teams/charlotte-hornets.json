@@ -1,0 +1,10 @@
+{
+  "team": "Charlotte Hornets",
+  "roster": [
+    {"name": "LaMelo Ball", "jersey": "1", "position": "Point Guard"},
+    {"name": "Collin Sexton", "jersey": "2", "position": "Point Guard"},
+    {"name": "Brandon Miller", "jersey": "24", "position": "Shooting Guard"},
+    {"name": "Gordon Hayward", "jersey": "20", "position": "Small Forward"},
+    {"name": "Mason Plumlee", "jersey": "24", "position": "Center"}
+  ]
+} 

@@ -1,0 +1,11 @@
+{
+  "team": "Boston Celtics",
+  "roster": [
+    {"name": "Derrick White", "jersey": "25", "position": "Point Guard"},
+    {"name": "Anfernee Simons", "jersey": "2", "position": "Point Guard"},
+    {"name": "Jaylen Brown", "jersey": "7", "position": "Shooting Guard"},
+    {"name": "Jayson Tatum", "jersey": "0", "position": "Small Forward"},
+    {"name": "Al Horford", "jersey": "42", "position": "Power Forward"},
+    {"name": "Robert Williams III", "jersey": "44", "position": "Center"}
+  ]
+} 

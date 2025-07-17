@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Stephen Curry",
+    "jersey": "30",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3975.png"
+  },
+  {
+    "name": "Jimmy Butler III",
+    "jersey": "10",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6430.png"
+  },
+  {
+    "name": "Draymond Green",
+    "jersey": "23",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/6589.png"
+  },
+  {
+    "name": "Gary Payton II",
+    "jersey": "0",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3134903.png"
+  },
+  {
+    "name": "Buddy Hield",
+    "jersey": "7",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2990984.png"
+  },
+  {
+    "name": "Jonathan Kuminga",
+    "jersey": "00",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4433247.png"
+  },
+  {
+    "name": "Moses Moody",
+    "jersey": "4",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432171.png"
+  },
+  {
+    "name": "Brandin Podziemski",
+    "jersey": "2",
+    "position": "G",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4709138.png"
+  },
+  {
+    "name": "Gui Santos",
+    "jersey": "15",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4997536.png"
+  },
+  {
+    "name": "Trayce Jackson-Davis",
+    "jersey": "32",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4431684.png"
+  }
+] 

@@ -1,0 +1,10 @@
+{
+  "team": "Dallas Mavericks",
+  "roster": [
+    {"name": "Dennis Smith Jr.", "jersey": "N/A", "position": "Point Guard"},
+    {"name": "Klay Thompson", "jersey": "N/A", "position": "Shooting Guard"},
+    {"name": "Cedric Flagg", "jersey": "N/A", "position": "Small Forward"},
+    {"name": "Anthony Davis", "jersey": "3", "position": "Power Forward"},
+    {"name": "Doyle Lively II", "jersey": "2", "position": "Center"}
+  ]
+} 

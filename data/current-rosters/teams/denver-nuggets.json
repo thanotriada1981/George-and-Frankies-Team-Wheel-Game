@@ -1,0 +1,10 @@
+{
+  "team": "Denver Nuggets",
+  "roster": [
+    {"name": "Jamal Murray", "jersey": "27", "position": "Point Guard"},
+    {"name": "Christian Braun", "jersey": "15", "position": "Shooting Guard"},
+    {"name": "Christian Johnson", "jersey": "N/A", "position": "Small Forward"},
+    {"name": "Aaron Gordon", "jersey": "50", "position": "Power Forward"},
+    {"name": "Nikola Jokić", "jersey": "15", "position": "Center"}
+  ]
+} 

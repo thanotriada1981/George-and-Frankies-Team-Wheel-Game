@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Nikola Vucevic",
+    "jersey": "9",
+    "position": "C",
+    "photo": "N/A"
+  },
+  {
+    "name": "Patrick Williams",
+    "jersey": "44",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4431687.png"
+  },
+  {
+    "name": "Kevin Huerter",
+    "jersey": "13",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066372.png"
+  },
+  {
+    "name": "Zach Collins",
+    "jersey": "12",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066650.png"
+  },
+  {
+    "name": "Coby White",
+    "jersey": "0",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4395651.png"
+  },
+  {
+    "name": "Isaac Okoro",
+    "jersey": "N/A",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4432822.png"
+  },
+  {
+    "name": "Tre Jones",
+    "jersey": "30",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4395626.png"
+  },
+  {
+    "name": "Jalen Smith",
+    "jersey": "7",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4397189.png"
+  },
+  {
+    "name": "Josh Giddey",
+    "jersey": "3",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4871145.png"
+  },
+  {
+    "name": "Ayo Dosunmu",
+    "jersey": "11",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4397002.png"
+  },
+  {
+    "name": "Jevon Carter",
+    "jersey": "5",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3133635.png"
+  },
+  {
+    "name": "Matas Buzelis",
+    "jersey": "14",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4711294.png"
+  }
+] 

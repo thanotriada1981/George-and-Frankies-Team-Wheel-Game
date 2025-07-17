@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Jaylen Brown",
+    "jersey": "7",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3917376.png"
+  },
+  {
+    "name": "Jayson Tatum",
+    "jersey": "0",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png"
+  },
+  {
+    "name": "Anfernee Simons",
+    "jersey": "1",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4351851.png"
+  },
+  {
+    "name": "Derrick White",
+    "jersey": "9",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3078576.png"
+  },
+  {
+    "name": "Al Horford",
+    "jersey": "42",
+    "position": "C",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3213.png"
+  },
+  {
+    "name": "Georges Niang",
+    "jersey": "N/A",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2990969.png"
+  },
+  {
+    "name": "Payton Pritchard",
+    "jersey": "11",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4066354.png"
+  },
+  {
+    "name": "Torrey Craig",
+    "jersey": "12",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/2528693.png"
+  },
+  {
+    "name": "Baylor Scheierman",
+    "jersey": "55",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4593841.png"
+  },
+  {
+    "name": "Xavier Tillman",
+    "jersey": "26",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4277964.png"
+  },
+  {
+    "name": "Neemias Queta",
+    "jersey": "88",
+    "position": "C",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4397424.png"
+  },
+  {
+    "name": "Luka Garza",
+    "jersey": "55",
+    "position": "C",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4277951.png"
+  },
+  {
+    "name": "Sam Hauser",
+    "jersey": "30",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4065804.png"
+  }
+] 

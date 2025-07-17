@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Trae Young",
+    "jersey": "11",
+    "position": "PG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4277905.png"
+  },
+  {
+    "name": "Kristaps Porzingis",
+    "jersey": "8",
+    "position": "C",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3102531.png"
+  },
+  {
+    "name": "Onyeka Okongwu",
+    "jersey": "17",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4431680.png"
+  },
+  {
+    "name": "Zaccharie Risacher",
+    "jersey": "10",
+    "position": "PF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/5211175.png"
+  },
+  {
+    "name": "Luke Kennard",
+    "jersey": "N/A",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3913174.png"
+  },
+  {
+    "name": "Dyson Daniels",
+    "jersey": "5",
+    "position": "G",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4869342.png"
+  },
+  {
+    "name": "Jalen Johnson",
+    "jersey": "1",
+    "position": "SF",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4701230.png"
+  },
+  {
+    "name": "Nickeil Alexander-Walker",
+    "jersey": "9",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4278039.png"
+  },
+  {
+    "name": "Kobe Bufkin",
+    "jersey": "4",
+    "position": "G",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4683736.png"
+  },
+  {
+    "name": "Garrison Mathews",
+    "jersey": "24",
+    "position": "SG",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/3913180.png"
+  },
+  {
+    "name": "Vit Krejci",
+    "jersey": "27",
+    "position": "G",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4578893.png"
+  },
+  {
+    "name": "Mouhamed Gueye",
+    "jersey": "18",
+    "position": "F",
+    "photo": "https://a.espncdn.com/i/headshots/nba/players/full/4712863.png"
+  }
+] 
