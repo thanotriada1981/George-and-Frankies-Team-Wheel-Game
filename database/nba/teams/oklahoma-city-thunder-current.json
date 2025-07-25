@@ -1,0 +1,50 @@
+{
+  "coach": "Mark Daigneault",
+  "players": [
+    {
+      "name": "Shai Gilgeous-Alexander",
+      "jersey": "2",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Cason Wallace",
+      "jersey": "22",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Luguentz Dort",
+      "jersey": "5",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Alex Caruso",
+      "jersey": "6",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Jalen Williams",
+      "jersey": "8",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Aaron Wiggins",
+      "jersey": "21",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Chet Holmgren",
+      "jersey": "7",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Jaylin Williams",
+      "jersey": "6",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Isaiah Hartenstein",
+      "jersey": "55",
+      "position": "Center"
+    }
+  ]
+}

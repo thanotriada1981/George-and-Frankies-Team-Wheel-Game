@@ -33,7 +33,7 @@ async function loadPlayersForTeam(team) {
         
         // If no roster data in loaded teams, try to load from JSON file
         console.log("📄 Loading from JSON file...");
-        const response = await fetch('data/nba_teams_data.json');
+        const response = await fetch('database/nba_teams_data.json');
         const data = await response.json();
         
         // Find the team in our data

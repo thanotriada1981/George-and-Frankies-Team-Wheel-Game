@@ -1,0 +1,55 @@
+{
+  "coach": "Tyronn Lue",
+  "players": [
+    {
+      "name": "James Harden",
+      "jersey": "1",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Kris Dunn",
+      "jersey": "11",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Bradley Beal",
+      "jersey": "3",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Bogdan Bogdanović",
+      "jersey": "13",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Kawhi Leonard",
+      "jersey": "2",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Derrick Jones Jr.",
+      "jersey": "55",
+      "position": "Small Forward"
+    },
+    {
+      "name": "John Collins",
+      "jersey": "20",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Nicolas Batum",
+      "jersey": "5",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Ivica Zubac",
+      "jersey": "40",
+      "position": "Center"
+    },
+    {
+      "name": "Brook Lopez",
+      "jersey": "11",
+      "position": "Center"
+    }
+  ]
+}

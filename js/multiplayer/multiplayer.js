@@ -583,7 +583,7 @@ async function initializeMultiplayerWheel() {
         } else {
             console.log('🔄 SportSelector not available, loading NBA data directly...');
             // Fallback: Load NBA data directly
-            const response = await fetch('./data/nba_teams_data.json');
+            const response = await fetch('./database/nba_teams_data.json');
             const data = await response.json();
             const teams = data.teams || data;
             console.log('📊 Loaded teams data:', teams.length, 'teams');

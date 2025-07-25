@@ -20,7 +20,7 @@ function getSportIcon(sportKey) {
 // Load sports configuration
 async function loadSportsConfig() {
     try {
-        const response = await fetch('./data/sports-config.json');
+        const response = await fetch('./database/sports-config.json');
         sportsConfig = await response.json();
         currentSport = sportsConfig.default_sport || 'nba';
         console.log('🏆 Sports config loaded:', Object.keys(sportsConfig.available_sports));
@@ -40,7 +40,7 @@ function getCurrentSportConfig() {
         return {
             name: 'NBA',
             team_count: 30,
-            data_file: 'data/nba_teams_data.json',
+            data_file: 'database/nba_teams_data.json',
             logo_path: 'assets/logos/nba/',
             wheel_config: {
                 center_text: 'NBA',

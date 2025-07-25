@@ -1,0 +1,55 @@
+{
+  "coach": "Jamahl Mosley",
+  "players": [
+    {
+      "name": "Jalen Suggs",
+      "jersey": "4",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Tyus Jones",
+      "jersey": "21",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Desmond Bane",
+      "jersey": "22",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Anthony Black",
+      "jersey": "0",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Franz Wagner",
+      "jersey": "22",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Mac McClung",
+      "jersey": "9",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Paolo Banchero",
+      "jersey": "5",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Jonathan Isaac",
+      "jersey": "1",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Wendell Carter Jr.",
+      "jersey": "34",
+      "position": "Center"
+    },
+    {
+      "name": "Moritz Wagner",
+      "jersey": "21",
+      "position": "Center"
+    }
+  ]
+}

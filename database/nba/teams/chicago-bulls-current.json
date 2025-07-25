@@ -1,0 +1,50 @@
+{
+  "coach": "Billy Donovan",
+  "players": [
+    {
+      "name": "Coby White",
+      "jersey": "0",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Josh Giddey",
+      "jersey": "3",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Kevin Huerter",
+      "jersey": "9",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Ayo Dosunmu",
+      "jersey": "12",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Matas Buzelis",
+      "jersey": "N/A",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Patrick Williams",
+      "jersey": "44",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Jalen Smith",
+      "jersey": "25",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Nikola Vučević",
+      "jersey": "9",
+      "position": "Center"
+    },
+    {
+      "name": "Zach Collins",
+      "jersey": "23",
+      "position": "Center"
+    }
+  ]
+}

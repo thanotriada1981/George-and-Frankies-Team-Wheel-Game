@@ -12,8 +12,8 @@ async function loadWheelConfigurations() {
     console.log("🔧 Loading pre-built wheel configurations...");
     
     try {
-        console.log("📡 Fetching ./data/wheel-configurations.json...");
-        const response = await fetch('./data/wheel-configurations.json');
+        console.log("📡 Fetching ./database/wheel-configurations.json...");
+        const response = await fetch('./database/wheel-configurations.json');
         console.log("📡 Response status:", response.status, response.statusText);
         
         if (!response.ok) {

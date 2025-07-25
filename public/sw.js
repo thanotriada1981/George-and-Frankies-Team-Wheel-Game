@@ -24,7 +24,7 @@ const urlsToCache = [
   '/frameworks/multiplayer/online-multiplayer.js',
   
   // Data files
-  '/data/nba_teams_data.json',
+          '/database/nba_teams_data.json',
   
   // Source files
   '/src/nba/nba_data.js',

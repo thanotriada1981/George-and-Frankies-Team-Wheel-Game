@@ -40,7 +40,7 @@ function testDataLoading() {
 async function testDirectJSONLoad() {
     try {
         console.log("🔍 Testing direct JSON load...");
-        const response = await fetch('data/nba_teams_data.json');
+        const response = await fetch('database/nba_teams_data.json');
         const data = await response.json();
         console.log("✅ JSON loaded successfully");
         console.log("📊 Teams in JSON:", data.teams.length);

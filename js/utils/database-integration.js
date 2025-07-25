@@ -61,7 +61,7 @@ class UnifiedNBADatabase {
      * Load main teams data
      */
     async loadMainTeamsData() {
-        const response = await fetch('data/nba_teams_data.json');
+        const response = await fetch('database/nba_teams_data.json');
         if (!response.ok) throw new Error(`Failed to load main teams data: ${response.status}`);
         return await response.json();
     }

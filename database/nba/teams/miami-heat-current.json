@@ -1,0 +1,45 @@
+{
+  "coach": "Erik Spoelstra",
+  "players": [
+    {
+      "name": "Tyler Herro",
+      "jersey": "14",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Davion Mitchell",
+      "jersey": "15",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Terry Rozier",
+      "jersey": "3",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Norman Powell",
+      "jersey": "24",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Andrew Wiggins",
+      "jersey": "22",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Jaime Jaquez Jr.",
+      "jersey": "11",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Nikola Jović",
+      "jersey": "5",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Bam Adebayo",
+      "jersey": "13",
+      "position": "Center"
+    }
+  ]
+}

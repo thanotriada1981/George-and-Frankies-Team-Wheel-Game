@@ -1,0 +1,50 @@
+{
+  "coach": "Nick Nurse",
+  "players": [
+    {
+      "name": "Tyrese Maxey",
+      "jersey": "0",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Kyle Lowry",
+      "jersey": "7",
+      "position": "Point Guard"
+    },
+    {
+      "name": "Kelly Oubre Jr.",
+      "jersey": "9",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Quentin Grimes",
+      "jersey": "6",
+      "position": "Shooting Guard"
+    },
+    {
+      "name": "Paul George",
+      "jersey": "13",
+      "position": "Small Forward"
+    },
+    {
+      "name": "BJ Edgecombe",
+      "jersey": "N/A",
+      "position": "Small Forward"
+    },
+    {
+      "name": "Andre Drummond",
+      "jersey": "3",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Paul Reed",
+      "jersey": "44",
+      "position": "Power Forward"
+    },
+    {
+      "name": "Joel Embiid",
+      "jersey": "21",
+      "position": "Center"
+    }
+  ]
+}
