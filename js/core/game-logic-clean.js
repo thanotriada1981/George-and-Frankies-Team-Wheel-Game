@@ -346,35 +346,35 @@ function initializeUI() {
     switchMode('classic');
 }
 
-// Switch between game modes (classic vs multiplayer)
+// Switch between game modes (classic vs dream team builder)
 function switchMode(mode) {
     gameState.currentMode = mode;
     
     // Update button states
-    const classicBtn = document.getElementById('classicMode');
-    const multiplayerBtn = document.getElementById('multiplayerMode');
+    const classicBtn = document.querySelector('.mode-button[onclick="switchMode(\'classic\')"]');
+    const dreamTeamBtn = document.querySelector('.mode-button[onclick="showSetupPhase()"]');
     
-    if (classicBtn && multiplayerBtn) {
+    if (classicBtn && dreamTeamBtn) {
         if (mode === 'classic') {
             classicBtn.classList.add('active');
-            multiplayerBtn.classList.remove('active');
+            dreamTeamBtn.classList.remove('active');
         } else {
             classicBtn.classList.remove('active');
-            multiplayerBtn.classList.add('active');
+            dreamTeamBtn.classList.add('active');
         }
     }
     
     // Show/hide appropriate sections
-    const classicSection = document.getElementById('classic-game');
-    const multiplayerSection = document.getElementById('multiplayer-game');
+    const classicSection = document.getElementById('classic-mode');
+    const dreamTeamSection = document.getElementById('dream-team-mode');
     
-    if (classicSection && multiplayerSection) {
+    if (classicSection && dreamTeamSection) {
         if (mode === 'classic') {
             classicSection.style.display = 'block';
-            multiplayerSection.style.display = 'none';
+            dreamTeamSection.style.display = 'none';
         } else {
             classicSection.style.display = 'none';
-            multiplayerSection.style.display = 'block';
+            dreamTeamSection.style.display = 'block';
         }
     }
     
@@ -391,7 +391,7 @@ function switchMode(mode) {
     clearTeamHighlights();
 }
 
-// Show setup phase for multiplayer
+// Show setup phase for dream team builder
 function showSetupPhase() {
     const setupPhase = document.getElementById('setup-phase');
     const modeSelection = document.getElementById('mode-selection');
