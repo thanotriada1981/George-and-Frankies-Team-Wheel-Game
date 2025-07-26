@@ -61,16 +61,16 @@ class UnifiedNBADatabase {
      * Load main teams data
      */
     async loadMainTeamsData() {
-        const response = await fetch('database/nba_teams_data.json');
+        const response = await fetch('database/nba/teams/nba_teams_data.json');
         if (!response.ok) throw new Error(`Failed to load main teams data: ${response.status}`);
         return await response.json();
     }
 
     /**
-     * Load NBA 2K25 player ratings
+     * Load NBA 2K26 player ratings from unified data
      */
     async loadPlayerRatings() {
-        const response = await fetch('database/nba/players/nba-2k25-master-ratings.json');
+        const response = await fetch('database/nba/teams/nba_teams_data.json');
         if (!response.ok) throw new Error(`Failed to load player ratings: ${response.status}`);
         return await response.json();
     }

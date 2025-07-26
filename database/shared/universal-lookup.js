@@ -73,7 +73,7 @@ class UniversalSportsLookup {
 
             // Load player ratings if available
             if (league === 'NBA') {
-                const ratingsPath = `${leagueData.dataPath}players/nba-2k25-master-ratings.json`;
+                const ratingsPath = `${leagueData.dataPath}teams/nba_teams_data.json`;
                 const ratingsResponse = await fetch(ratingsPath);
                 leagueData.playerRatings = await ratingsResponse.json();
 

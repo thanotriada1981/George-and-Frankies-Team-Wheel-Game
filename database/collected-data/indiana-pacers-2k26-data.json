@@ -1,0 +1,293 @@
+{
+  "team": "Indiana Pacers",
+  "players": [
+    {
+      "name": "Tyrese Haliburton",
+      "overall_rating": 90,
+      "position": "PG",
+      "jersey_number": "15",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 82,
+        "playmaking": 90,
+        "athleticism": 90,
+        "defending": 90,
+        "rebounding": 90
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "3-Level Scoring Playmaker"
+      }
+    },
+    {
+      "name": "Pascal Siakam",
+      "overall_rating": 87,
+      "position": "PF",
+      "jersey_number": "21",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 82,
+        "playmaking": 87,
+        "athleticism": 87,
+        "defending": 87,
+        "rebounding": 87
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "2-Way Slashing Stretch Four"
+      }
+    },
+    {
+      "name": "Andrew Nembhard",
+      "overall_rating": 83,
+      "position": "SG",
+      "jersey_number": "14",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 77,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "2-Way 3-Level Shot Creator"
+      }
+    },
+    {
+      "name": "Obi Toppin",
+      "overall_rating": 82,
+      "position": "PF",
+      "jersey_number": "13",
+      "detailed_attributes": {
+        "inside": 90,
+        "outside": 80,
+        "playmaking": 82,
+        "athleticism": 82,
+        "defending": 82,
+        "rebounding": 82
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Inside-Out Scoring Threat"
+      }
+    },
+    {
+      "name": "Aaron Nesmith",
+      "overall_rating": 81,
+      "position": "SF",
+      "jersey_number": "7",
+      "detailed_attributes": {
+        "inside": 55,
+        "outside": 86,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "3 & D Wing"
+      }
+    },
+    {
+      "name": "Bennedict Mathurin",
+      "overall_rating": 81,
+      "position": "SF",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 77,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Inside-Out Shot Creator"
+      }
+    },
+    {
+      "name": "T.J. McConnell",
+      "overall_rating": 80,
+      "position": "PG",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 25,
+        "outside": 75,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'1\"",
+        "position": "2-Way Perimeter Playmaker"
+      }
+    },
+    {
+      "name": "Thomas Bryant",
+      "overall_rating": 76,
+      "position": "C",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 74,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Inside the Arc Threat"
+      }
+    },
+    {
+      "name": "Isaiah Jackson",
+      "overall_rating": 76,
+      "position": "C",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 59,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Board-Hunting Lob Threat"
+      }
+    },
+    {
+      "name": "Jay Huff",
+      "overall_rating": 76,
+      "position": "C",
+      "jersey_number": "1",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 84,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "7'1\"",
+        "position": "Stretch Five"
+      }
+    },
+    {
+      "name": "Jarace Walker",
+      "overall_rating": 76,
+      "position": "PF",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 87,
+        "outside": 84,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "3-Level Scoring Threat"
+      }
+    },
+    {
+      "name": "James Wiseman",
+      "overall_rating": 75,
+      "position": "C",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 67,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'11\"",
+        "position": "Board-Hunting Lob Threat"
+      }
+    },
+    {
+      "name": "Ben Sheppard",
+      "overall_rating": 74,
+      "position": "SG",
+      "jersey_number": "2",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 78,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Perimeter Shot Creator"
+      }
+    },
+    {
+      "name": "Tony Bradley",
+      "overall_rating": 72,
+      "position": "C",
+      "jersey_number": "7",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 26,
+        "playmaking": 72,
+        "athleticism": 72,
+        "defending": 72,
+        "rebounding": 72
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Board-Hunting Lob Threat"
+      }
+    },
+    {
+      "name": "Johnny Furphy",
+      "overall_rating": 70,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 80,
+        "playmaking": 70,
+        "athleticism": 70,
+        "defending": 70,
+        "rebounding": 70
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Catch & Shoot Threat"
+      }
+    },
+    {
+      "name": "RayJ Dennis",
+      "overall_rating": 67,
+      "position": "PG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 55,
+        "outside": 73,
+        "playmaking": 67,
+        "athleticism": 67,
+        "defending": 67,
+        "rebounding": 67
+      },
+      "physical_stats": {
+        "height": "6'2\"",
+        "position": "Ball Hawk"
+      }
+    }
+  ]
+}

@@ -40,7 +40,7 @@ function testDataLoading() {
 async function testDirectJSONLoad() {
     try {
         console.log("🔍 Testing direct JSON load...");
-        const response = await fetch('database/nba_teams_data.json');
+        const response = await fetch('database/nba/teams/nba_teams_data.json');
         const data = await response.json();
         console.log("✅ JSON loaded successfully");
         console.log("📊 Teams in JSON:", data.teams.length);
@@ -61,7 +61,7 @@ async function testNBA2K25Database() {
         console.log("🔍 Testing NBA 2K25 database load...");
         
         // Test the correct path
-        const response = await fetch('database/nba/players/nba-2k25-master-ratings.json');
+        const response = await fetch('database/nba/teams/nba_teams_data.json');
         console.log("📊 Response status:", response.status);
         
         if (response.ok) {
@@ -215,7 +215,7 @@ function testNBA2K25Ratings() {
     console.log("🧪 Testing NBA 2K25 ratings integration...");
     
     // Try to load the ratings database and cross-reference with our team data
-    fetch('database/nba/players/nba-2k25-master-ratings.json')
+    fetch('database/nba/teams/nba_teams_data.json')
         .then(response => response.json())
         .then(ratingsData => {
             console.log("✅ NBA 2K25 ratings loaded successfully");
@@ -271,4 +271,43 @@ window.testBattleSystem = testBattleSystem;
 window.skipToClassicMode = skipToClassicMode;
 window.testRealPlayerRosters = testRealPlayerRosters;
 window.testNBA2K25Ratings = testNBA2K25Ratings;
-window.testWheelFormatting = testWheelFormatting; 
+window.testWheelFormatting = testWheelFormatting;
+
+// Test player selection modal
+function testPlayerSelectionModal() {
+    console.log("🏀 Testing player selection modal...");
+    
+    // Create a test team object
+    const testTeam = {
+        teamName: "Boston Celtics",
+        name: "Boston Celtics",
+        color_primary: "#007A33"
+    };
+    
+    // Check if the modal elements exist
+    const playerSelection = document.getElementById('playerSelection');
+    const teamNameSpan = document.getElementById('selectedTeamName');
+    const dropdown = document.getElementById('playerDropdown');
+    
+    console.log("🏀 Modal elements found:", {
+        playerSelection: !!playerSelection,
+        teamNameSpan: !!teamNameSpan,
+        dropdown: !!dropdown
+    });
+    
+    if (playerSelection && teamNameSpan && dropdown) {
+        // Try to show the modal
+        if (typeof showPlayerSelection === 'function') {
+            console.log("🏀 Calling showPlayerSelection with test team...");
+            showPlayerSelection(testTeam);
+        } else {
+            console.error("❌ showPlayerSelection function not found");
+            alert("❌ showPlayerSelection function not found");
+        }
+    } else {
+        console.error("❌ Modal elements not found");
+        alert("❌ Modal elements not found - check HTML structure");
+    }
+}
+
+window.testPlayerSelectionModal = testPlayerSelectionModal; 

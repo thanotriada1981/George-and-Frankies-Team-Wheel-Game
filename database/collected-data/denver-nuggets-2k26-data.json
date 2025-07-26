@@ -1,0 +1,293 @@
+{
+  "team": "Denver Nuggets",
+  "players": [
+    {
+      "name": "Nikola Jokic",
+      "overall_rating": 98,
+      "position": "C",
+      "jersey_number": "15",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 86,
+        "playmaking": 98,
+        "athleticism": 98,
+        "defending": 98,
+        "rebounding": 98
+      },
+      "physical_stats": {
+        "height": "6'11\"",
+        "position": "2-Way 3-Level Point Center"
+      }
+    },
+    {
+      "name": "Jamal Murray",
+      "overall_rating": 87,
+      "position": "PG",
+      "jersey_number": "27",
+      "detailed_attributes": {
+        "inside": 82,
+        "outside": 85,
+        "playmaking": 87,
+        "athleticism": 87,
+        "defending": 87,
+        "rebounding": 87
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "Offensive Architect"
+      }
+    },
+    {
+      "name": "Aaron Gordon",
+      "overall_rating": 84,
+      "position": "PF",
+      "jersey_number": "50",
+      "detailed_attributes": {
+        "inside": 94,
+        "outside": 88,
+        "playmaking": 84,
+        "athleticism": 84,
+        "defending": 84,
+        "rebounding": 84
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "2-Way 3-Level Scorer"
+      }
+    },
+    {
+      "name": "Cameron Johnson",
+      "overall_rating": 84,
+      "position": "PF",
+      "jersey_number": "23",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 83,
+        "playmaking": 84,
+        "athleticism": 84,
+        "defending": 84,
+        "rebounding": 84
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Stretch Four"
+      }
+    },
+    {
+      "name": "Christian Braun",
+      "overall_rating": 83,
+      "position": "SF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 84,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "3-Level Scoring Threat"
+      }
+    },
+    {
+      "name": "Jonas Valanciunas",
+      "overall_rating": 81,
+      "position": "C",
+      "jersey_number": "17",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 63,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'11\"",
+        "position": "Inside The Arc Board Hunter"
+      }
+    },
+    {
+      "name": "Tim Hardaway Jr.",
+      "overall_rating": 80,
+      "position": "SG",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 78,
+        "outside": 85,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Inside-Out Shot Creator"
+      }
+    },
+    {
+      "name": "Peyton Watson",
+      "overall_rating": 77,
+      "position": "PF",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 79,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Versatile Defender"
+      }
+    },
+    {
+      "name": "Bruce Brown",
+      "overall_rating": 76,
+      "position": "PG",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 75,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "3 & D Threat"
+      }
+    },
+    {
+      "name": "Julian Strawther",
+      "overall_rating": 76,
+      "position": "SG",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 79,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "3 & D Threat"
+      }
+    },
+    {
+      "name": "Zeke Nnaji",
+      "overall_rating": 75,
+      "position": "C",
+      "jersey_number": "22",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 76,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Stretch Five"
+      }
+    },
+    {
+      "name": "Jalen Pickett",
+      "overall_rating": 72,
+      "position": "PG",
+      "jersey_number": "24",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 82,
+        "playmaking": 72,
+        "athleticism": 72,
+        "defending": 72,
+        "rebounding": 72
+      },
+      "physical_stats": {
+        "height": "6'2\"",
+        "position": "3PT Shot Creator"
+      }
+    },
+    {
+      "name": "DaRon Holmes II",
+      "overall_rating": 71,
+      "position": "PF",
+      "jersey_number": "14",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 75,
+        "playmaking": 71,
+        "athleticism": 71,
+        "defending": 71,
+        "rebounding": 71
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Stretch Four"
+      }
+    },
+    {
+      "name": "Hunter Tyson",
+      "overall_rating": 70,
+      "position": "PF",
+      "jersey_number": "5",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 73,
+        "playmaking": 70,
+        "athleticism": 70,
+        "defending": 70,
+        "rebounding": 70
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Mid-Range Scoring Threat"
+      }
+    },
+    {
+      "name": "Reece Beekman",
+      "overall_rating": 69,
+      "position": "PG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 25,
+        "outside": 62,
+        "playmaking": 69,
+        "athleticism": 69,
+        "defending": 69,
+        "rebounding": 69
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "Steady Playmaker"
+      }
+    },
+    {
+      "name": "Spencer Jones",
+      "overall_rating": 67,
+      "position": "SF",
+      "jersey_number": "21",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 79,
+        "playmaking": 67,
+        "athleticism": 67,
+        "defending": 67,
+        "rebounding": 67
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Catch & Shoot Threat"
+      }
+    }
+  ]
+}

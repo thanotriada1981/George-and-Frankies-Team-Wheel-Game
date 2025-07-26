@@ -26,7 +26,7 @@ database/
 ```
 database/nba/
 ├── players/
-│   ├── nba-2k25-master-ratings.json    ← All player ratings
+│   ├── nba_teams_data.json    ← All team data with player ratings
 │   └── rosters.json                     ← Team rosters
 ├── teams/
 │   └── team-info.json                   ← Team details & colors
@@ -123,7 +123,7 @@ console.log(battle.explanation); // "George's bench was stronger!"
 
 ### When New NBA Ratings Come Out:
 1. **Download** new player ratings from 2K
-2. **Update** `nba-2k25-master-ratings.json` with new data
+2. **Update** `nba_teams_data.json` with new data
 3. **Test** that everything still works
 4. **Done!** Battle system uses new ratings automatically
 

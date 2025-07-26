@@ -6,6 +6,22 @@
 // Game state for host name
 let hostName = '';
 
+// Ensure we have access to the global gameState
+if (typeof gameState === 'undefined') {
+    console.warn('⚠️ gameState not found, creating fallback');
+    window.gameState = {
+        isSpinning: false,
+        currentMode: 'classic',
+        players: [],
+        dreamTeams: [],
+        currentPlayerIndex: 0,
+        currentRound: 1,
+        phase: 'setup',
+        numPlayers: 2,
+        gameType: 'local'
+    };
+}
+
 // Step 1: Set Host Name
 function setHostName() {
     const hostInput = document.getElementById('host-name-input');
@@ -207,17 +223,69 @@ function updateMultiplayerDisplay() {
     const result = document.getElementById('dream-result');
     const spinCounter = document.getElementById('spinCounter');
     
+    console.log(`🔄 updateMultiplayerDisplay called - Current player: ${currentPlayer.name} (index: ${gameState.currentPlayerIndex})`);
+    
     // Update current player display
     result.innerHTML = `🎯 <strong style="color: #ff6b6b;">${currentPlayer.name}</strong>, it's your turn! 🎯`;
     
-    // Update spin counter
+    // Update spin counter with alternating turn info
     const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
     const filledPositions = Object.values(currentTeam).filter(player => player !== null).length;
     const positionsNeeded = 8 - filledPositions;
-    spinCounter.textContent = `${currentPlayer.name} - Positions needed: ${positionsNeeded}/8`;
+    
+    if (positionsNeeded > 0) {
+        spinCounter.textContent = `🎯 ${currentPlayer.name}'s Turn - ${positionsNeeded}/8 positions filled`;
+    } else {
+        spinCounter.textContent = `✅ ${currentPlayer.name}'s team is complete!`;
+    }
     
     // Update team display for current player
     updateTeamDisplay(gameState.currentPlayerIndex);
+    
+    // Show turn order for all players
+    updateTurnOrderDisplay();
+}
+
+function updateTurnOrderDisplay() {
+    // Create or update turn order display
+    let turnOrderDiv = document.getElementById('turnOrderDisplay');
+    if (!turnOrderDiv) {
+        turnOrderDiv = document.createElement('div');
+        turnOrderDiv.id = 'turnOrderDisplay';
+        turnOrderDiv.className = 'turn-order-display';
+        turnOrderDiv.style.cssText = `
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+            text-align: center;
+        `;
+        
+        // Insert after the spin counter
+        const spinCounter = document.getElementById('spinCounter');
+        if (spinCounter && spinCounter.parentNode) {
+            spinCounter.parentNode.insertBefore(turnOrderDiv, spinCounter.nextSibling);
+        }
+    }
+    
+    // Build turn order display
+    let turnOrderHTML = '<strong>🔄 Turn Order:</strong><br>';
+    gameState.players.forEach((player, index) => {
+        const team = gameState.dreamTeams[index];
+        const filledPositions = Object.values(team).filter(player => player !== null).length;
+        const isCurrentTurn = index === gameState.currentPlayerIndex;
+        
+        if (filledPositions < 8) {
+            const status = isCurrentTurn ? '🎯 CURRENT' : '⏳ Waiting';
+            turnOrderHTML += `${player.name}: ${filledPositions}/8 ${status}<br>`;
+        } else {
+            turnOrderHTML += `${player.name}: ✅ Complete<br>`;
+        }
+    });
+    
+    turnOrderDiv.innerHTML = turnOrderHTML;
 }
 
 function updateTeamDisplay(playerIndex) {
@@ -242,23 +310,42 @@ function updateTeamDisplay(playerIndex) {
 }
 
 function showPlayerSelection(team) {
+    console.log("🏀 === showPlayerSelection START ===");
+    console.log("🏀 Team received:", team);
+    
     const playerSelection = document.getElementById('playerSelection');
     const teamNameSpan = document.getElementById('selectedTeamName');
     const dropdown = document.getElementById('playerDropdown');
     const currentPlayer = gameState.players[gameState.currentPlayerIndex];
     
+    console.log("🏀 Elements found:", {
+        playerSelection: !!playerSelection,
+        teamNameSpan: !!teamNameSpan,
+        dropdown: !!dropdown,
+        currentPlayer: currentPlayer
+    });
+    
+    // Convert team object to the format expected by loadPlayersForTeam
+    const teamForLoading = {
+        name: team.teamName || team.name,
+        color_primary: team.color_primary || '#000000'
+    };
+    
+    console.log("🏀 showPlayerSelection called with team:", team);
+    console.log("🔄 Converted team for loading:", teamForLoading);
+    
     // Update the selection header
     const selectionHeader = playerSelection.querySelector('h3');
     selectionHeader.textContent = `🏀 ${currentPlayer.name}, Select Your Player!`;
     
-    teamNameSpan.textContent = team.name;
-    teamNameSpan.style.color = team.color_primary;
+    teamNameSpan.textContent = teamForLoading.name;
+    teamNameSpan.style.color = teamForLoading.color_primary;
     
     // Clear dropdown
     dropdown.innerHTML = '<option value="">Loading players...</option>';
     
     // Load players for this team
-    loadPlayersForTeam(team)
+    loadPlayersForTeam(teamForLoading)
         .then(players => {
             gameState.currentPlayers = players;
             populatePlayerDropdown(players);
@@ -267,13 +354,16 @@ function showPlayerSelection(team) {
         .catch(error => {
             console.error('Error loading players:', error);
             // Use mock data as fallback
-            const mockPlayers = generateMockPlayers(team.name);
+            const mockPlayers = generateMockPlayers(teamForLoading.name);
             gameState.currentPlayers = mockPlayers;
             populatePlayerDropdown(mockPlayers);
             updatePositionButtons();
         });
     
+    console.log("🏀 About to show player selection modal");
     playerSelection.classList.add('show');
+    console.log("🏀 Modal show class added. Modal visible:", playerSelection.classList.contains('show'));
+    console.log("🏀 === showPlayerSelection END ===");
 }
 
 function populatePlayerDropdown(players) {
@@ -283,12 +373,15 @@ function populatePlayerDropdown(players) {
     // Filter out coaches from player selection for positions
     const playersOnly = players.filter(player => !player.isCoach);
     
-    playersOnly.forEach((player, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = `${player.full_name || player.first_name + ' ' + player.last_name} - ${player.position}`;
-        dropdown.appendChild(option);
-    });
+            playersOnly.forEach((player, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            
+            // Get player rating if available
+            const playerRating = player.nba2k26Rating || player.rating || 'N/A';
+            option.textContent = `${player.full_name || player.first_name + ' ' + player.last_name} - ${player.position} (${playerRating})`;
+            dropdown.appendChild(option);
+        });
     
     // Add coaches separately
     const coaches = players.filter(player => player.isCoach);
@@ -299,7 +392,13 @@ function populatePlayerDropdown(players) {
         coaches.forEach((coach, index) => {
             const option = document.createElement('option');
             option.value = playersOnly.length + index;
-            option.textContent = `${coach.full_name || coach.first_name + ' ' + coach.last_name} - ${coach.position}`;
+            
+            // Get coach rating and tier info if available
+            const coachRating = coach.nba2k26Rating || coach.rating || 'N/A';
+            const coachTier = coach.coachInfo?.tierName || coach.tierName || '';
+            const tierDisplay = coachTier ? ` (${coachTier})` : '';
+            
+            option.textContent = `${coach.full_name || coach.first_name + ' ' + coach.last_name} - ${coach.position} ${coachRating}${tierDisplay}`;
             coachGroup.appendChild(option);
         });
         
@@ -381,33 +480,54 @@ function assignPlayer(position) {
     document.getElementById('playerSelection').classList.remove('show');
     
     // Move to next player's turn
+    console.log(`🔄 Calling nextPlayerTurn() after ${playerName} assignment`);
     nextPlayerTurn();
 }
 
 function nextPlayerTurn() {
-    // Check if current team is complete (all 8 positions filled)
-    const currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
-    const filledPositions = Object.values(currentTeam).filter(player => player !== null).length;
+    // Always move to next player after each pick (alternating turns)
+    gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % gameState.numPlayers;
     
-    console.log(`🎯 ${gameState.players[gameState.currentPlayerIndex].name} has ${filledPositions}/8 positions filled`);
+    console.log(`🔄 Moving to next player: ${gameState.players[gameState.currentPlayerIndex].name}`);
     
-    // If current team is complete, move to next player
-    if (filledPositions === 8) {
-        console.log(`✅ ${gameState.players[gameState.currentPlayerIndex].name}'s team is complete!`);
+    // Check if the current player's team is already complete
+    let currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+    let currentTeamFilledPositions = Object.values(currentTeam).filter(player => player !== null).length;
+    
+    console.log(`🎯 ${gameState.players[gameState.currentPlayerIndex].name} has ${currentTeamFilledPositions}/8 positions filled`);
+    
+    // If current player's team is complete, skip to the next available player
+    if (currentTeamFilledPositions === 8) {
+        console.log(`✅ ${gameState.players[gameState.currentPlayerIndex].name}'s team is complete, skipping...`);
         
-        // Move to next player
-        gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % gameState.numPlayers;
+        // Find next player with incomplete team
+        let attempts = 0;
+        while (currentTeamFilledPositions === 8 && attempts < gameState.numPlayers) {
+            gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % gameState.numPlayers;
+            currentTeam = gameState.dreamTeams[gameState.currentPlayerIndex];
+            currentTeamFilledPositions = Object.values(currentTeam).filter(player => player !== null).length;
+            
+            console.log(`🔄 Checking ${gameState.players[gameState.currentPlayerIndex].name} (${currentTeamFilledPositions}/8 filled)`);
+            
+            if (currentTeamFilledPositions < 8) {
+                console.log(`✅ Found available player: ${gameState.players[gameState.currentPlayerIndex].name}`);
+                break;
+            }
+            attempts++;
+        }
         
         // Check if all teams are complete
         if (areAllTeamsComplete()) {
+            console.log('🎉 All teams are complete! Starting battle phase...');
             startBattlePhase();
             return;
         }
-    } else {
-        // Current player needs more players, increment round but stay with same player
-        gameState.currentRound++;
-        console.log(`🔄 ${gameState.players[gameState.currentPlayerIndex].name} needs ${8 - filledPositions} more players`);
     }
+    
+    // Increment round for alternating turns
+    gameState.currentRound++;
+    
+    console.log(`🎯 Current turn: ${gameState.players[gameState.currentPlayerIndex].name} (Round ${gameState.currentRound})`);
     
     // Update display for current player
     updateMultiplayerDisplay();
@@ -416,11 +536,11 @@ function nextPlayerTurn() {
     const spinButton = document.getElementById('dreamSpinButton');
     if (spinButton) {
         spinButton.disabled = false;
-        spinButton.textContent = '🎯 SPIN FOR PLAYER! 🎯';
+        spinButton.textContent = `🎯 ${gameState.players[gameState.currentPlayerIndex].name}'s Turn - SPIN! 🎯`;
     }
     
-    // Update spin counter (will be handled by updateMultiplayerDisplay)
-    // updateSpinCounter();
+    // Update spin counter
+    updateSpinCounter();
 }
 
 function areAllTeamsComplete() {
@@ -441,7 +561,11 @@ function updateSpinCounter() {
     
     const counter = document.getElementById('spinCounter');
     if (counter) {
-        counter.textContent = `${gameState.players[gameState.currentPlayerIndex].name} - Positions Left: ${spinsLeft}`;
+        if (spinsLeft > 0) {
+            counter.textContent = `🎯 ${gameState.players[gameState.currentPlayerIndex].name}'s Turn - ${spinsLeft} positions left`;
+        } else {
+            counter.textContent = `✅ ${gameState.players[gameState.currentPlayerIndex].name}'s team is complete!`;
+        }
     }
 }
 
@@ -583,7 +707,7 @@ async function initializeMultiplayerWheel() {
         } else {
             console.log('🔄 SportSelector not available, loading NBA data directly...');
             // Fallback: Load NBA data directly
-            const response = await fetch('./database/nba_teams_data.json');
+            const response = await fetch('./database/nba/teams/nba_teams_data.json');
             const data = await response.json();
             const teams = data.teams || data;
             console.log('📊 Loaded teams data:', teams.length, 'teams');

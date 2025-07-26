@@ -1,6 +1,6 @@
 /**
- * 🏀 ENHANCED NBA 2K26 RATINGS DATA COLLECTION SCRIPT
- * Optimized for 2kratings.com current structure and NBA 2K26 data
+ * 🏀 SIMPLIFIED NBA 2K26 RATINGS DATA COLLECTION SCRIPT
+ * Focuses on core player data: basic info, detailed attributes, and physical stats
  * 
  * USAGE INSTRUCTIONS:
  * 1. Navigate to https://www.2kratings.com/
@@ -8,17 +8,17 @@
  * 3. Make sure you're on a team page showing NBA 2K26 ratings
  * 4. Open browser console (F12 → Console)
  * 5. Copy and paste this entire script
- * 6. Run: collectEnhanced2K26Data()
+ * 6. Run: collectSimplified2K26Data()
  * 7. Copy the JSON output and save to appropriate team file
  */
 
-function collectEnhanced2K26Data() {
-    console.log('🏀 Starting Enhanced NBA 2K26 Ratings Collection...');
+function collectSimplified2K26Data() {
+    console.log('🏀 Starting Simplified NBA 2K26 Ratings Collection...');
     
     try {
         const teamData = {
             team: {
-                name: getEnhanced2KTeamName(),
+                name: getSimplified2KTeamName(),
                 abbreviation: '',
                 city: '',
                 conference: '',
@@ -28,35 +28,22 @@ function collectEnhanced2K26Data() {
                 website: "https://www.2kratings.com/",
                 collection_date: new Date().toISOString().split('T')[0],
                 game_version: "NBA 2K26",
-                notes: "Enhanced collection with detailed player attributes and team stats"
+                notes: "Simplified collection focusing on core player data"
             },
-            roster: [],
-            team_stats: {
-                total_players: 0,
-                average_overall: 0,
-                highest_rated: { player: "", rating: 0 },
-                lowest_rated: { player: "", rating: 100 },
-                team_strengths: [],
-                position_breakdown: {},
-                rating_distribution: {}
-            }
+            roster: []
         };
         
-        // Collect enhanced player ratings
-        const players = collectEnhanced2KPlayersData();
+        // Collect simplified player ratings
+        const players = collectSimplified2KPlayersData();
         teamData.roster = players;
         
         // Fill in team details
         teamData.team.abbreviation = getTeamAbbreviation(teamData.team.name);
         teamData.team.city = teamData.team.name.split(' ').slice(0, -1).join(' ');
         
-        // Calculate enhanced team stats
-        teamData.team_stats = calculateEnhanced2KTeamStats(players);
-        
-        console.log('✅ Enhanced 2K26 data collection complete!');
+        console.log('✅ Simplified 2K26 data collection complete!');
         console.log('📊 Team:', teamData.team.name);
         console.log('👥 Players found:', players.length);
-        console.log('⭐ Average Overall:', teamData.team_stats.average_overall);
         
         // Output formatted JSON
         console.log('\n🔥 COPY THIS JSON DATA:');
@@ -67,12 +54,12 @@ function collectEnhanced2K26Data() {
         return teamData;
         
     } catch (error) {
-        console.error('❌ Error in enhanced 2K26 collection:', error);
+        console.error('❌ Error in simplified 2K26 collection:', error);
         return null;
     }
 }
 
-function getEnhanced2KTeamName() {
+function getSimplified2KTeamName() {
     // Enhanced team name detection for 2kratings.com
     const selectors = [
         'h1',
@@ -116,7 +103,7 @@ function getEnhanced2KTeamName() {
     return prompt('Enter team name (e.g., "Los Angeles Lakers"):') || 'Unknown Team';
 }
 
-function collectEnhanced2KPlayersData() {
+function collectSimplified2KPlayersData() {
     const players = [];
     
     // Enhanced selectors for 2kratings.com structure
@@ -141,12 +128,12 @@ function collectEnhanced2KPlayersData() {
     
     if (playerElements.length === 0) {
         console.warn('⚠️ No players found. Trying alternative approach...');
-        return collect2KPlayersFromAlternativeStructure();
+        return collectSimplified2KPlayersFromAlternativeStructure();
     }
     
     playerElements.forEach((element, index) => {
         try {
-            const player = extractEnhanced2KPlayerData(element, index);
+            const player = extractSimplified2KPlayerData(element, index);
             if (player && player.name && player.name.length > 2 && player.overall_rating > 0) {
                 players.push(player);
                 console.log(`✅ ${index + 1}. ${player.name} - ${player.overall_rating} OVR (${player.position})`);
@@ -164,22 +151,20 @@ function collectEnhanced2KPlayersData() {
     );
 }
 
-function extractEnhanced2KPlayerData(element, index) {
+function extractSimplified2KPlayerData(element, index) {
     const player = {
-        name: extractEnhanced2KPlayerName(element),
-        position: extractEnhanced2KPosition(element),
-        overall_rating: extractEnhanced2KOverall(element),
-        jersey_number: extractEnhanced2KJerseyNumber(element),
-        detailed_ratings: extractDetailed2KRatings(element),
-        archetype: extractPlayerArchetype(element),
-        badges: extractPlayerBadges(element),
-        physical_stats: extractPhysicalStats(element)
+        name: extractSimplified2KPlayerName(element),
+        position: extractSimplified2KPosition(element),
+        overall_rating: extractSimplified2KOverall(element),
+        jersey_number: extractSimplified2KJerseyNumber(element),
+        detailed_attributes: extractSimplified2KDetailedAttributes(element),
+        physical_stats: extractSimplified2KPhysicalStats(element)
     };
     
     return player;
 }
 
-function extractEnhanced2KPlayerName(element) {
+function extractSimplified2KPlayerName(element) {
     const nameSelectors = [
         '.player-name',
         '.name',
@@ -218,7 +203,7 @@ function extractEnhanced2KPlayerName(element) {
     return 'Unknown Player';
 }
 
-function extractEnhanced2KPosition(element) {
+function extractSimplified2KPosition(element) {
     const positionSelectors = [
         '.position',
         '.pos',
@@ -247,7 +232,7 @@ function extractEnhanced2KPosition(element) {
     return 'N/A';
 }
 
-function extractEnhanced2KOverall(element) {
+function extractSimplified2KOverall(element) {
     const overallSelectors = [
         '.overall',
         '.rating',
@@ -283,7 +268,7 @@ function extractEnhanced2KOverall(element) {
     return 0;
 }
 
-function extractEnhanced2KJerseyNumber(element) {
+function extractSimplified2KJerseyNumber(element) {
     const numberSelectors = [
         '.jersey-number',
         '.number',
@@ -311,65 +296,102 @@ function extractEnhanced2KJerseyNumber(element) {
     return 'N/A';
 }
 
-function extractDetailed2KRatings(element) {
-    const ratings = {};
+function extractSimplified2KDetailedAttributes(element) {
+    const attributes = {};
     
-    // Common 2K rating attributes
-    const attributes = [
-        'three_point_shot', '3pt', 'three_point',
-        'mid_range_shot', 'mid_range', 'midrange', 
-        'driving_layup', 'layup', 'driving_dunk', 'dunk',
-        'standing_dunk', 'post_hook', 'post_fade',
-        'draw_foul', 'hands', 'free_throw',
-        'pass_accuracy', 'pass_vision', 'pass_iq',
-        'ball_handle', 'speed_with_ball', 'interior_defense',
-        'perimeter_defense', 'lateral_quickness', 'steal',
-        'block', 'offensive_rebound', 'defensive_rebound',
-        'speed', 'acceleration', 'strength', 'vertical',
-        'hustle', 'overall_durability'
-    ];
+    // Enhanced 2K attribute categories with more comprehensive coverage
+    const attributeCategories = {
+        'inside': ['inside', 'layup', 'dunk', 'post', 'close', 'finishing', 'driving_layup', 'standing_dunk', 'post_hook', 'post_fade'],
+        'outside': ['outside', 'three', '3pt', 'mid', 'range', 'shooting', 'three_point_shot', 'mid_range_shot', 'free_throw'],
+        'playmaking': ['playmaking', 'pass', 'ball', 'handle', 'iq', 'pass_accuracy', 'pass_vision', 'ball_handle', 'speed_with_ball'],
+        'athleticism': ['athleticism', 'speed', 'vertical', 'strength', 'acceleration', 'speed_with_ball', 'lateral_quickness', 'hustle'],
+        'defending': ['defending', 'defense', 'perimeter', 'interior', 'steal', 'block', 'perimeter_defense', 'interior_defense', 'lateral_quickness'],
+        'rebounding': ['rebounding', 'rebound', 'offensive', 'defensive', 'offensive_rebound', 'defensive_rebound']
+    };
     
-    const attributeElements = element.querySelectorAll('[data-attribute], .attribute, .stat-value');
+    // Look for attribute values in the element
+    const text = element.textContent.toLowerCase();
     
+    // Enhanced pattern matching for more comprehensive attribute detection
+    Object.entries(attributeCategories).forEach(([category, keywords]) => {
+        for (let keyword of keywords) {
+            // Multiple regex patterns to catch different formats
+            const patterns = [
+                new RegExp(`${keyword}[\\s:]*([0-9]{2,3})`, 'i'),
+                new RegExp(`${keyword}\\s*=\\s*([0-9]{2,3})`, 'i'),
+                new RegExp(`${keyword}\\s*\\(([0-9]{2,3})\\)`, 'i'),
+                new RegExp(`([0-9]{2,3})\\s*${keyword}`, 'i')
+            ];
+            
+            for (let pattern of patterns) {
+                const match = text.match(pattern);
+                if (match) {
+                    const value = parseInt(match[1]);
+                    if (value >= 25 && value <= 99) {
+                        attributes[category] = value;
+                        break;
+                    }
+                }
+            }
+            if (attributes[category]) break; // Found this category, move to next
+        }
+    });
+    
+    // Additional attribute extraction from data attributes and classes
+    const attributeElements = element.querySelectorAll('[data-attribute], [data-rating], .attribute, .rating, .stat-value');
     attributeElements.forEach(attrElement => {
         const attrName = attrElement.getAttribute('data-attribute') || 
+                        attrElement.getAttribute('data-rating') ||
                         attrElement.className.replace(/[^a-zA-Z_]/g, '');
         const attrValue = parseInt(attrElement.textContent.trim());
         
         if (attrName && attrValue >= 25 && attrValue <= 99) {
-            ratings[attrName] = attrValue;
+            // Map to our standard categories
+            const normalizedName = attrName.toLowerCase();
+            if (normalizedName.includes('inside') || normalizedName.includes('layup') || normalizedName.includes('dunk')) {
+                attributes.inside = attrValue;
+            } else if (normalizedName.includes('outside') || normalizedName.includes('three') || normalizedName.includes('shoot')) {
+                attributes.outside = attrValue;
+            } else if (normalizedName.includes('playmaking') || normalizedName.includes('pass') || normalizedName.includes('ball')) {
+                attributes.playmaking = attrValue;
+            } else if (normalizedName.includes('athleticism') || normalizedName.includes('speed') || normalizedName.includes('vertical')) {
+                attributes.athleticism = attrValue;
+            } else if (normalizedName.includes('defending') || normalizedName.includes('defense') || normalizedName.includes('steal')) {
+                attributes.defending = attrValue;
+            } else if (normalizedName.includes('rebounding') || normalizedName.includes('rebound')) {
+                attributes.rebounding = attrValue;
+            }
         }
     });
     
-    return Object.keys(ratings).length > 0 ? ratings : null;
-}
-
-function extractPlayerArchetype(element) {
-    const archetypeSelectors = [
-        '.archetype',
-        '.player-type',
-        '.build',
-        '.player-archetype'
-    ];
+    // Look for specific attribute patterns in text content
+    const specificPatterns = {
+        'inside': /(layup|dunk|post|finishing|inside)[\s:]*(\d{2,3})/gi,
+        'outside': /(three|shooting|mid|range|outside)[\s:]*(\d{2,3})/gi,
+        'playmaking': /(pass|ball|handle|playmaking)[\s:]*(\d{2,3})/gi,
+        'athleticism': /(speed|vertical|strength|athleticism)[\s:]*(\d{2,3})/gi,
+        'defending': /(defense|steal|block|defending)[\s:]*(\d{2,3})/gi,
+        'rebounding': /(rebound|rebounding)[\s:]*(\d{2,3})/gi
+    };
     
-    for (let selector of archetypeSelectors) {
-        const archetypeElement = element.querySelector(selector);
-        if (archetypeElement) {
-            return archetypeElement.textContent.trim();
+    Object.entries(specificPatterns).forEach(([category, pattern]) => {
+        if (!attributes[category]) { // Only if not already found
+            const matches = text.matchAll(pattern);
+            for (let match of matches) {
+                const value = parseInt(match[2]);
+                if (value >= 25 && value <= 99) {
+                    attributes[category] = value;
+                    break;
+                }
+            }
         }
-    }
+    });
     
-    return null;
+    // If no detailed attributes found, return null
+    return Object.keys(attributes).length > 0 ? attributes : null;
 }
 
-function extractPlayerBadges(element) {
-    const badgeElements = element.querySelectorAll('.badge, .player-badge, [data-badge]');
-    const badges = Array.from(badgeElements).map(badge => badge.textContent.trim());
-    
-    return badges.length > 0 ? badges : null;
-}
-
-function extractPhysicalStats(element) {
+function extractSimplified2KPhysicalStats(element) {
     const physicalStats = {};
     
     const text = element.textContent;
@@ -395,85 +417,7 @@ function extractPhysicalStats(element) {
     return Object.keys(physicalStats).length > 0 ? physicalStats : null;
 }
 
-function calculateEnhanced2KTeamStats(players) {
-    if (players.length === 0) {
-        return {
-            total_players: 0,
-            average_overall: 0,
-            highest_rated: { player: "", rating: 0 },
-            lowest_rated: { player: "", rating: 0 }
-        };
-    }
-    
-    const overallRatings = players.map(p => p.overall_rating).filter(r => r > 0);
-    const averageOverall = Math.round(overallRatings.reduce((a, b) => a + b, 0) / overallRatings.length);
-    
-    const sortedPlayers = players.sort((a, b) => b.overall_rating - a.overall_rating);
-    const highest = sortedPlayers[0];
-    const lowest = sortedPlayers[sortedPlayers.length - 1];
-    
-    // Position breakdown
-    const positionBreakdown = {};
-    players.forEach(player => {
-        const pos = player.position || 'Unknown';
-        positionBreakdown[pos] = (positionBreakdown[pos] || 0) + 1;
-    });
-    
-    // Rating distribution
-    const ratingDistribution = {};
-    ['90+', '85-89', '80-84', '75-79', '70-74', '<70'].forEach(range => {
-        ratingDistribution[range] = 0;
-    });
-    
-    players.forEach(player => {
-        const rating = player.overall_rating;
-        if (rating >= 90) ratingDistribution['90+']++;
-        else if (rating >= 85) ratingDistribution['85-89']++;
-        else if (rating >= 80) ratingDistribution['80-84']++;
-        else if (rating >= 75) ratingDistribution['75-79']++;
-        else if (rating >= 70) ratingDistribution['70-74']++;
-        else ratingDistribution['<70']++;
-    });
-    
-    return {
-        total_players: players.length,
-        average_overall: averageOverall,
-        highest_rated: { 
-            player: highest.name, 
-            rating: highest.overall_rating 
-        },
-        lowest_rated: { 
-            player: lowest.name, 
-            rating: lowest.overall_rating 
-        },
-        team_strengths: determineTeamStrengths(players),
-        position_breakdown: positionBreakdown,
-        rating_distribution: ratingDistribution
-    };
-}
-
-function determineTeamStrengths(players) {
-    const strengths = [];
-    const averageOverall = players.reduce((sum, p) => sum + p.overall_rating, 0) / players.length;
-    
-    if (averageOverall >= 85) strengths.push('Elite Overall Team');
-    if (averageOverall >= 80) strengths.push('Strong Team');
-    
-    const topPlayers = players.filter(p => p.overall_rating >= 85);
-    if (topPlayers.length >= 3) strengths.push('Star Power');
-    
-    const guards = players.filter(p => p.position && p.position.includes('G'));
-    const forwards = players.filter(p => p.position && p.position.includes('F'));
-    const centers = players.filter(p => p.position === 'C');
-    
-    if (guards.length >= 4) strengths.push('Guard Depth');
-    if (forwards.length >= 4) strengths.push('Forward Depth');
-    if (centers.length >= 2) strengths.push('Center Depth');
-    
-    return strengths;
-}
-
-function collect2KPlayersFromAlternativeStructure() {
+function collectSimplified2KPlayersFromAlternativeStructure() {
     // Alternative approach for different 2kratings layouts
     const players = [];
     
@@ -490,7 +434,9 @@ function collect2KPlayersFromAlternativeStructure() {
                 name: name,
                 position: 'N/A',
                 overall_rating: overallRating,
-                jersey_number: 'N/A'
+                jersey_number: 'N/A',
+                detailed_attributes: null,
+                physical_stats: null
             });
         }
     });
@@ -517,6 +463,6 @@ function getTeamAbbreviation(teamName) {
 }
 
 // Auto-run instructions
-console.log('🏀 Enhanced NBA 2K26 Collection Script Loaded!');
-console.log('📋 Run: collectEnhanced2K26Data()');
+console.log('🏀 Simplified NBA 2K26 Collection Script Loaded!');
+console.log('📋 Run: collectSimplified2K26Data()');
 console.log('💡 Make sure you are on a team page showing NBA 2K26 ratings!'); 

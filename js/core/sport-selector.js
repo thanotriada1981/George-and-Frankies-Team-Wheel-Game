@@ -40,7 +40,7 @@ function getCurrentSportConfig() {
         return {
             name: 'NBA',
             team_count: 30,
-            data_file: 'database/nba_teams_data.json',
+            data_file: 'database/nba/teams/nba_teams_data.json',
             logo_path: 'assets/logos/nba/',
             wheel_config: {
                 center_text: 'NBA',

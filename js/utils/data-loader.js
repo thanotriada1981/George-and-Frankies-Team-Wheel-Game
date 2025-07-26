@@ -7,55 +7,42 @@
 async function loadPlayersForTeam(team) {
     try {
         console.log("🏀 Loading players for team:", team.name);
-        
-        // First check if we have the team data in our loaded nbaTeams array
-        const fullTeamData = nbaTeams.find(t => t.name === team.name);
-        
-        if (fullTeamData && fullTeamData.roster && fullTeamData.roster.length > 0) {
-            console.log("✅ Using pre-loaded roster data for", team.name, "- Found", fullTeamData.roster.length, "roster members");
-            
-            // Include all roster members (players and coaches)
-            return fullTeamData.roster.map(player => ({
-                id: player.number || Math.random(),
-                first_name: player.name.split(' ')[0] || '',
-                last_name: player.name.split(' ').slice(1).join(' ') || '',
-                position: player.position,
-                height_feet: player.height ? parseInt(player.height.split("'")[0]) : null,
-                height_inches: player.height ? parseInt(player.height.split("'")[1]) : null,
-                weight_pounds: player.weight ? parseInt(player.weight.replace(' lbs', '')) : null,
-                team: { full_name: team.name },
-                number: player.number,
-                experience: player.experience,
-                full_name: player.name,
-                isCoach: player.position.includes('Coach') || player.position.includes('Head Coach')
-            }));
-        }
-        
-        // If no roster data in loaded teams, try to load from JSON file
-        console.log("📄 Loading from JSON file...");
-        const response = await fetch('database/nba_teams_data.json');
+        // Always load from JSON file directly for reliability
+        console.log("📄 Loading from JSON file directly...");
+        const response = await fetch('database/nba/teams/nba_teams_data.json');
         const data = await response.json();
         
-        // Find the team in our data
-        const teamData = data.teams.find(t => t.name === team.name);
+        console.log("📊 JSON data structure:", Object.keys(data));
+        console.log("🏀 Teams in JSON:", data.teams ? Object.keys(data.teams).length : 'no teams property');
+        console.log("🔍 Looking for team:", team.name);
+        console.log("📋 Available teams in JSON:", data.teams ? Object.keys(data.teams).slice(0, 3) : 'none');
         
-        if (teamData && teamData.roster) {
-            console.log("✅ Found roster data in JSON for", team.name, "- Found", teamData.roster.length, "roster members");
+        // Find the team in our data
+        const teamData = data.teams[team.name];
+        
+        console.log("🔍 teamData found in JSON:", !!teamData);
+        console.log("🔍 teamData has roster:", teamData ? !!teamData.roster : false);
+        console.log("🔍 teamData has players:", teamData ? !!teamData.roster?.players : false);
+        
+        if (teamData && teamData.roster && teamData.roster.players) {
+            console.log("✅ Found roster data in JSON for", team.name, "- Found", teamData.roster.players.length, "roster members");
             
             // Include all roster members (players and coaches)
-            return teamData.roster.map(player => ({
-                id: player.number || Math.random(),
+            return teamData.roster.players.map(player => ({
+                id: player.jerseyNumber || Math.random(),
                 first_name: player.name.split(' ')[0] || '',
                 last_name: player.name.split(' ').slice(1).join(' ') || '',
                 position: player.position,
-                height_feet: player.height ? parseInt(player.height.split("'")[0]) : null,
-                height_inches: player.height ? parseInt(player.height.split("'")[1]) : null,
-                weight_pounds: player.weight ? parseInt(player.weight.replace(' lbs', '')) : null,
+                height_feet: player.physicalStats?.height ? parseInt(player.physicalStats.height.split("'")[0]) : null,
+                height_inches: player.physicalStats?.height ? parseInt(player.physicalStats.height.split("'")[1]) : null,
+                weight_pounds: player.physicalStats?.weight ? parseInt(player.physicalStats.weight.replace(' lbs', '')) : null,
                 team: { full_name: team.name },
-                number: player.number,
-                experience: player.experience,
+                number: player.jerseyNumber,
+                experience: player.experience || 0,
                 full_name: player.name,
-                isCoach: player.position.includes('Coach') || player.position.includes('Head Coach')
+                nba2k26Rating: player.nba2k26Rating,
+                isCoach: player.position.includes('Coach') || player.position.includes('Head Coach'),
+                coachInfo: player.coachInfo
             }));
         }
         

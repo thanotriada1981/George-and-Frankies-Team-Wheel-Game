@@ -1,0 +1,239 @@
+{
+  "team": "San Antonio Spurs",
+  "players": [
+    {
+      "name": "Victor Wembanyama",
+      "overall_rating": 94,
+      "position": "C",
+      "jersey_number": "22",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 80,
+        "playmaking": 94,
+        "athleticism": 94,
+        "defending": 94,
+        "rebounding": 94
+      },
+      "physical_stats": {
+        "height": "7'4\"",
+        "position": "3-Level Scoring Paint Beast"
+      }
+    },
+    {
+      "name": "De'Aaron Fox",
+      "overall_rating": 86,
+      "position": "PG",
+      "jersey_number": "18",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 73,
+        "playmaking": 86,
+        "athleticism": 86,
+        "defending": 86,
+        "rebounding": 86
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "2-Way Inside-The-Arc Playmaker"
+      }
+    },
+    {
+      "name": "Stephon Castle",
+      "overall_rating": 84,
+      "position": "SG",
+      "jersey_number": "13",
+      "detailed_attributes": {
+        "inside": 88,
+        "outside": 74,
+        "playmaking": 84,
+        "athleticism": 84,
+        "defending": 84,
+        "rebounding": 84
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Defensive Menace"
+      }
+    },
+    {
+      "name": "Devin Vassell",
+      "overall_rating": 83,
+      "position": "SG",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 81,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "2-Way Perimeter Shot Creator"
+      }
+    },
+    {
+      "name": "Keldon Johnson",
+      "overall_rating": 80,
+      "position": "SF",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 78,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Shot-Creating 3-Level Threat"
+      }
+    },
+    {
+      "name": "Kelly Olynyk",
+      "overall_rating": 79,
+      "position": "C",
+      "jersey_number": "7",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 86,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'11\"",
+        "position": "Inside-Out Scoring Threat"
+      }
+    },
+    {
+      "name": "Harrison Barnes",
+      "overall_rating": 79,
+      "position": "SF",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 86,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Shot-Creating 3-Level Threat"
+      }
+    },
+    {
+      "name": "Jeremy Sochan",
+      "overall_rating": 79,
+      "position": "PF",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 73,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Small Ball Four"
+      }
+    },
+    {
+      "name": "Luke Kornet",
+      "overall_rating": 78,
+      "position": "C",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 70,
+        "playmaking": 78,
+        "athleticism": 78,
+        "defending": 78,
+        "rebounding": 78
+      },
+      "physical_stats": {
+        "height": "7'2\"",
+        "position": "Board-Hunting Paint Protector"
+      }
+    },
+    {
+      "name": "Julian Champagnie",
+      "overall_rating": 75,
+      "position": "SF",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 80,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "3 & D Threat"
+      }
+    },
+    {
+      "name": "Lindy Waters III",
+      "overall_rating": 74,
+      "position": "SG",
+      "jersey_number": "2",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 77,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "3 & D Threat"
+      }
+    },
+    {
+      "name": "Harrison Ingram",
+      "overall_rating": 69,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 74,
+        "playmaking": 69,
+        "athleticism": 69,
+        "defending": 69,
+        "rebounding": 69
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Promising Prospect"
+      }
+    },
+    {
+      "name": "Riley Minix",
+      "overall_rating": 67,
+      "position": "SF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 76,
+        "playmaking": 67,
+        "athleticism": 67,
+        "defending": 67,
+        "rebounding": 67
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Catch & Shoot Threat"
+      }
+    }
+  ]
+}

@@ -20,7 +20,7 @@ class PlayerRatingLookup {
     async initialize() {
         try {
             // Load the ratings data from JSON file - Fixed path
-            const response = await fetch('database/nba/players/nba-2k25-master-ratings.json');
+            const response = await fetch('database/nba/teams/nba_teams_data.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

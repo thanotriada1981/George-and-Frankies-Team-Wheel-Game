@@ -1,0 +1,257 @@
+{
+  "team": "Atlanta Hawks",
+  "players": [
+    {
+      "name": "Trae Young",
+      "overall_rating": 91,
+      "position": "PG",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 85,
+        "playmaking": 78,
+        "athleticism": 71,
+        "defending": 57,
+        "rebounding": 56
+      },
+      "physical_stats": {
+        "height": "6'1\"",
+        "position": "Offense-Heavy Point"
+      }
+    },
+    {
+      "name": "Kristaps Porzingis",
+      "overall_rating": 88,
+      "position": "C",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 87,
+        "playmaking": 79,
+        "athleticism": 86,
+        "defending": 84,
+        "rebounding": 86
+      },
+      "physical_stats": {
+        "height": "7'2\"",
+        "position": "2-Way Inside-Out Scorer"
+      }
+    },
+    {
+      "name": "Jalen Johnson",
+      "overall_rating": 85,
+      "position": "PF",
+      "jersey_number": "1",
+      "detailed_attributes": {
+        "inside": 96,
+        "outside": 74,
+        "playmaking": 85,
+        "athleticism": 84,
+        "defending": 79,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Inside the Arc Threat"
+      }
+    },
+    {
+      "name": "Dyson Daniels",
+      "overall_rating": 85,
+      "position": "PG",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 80,
+        "playmaking": 85,
+        "athleticism": 84,
+        "defending": 79,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "2-Way Inside-Out ISO Creator"
+      }
+    },
+    {
+      "name": "Onyeka Okongwu",
+      "overall_rating": 84,
+      "position": "C",
+      "jersey_number": "17",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 74,
+        "playmaking": 84,
+        "athleticism": 84,
+        "defending": 79,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "2-Way Inside-The-Arc Menace"
+      }
+    },
+    {
+      "name": "Zaccharie Risacher",
+      "overall_rating": 81,
+      "position": "SF",
+      "jersey_number": "18",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 81,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Shot-Creating 3-Level Threat"
+      }
+    },
+    {
+      "name": "Nickeil Alexander-Walker",
+      "overall_rating": 79,
+      "position": "SG",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 83,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "2-Way 3-Level Shot Creator"
+      }
+    },
+    {
+      "name": "Luke Kennard",
+      "overall_rating": 77,
+      "position": "SG",
+      "jersey_number": "5",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 87,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Sharpshooter"
+      }
+    },
+    {
+      "name": "Vit Krejci",
+      "overall_rating": 76,
+      "position": "SF",
+      "jersey_number": "2",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 87,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Catch & Shoot Ace"
+      }
+    },
+    {
+      "name": "Caleb Houstan",
+      "overall_rating": 74,
+      "position": "SG",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 25,
+        "outside": 83,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "3 & D Wing"
+      }
+    },
+    {
+      "name": "Mouhamed Gueye",
+      "overall_rating": 74,
+      "position": "PF",
+      "jersey_number": "4",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 63,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Interior Threat"
+      }
+    },
+    {
+      "name": "Kobe Bufkin",
+      "overall_rating": 73,
+      "position": "PG",
+      "jersey_number": "4",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 70,
+        "playmaking": 73,
+        "athleticism": 73,
+        "defending": 73,
+        "rebounding": 73
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Inside the Arc Shot Creator"
+      }
+    },
+    {
+      "name": "Keaton Wallace",
+      "overall_rating": 72,
+      "position": "SG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 50,
+        "outside": 82,
+        "playmaking": 72,
+        "athleticism": 72,
+        "defending": 72,
+        "rebounding": 72
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "3PT Shot Creator"
+      }
+    },
+    {
+      "name": "Jacob Toppin",
+      "overall_rating": 67,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 69,
+        "playmaking": 67,
+        "athleticism": 67,
+        "defending": 67,
+        "rebounding": 67
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Interior Threat"
+      }
+    }
+  ]
+}

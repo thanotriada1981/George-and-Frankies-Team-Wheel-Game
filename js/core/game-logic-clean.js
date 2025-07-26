@@ -103,17 +103,23 @@ function findTeamByDegree(degree) {
 function spinWheel() {
     console.log("🎯 === STARTING PROVEN SPIN METHOD ===");
     console.log("[DEBUG] spinWheel called. gameState.isSpinning:", gameState.isSpinning);
+    console.log("[DEBUG] Current mode:", gameState.currentMode);
     
-    const wheel = document.getElementById('wheel');
-    const spinButton = document.getElementById('classicSpinButton');
-    const result = document.getElementById('classic-result');
+    // Check if we're in Dream Team Builder mode
+    const isDreamTeamMode = gameState.currentMode === 'dream-team' || 
+                           document.getElementById('dream-team-mode')?.style.display !== 'none';
+    
+    // Get appropriate elements based on mode
+    const wheel = isDreamTeamMode ? document.getElementById('dreamWheel') : document.getElementById('wheel');
+    const spinButton = isDreamTeamMode ? document.getElementById('dreamSpinButton') : document.getElementById('classicSpinButton');
+    const result = isDreamTeamMode ? document.getElementById('dream-result') : document.getElementById('classic-result');
     
     // Validate elements exist
-    if (!wheel || !spinButton || !result) {
+    if (!wheel || !spinButton) {
         console.error("❌ Required elements not found", { 
             wheel: !!wheel, 
-            spinButton: !!spinButton, 
-            result: !!result 
+            spinButton: !!spinButton,
+            isDreamTeamMode: isDreamTeamMode
         });
         return;
     }
@@ -200,11 +206,37 @@ function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
         // ✅ NEW: Play completion sound effect
         playCompletionSound();
         
-        // Show result and highlight selected team
-        showTeamResult(winningTeam);
+        // Check if we're in Dream Team Builder mode
+        const isDreamTeamMode = gameState.currentMode === 'dream-team' || 
+                               document.getElementById('dream-team-mode')?.style.display !== 'none';
+        
+        if (isDreamTeamMode) {
+            // For Dream Team Builder mode, trigger player selection
+            console.log("🏆 Dream Team Builder mode - triggering player selection");
+            console.log("🏆 Winning team object:", winningTeam);
+            console.log("🏆 showPlayerSelection function exists:", typeof showPlayerSelection === 'function');
+            
+            if (typeof showPlayerSelection === 'function') {
+                try {
+                    showPlayerSelection(winningTeam);
+                    console.log("✅ showPlayerSelection called successfully");
+                } catch (error) {
+                    console.error("❌ Error in showPlayerSelection:", error);
+                    showTeamResult(winningTeam); // Fallback to classic result
+                }
+            } else {
+                console.error("❌ showPlayerSelection function not found");
+                showTeamResult(winningTeam); // Fallback to classic result
+            }
+        } else {
+            // For Classic mode, show team result
+            showTeamResult(winningTeam);
+        }
+        
         // Reset spinning state
         gameState.isSpinning = false;
         console.log("[DEBUG] Spin complete. gameState.isSpinning set to:", gameState.isSpinning);
+        
         // For classic spin mode, show 'Spin Again' button and hide original spin button
         if (gameState.currentMode === 'classic') {
             const spinButton = document.getElementById('classicSpinButton');
@@ -349,6 +381,7 @@ function initializeUI() {
 // Switch between game modes (classic vs dream team builder)
 function switchMode(mode) {
     gameState.currentMode = mode;
+    console.log("🔄 Switched to mode:", mode);
     
     // Update button states
     const classicBtn = document.querySelector('.mode-button[onclick="switchMode(\'classic\')"]');
@@ -400,6 +433,10 @@ function showSetupPhase() {
         setupPhase.style.display = 'block';
         modeSelection.style.display = 'none';
     }
+    
+    // Set the mode to dream-team
+    gameState.currentMode = 'dream-team';
+    console.log("🔄 Set mode to dream-team for setup phase");
 }
 
 // Handle sport change from dropdown
@@ -483,6 +520,8 @@ function testSpecificTeam(teamName) {
     
     console.log("🧮 Rotation needed:", totalRotation + "°");
 }
+
+
 
 // Initialize when DOM is loaded
 if (document.readyState === 'loading') {

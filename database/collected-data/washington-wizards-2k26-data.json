@@ -1,0 +1,275 @@
+{
+  "team": "Washington Wizards",
+  "players": [
+    {
+      "name": "C.J. McCollum",
+      "overall_rating": 84,
+      "position": "PG",
+      "jersey_number": "14",
+      "detailed_attributes": {
+        "inside": 40,
+        "outside": 81,
+        "playmaking": 84,
+        "athleticism": 84,
+        "defending": 84,
+        "rebounding": 84
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "3-Level Slasher"
+      }
+    },
+    {
+      "name": "Alexandre Sarr",
+      "overall_rating": 83,
+      "position": "PF",
+      "jersey_number": "7",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 76,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "7'1\"",
+        "position": "Slashing Stretch Five"
+      }
+    },
+    {
+      "name": "Khris Middleton",
+      "overall_rating": 81,
+      "position": "SF",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 81,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "2-Way 3-Level Shot Creator"
+      }
+    },
+    {
+      "name": "Bilal Coulibaly",
+      "overall_rating": 80,
+      "position": "SG",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 75,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Defensive Menace"
+      }
+    },
+    {
+      "name": "Corey Kispert",
+      "overall_rating": 79,
+      "position": "SG",
+      "jersey_number": "5",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 85,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Catch & Shoot Ace"
+      }
+    },
+    {
+      "name": "Bub Carrington",
+      "overall_rating": 79,
+      "position": "PG",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 79,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Perimeter Shot Creator"
+      }
+    },
+    {
+      "name": "KyShawn George",
+      "overall_rating": 79,
+      "position": "SF",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 80,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Slashing Stretch Four"
+      }
+    },
+    {
+      "name": "Justin Champagnie",
+      "overall_rating": 78,
+      "position": "SF",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 82,
+        "playmaking": 78,
+        "athleticism": 78,
+        "defending": 78,
+        "rebounding": 78
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Stretch Four"
+      }
+    },
+    {
+      "name": "Cam Whitmore",
+      "overall_rating": 78,
+      "position": "SF",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 73,
+        "playmaking": 78,
+        "athleticism": 78,
+        "defending": 78,
+        "rebounding": 78
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Inside the Arc Shot Creator"
+      }
+    },
+    {
+      "name": "Marvin Bagley III",
+      "overall_rating": 75,
+      "position": "C",
+      "jersey_number": "5",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 70,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Board-Hunting Lob Threat"
+      }
+    },
+    {
+      "name": "Tristan Vukcevic",
+      "overall_rating": 75,
+      "position": "C",
+      "jersey_number": "4",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 78,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Stretch Five"
+      }
+    },
+    {
+      "name": "AJ Johnson",
+      "overall_rating": 75,
+      "position": "SG",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 72,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Inside the Arc Shot Creator"
+      }
+    },
+    {
+      "name": "Malaki Branham",
+      "overall_rating": 74,
+      "position": "SG",
+      "jersey_number": "4",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 83,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "Catch & Shoot Ace"
+      }
+    },
+    {
+      "name": "Jaylen Martin",
+      "overall_rating": 69,
+      "position": "SG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 73,
+        "playmaking": 69,
+        "athleticism": 69,
+        "defending": 69,
+        "rebounding": 69
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Perimeter Defender"
+      }
+    },
+    {
+      "name": "Dillon Jones",
+      "overall_rating": 69,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 57,
+        "playmaking": 69,
+        "athleticism": 69,
+        "defending": 69,
+        "rebounding": 69
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Perimeter Defender"
+      }
+    }
+  ]
+}

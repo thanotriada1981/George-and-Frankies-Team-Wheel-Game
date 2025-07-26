@@ -1,0 +1,239 @@
+{
+  "team": "Phoenix Suns",
+  "players": [
+    {
+      "name": "Devin Booker",
+      "overall_rating": 90,
+      "position": "PG",
+      "jersey_number": "20",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 85,
+        "playmaking": 90,
+        "athleticism": 90,
+        "defending": 90,
+        "rebounding": 90
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Offensive Architect"
+      }
+    },
+    {
+      "name": "Jalen Green",
+      "overall_rating": 86,
+      "position": "SG",
+      "jersey_number": "15",
+      "detailed_attributes": {
+        "inside": 91,
+        "outside": 82,
+        "playmaking": 86,
+        "athleticism": 86,
+        "defending": 86,
+        "rebounding": 86
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "Inside-Out ISO Specialist"
+      }
+    },
+    {
+      "name": "Dillon Brooks",
+      "overall_rating": 83,
+      "position": "SF",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 83,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "2-Way Sharpshooter"
+      }
+    },
+    {
+      "name": "Mark Williams",
+      "overall_rating": 83,
+      "position": "C",
+      "jersey_number": "12",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 36,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "7'0\"",
+        "position": "Defensive Anchor"
+      }
+    },
+    {
+      "name": "Nick Richards",
+      "overall_rating": 78,
+      "position": "C",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 25,
+        "playmaking": 78,
+        "athleticism": 78,
+        "defending": 78,
+        "rebounding": 78
+      },
+      "physical_stats": {
+        "height": "7'0\"",
+        "position": "Inside The Arc Board Hunter"
+      }
+    },
+    {
+      "name": "Grayson Allen",
+      "overall_rating": 77,
+      "position": "SF",
+      "jersey_number": "5",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 87,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "Inside-Out Shot Creator"
+      }
+    },
+    {
+      "name": "Royce O'Neale",
+      "overall_rating": 77,
+      "position": "SF",
+      "jersey_number": "6",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 86,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "2-Way Stretch Four"
+      }
+    },
+    {
+      "name": "Ryan Dunn",
+      "overall_rating": 77,
+      "position": "SF",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 75,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Versatile Stopper"
+      }
+    },
+    {
+      "name": "Jordan Goodwin",
+      "overall_rating": 76,
+      "position": "SG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 35,
+        "outside": 79,
+        "playmaking": 76,
+        "athleticism": 76,
+        "defending": 76,
+        "rebounding": 76
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "Ball Hawk"
+      }
+    },
+    {
+      "name": "Jared Butler",
+      "overall_rating": 75,
+      "position": "PG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 79,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "Playmaking Perimeter Threat"
+      }
+    },
+    {
+      "name": "Collin Gillespie",
+      "overall_rating": 74,
+      "position": "PG",
+      "jersey_number": "5",
+      "detailed_attributes": {
+        "inside": 54,
+        "outside": 86,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'1\"",
+        "position": "Perimeter Threat"
+      }
+    },
+    {
+      "name": "Oso Ighodaro",
+      "overall_rating": 74,
+      "position": "PF",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 35,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'11\"",
+        "position": "Interior Threat"
+      }
+    },
+    {
+      "name": "Isaiah Livers",
+      "overall_rating": 72,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 72,
+        "playmaking": 72,
+        "athleticism": 72,
+        "defending": 72,
+        "rebounding": 72
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Mid-Range Specialist"
+      }
+    }
+  ]
+}

@@ -10,7 +10,7 @@ const urlsToCache = [
   '/manifest.json',
   
   // Database files
-  '/database/nba/players/nba-2k25-master-ratings.json',
+  '/database/nba/teams/nba_teams_data.json',
   '/database/nba/teams/team-info.json',
   '/database/nba/players/rosters.json',
   '/database/nba/lookup-functions/player-rating-lookup.js',
@@ -24,7 +24,7 @@ const urlsToCache = [
   '/frameworks/multiplayer/online-multiplayer.js',
   
   // Data files
-          '/database/nba_teams_data.json',
+          '/database/nba/teams/nba_teams_data.json',
   
   // Source files
   '/src/nba/nba_data.js',

@@ -1,0 +1,311 @@
+{
+  "team": "Dallas Mavericks",
+  "players": [
+    {
+      "name": "Anthony Davis",
+      "overall_rating": 95,
+      "position": "C",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 71,
+        "playmaking": 95,
+        "athleticism": 95,
+        "defending": 95,
+        "rebounding": 95
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "2-Way Inside-The-Arc Menace"
+      }
+    },
+    {
+      "name": "Kyrie Irving",
+      "overall_rating": 92,
+      "position": "SG",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 30,
+        "outside": 86,
+        "playmaking": 92,
+        "athleticism": 92,
+        "defending": 92,
+        "rebounding": 92
+      },
+      "physical_stats": {
+        "height": "6'2\"",
+        "position": "Offensive Architect"
+      }
+    },
+    {
+      "name": "Dereck Lively II",
+      "overall_rating": 83,
+      "position": "C",
+      "jersey_number": "2",
+      "detailed_attributes": {
+        "inside": 83,
+        "outside": 52,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "7'1\"",
+        "position": "Paint Beast"
+      }
+    },
+    {
+      "name": "Daniel Gafford",
+      "overall_rating": 83,
+      "position": "C",
+      "jersey_number": "21",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 29,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Paint Beast"
+      }
+    },
+    {
+      "name": "Cooper Flagg",
+      "overall_rating": 82,
+      "position": "SF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 82,
+        "outside": 82,
+        "playmaking": 82,
+        "athleticism": 82,
+        "defending": 82,
+        "rebounding": 82
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Rookie"
+      }
+    },
+    {
+      "name": "Naji Marshall",
+      "overall_rating": 81,
+      "position": "PF",
+      "jersey_number": "13",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 70,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Inside the Arc Shot Creator"
+      }
+    },
+    {
+      "name": "P.J. Washington",
+      "overall_rating": 81,
+      "position": "PF",
+      "jersey_number": "25",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 82,
+        "playmaking": 81,
+        "athleticism": 81,
+        "defending": 81,
+        "rebounding": 81
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Catch & Shoot Ace"
+      }
+    },
+    {
+      "name": "Klay Thompson",
+      "overall_rating": 80,
+      "position": "SG",
+      "jersey_number": "11",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 89,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "3 & D Two Guard"
+      }
+    },
+    {
+      "name": "D'Angelo Russell",
+      "overall_rating": 79,
+      "position": "PG",
+      "jersey_number": "1",
+      "detailed_attributes": {
+        "inside": 45,
+        "outside": 75,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "Playmaking Inside-Out Threat"
+      }
+    },
+    {
+      "name": "Dante Exum",
+      "overall_rating": 79,
+      "position": "SF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 86,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "3 & D Two Guard"
+      }
+    },
+    {
+      "name": "Brandon Williams",
+      "overall_rating": 77,
+      "position": "PG",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 50,
+        "outside": 80,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'1\"",
+        "position": "3-Level Scoring Threat"
+      }
+    },
+    {
+      "name": "Max Christie",
+      "overall_rating": 77,
+      "position": "SG",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 80,
+        "playmaking": 77,
+        "athleticism": 77,
+        "defending": 77,
+        "rebounding": 77
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Defensive Menace"
+      }
+    },
+    {
+      "name": "Kessler Edwards",
+      "overall_rating": 75,
+      "position": "SF",
+      "jersey_number": "3",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 78,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Stretch Five Paint Protector"
+      }
+    },
+    {
+      "name": "Jaden Hardy",
+      "overall_rating": 75,
+      "position": "PG",
+      "jersey_number": "1",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 84,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "Inside-Out Scoring Threat"
+      }
+    },
+    {
+      "name": "Caleb Martin",
+      "overall_rating": 75,
+      "position": "PF",
+      "jersey_number": "16",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 78,
+        "playmaking": 75,
+        "athleticism": 75,
+        "defending": 75,
+        "rebounding": 75
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Inside-Out Scoring Threat"
+      }
+    },
+    {
+      "name": "Olivier-Maxence Prosper",
+      "overall_rating": 74,
+      "position": "PF",
+      "jersey_number": "8",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 67,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Interior Threat"
+      }
+    },
+    {
+      "name": "Dwight Powell",
+      "overall_rating": 72,
+      "position": "C",
+      "jersey_number": "7",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 78,
+        "playmaking": 72,
+        "athleticism": 72,
+        "defending": 72,
+        "rebounding": 72
+      },
+      "physical_stats": {
+        "height": "6'10\"",
+        "position": "Inside-Out Scoring Threat"
+      }
+    }
+  ]
+}

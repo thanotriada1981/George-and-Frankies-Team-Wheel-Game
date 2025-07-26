@@ -1,0 +1,275 @@
+{
+  "team": "Los Angeles Clippers",
+  "players": [
+    {
+      "name": "Kawhi Leonard",
+      "overall_rating": 91,
+      "position": "PF",
+      "jersey_number": "21",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 86,
+        "playmaking": 91,
+        "athleticism": 91,
+        "defending": 91,
+        "rebounding": 91
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "2-Way Scoring Phenom"
+      }
+    },
+    {
+      "name": "James Harden",
+      "overall_rating": 90,
+      "position": "PG",
+      "jersey_number": "16",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 83,
+        "playmaking": 90,
+        "athleticism": 90,
+        "defending": 90,
+        "rebounding": 90
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Playmaking Inside-Out Scorer"
+      }
+    },
+    {
+      "name": "Ivica Zubac",
+      "overall_rating": 88,
+      "position": "C",
+      "jersey_number": "13",
+      "detailed_attributes": {
+        "inside": 80,
+        "outside": 26,
+        "playmaking": 88,
+        "athleticism": 88,
+        "defending": 88,
+        "rebounding": 88
+      },
+      "physical_stats": {
+        "height": "7'0\"",
+        "position": "Paint Beast"
+      }
+    },
+    {
+      "name": "John Collins",
+      "overall_rating": 85,
+      "position": "C",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 90,
+        "outside": 85,
+        "playmaking": 85,
+        "athleticism": 85,
+        "defending": 85,
+        "rebounding": 85
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Inside-Out Scorer"
+      }
+    },
+    {
+      "name": "Brook Lopez",
+      "overall_rating": 83,
+      "position": "C",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 81,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "7'1\"",
+        "position": "2-Way 3-Level Scoring Threat"
+      }
+    },
+    {
+      "name": "Bradley Beal",
+      "overall_rating": 83,
+      "position": "SG",
+      "jersey_number": "14",
+      "detailed_attributes": {
+        "inside": 84,
+        "outside": 84,
+        "playmaking": 83,
+        "athleticism": 83,
+        "defending": 83,
+        "rebounding": 83
+      },
+      "physical_stats": {
+        "height": "6'4\"",
+        "position": "Inside-Out ISO Specialist"
+      }
+    },
+    {
+      "name": "Chris Paul",
+      "overall_rating": 80,
+      "position": "PG",
+      "jersey_number": "10",
+      "detailed_attributes": {
+        "inside": 27,
+        "outside": 81,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'0\"",
+        "position": "2-Way 3-Level Playmaker"
+      }
+    },
+    {
+      "name": "Bogdan Bogdanovic",
+      "overall_rating": 80,
+      "position": "SG",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 80,
+        "playmaking": 80,
+        "athleticism": 80,
+        "defending": 80,
+        "rebounding": 80
+      },
+      "physical_stats": {
+        "height": "6'5\"",
+        "position": "Perimeter Shot Creator"
+      }
+    },
+    {
+      "name": "Derrick Jones Jr.",
+      "overall_rating": 79,
+      "position": "SF",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 94,
+        "outside": 80,
+        "playmaking": 79,
+        "athleticism": 79,
+        "defending": 79,
+        "rebounding": 79
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "2-Way 3-Level Scoring Threat"
+      }
+    },
+    {
+      "name": "Kris Dunn",
+      "overall_rating": 78,
+      "position": "SG",
+      "jersey_number": "9",
+      "detailed_attributes": {
+        "inside": 55,
+        "outside": 75,
+        "playmaking": 78,
+        "athleticism": 78,
+        "defending": 78,
+        "rebounding": 78
+      },
+      "physical_stats": {
+        "height": "6'3\"",
+        "position": "2-Way Perimeter Shot Creator"
+      }
+    },
+    {
+      "name": "Nicolas Batum",
+      "overall_rating": 74,
+      "position": "PF",
+      "jersey_number": "7",
+      "detailed_attributes": {
+        "inside": 60,
+        "outside": 86,
+        "playmaking": 74,
+        "athleticism": 74,
+        "defending": 74,
+        "rebounding": 74
+      },
+      "physical_stats": {
+        "height": "6'8\"",
+        "position": "Stretch Four"
+      }
+    },
+    {
+      "name": "Patrick Baldwin Jr.",
+      "overall_rating": 72,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 70,
+        "outside": 77,
+        "playmaking": 72,
+        "athleticism": 72,
+        "defending": 72,
+        "rebounding": 72
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Stretch Four"
+      }
+    },
+    {
+      "name": "Kobe Brown",
+      "overall_rating": 71,
+      "position": "PF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 65,
+        "outside": 67,
+        "playmaking": 71,
+        "athleticism": 71,
+        "defending": 71,
+        "rebounding": 71
+      },
+      "physical_stats": {
+        "height": "6'7\"",
+        "position": "Rebounder"
+      }
+    },
+    {
+      "name": "Trentyn Flowers",
+      "overall_rating": 68,
+      "position": "SF",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 85,
+        "outside": 75,
+        "playmaking": 68,
+        "athleticism": 68,
+        "defending": 68,
+        "rebounding": 68
+      },
+      "physical_stats": {
+        "height": "6'9\"",
+        "position": "Inside-Out Scoring Threat"
+      }
+    },
+    {
+      "name": "Cam Christie",
+      "overall_rating": 68,
+      "position": "SG",
+      "jersey_number": "0",
+      "detailed_attributes": {
+        "inside": 75,
+        "outside": 75,
+        "playmaking": 68,
+        "athleticism": 68,
+        "defending": 68,
+        "rebounding": 68
+      },
+      "physical_stats": {
+        "height": "6'6\"",
+        "position": "Catch & Shoot Threat"
+      }
+    }
+  ]
+}
