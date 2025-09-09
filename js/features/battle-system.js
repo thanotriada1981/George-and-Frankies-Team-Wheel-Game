@@ -514,7 +514,19 @@ function conductTournament(teams) {
 
 // Display detailed battle results
 function displayBattleResult(battleResult) {
+  console.log("🎯 Displaying battle result:", battleResult);
+  
   const battleSection = document.getElementById("battleSection");
+  console.log("🔍 Battle section element:", battleSection);
+
+  // Hide other game sections
+  const modeSelection = document.getElementById("mode-selection");
+  const classicMode = document.getElementById("classic-mode");
+  const dreamTeamMode = document.getElementById("dream-team-mode");
+  
+  if (modeSelection) modeSelection.style.display = "none";
+  if (classicMode) classicMode.style.display = "none";
+  if (dreamTeamMode) dreamTeamMode.style.display = "none";
 
   const team1 = battleResult.teams.team1;
   const team2 = battleResult.teams.team2;
@@ -607,8 +619,8 @@ function displayBattleResult(battleResult) {
             </div>
             
             <div class="battle-actions">
-                <button onclick="startBattle()" class="battle-button">⚔️ BATTLE AGAIN! ⚔️</button>
-                <button onclick="resetMultiplayerGame()" class="battle-button secondary">🔄 New Game</button>
+                <button onclick="testBattleMode()" class="battle-button">⚔️ TEST BATTLE AGAIN! ⚔️</button>
+                <button onclick="backToMainGame()" class="battle-button secondary">🏠 Back to Game</button>
             </div>
         </div>
     `;
@@ -618,6 +630,22 @@ function displayBattleResult(battleResult) {
   // Play celebration sound and effects
   SoundManager.playCelebrationSound();
   VisualEffects.createConfetti();
+}
+
+// Back to main game function
+function backToMainGame() {
+  console.log("🏠 Returning to main game...");
+  
+  // Hide battle section
+  const battleSection = document.getElementById("battleSection");
+  if (battleSection) battleSection.style.display = "none";
+  
+  // Show main game sections
+  const modeSelection = document.getElementById("mode-selection");
+  const classicMode = document.getElementById("classic-mode");
+  
+  if (modeSelection) modeSelection.style.display = "block";
+  if (classicMode) classicMode.style.display = "block";
 }
 
 // Reset multiplayer game (for new game)
@@ -1246,6 +1274,7 @@ window.startBattle = startBattle;
 window.simpleBattle = simpleBattle; // Fallback function
 window.testBattleMode = testBattleMode; // Test battle function
 window.displayBattleResult = displayBattleResult;
+window.backToMainGame = backToMainGame; // Back to main game function
 window.resetMultiplayerGame = resetMultiplayerGame;
 window.startOnlineGame = startOnlineGame;
 window.showBattleRecords = showBattleRecords;
