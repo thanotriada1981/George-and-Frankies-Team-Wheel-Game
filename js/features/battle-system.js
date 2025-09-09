@@ -613,6 +613,8 @@ function displayBattleResult(battleResult) {
         </div>
     `;
 
+  battleSection.style.display = "block";
+
   // Play celebration sound and effects
   SoundManager.playCelebrationSound();
   VisualEffects.createConfetti();
@@ -1152,10 +1154,15 @@ function testBattleMode() {
     const battleResult = battleSystemManager.conductDetailedBattle(testTeam1, testTeam2);
     
     if (battleResult) {
+      console.log("✅ Advanced battle result:", battleResult);
       saveBattleRecord(battleResult);
       displayBattleResult(battleResult);
       return;
+    } else {
+      console.log("❌ Advanced battle system returned null/undefined");
     }
+  } else {
+    console.log("❌ Battle system manager not initialized:", battleSystemManager);
   }
 
   // Fallback to simple battle
