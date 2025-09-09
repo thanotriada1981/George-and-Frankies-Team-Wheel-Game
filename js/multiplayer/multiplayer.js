@@ -717,13 +717,13 @@ function canPlayerFillPosition(player, position) {
     return false;
   }
 
-  // Position matching rules
+  // Position matching rules - players can only go to their natural position OR 6th/7th man
   const positionMap = {
-    pg: ["guard", "point guard", "pg"],
-    sg: ["guard", "shooting guard", "sg"],
-    sf: ["forward", "small forward", "sf"],
-    pf: ["forward", "power forward", "pf"],
-    c: ["center", "c"],
+    pg: ["point guard", "pg"], // Only point guards can play PG
+    sg: ["shooting guard", "sg"], // Only shooting guards can play SG
+    sf: ["small forward", "sf"], // Only small forwards can play SF
+    pf: ["power forward", "pf"], // Only power forwards can play PF
+    c: ["center", "c"], // Only centers can play C
     sixth: ["guard", "forward", "center", "pg", "sg", "sf", "pf", "c"], // 6th man can be any position
     seventh: ["guard", "forward", "center", "pg", "sg", "sf", "pf", "c"], // 7th man can be any position
   };
