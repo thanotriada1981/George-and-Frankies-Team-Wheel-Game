@@ -111,14 +111,14 @@ function startBattleWithDirectRatings(ratingLookup) {
 }
 
 function startSingleBattleWithRatings(ratingLookup) {
-    // Get team data
+    // Get team data with defensive programming
     const team1 = {
-        playerName: gameState.players[0].name,
+        playerName: gameState.players && gameState.players[0] && gameState.players[0].name ? gameState.players[0].name : 'Player 1',
         ...gameState.dreamTeams[0]
     };
     
     const team2 = {
-        playerName: gameState.players[1].name,
+        playerName: gameState.players && gameState.players[1] && gameState.players[1].name ? gameState.players[1].name : 'Player 2',
         ...gameState.dreamTeams[1]
     };
     
@@ -342,16 +342,19 @@ function useFallbackBattleSystem() {
 }
 
 function startSingleBattle() {
-    // Set up team objects for battle
+    // Set up team objects for battle with defensive programming
     const team1 = {
-        playerName: gameState.players[0].name,
+        playerName: gameState.players && gameState.players[0] && gameState.players[0].name ? gameState.players[0].name : 'Player 1',
         ...gameState.dreamTeams[0]
     };
     
     const team2 = {
-        playerName: gameState.players[1].name,
+        playerName: gameState.players && gameState.players[1] && gameState.players[1].name ? gameState.players[1].name : 'Player 2',
         ...gameState.dreamTeams[1]
     };
+    
+    console.log('🔍 Team 1 setup:', team1);
+    console.log('🔍 Team 2 setup:', team2);
     
     // Conduct the battle using NBA 2K25 ratings
     console.log('🎯 Starting NBA 2K25 battle between:', team1.playerName, 'vs', team2.playerName);
@@ -721,14 +724,14 @@ function getHeadToHeadRecords() {
 }
 
 function startFallbackSingleBattle() {
-    // Simple battle between two teams
+    // Simple battle between two teams with defensive programming
     const team1 = {
-        playerName: gameState.players[0].name,
+        playerName: gameState.players && gameState.players[0] && gameState.players[0].name ? gameState.players[0].name : 'Player 1',
         ...gameState.dreamTeams[0]
     };
     
     const team2 = {
-        playerName: gameState.players[1].name,
+        playerName: gameState.players && gameState.players[1] && gameState.players[1].name ? gameState.players[1].name : 'Player 2',
         ...gameState.dreamTeams[1]
     };
     
@@ -889,12 +892,12 @@ function simpleBattle() {
     }
     
     const team1 = {
-        playerName: gameState.players[0].name,
+        playerName: gameState.players && gameState.players[0] && gameState.players[0].name ? gameState.players[0].name : 'Player 1',
         ...gameState.dreamTeams[0]
     };
     
     const team2 = {
-        playerName: gameState.players[1].name,
+        playerName: gameState.players && gameState.players[1] && gameState.players[1].name ? gameState.players[1].name : 'Player 2',
         ...gameState.dreamTeams[1]
     };
     
