@@ -91,6 +91,12 @@ class PlayerRatingLookup {
      * Normalize player name for consistent lookups
      */
     normalizePlayerName(name) {
+        // Defensive programming - handle undefined/null names
+        if (!name || typeof name !== 'string') {
+            console.warn('⚠️ Invalid player name provided to normalizePlayerName:', name);
+            return 'unknown_player';
+        }
+        
         return name.toLowerCase()
                    .replace(/[^a-z0-9\s]/g, '')
                    .replace(/\s+/g, '_');
@@ -104,6 +110,12 @@ class PlayerRatingLookup {
     getPlayerRating(playerName) {
         if (!this.initialized) {
             console.error('❌ Rating lookup system not initialized');
+            return null;
+        }
+
+        // Defensive programming - handle invalid player names
+        if (!playerName || typeof playerName !== 'string') {
+            console.warn('⚠️ Invalid player name provided to getPlayerRating:', playerName);
             return null;
         }
 

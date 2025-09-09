@@ -57,6 +57,21 @@ class EnhancedBattleSystemManager {
    * @returns {Object} Player rating data
    */
   getPlayerRatingWithFallback(playerName, teamName = null, position = null) {
+    // Defensive programming - handle invalid player names
+    if (!playerName || typeof playerName !== 'string') {
+      console.warn('⚠️ Invalid player name provided to getPlayerRatingWithFallback:', playerName);
+      // Return a fallback rating for invalid names
+      const fallbackRating = this.generateFallbackRating(position);
+      return {
+        name: playerName || 'Unknown Player',
+        overall: fallbackRating,
+        position: position || 'Unknown',
+        team: teamName || 'Unknown',
+        tier: this.getRatingTier(fallbackRating),
+        isFallback: true,
+      };
+    }
+
     // Use unified database if available
     if (this.unifiedDB && this.unifiedDB.initialized) {
       return this.unifiedDB.getPlayerRatingWithFallback(
