@@ -599,6 +599,137 @@ h1 {
     background: linear-gradient(45deg, #6c757d, #495057);
 }
 
+/* Battle Results Styles */
+.battle-results {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.battle-summary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.battle-summary h3 {
+    margin: 0 0 10px 0;
+    font-size: 2em;
+}
+
+.team-comparison {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.team-result {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+}
+
+.team-result h4 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 1.5em;
+}
+
+.team-score {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #28a745;
+    margin: 15px 0;
+}
+
+.team-breakdown {
+    text-align: left;
+    margin-top: 15px;
+}
+
+.team-breakdown p {
+    margin: 8px 0;
+    color: #6c757d;
+}
+
+.vs-divider {
+    font-size: 2em;
+    font-weight: bold;
+    color: #dc3545;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: 3px solid #dc3545;
+}
+
+.position-battles {
+    background: #e8f5e8;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.position-battle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: white;
+    border-radius: 5px;
+    border-left: 4px solid #28a745;
+}
+
+.position {
+    font-weight: bold;
+    color: #495057;
+    min-width: 60px;
+}
+
+.battle-result {
+    flex: 1;
+    text-align: center;
+    color: #6c757d;
+}
+
+.battle-winner {
+    color: #28a745;
+    font-weight: bold;
+    min-width: 120px;
+    text-align: right;
+}
+
+.battle-analysis {
+    background: #fff3cd;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid #ffc107;
+}
+
+.battle-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.battle-actions .battle-button {
+    margin: 0 10px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+}
+
 /* Popup */
 .popup {
     display: none;

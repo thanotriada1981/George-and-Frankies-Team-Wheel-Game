@@ -1066,6 +1066,16 @@ function displaySimpleBattleResult(battleResult) {
 function testBattleMode() {
   console.log("🧪 Starting test battle mode...");
   
+  // First, let's test if we can find and show the battle section
+  const battleSection = document.getElementById("battleSection");
+  console.log("🔍 Battle section found:", battleSection);
+  
+  if (!battleSection) {
+    console.error("❌ Battle section not found!");
+    alert("Battle section not found! Check HTML structure.");
+    return;
+  }
+  
   // Create test teams with real NBA players
   const testTeam1 = {
     playerName: "Test Team Alpha",
@@ -1214,6 +1224,9 @@ function testBattleMode() {
 
   console.log("🏆 Test battle result:", battleResult);
   saveBattleRecord(battleResult);
+  
+  // Try to show a simple battle result first
+  console.log("🎯 Attempting to show simple battle result...");
   displaySimpleBattleResult(battleResult);
 }
 
