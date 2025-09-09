@@ -474,26 +474,26 @@ function displayBattleResult(battleResult) {
             
             <div class="team-comparison">
                 <div class="team-result">
-                    <h4>${team1.name}</h4>
-                    <div class="team-score">⭐ ${team1.rating.total}</div>
+                    <h4>${battleResult.teams.team1.name}</h4>
+                    <div class="team-score">⭐ ${battleResult.teams.team1.rating.total}</div>
                     <div class="team-breakdown">
-                        <p><strong>Starters:</strong> ${team1.rating.breakdown.starterTotal}</p>
-                        <p><strong>Bench:</strong> ${Math.round(team1.rating.breakdown.benchTotal)}</p>
-                        <p><strong>Chemistry:</strong> ${team1.rating.breakdown.chemistry}</p>
-                        <p><strong>Bonuses:</strong> ${team1.rating.breakdown.bonuses}</p>
+                        <p><strong>Starters:</strong> ${battleResult.teams.team1.rating.breakdown.starterTotal}</p>
+                        <p><strong>Bench:</strong> ${Math.round(battleResult.teams.team1.rating.breakdown.benchTotal)}</p>
+                        <p><strong>Chemistry:</strong> ${battleResult.teams.team1.rating.breakdown.chemistry}</p>
+                        <p><strong>Bonuses:</strong> ${battleResult.teams.team1.rating.breakdown.bonuses}</p>
                     </div>
                 </div>
                 
                 <div class="vs-divider">VS</div>
                 
                 <div class="team-result">
-                    <h4>${team2.name}</h4>
-                    <div class="team-score">⭐ ${team2.rating.total}</div>
+                    <h4>${battleResult.teams.team2.name}</h4>
+                    <div class="team-score">⭐ ${battleResult.teams.team2.rating.total}</div>
                     <div class="team-breakdown">
-                        <p><strong>Starters:</strong> ${team2.rating.breakdown.starterTotal}</p>
-                        <p><strong>Bench:</strong> ${Math.round(team2.rating.breakdown.benchTotal)}</p>
-                        <p><strong>Chemistry:</strong> ${team2.rating.breakdown.chemistry}</p>
-                        <p><strong>Bonuses:</strong> ${team2.rating.breakdown.bonuses}</p>
+                        <p><strong>Starters:</strong> ${battleResult.teams.team2.rating.breakdown.starterTotal}</p>
+                        <p><strong>Bench:</strong> ${Math.round(battleResult.teams.team2.rating.breakdown.benchTotal)}</p>
+                        <p><strong>Chemistry:</strong> ${battleResult.teams.team2.rating.breakdown.chemistry}</p>
+                        <p><strong>Bonuses:</strong> ${battleResult.teams.team2.rating.breakdown.bonuses}</p>
                     </div>
                 </div>
             </div>
@@ -504,8 +504,8 @@ function displayBattleResult(battleResult) {
                     Object.entries(battleResult.positionBattles).map(([pos, battle]) => `
                         <div class="position-battle">
                             <span class="position">${pos.toUpperCase()}:</span>
-                            <span class="battle-result">${battle.team1.name} (${battle.team1.rating}) vs ${battle.team2.name} (${battle.team2.rating})</span>
-                            <span class="battle-winner">Winner: ${battle.winner.name}</span>
+                            <span class="battle-result">Team 1 (${battle.team1Rating}) vs Team 2 (${battle.team2Rating})</span>
+                            <span class="battle-winner">Winner: ${battle.winner === 'team1' ? 'Team 1' : 'Team 2'}</span>
                         </div>
                     `).join('') : ''
                 }
