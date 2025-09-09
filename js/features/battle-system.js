@@ -28,8 +28,18 @@ window.addEventListener('load', async () => {
 function startBattle() {
     console.log('🎮 Starting battle system...');
     console.log('🔍 Checking battle system manager:', battleSystemManager);
+    console.log('🔍 Game state:', gameState);
+    console.log('🔍 Dream teams:', gameState.dreamTeams);
     
-    if (gameState.dreamTeams.length < 2) {
+    // Check if gameState exists
+    if (typeof gameState === 'undefined') {
+        console.error('❌ gameState is not defined!');
+        alert('Game state not found. Please refresh the page and try again.');
+        return;
+    }
+    
+    if (!gameState.dreamTeams || gameState.dreamTeams.length < 2) {
+        console.error('❌ Not enough teams to battle:', gameState.dreamTeams);
         alert('Need at least 2 teams to battle!');
         return;
     }
@@ -869,8 +879,51 @@ function displaySimpleBattleResult(battleResult) {
     }
 }
 
+// Simple fallback battle function
+function simpleBattle() {
+    console.log('🎲 Starting simple battle...');
+    
+    if (typeof gameState === 'undefined' || !gameState.dreamTeams || gameState.dreamTeams.length < 2) {
+        alert('Need at least 2 teams to battle!');
+        return;
+    }
+    
+    const team1 = {
+        playerName: gameState.players[0].name,
+        ...gameState.dreamTeams[0]
+    };
+    
+    const team2 = {
+        playerName: gameState.players[1].name,
+        ...gameState.dreamTeams[1]
+    };
+    
+    // Simple random battle
+    const team1Score = Math.floor(Math.random() * 30) + 80; // 80-110
+    const team2Score = Math.floor(Math.random() * 30) + 80; // 80-110
+    
+    const winner = team1Score > team2Score ? team1 : team2;
+    const margin = Math.abs(team1Score - team2Score);
+    
+    const battleResult = {
+        winner: { name: winner.playerName },
+        teams: { 
+            team1: { name: team1.playerName, score: team1Score }, 
+            team2: { name: team2.playerName, score: team2Score } 
+        },
+        battleType: 'Simple Battle',
+        margin: margin,
+        date: new Date().toLocaleDateString()
+    };
+    
+    console.log('🏆 Simple battle result:', battleResult);
+    saveBattleRecord(battleResult);
+    displaySimpleBattleResult(battleResult);
+}
+
 // Export functions for global use
 window.startBattle = startBattle;
+window.simpleBattle = simpleBattle; // Fallback function
 window.displayBattleResult = displayBattleResult;
 window.resetMultiplayerGame = resetMultiplayerGame;
 window.startOnlineGame = startOnlineGame;

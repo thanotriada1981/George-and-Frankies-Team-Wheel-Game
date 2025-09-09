@@ -685,7 +685,7 @@ function startBattlePhase() {
               )
               .join("")}
         </div>
-        <button class="battle-button" onclick="startBattle()">⚔️ START BATTLE! ⚔️</button>
+        <button class="battle-button" onclick="tryStartBattle()">⚔️ START BATTLE! ⚔️</button>
     `;
 
   // Disable spin button
@@ -876,6 +876,30 @@ function cancelPlayerSelection() {
   console.log("❌ Player selection cancelled");
 }
 
+// Try to start battle with fallback
+function tryStartBattle() {
+    console.log('🎮 Attempting to start battle...');
+    
+    try {
+        // Try the main battle function first
+        if (typeof startBattle === 'function') {
+            console.log('✅ startBattle function found, calling it...');
+            startBattle();
+        } else {
+            console.warn('⚠️ startBattle function not found, trying simpleBattle...');
+            if (typeof simpleBattle === 'function') {
+                simpleBattle();
+            } else {
+                console.error('❌ No battle functions available!');
+                alert('Battle system not available. Please refresh the page and try again.');
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error in tryStartBattle:', error);
+        alert('Battle failed to start. Error: ' + error.message);
+    }
+}
+
 // Export functions for global use
 window.setHostName = setHostName;
 window.selectPlayerCount = selectPlayerCount;
@@ -885,3 +909,4 @@ window.startMultiplayerGame = startMultiplayerGame;
 window.showPlayerSelection = showPlayerSelection;
 window.assignPlayer = assignPlayer;
 window.cancelPlayerSelection = cancelPlayerSelection;
+window.tryStartBattle = tryStartBattle;
