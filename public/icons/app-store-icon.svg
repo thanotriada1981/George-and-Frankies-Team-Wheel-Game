@@ -1,0 +1,29 @@
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e55a2b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="basketball" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4491f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg)" rx="80"/>
+  
+  <!-- Basketball -->
+  <circle cx="512" cy="300" r="100" fill="url(#basketball)" stroke="#2c3e50" stroke-width="4"/>
+  
+  <!-- Basketball lines -->
+  <line x1="412" y1="300" x2="612" y2="300" stroke="#2c3e50" stroke-width="3"/>
+  <path d="M 412 250 Q 512 200 612 250" stroke="#2c3e50" stroke-width="3" fill="none"/>
+  <path d="M 412 350 Q 512 400 612 350" stroke="#2c3e50" stroke-width="3" fill="none"/>
+  
+  <!-- Text -->
+  <text x="512" y="400" font-family="Arial, sans-serif" font-size="120" font-weight="bold" text-anchor="middle" fill="#ffffff" stroke="#2c3e50" stroke-width="2">🏀</text>
+  
+  <!-- Subtitle for larger icons -->
+  <text x="512" y="480" font-family="Arial, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#ffffff" stroke="#2c3e50" stroke-width="1">TEAM WHEEL</text>
+</svg>

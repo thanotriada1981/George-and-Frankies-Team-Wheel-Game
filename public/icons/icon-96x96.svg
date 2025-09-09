@@ -1,0 +1,29 @@
+<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e55a2b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="basketball" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4491f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="96" height="96" fill="url(#bg)" rx="8"/>
+  
+  <!-- Basketball -->
+  <circle cx="48" cy="28" r="9.5" fill="url(#basketball)" stroke="#2c3e50" stroke-width="0"/>
+  
+  <!-- Basketball lines -->
+  <line x1="38.5" y1="28" x2="57.5" y2="28" stroke="#2c3e50" stroke-width="0"/>
+  <path d="M 38.5 23.25 Q 48 18.5 57.5 23.25" stroke="#2c3e50" stroke-width="0" fill="none"/>
+  <path d="M 38.5 32.75 Q 48 37.5 57.5 32.75" stroke="#2c3e50" stroke-width="0" fill="none"/>
+  
+  <!-- Text -->
+  <text x="48" y="38" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#ffffff" stroke="#2c3e50" stroke-width="0">🏀</text>
+  
+  <!-- Subtitle for larger icons -->
+  
+</svg>
