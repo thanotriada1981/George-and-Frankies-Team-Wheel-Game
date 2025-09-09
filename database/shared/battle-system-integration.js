@@ -1,5 +1,5 @@
 /**
- * Battle System Integration with NBA 2K25 Player Ratings
+ * System Integration with NBA 2K25 Player Ratings
  * For George & Frankie's Team Wheel Battle System
  * 
  * This file integrates the new player ratings database with the existing
@@ -329,15 +329,27 @@ class EnhancedBattleSystemManager {
             battleType: '',
             summary: ''
         };
+        
+        // Debug team objects
+        console.log('🔍 Team 1 object:', battleResult.teams.team1);
+        console.log('🔍 Team 2 object:', battleResult.teams.team2);
+        console.log('🔍 Team 1 name:', battleResult.teams.team1.name);
+        console.log('🔍 Team 2 name:', battleResult.teams.team2.name);
 
         // Determine winner
         if (team1Rating.total > team2Rating.total) {
             battleResult.winner = battleResult.teams.team1;
             battleResult.margin = team1Rating.total - team2Rating.total;
+            console.log('🏆 Team 1 wins:', battleResult.winner);
         } else {
             battleResult.winner = battleResult.teams.team2;
             battleResult.margin = team2Rating.total - team1Rating.total;
+            console.log('🏆 Team 2 wins:', battleResult.winner);
         }
+        
+        // Debug winner object
+        console.log('🔍 Winner object:', battleResult.winner);
+        console.log('🔍 Winner name:', battleResult.winner ? battleResult.winner.name : 'NO WINNER');
 
         // Determine battle type
         if (battleResult.margin <= 3) {
@@ -408,7 +420,11 @@ class EnhancedBattleSystemManager {
         const margin = battleResult.margin;
         const battleType = battleResult.battleType;
         
-        let summary = `${winner.name} wins by ${margin} points in a ${battleType.toLowerCase()}! `;
+        // Defensive programming - ensure winner has a name
+        const winnerName = winner && winner.name ? winner.name : 'Unknown Team';
+        const battleTypeText = battleType && battleType.toLowerCase ? battleType.toLowerCase() : 'battle';
+        
+        let summary = `${winnerName} wins by ${margin} points in a ${battleTypeText}! `;
         
         // Add specific details based on battle type
         if (battleType === 'Nail-biter') {
