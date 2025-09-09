@@ -699,7 +699,8 @@ function startBattlePhase() {
 function canPlayerFillPosition(player, position) {
   // Basic position matching logic
   const playerPos = player.position.toLowerCase();
-  const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+  const playerName =
+    player.full_name || `${player.first_name} ${player.last_name}`;
 
   console.log(`🔍 Position check: ${playerName} (${playerPos}) → ${position}`);
 
@@ -729,9 +730,13 @@ function canPlayerFillPosition(player, position) {
 
   const allowedPositions = positionMap[position] || [];
   const canFill = allowedPositions.some((pos) => playerPos.includes(pos));
-  
-  console.log(`🎯 Position match: ${playerPos} in [${allowedPositions.join(', ')}] = ${canFill}`);
-  
+
+  console.log(
+    `🎯 Position match: ${playerPos} in [${allowedPositions.join(
+      ", "
+    )}] = ${canFill}`
+  );
+
   return canFill;
 }
 

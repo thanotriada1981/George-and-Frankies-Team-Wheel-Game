@@ -26,6 +26,11 @@ class PlayerRatingLookup {
             }
             this.ratingsData = await response.json();
             
+            // Validate data structure
+            if (!this.ratingsData || !this.ratingsData.teams) {
+                throw new Error('Invalid data structure: missing teams data');
+            }
+            
             // Build player index for fast lookups
             this.buildPlayerIndex();
             
@@ -35,6 +40,7 @@ class PlayerRatingLookup {
             this.initialized = true;
             console.log('✅ Player Rating Lookup System initialized successfully');
             console.log(`📊 Loaded ${Object.keys(this.ratingsData.teams).length} teams`);
+            console.log(`👥 Indexed ${this.playerIndex.size} players`);
             
         } catch (error) {
             console.error('❌ Error initializing Player Rating Lookup System:', error);
@@ -51,13 +57,16 @@ class PlayerRatingLookup {
         
         // Index all players from all teams
         Object.entries(this.ratingsData.teams).forEach(([teamName, teamData]) => {
-            teamData.players.forEach(player => {
-                const key = this.normalizePlayerName(player.name);
-                this.playerIndex.set(key, {
-                    ...player,
-                    team: teamName
+            if (teamData.roster && teamData.roster.players) {
+                teamData.roster.players.forEach(player => {
+                    const key = this.normalizePlayerName(player.name);
+                    this.playerIndex.set(key, {
+                        ...player,
+                        team: teamName,
+                        overall: player.nba2k26Rating || player.overall || 0
+                    });
                 });
-            });
+            }
         });
         
         console.log(`📊 Indexed ${this.playerIndex.size} players for fast lookup`);
@@ -70,7 +79,9 @@ class PlayerRatingLookup {
         this.teamRosters.clear();
         
         Object.entries(this.ratingsData.teams).forEach(([teamName, teamData]) => {
-            this.teamRosters.set(teamName, teamData.players);
+            if (teamData.roster && teamData.roster.players) {
+                this.teamRosters.set(teamName, teamData.roster.players);
+            }
         });
         
         console.log(`🏀 Built rosters for ${this.teamRosters.size} teams`);
@@ -187,8 +198,14 @@ class PlayerRatingLookup {
         breakdown.chemistry = this.calculateTeamChemistry(team);
         breakdown.bonuses = this.calculateTeamBonuses(team);
 
-        // Apply weights from the database
-        const weights = this.ratingsData.battle_weights;
+        // Apply default weights (since battle_weights not in data)
+        const weights = {
+            overall_rating: 0.7,
+            position_importance: 0.2,
+            team_chemistry: 0.05,
+            clutch_factor: 0.05
+        };
+        
         totalRating = 
             (breakdown.starters * weights.overall_rating) +
             (breakdown.bench * weights.position_importance) +
