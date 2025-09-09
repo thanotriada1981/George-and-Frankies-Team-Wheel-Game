@@ -699,14 +699,20 @@ function startBattlePhase() {
 function canPlayerFillPosition(player, position) {
   // Basic position matching logic
   const playerPos = player.position.toLowerCase();
+  const playerName = player.full_name || `${player.first_name} ${player.last_name}`;
+
+  console.log(`🔍 Position check: ${playerName} (${playerPos}) → ${position}`);
 
   // Allow coaches to fill coach position
   if (position === "coach") {
-    return player.isCoach || playerPos.includes("coach");
+    const canCoach = player.isCoach || playerPos.includes("coach");
+    console.log(`👨‍💼 Coach check: ${canCoach}`);
+    return canCoach;
   }
 
   // Don't allow coaches to fill player positions
   if (player.isCoach) {
+    console.log(`❌ Coach cannot fill player position`);
     return false;
   }
 
@@ -717,12 +723,16 @@ function canPlayerFillPosition(player, position) {
     sf: ["forward", "small forward", "sf"],
     pf: ["forward", "power forward", "pf"],
     c: ["center", "c"],
-    sixth: ["guard", "forward", "center"], // 6th man can be any position
-    seventh: ["guard", "forward", "center"], // 7th man can be any position
+    sixth: ["guard", "forward", "center", "pg", "sg", "sf", "pf", "c"], // 6th man can be any position
+    seventh: ["guard", "forward", "center", "pg", "sg", "sf", "pf", "c"], // 7th man can be any position
   };
 
   const allowedPositions = positionMap[position] || [];
-  return allowedPositions.some((pos) => playerPos.includes(pos));
+  const canFill = allowedPositions.some((pos) => playerPos.includes(pos));
+  
+  console.log(`🎯 Position match: ${playerPos} in [${allowedPositions.join(', ')}] = ${canFill}`);
+  
+  return canFill;
 }
 
 // Initialize wheel for multiplayer mode - now with optimized pre-built wheels!
@@ -878,26 +888,28 @@ function cancelPlayerSelection() {
 
 // Try to start battle with fallback
 function tryStartBattle() {
-    console.log('🎮 Attempting to start battle...');
-    
-    try {
-        // Try the main battle function first
-        if (typeof startBattle === 'function') {
-            console.log('✅ startBattle function found, calling it...');
-            startBattle();
-        } else {
-            console.warn('⚠️ startBattle function not found, trying simpleBattle...');
-            if (typeof simpleBattle === 'function') {
-                simpleBattle();
-            } else {
-                console.error('❌ No battle functions available!');
-                alert('Battle system not available. Please refresh the page and try again.');
-            }
-        }
-    } catch (error) {
-        console.error('❌ Error in tryStartBattle:', error);
-        alert('Battle failed to start. Error: ' + error.message);
+  console.log("🎮 Attempting to start battle...");
+
+  try {
+    // Try the main battle function first
+    if (typeof startBattle === "function") {
+      console.log("✅ startBattle function found, calling it...");
+      startBattle();
+    } else {
+      console.warn("⚠️ startBattle function not found, trying simpleBattle...");
+      if (typeof simpleBattle === "function") {
+        simpleBattle();
+      } else {
+        console.error("❌ No battle functions available!");
+        alert(
+          "Battle system not available. Please refresh the page and try again."
+        );
+      }
     }
+  } catch (error) {
+    console.error("❌ Error in tryStartBattle:", error);
+    alert("Battle failed to start. Error: " + error.message);
+  }
 }
 
 // Export functions for global use
