@@ -58,15 +58,18 @@ class EnhancedBattleSystemManager {
    */
   getPlayerRatingWithFallback(playerName, teamName = null, position = null) {
     // Defensive programming - handle invalid player names
-    if (!playerName || typeof playerName !== 'string') {
-      console.warn('⚠️ Invalid player name provided to getPlayerRatingWithFallback:', playerName);
+    if (!playerName || typeof playerName !== "string") {
+      console.warn(
+        "⚠️ Invalid player name provided to getPlayerRatingWithFallback:",
+        playerName
+      );
       // Return a fallback rating for invalid names
       const fallbackRating = this.generateFallbackRating(position);
       return {
-        name: playerName || 'Unknown Player',
+        name: playerName || "Unknown Player",
         overall: fallbackRating,
-        position: position || 'Unknown',
-        team: teamName || 'Unknown',
+        position: position || "Unknown",
+        team: teamName || "Unknown",
         tier: this.getRatingTier(fallbackRating),
         isFallback: true,
       };
@@ -171,14 +174,19 @@ class EnhancedBattleSystemManager {
       const player = team[position];
       if (player) {
         // Use unified database with fallback system
+        // Handle different player name formats from multiplayer mode
+        const playerName =
+          player.full_name ||
+          player.name ||
+          `${player.first_name || ""} ${player.last_name || ""}`.trim();
         const rating = this.getPlayerRatingWithFallback(
-          player.name,
+          playerName,
           team.playerName,
           player.position
         );
 
         breakdown.starters.push({
-          name: player.name,
+          name: playerName,
           position: position.toUpperCase(),
           overall: rating.overall,
           tier: rating.tier,
@@ -195,14 +203,19 @@ class EnhancedBattleSystemManager {
       const player = team[position];
       if (player) {
         // Use unified database with fallback system
+        // Handle different player name formats from multiplayer mode
+        const playerName =
+          player.full_name ||
+          player.name ||
+          `${player.first_name || ""} ${player.last_name || ""}`.trim();
         const rating = this.getPlayerRatingWithFallback(
-          player.name,
+          playerName,
           team.playerName,
           player.position
         );
 
         breakdown.bench.push({
-          name: player.name,
+          name: playerName,
           position: position,
           overall: rating.overall,
           tier: rating.tier,
