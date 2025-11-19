@@ -203,16 +203,32 @@ async function startOnlineGame() {
         const inviteStep = document.getElementById('invite-step');
         if (inviteStep) inviteStep.style.display = 'none';
 
-        // Show mode selection and dream team mode
+        // Show mode selection buttons
         const modeSelection = document.getElementById('mode-selection');
         if (modeSelection) modeSelection.style.display = 'flex';
-
-        // Switch to dream team builder mode for multiplayer
-        switchMode('dreamteam');
 
         // Show sport selector
         const sportSelection = document.getElementById('sport-selection');
         if (sportSelection) sportSelection.style.display = 'block';
+
+        // IMPORTANT: Show BOTH wheel (classic-mode) AND roster (dream-team-mode) for multiplayer
+        const classicMode = document.getElementById('classic-mode');
+        const dreamTeamMode = document.getElementById('dream-team-mode');
+
+        if (classicMode) {
+            classicMode.style.display = 'block';
+            console.log('✅ Wheel (classic-mode) now visible');
+        }
+
+        if (dreamTeamMode) {
+            dreamTeamMode.style.display = 'block';
+            console.log('✅ Roster slots (dream-team-mode) now visible');
+        }
+
+        // Set game state to dreamteam mode
+        if (window.gameState) {
+            window.gameState.currentMode = 'dreamteam';
+        }
 
         console.log('🎮 Online multiplayer game is now active!');
     } else {

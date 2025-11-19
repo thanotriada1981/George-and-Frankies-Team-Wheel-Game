@@ -485,18 +485,32 @@ class OnlineMultiplayerSystem {
         const waitingScreen = document.getElementById('joined-player-waiting');
         if (waitingScreen) waitingScreen.style.display = 'none';
 
-        // Show mode selection
+        // Show mode selection buttons
         const modeSelection = document.getElementById('mode-selection');
         if (modeSelection) modeSelection.style.display = 'flex';
-
-        // Switch to dream team builder mode
-        if (typeof switchMode === 'function') {
-            switchMode('dreamteam');
-        }
 
         // Show sport selector
         const sportSelection = document.getElementById('sport-selection');
         if (sportSelection) sportSelection.style.display = 'block';
+
+        // IMPORTANT: Show BOTH wheel (classic-mode) AND roster (dream-team-mode) for multiplayer
+        const classicMode = document.getElementById('classic-mode');
+        const dreamTeamMode = document.getElementById('dream-team-mode');
+
+        if (classicMode) {
+            classicMode.style.display = 'block';
+            console.log('✅ Wheel (classic-mode) now visible');
+        }
+
+        if (dreamTeamMode) {
+            dreamTeamMode.style.display = 'block';
+            console.log('✅ Roster slots (dream-team-mode) now visible');
+        }
+
+        // Set game state to dreamteam mode
+        if (window.gameState) {
+            window.gameState.currentMode = 'dreamteam';
+        }
 
         console.log('✅ Transitioned to gameplay');
     }
