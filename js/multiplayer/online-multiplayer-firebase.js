@@ -582,7 +582,15 @@ class OnlineMultiplayerSystem {
     }
 
     getJoinLink() {
-        return `${window.location.origin}${window.location.pathname}?join=${this.gameId}`;
+        // Use GitHub Pages URL for production, or current location for local testing
+        const productionURL = 'https://thanotriada1981.github.io/George-and-Frankies-Team-Wheel-Game';
+
+        // Auto-detect: if running on GitHub Pages or localhost wants to generate GitHub Pages links
+        const baseURL = window.location.hostname === 'thanotriada1981.github.io'
+            ? `${window.location.origin}${window.location.pathname}`
+            : productionURL;
+
+        return `${baseURL}?join=${this.gameId}`;
     }
 
     shuffleArray(array) {
