@@ -720,6 +720,14 @@ async function joinGameFromURL() {
     const gameId = urlParams.get('join');
 
     if (gameId) {
+        console.log('🎮 Joining game from URL:', gameId);
+
+        // IMPORTANT: Ensure the game is fully initialized first (wheel, teams, etc.)
+        if (typeof initializeGame === 'function' && !window.nbaTeams) {
+            console.log('🏀 Initializing game data and wheel...');
+            await initializeGame();
+        }
+
         const playerName = prompt('Enter your name to join the game:');
         if (playerName) {
             if (!window.onlineMultiplayer) {

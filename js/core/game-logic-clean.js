@@ -564,6 +564,7 @@ if (document.readyState === 'loading') {
 }
 
 // Export functions (removed closePopup since we no longer have popup)
+window.initializeGame = initializeGame;
 window.spinWheel = spinWheel;
 window.switchMode = switchMode;
 window.showSetupPhase = showSetupPhase;
