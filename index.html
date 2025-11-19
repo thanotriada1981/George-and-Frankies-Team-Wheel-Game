@@ -110,7 +110,6 @@
         <div class="game-modes" id="mode-selection" style="display: none;">
             <button class="mode-button active" onclick="switchMode('classic')">🎯 Classic Spin</button>
             <button class="mode-button" onclick="showSetupPhase()" style="background: #ff9800;">🏆 Dream Team Builder</button>
-            <button class="mode-button" onclick="testBattleMode()" style="background: #4caf50;">🧪 Test Battle Mode</button>
         </div>
 
         <!-- Classic Mode -->
@@ -240,56 +239,13 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Battle Section -->
-        <div id="battleSection" style="display: none;">
-            <h3>⚔️ Ready for Battle! ⚔️</h3>
-        </div>
     </div>
-    
-    <!-- Developer Tools Section -->
-    <div class="developer-tools">
-        <details>
-            <summary>🔧 Developer Tools (Click to expand)</summary>
-            <div class="developer-tools-buttons">
-                <button id="soundToggle" onclick="SoundManager.toggle()" title="Sound ON - Click to mute" style="background: #4CAF50;">
-                    🔊 Sound Toggle
-                </button>
-                <button onclick="testDataLoading()" style="background: #ff9800;">
-                    🔍 Test Data Loading
-                </button>
-                <button onclick="testDirectJSONLoad()" style="background: #e91e63;">
-                    📄 Test JSON File
-                </button>
-                <button onclick="testNBA2K25Database()" style="background: #9C27B0;">
-                    🏆 Test NBA 2K25 DB
-                </button>
-                <button onclick="testAtlantaHawks()" style="background: #E03A3E;">
-                    🏀 Test Hawks Team
-                </button>
-                <button onclick="testBattleSystem()" style="background: #4CAF50;">
-                    ⚔️ Test Battle System
-                </button>
-                <button onclick="skipToClassicMode()" style="background: #FF4444;">
-                    🚀 Skip Setup → Classic Spin
-                </button>
-                <button onclick="testRealPlayerRosters()" style="background: #2196F3;">
-                    👥 Test Real Player Rosters
-                </button>
-                <button onclick="testNBA2K25Ratings()" style="background: #FF9800;">
-                    🏆 Test NBA 2K25 Ratings
-                </button>
-                <button onclick="testWheelFormatting()" style="background: #9C27B0;">
-                    🎨 Test Wheel Formatting
-                </button>
-                <button onclick="testPlayerSelectionModal()" style="background: #E91E63;">
-                    🏀 Test Player Selection Modal
-                </button>
-            </div>
-            <p>These tools are for testing and debugging. Check browser console for detailed results.</p>
-        </details>
+
+    <!-- Battle Section (Must be OUTSIDE dream-team-mode to display properly) -->
+    <div id="battleSection" style="display: none;">
+        <h3>⚔️ Ready for Battle! ⚔️</h3>
     </div>
-    
+
     <!-- Firebase SDK for Online Multiplayer -->
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>

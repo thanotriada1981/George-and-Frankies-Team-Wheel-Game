@@ -184,14 +184,37 @@ async function copyGameLink() {
 
 // Start online game (host only)
 async function startOnlineGame() {
-    if (!onlineMultiplayer || !onlineMultiplayer.isHost) {
+    if (!window.onlineMultiplayer || !window.onlineMultiplayer.isHost) {
         console.warn('Only host can start the game');
         return;
     }
-    
-    const success = await onlineMultiplayer.startMultiplayerGame();
+
+    console.log('🚀 Starting online game...');
+    const success = await window.onlineMultiplayer.startMultiplayerGame();
+
     if (success) {
-        showOnlineGameplay();
+        console.log('✅ Game started successfully');
+
+        // Hide setup phase
+        const setupPhase = document.getElementById('setup-phase');
+        if (setupPhase) setupPhase.style.display = 'none';
+
+        // Hide invite step
+        const inviteStep = document.getElementById('invite-step');
+        if (inviteStep) inviteStep.style.display = 'none';
+
+        // Show mode selection and dream team mode
+        const modeSelection = document.getElementById('mode-selection');
+        if (modeSelection) modeSelection.style.display = 'flex';
+
+        // Switch to dream team builder mode for multiplayer
+        switchMode('dreamteam');
+
+        // Show sport selector
+        const sportSelection = document.getElementById('sport-selection');
+        if (sportSelection) sportSelection.style.display = 'block';
+
+        console.log('🎮 Online multiplayer game is now active!');
     } else {
         alert('Failed to start game. Please try again.');
     }
@@ -212,21 +235,67 @@ function leaveOnlineGame() {
 // Handle online multiplayer selection
 async function selectOnlineMultiplayer() {
     console.log('🌐 Setting up online multiplayer...');
-    
+
     // Initialize online multiplayer if not already done
-    if (!onlineMultiplayer) {
+    if (!window.onlineMultiplayer) {
+        console.log('🔥 Initializing Firebase...');
         const initialized = await initializeOnlineMultiplayer();
-        if (!initialized) {
+        if (initialized) {
+            console.log('✅ Firebase initialized successfully');
+            window.onlineMultiplayer = onlineMultiplayer;
+        } else {
             console.warn('🔥 Firebase not available, using demo mode');
+            // Still create the multiplayer instance for demo mode
+            window.onlineMultiplayer = new OnlineMultiplayerSystem();
         }
     }
-    
+
     // Hide game type selection
     const gameTypeStep = document.getElementById('game-type-step');
     if (gameTypeStep) gameTypeStep.style.display = 'none';
-    
-    // Create online game
-    await createOnlineGame();
+
+    // Show the invite step instead of creating lobby
+    const inviteStep = document.getElementById('invite-step');
+    if (inviteStep) {
+        inviteStep.style.display = 'block';
+
+        // Create the online game
+        const hostName = document.getElementById('host-name-input')?.value || 'Host';
+        const gameSettings = {
+            sport: 'nba',
+            numPlayers: window.gameState?.numPlayers || 2,
+            maxRounds: window.gameState?.maxRounds || 8,
+            rosterSize: 8
+        };
+
+        console.log('🎮 Creating online game with settings:', gameSettings);
+        const result = await window.onlineMultiplayer.createOnlineGame(hostName, gameSettings);
+
+        if (result.success) {
+            console.log('✅ Game created successfully:', result.gameId);
+
+            // Update the invite link input
+            const inviteLinkInput = document.getElementById('inviteLink');
+            if (inviteLinkInput) {
+                inviteLinkInput.value = result.joinLink;
+            }
+
+            // Update host name display
+            const hostNameDisplay = document.getElementById('host-name-display');
+            if (hostNameDisplay) {
+                hostNameDisplay.textContent = hostName;
+            }
+
+            // Setup real-time listener to update joined players
+            setupJoinedPlayersListener();
+
+        } else {
+            alert('Failed to create game: ' + (result.error || 'Unknown error'));
+            // Go back to game type selection
+            if (gameTypeStep) gameTypeStep.style.display = 'block';
+            if (inviteStep) inviteStep.style.display = 'none';
+        }
+    }
 }
 
 // Update player list in lobby
@@ -369,10 +438,135 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Show waiting screen for joined players (non-host)
+function showJoinedPlayerWaitingScreen(playerName) {
+    const container = document.querySelector('.container');
+    if (!container) return;
+
+    const waitingHTML = `
+        <div id="joined-player-waiting" class="setup-section">
+            <h2>🎮 Welcome, ${playerName}!</h2>
+            <div class="waiting-content">
+                <p class="waiting-message">✅ You've successfully joined the game!</p>
+                <p class="waiting-instruction">⏳ Waiting for the host to start the game...</p>
+
+                <div class="joined-players">
+                    <h4>👥 Players in Game:</h4>
+                    <div id="joinedPlayersList">
+                        <div class="player-joined">Loading players...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Insert after title
+    const title = container.querySelector('h1');
+    if (title) {
+        title.insertAdjacentHTML('afterend', waitingHTML);
+    }
+
+    // Setup real-time listener to update player list
+    setupJoinedPlayersListener();
+}
+
+// Setup real-time listener for joined players
+function setupJoinedPlayersListener() {
+    if (!window.onlineMultiplayer) return;
+
+    // Check if Firebase is available
+    if (window.onlineMultiplayer.isFirebaseReady && window.onlineMultiplayer.gameId) {
+        console.log('👂 Setting up real-time player listener');
+
+        // Listen for player changes in Firebase
+        const playersRef = window.onlineMultiplayer.db.ref(`games/${window.onlineMultiplayer.gameId}/players`);
+        playersRef.on('value', (snapshot) => {
+            const players = snapshot.val();
+            if (players) {
+                updateJoinedPlayersList(players);
+            }
+        });
+    } else {
+        console.log('Demo mode - no real-time listener');
+        // In demo mode, just update with current players
+        if (window.onlineMultiplayer.gameData && window.onlineMultiplayer.gameData.players) {
+            updateJoinedPlayersList(window.onlineMultiplayer.gameData.players);
+        }
+    }
+}
+
+// Update the joined players list in the invite step
+function updateJoinedPlayersList(players) {
+    const joinedPlayersList = document.getElementById('joinedPlayersList');
+    if (!joinedPlayersList) return;
+
+    const playerCount = Object.keys(players).length;
+    const maxPlayers = window.gameState?.numPlayers || 2;
+
+    // Build the player list HTML
+    let playersHTML = '';
+    Object.values(players).forEach((player, index) => {
+        playersHTML += `
+            <div class="player-joined ${player.isHost ? 'host' : ''}">
+                ${player.isHost ? '👑' : '🎮'} ${player.name}${player.isHost ? ' (Host)' : ''}
+            </div>
+        `;
+    });
+
+    joinedPlayersList.innerHTML = playersHTML;
+
+    // Update the start button
+    const startButton = document.getElementById('startOnlineGame');
+    if (startButton) {
+        if (playerCount >= 2) {
+            startButton.disabled = false;
+            startButton.textContent = playerCount >= maxPlayers
+                ? '🚀 Start Game!'
+                : `🚀 Start Game! (${playerCount}/${maxPlayers} players)`;
+        } else {
+            startButton.disabled = true;
+            startButton.textContent = `🚀 Start Game! (Waiting for players... ${playerCount}/${maxPlayers})`;
+        }
+    }
+}
+
+// Copy invite link to clipboard
+async function copyInviteLink() {
+    const inviteLink = document.getElementById('inviteLink');
+    if (inviteLink) {
+        try {
+            await navigator.clipboard.writeText(inviteLink.value);
+
+            // Show feedback
+            const copyButton = document.querySelector('.copy-button');
+            if (copyButton) {
+                const originalText = copyButton.textContent;
+                copyButton.textContent = '✅ Copied!';
+                copyButton.style.background = '#4CAF50';
+
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.style.background = '';
+                }, 2000);
+            }
+
+            console.log('📋 Invite link copied to clipboard');
+
+        } catch (error) {
+            // Fallback for older browsers
+            inviteLink.select();
+            inviteLink.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            alert('Invite link copied to clipboard!');
+        }
+    }
+}
+
 // Export functions for global use
 window.showOnlineGameLobby = showOnlineGameLobby;
 window.showOnlineGameplay = showOnlineGameplay;
 window.copyGameLink = copyGameLink;
+window.copyInviteLink = copyInviteLink;
 window.startOnlineGame = startOnlineGame;
 window.leaveOnlineGame = leaveOnlineGame;
 window.selectOnlineMultiplayer = selectOnlineMultiplayer;
@@ -381,4 +575,7 @@ window.updateRostersDisplay = updateRostersDisplay;
 window.updateScoresDisplay = updateScoresDisplay;
 window.startNewGame = startNewGame;
 window.returnToMenu = returnToMenu;
-window.handleOnlineSpinResult = handleOnlineSpinResult; 
+window.handleOnlineSpinResult = handleOnlineSpinResult;
+window.setupJoinedPlayersListener = setupJoinedPlayersListener;
+window.updateJoinedPlayersList = updateJoinedPlayersList;
+window.showJoinedPlayerWaitingScreen = showJoinedPlayerWaitingScreen; 

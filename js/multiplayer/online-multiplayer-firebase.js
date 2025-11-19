@@ -456,9 +456,9 @@ class OnlineMultiplayerSystem {
     // Handle real-time game updates
     handleGameUpdate() {
         if (!this.gameData) return;
-        
+
         console.log('🔄 Game state updated:', this.gameData.gameState);
-        
+
         // Update UI based on current game state
         switch (this.gameData.gameState) {
             case 'setup':
@@ -466,11 +466,39 @@ class OnlineMultiplayerSystem {
                 break;
             case 'playing':
                 this.updateGameplayUI();
+                // If we're not host and game just started, transition to game
+                if (!this.isHost) {
+                    this.transitionToGameplay();
+                }
                 break;
             case 'completed':
                 this.showGameResults(this.gameData.finalResults);
                 break;
         }
+    }
+
+    // Transition non-host players to gameplay when game starts
+    transitionToGameplay() {
+        console.log('🎮 Transitioning to gameplay...');
+
+        // Hide waiting screen if it exists
+        const waitingScreen = document.getElementById('joined-player-waiting');
+        if (waitingScreen) waitingScreen.style.display = 'none';
+
+        // Show mode selection
+        const modeSelection = document.getElementById('mode-selection');
+        if (modeSelection) modeSelection.style.display = 'flex';
+
+        // Switch to dream team builder mode
+        if (typeof switchMode === 'function') {
+            switchMode('dreamteam');
+        }
+
+        // Show sport selector
+        const sportSelection = document.getElementById('sport-selection');
+        if (sportSelection) sportSelection.style.display = 'block';
+
+        console.log('✅ Transitioned to gameplay');
     }
 
     // Update lobby UI (waiting for players)
@@ -682,17 +710,32 @@ async function createOnlineGame() {
 async function joinGameFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = urlParams.get('join');
-    
+
     if (gameId) {
         const playerName = prompt('Enter your name to join the game:');
         if (playerName) {
-            if (!onlineMultiplayer) {
-                await initializeOnlineMultiplayer();
+            if (!window.onlineMultiplayer) {
+                const initialized = await initializeOnlineMultiplayer();
+                if (initialized) {
+                    window.onlineMultiplayer = onlineMultiplayer;
+                } else {
+                    window.onlineMultiplayer = new OnlineMultiplayerSystem();
+                }
             }
-            
-            const result = await onlineMultiplayer.joinGame(gameId, playerName);
+
+            const result = await window.onlineMultiplayer.joinGame(gameId, playerName);
             if (result.success) {
-                showOnlineGameLobby();
+                console.log(`✅ Successfully joined game ${gameId}`);
+
+                // Hide setup phase
+                const setupPhase = document.getElementById('setup-phase');
+                if (setupPhase) setupPhase.style.display = 'none';
+
+                // Show waiting lobby for joined player (not host)
+                showJoinedPlayerWaitingScreen(playerName);
+
+                // Setup listener for game state changes
+                window.onlineMultiplayer.setupGameListener();
             } else {
                 alert('Failed to join game: ' + result.error);
             }

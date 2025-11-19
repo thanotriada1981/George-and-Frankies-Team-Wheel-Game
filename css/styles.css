@@ -567,6 +567,14 @@ h1 {
 }
 
 /* Battle Section */
+#battleSection {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
 .battle-section {
     background: #fff3cd;
     border: 2px solid #ffeaa7;
@@ -1593,4 +1601,259 @@ h1 {
 .position-player.filled {
     color: #4CAF50;
     font-weight: bold;
+}
+
+/* ==========================================
+   ONLINE MULTIPLAYER STYLES
+   ========================================== */
+
+/* Invite Link Section */
+.invite-link-container {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    align-items: center;
+}
+
+.invite-link-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    font-size: 1em;
+    background: #f8f9ff;
+    color: #333;
+    text-align: center;
+    font-family: monospace;
+}
+
+.copy-button {
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.copy-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.invite-instructions {
+    background: #f8f9ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    text-align: left;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Joined Players Display */
+.joined-players {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9ff;
+    border-radius: 10px;
+}
+
+.joined-players h4 {
+    margin-top: 0;
+    color: #667eea;
+}
+
+.player-joined {
+    padding: 10px 15px;
+    margin: 8px 0;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.player-joined.host {
+    border-left-color: #ff6b35;
+    font-weight: bold;
+}
+
+/* Waiting Screen for Joined Players */
+#joined-player-waiting {
+    margin: 20px 0;
+}
+
+.waiting-content {
+    padding: 20px;
+}
+
+.waiting-message {
+    font-size: 1.3em;
+    color: #4CAF50;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.waiting-instruction {
+    font-size: 1.1em;
+    color: #667eea;
+    margin: 15px 0;
+}
+
+/* Online Player List (for lobby) */
+.player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.player-item {
+    padding: 12px 15px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.player-item.host {
+    border-left-color: #ff6b35;
+    background: #fff8f5;
+}
+
+.player-icon {
+    font-size: 1.3em;
+}
+
+.player-name {
+    flex: 1;
+    text-align: left;
+    font-weight: 500;
+}
+
+.player-status {
+    font-size: 1.2em;
+}
+
+/* Game Link Section */
+.game-link-section {
+    background: #f8f9ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.game-link-container {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+#game-link {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    font-size: 1em;
+    background: white;
+    color: #333;
+    text-align: center;
+    font-family: monospace;
+}
+
+/* Lobby Actions */
+.lobby-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.cancel-button {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #f44336, #e53935);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+/* Turn Indicator (for online gameplay) */
+.turn-indicator {
+    padding: 15px 25px;
+    margin: 15px 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.turn-indicator.my-turn {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.turn-indicator.waiting-turn {
+    background: #f8f9ff;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 25px rgba(76, 175, 80, 0.6);
+    }
+}
+
+/* Round Info Display */
+.round-info {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Responsive Design for Online Multiplayer */
+@media (min-width: 768px) {
+    .invite-link-container,
+    .game-link-container {
+        flex-direction: row;
+    }
+
+    .lobby-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .player-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
 } 

@@ -345,17 +345,12 @@ function displayRatingsBattleResult(battleResult) {
 
   battleSection.style.display = "block";
 
-  // Play celebration sound if available
+  // Play celebration sound if available (confetti removed per user request)
   if (
     typeof SoundManager !== "undefined" &&
     SoundManager.playCelebrationSound
   ) {
     SoundManager.playCelebrationSound();
-  }
-
-  // Show confetti if available
-  if (typeof VisualEffects !== "undefined" && VisualEffects.createConfetti) {
-    VisualEffects.createConfetti();
   }
 }
 
@@ -515,15 +510,24 @@ function conductTournament(teams) {
 // Display detailed battle results
 function displayBattleResult(battleResult) {
   console.log("🎯 Displaying battle result:", battleResult);
-  
+  console.log("🎯 Battle result structure:", JSON.stringify(battleResult, null, 2));
+
   const battleSection = document.getElementById("battleSection");
   console.log("🔍 Battle section element:", battleSection);
+
+  if (!battleSection) {
+    console.error("❌ Battle section not found!");
+    alert("Error: Battle display section not found!");
+    return;
+  }
 
   // Hide other game sections
   const modeSelection = document.getElementById("mode-selection");
   const classicMode = document.getElementById("classic-mode");
   const dreamTeamMode = document.getElementById("dream-team-mode");
-  
+
+  console.log("🔍 Hiding sections - mode:", modeSelection, "classic:", classicMode, "dream:", dreamTeamMode);
+
   if (modeSelection) modeSelection.style.display = "none";
   if (classicMode) classicMode.style.display = "none";
   if (dreamTeamMode) dreamTeamMode.style.display = "none";
@@ -532,104 +536,125 @@ function displayBattleResult(battleResult) {
   const team2 = battleResult.teams.team2;
   const winner = battleResult.winner;
 
-  battleSection.innerHTML = `
+  console.log("🎯 Team 1:", team1);
+  console.log("🎯 Team 2:", team2);
+  console.log("🎯 Winner:", winner);
+
+  // Check if this is an advanced battle with full rating breakdown or simple battle
+  const hasAdvancedRatings = team1.rating && team1.rating.breakdown;
+
+  console.log("🎯 Has advanced ratings:", hasAdvancedRatings);
+
+  if (hasAdvancedRatings) {
+    // Advanced battle result with full breakdown
+    battleSection.innerHTML = `
         <div class="battle-results">
             <h2>🏆 Battle Results 🏆</h2>
-            
+
             <div class="battle-summary">
                 <h3>${winner.name} Wins!</h3>
                 <p><strong>Battle Type:</strong> ${battleResult.battleType}</p>
-                <p><strong>Victory Margin:</strong> ${
-                  battleResult.margin
-                } points</p>
+                <p><strong>Victory Margin:</strong> ${battleResult.margin} points</p>
             </div>
-            
+
             <div class="team-comparison">
                 <div class="team-result">
-                    <h4>${battleResult.teams.team1.name}</h4>
-                    <div class="team-score">⭐ ${
-                      battleResult.teams.team1.rating.total
-                    }</div>
+                    <h4>${team1.name}</h4>
+                    <div class="team-score">⭐ ${team1.rating.total}</div>
                     <div class="team-breakdown">
-                        <p><strong>Starters:</strong> ${
-                          battleResult.teams.team1.rating.breakdown.starterTotal
-                        }</p>
-                        <p><strong>Bench:</strong> ${Math.round(
-                          battleResult.teams.team1.rating.breakdown.benchTotal
-                        )}</p>
-                        <p><strong>Chemistry:</strong> ${
-                          battleResult.teams.team1.rating.breakdown.chemistry
-                        }</p>
-                        <p><strong>Bonuses:</strong> ${
-                          battleResult.teams.team1.rating.breakdown.bonuses
-                        }</p>
+                        <p><strong>Starters:</strong> ${team1.rating.breakdown.starterTotal}</p>
+                        <p><strong>Bench:</strong> ${Math.round(team1.rating.breakdown.benchTotal)}</p>
+                        <p><strong>Chemistry:</strong> ${team1.rating.breakdown.chemistry}</p>
+                        <p><strong>Bonuses:</strong> ${team1.rating.breakdown.bonuses || 0}</p>
                     </div>
                 </div>
-                
+
                 <div class="vs-divider">VS</div>
-                
+
                 <div class="team-result">
-                    <h4>${battleResult.teams.team2.name}</h4>
-                    <div class="team-score">⭐ ${
-                      battleResult.teams.team2.rating.total
-                    }</div>
+                    <h4>${team2.name}</h4>
+                    <div class="team-score">⭐ ${team2.rating.total}</div>
                     <div class="team-breakdown">
-                        <p><strong>Starters:</strong> ${
-                          battleResult.teams.team2.rating.breakdown.starterTotal
-                        }</p>
-                        <p><strong>Bench:</strong> ${Math.round(
-                          battleResult.teams.team2.rating.breakdown.benchTotal
-                        )}</p>
-                        <p><strong>Chemistry:</strong> ${
-                          battleResult.teams.team2.rating.breakdown.chemistry
-                        }</p>
-                        <p><strong>Bonuses:</strong> ${
-                          battleResult.teams.team2.rating.breakdown.bonuses
-                        }</p>
+                        <p><strong>Starters:</strong> ${team2.rating.breakdown.starterTotal}</p>
+                        <p><strong>Bench:</strong> ${Math.round(team2.rating.breakdown.benchTotal)}</p>
+                        <p><strong>Chemistry:</strong> ${team2.rating.breakdown.chemistry}</p>
+                        <p><strong>Bonuses:</strong> ${team2.rating.breakdown.bonuses || 0}</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="position-battles">
                 <h4>🥊 Position Battles:</h4>
-                ${
-                  battleResult.positionBattles
-                    ? Object.entries(battleResult.positionBattles)
-                        .map(
-                          ([pos, battle]) => `
-                        <div class="position-battle">
-                            <span class="position">${pos.toUpperCase()}:</span>
-                            <span class="battle-result">Team 1 (${
-                              battle.team1Rating
-                            }) vs Team 2 (${battle.team2Rating})</span>
-                            <span class="battle-winner">Winner: ${
-                              battle.winner === "team1" ? "Team 1" : "Team 2"
-                            }</span>
-                        </div>
-                    `
-                        )
-                        .join("")
-                    : ""
-                }
+                ${battleResult.positionBattles ? Object.entries(battleResult.positionBattles)
+                    .map(([pos, battle]) => `
+                    <div class="position-battle">
+                        <span class="position">${pos.toUpperCase()}:</span>
+                        <span class="battle-result">Team 1 (${battle.team1Rating}) vs Team 2 (${battle.team2Rating})</span>
+                        <span class="battle-winner">Winner: ${battle.winner === "team1" ? "Team 1" : "Team 2"}</span>
+                    </div>
+                `).join("") : "<p>Position battle details not available</p>"}
             </div>
-            
+
             <div class="battle-analysis">
                 <h4>📊 Battle Analysis:</h4>
-                <p>${battleResult.summary}</p>
+                <p>${battleResult.summary || "Great battle between two strong teams!"}</p>
             </div>
-            
+
             <div class="battle-actions">
-                <button onclick="testBattleMode()" class="battle-button">⚔️ TEST BATTLE AGAIN! ⚔️</button>
+                <button onclick="testBattleMode()" class="battle-button">⚔️ BATTLE AGAIN! ⚔️</button>
                 <button onclick="backToMainGame()" class="battle-button secondary">🏠 Back to Game</button>
             </div>
         </div>
     `;
+  } else {
+    // Simple battle result - use simpler display
+    console.log("🎯 Using simple battle display");
+    battleSection.innerHTML = `
+        <div class="battle-results">
+            <h2>🏆 Battle Results 🏆</h2>
 
+            <div class="battle-summary">
+                <h3>🎉 ${winner.name} Wins! 🎉</h3>
+                <p><strong>Battle Type:</strong> ${battleResult.battleType || "Standard Battle"}</p>
+                <p><strong>Victory Margin:</strong> ${battleResult.margin || "N/A"} points</p>
+                <p><strong>Date:</strong> ${battleResult.date || new Date().toLocaleDateString()}</p>
+            </div>
+
+            <div class="simple-battle-breakdown">
+                <div class="team-simple-result">
+                    <h4>${team1.name}</h4>
+                    <div class="team-score">🏀 ${team1.score || team1.rating?.total || "N/A"}</div>
+                </div>
+
+                <div class="vs-divider">VS</div>
+
+                <div class="team-simple-result">
+                    <h4>${team2.name}</h4>
+                    <div class="team-score">🏀 ${team2.score || team2.rating?.total || "N/A"}</div>
+                </div>
+            </div>
+
+            <div class="battle-actions">
+                <button onclick="testBattleMode()" class="battle-button">⚔️ BATTLE AGAIN! ⚔️</button>
+                <button onclick="backToMainGame()" class="battle-button secondary">🏠 Back to Game</button>
+            </div>
+        </div>
+    `;
+  }
+
+  console.log("🎯 Setting battleSection display to block");
   battleSection.style.display = "block";
 
-  // Play celebration sound and effects
-  SoundManager.playCelebrationSound();
-  VisualEffects.createConfetti();
+  console.log("🎯 Final battleSection display style:", battleSection.style.display);
+  console.log("🎯 Final battleSection HTML:", battleSection.innerHTML.substring(0, 200));
+
+  // Play celebration sound (confetti removed per user request)
+  console.log("🎯 Playing celebration effects...");
+  if (typeof SoundManager !== 'undefined') {
+    SoundManager.playCelebrationSound();
+  }
+
+  console.log("✅ Battle result display complete!");
 }
 
 // Back to main game function
@@ -690,11 +715,19 @@ function resetMultiplayerGame() {
   SoundManager.playSuccessSound();
 }
 
-// Placeholder for online game functionality
+// Start online multiplayer game - now properly implemented
 function startOnlineGame() {
-  alert(
-    "🌐 Online multiplayer coming soon! For now, try the local multiplayer mode."
-  );
+  console.log("🌐 Starting online multiplayer game...");
+
+  // This function is called from the invite step
+  // The actual online game initialization happens in online-ui.js
+  // Just log that we're starting
+  if (typeof onlineMultiplayer !== 'undefined' && onlineMultiplayer) {
+    console.log("✅ Online multiplayer ready to start");
+  } else {
+    console.warn("⚠️ Online multiplayer not initialized");
+    alert("🌐 Initializing online multiplayer. Please wait...");
+  }
 }
 
 // Battle record keeping system
@@ -794,9 +827,8 @@ function displayTournamentResults(tournamentResults) {
         </div>
     `;
 
-  // Play celebration sound and effects
+  // Play celebration sound (confetti removed per user request)
   SoundManager.playCelebrationSound();
-  VisualEffects.createConfetti();
 }
 
 function showBattleRecords() {
@@ -1048,17 +1080,12 @@ function displaySimpleBattleResult(battleResult) {
 
   battleSection.style.display = "block";
 
-  // Play celebration sound if available
+  // Play celebration sound if available (confetti removed per user request)
   if (
     typeof SoundManager !== "undefined" &&
     SoundManager.playCelebrationSound
   ) {
     SoundManager.playCelebrationSound();
-  }
-
-  // Show confetti if available
-  if (typeof VisualEffects !== "undefined" && VisualEffects.createConfetti) {
-    VisualEffects.createConfetti();
   }
 }
 

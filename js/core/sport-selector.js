@@ -135,20 +135,27 @@ function updateSportUI(sportConfig) {
 // Create sport selector UI
 function createSportSelector() {
     if (!sportsConfig) return;
-    
+
     const sportSelectionDiv = document.getElementById('sport-selection');
     if (!sportSelectionDiv) return;
-    
+
+    // Define which sports are available (only NBA for now)
+    const availableSports = ['nba'];
+
     sportSelectionDiv.innerHTML = `
         <div class="sport-selector">
             <div class="sport-selector-container">
                 <label for="sport-select">🏆 Choose Sport:</label>
                 <select id="sport-select" onchange="handleSportChange(this.value)">
-                    ${Object.entries(sportsConfig.available_sports).map(([key, sport]) => 
-                        `<option value="${key}" ${key === currentSport ? 'selected' : ''}>
-                            ${getSportIcon(key)} ${sport.name} (${sport.team_count} teams)
-                        </option>`
-                    ).join('')}
+                    ${Object.entries(sportsConfig.available_sports).map(([key, sport]) => {
+                        const isAvailable = availableSports.includes(key);
+                        const displayName = isAvailable
+                            ? `${getSportIcon(key)} ${sport.name} (${sport.team_count} teams)`
+                            : `${getSportIcon(key)} ${sport.name} (Coming Soon!)`;
+                        return `<option value="${key}" ${key === currentSport ? 'selected' : ''} ${!isAvailable ? 'disabled' : ''}>
+                            ${displayName}
+                        </option>`;
+                    }).join('')}
                 </select>
             </div>
         </div>
@@ -171,11 +178,20 @@ async function handleSportChange(newSport) {
 
 // Initialize sport selector (call this after the page loads)
 async function initializeSportSelector() {
+    console.log('🏆 Initializing sport selector...');
     await loadSportsConfig();
-    if (sportsConfig && Object.keys(sportsConfig.available_sports).length > 1) {
+
+    console.log('🏆 Sports config loaded:', sportsConfig);
+    console.log('🏆 Available sports:', sportsConfig ? Object.keys(sportsConfig.available_sports) : 'none');
+
+    // Always create the selector if we have sports config (even if just to show "Coming Soon")
+    if (sportsConfig && sportsConfig.available_sports) {
+        console.log('🏆 Creating sport selector UI...');
         createSportSelector();
+    } else {
+        console.warn('⚠️ No sports config available, selector not created');
     }
-    
+
     // Set initial sport UI
     const sportConfig = getCurrentSportConfig();
     updateSportUI(sportConfig);

@@ -248,7 +248,7 @@ function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
                 againBtn.className = 'spin-button';
                 againBtn.textContent = '🔄 Spin Again';
                 againBtn.style.marginTop = '20px';
-                againBtn.onclick = () => location.reload();
+                againBtn.onclick = () => resetForAnotherSpin();
                 const result = document.getElementById('classic-result');
                 if (result) result.parentNode.insertBefore(againBtn, result.nextSibling);
             } else {
@@ -257,6 +257,39 @@ function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
         }
         console.log("✅ Spin cycle complete!");
     }, 4000); // Match the 4s transition duration
+}
+
+// Reset the wheel for another spin without reloading the page
+function resetForAnotherSpin() {
+    console.log("🔄 Resetting for another spin...");
+
+    // Hide the "Spin Again" button
+    const againBtn = document.getElementById('spinAgainButton');
+    if (againBtn) againBtn.style.display = 'none';
+
+    // Show the original spin button
+    const spinButton = document.getElementById('classicSpinButton');
+    if (spinButton) {
+        spinButton.style.display = 'inline-block';
+        spinButton.disabled = false;
+    }
+
+    // Reset the result text
+    const result = document.getElementById('classic-result');
+    if (result) {
+        result.textContent = "🎯 Ready to spin!";
+        result.style.fontSize = '';
+        result.style.color = '';
+        result.style.fontWeight = '';
+    }
+
+    // Clear any team highlighting
+    clearTeamHighlights();
+
+    // Reset spin state
+    gameState.isSpinning = false;
+
+    console.log("✅ Ready for another spin!");
 }
 
 // Show the team result below the wheel
