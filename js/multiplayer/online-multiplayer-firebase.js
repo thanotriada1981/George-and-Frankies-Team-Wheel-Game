@@ -543,8 +543,12 @@ class OnlineMultiplayerSystem {
         const playerData = this.gameData.players[action.playerId];
         const result = document.getElementById('dream-result');
 
-        if (result && action.action === 'selecting_player') {
-            result.innerHTML = `⏳ <strong style="color: #888;">${playerData.name}</strong> is selecting a player from <strong>${action.team}</strong>...`;
+        if (result) {
+            if (action.action === 'spinning_wheel') {
+                result.innerHTML = `🎡 <strong style="color: #888;">${playerData.name}</strong> is spinning the wheel...`;
+            } else if (action.action === 'selecting_player') {
+                result.innerHTML = `⏳ <strong style="color: #888;">${playerData.name}</strong> is selecting a player from <strong>${action.team}</strong>...`;
+            }
         }
     }
 

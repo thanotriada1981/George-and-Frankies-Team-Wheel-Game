@@ -168,10 +168,23 @@ function spinWheel() {
     // ✅ STEP 1: Pick random team (not degree!)
     const randomTeamIndex = Math.floor(Math.random() * teamLookupTable.length);
     const winningTeam = teamLookupTable[randomTeamIndex];
-    
+
     console.log("🎲 Random team index:", randomTeamIndex);
     console.log("🏀 Winning team:", winningTeam.teamName);
     console.log("📐 Team degree range:", winningTeam.minDegree + "° - " + winningTeam.maxDegree + "°");
+
+    // 🌐 Broadcast wheel spin for online multiplayer
+    if (gameState.gameType === 'online' && window.onlineMultiplayer) {
+        console.log("🌐 Broadcasting wheel spin to other players");
+        window.onlineMultiplayer.db.ref(`games/${window.onlineMultiplayer.gameId}/currentAction`).set({
+            playerId: window.onlineMultiplayer.playerId,
+            action: 'spinning_wheel',
+            team: winningTeam.teamName,
+            timestamp: Date.now()
+        }).catch(error => {
+            console.error("❌ Failed to broadcast wheel spin:", error);
+        });
+    }
 
     // ✅ STEP 2: Calculate rotation to align selected team with arrow
     const teamCenterDegree = (winningTeam.minDegree + winningTeam.maxDegree) / 2;
@@ -208,31 +221,31 @@ function spinWheel() {
 }
 
 // ✅ Apply rotation with realistic timing and show result
-function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
+async function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
     console.log("🎬 Applying realistic spin animation...");
-    
+
     // Reset wheel to 0° first (important!)
     wheelContainer.style.transition = 'none';
     wheelContainer.style.transform = 'rotate(0deg)';
-    
+
     // Force reflow
     wheelContainer.offsetHeight;
-    
+
     // Apply the rotation with realistic timing
     wheelContainer.style.transition = 'transform 4s cubic-bezier(0.44, -0.205, 0, 1.13)';
     wheelContainer.style.transform = `rotate(${rotation}deg)`;
-    
+
     // Wait for spin to complete, then show result
-    setTimeout(() => {
+    setTimeout(async () => {
         console.log("🎯 Spin completed! Showing result...");
-        
+
         // ✅ NEW: Play completion sound effect
         playCompletionSound();
-        
+
         // Check if we're in Dream Team Builder mode
-        const isDreamTeamMode = gameState.currentMode === 'dream-team' || 
+        const isDreamTeamMode = gameState.currentMode === 'dream-team' ||
                                document.getElementById('dream-team-mode')?.style.display !== 'none';
-        
+
         if (isDreamTeamMode) {
             // For Dream Team Builder mode, trigger player selection
             console.log("🏆 Dream Team Builder mode - triggering player selection");
@@ -245,7 +258,7 @@ function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
 
             if (typeof showPlayerSelection === 'function') {
                 try {
-                    showPlayerSelection(fullTeam);
+                    await showPlayerSelection(fullTeam);
                     console.log("✅ showPlayerSelection called successfully");
                 } catch (error) {
                     console.error("❌ Error in showPlayerSelection:", error);

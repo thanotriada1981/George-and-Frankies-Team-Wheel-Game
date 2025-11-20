@@ -161,7 +161,7 @@ window.showPlayerSelection = async function(team) {
         await window.onlineMultiplayer.db.ref(`games/${window.onlineMultiplayer.gameId}/currentAction`).set({
             playerId: window.onlineMultiplayer.playerId,
             action: 'selecting_player',
-            team: team.name,
+            team: team.name || team.teamName || team.full_name || 'Unknown Team',
             timestamp: Date.now()
         });
     }
