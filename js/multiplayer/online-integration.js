@@ -103,19 +103,36 @@ window.showPlayerSelection = async function(team) {
     console.log('🎮 showPlayerSelection called with team:', team);
     console.log('🎮 Game type:', window.gameState?.gameType);
     console.log('🎮 Current gameState.players:', window.gameState?.players);
+    console.log('🎮 onlineMultiplayer exists:', !!window.onlineMultiplayer);
+    console.log('🎮 onlineMultiplayer.gameData exists:', !!window.onlineMultiplayer?.gameData);
 
     // Check if we're in online multiplayer mode
     if (window.gameState?.gameType === 'online' && window.onlineMultiplayer) {
-        console.log('🌐 Online multiplayer mode - checking turn');
+        console.log('🌐 Online multiplayer mode - setting up players');
 
-        // Verify it's this player's turn before showing selection
+        // Wait for gameData if it's not loaded yet
         if (!window.onlineMultiplayer.gameData) {
-            console.error('❌ No game data available');
-            return;
+            console.warn('⚠️ Game data not loaded yet, waiting...');
+            // Try to get it from Firebase directly
+            try {
+                const gameSnapshot = await window.onlineMultiplayer.db.ref(`games/${window.onlineMultiplayer.gameId}`).once('value');
+                window.onlineMultiplayer.gameData = gameSnapshot.val();
+                console.log('✅ Loaded game data from Firebase');
+            } catch (error) {
+                console.error('❌ Failed to load game data:', error);
+                alert('Error loading game data. Please refresh and try again.');
+                return;
+            }
         }
 
         const currentPlayerId = window.onlineMultiplayer.gameData.playerOrder[window.onlineMultiplayer.gameData.currentPlayerIndex];
-        if (currentPlayerId !== window.onlineMultiplayer.playerId) {
+        const isMyTurn = currentPlayerId === window.onlineMultiplayer.playerId;
+
+        console.log('🎮 Current player ID:', currentPlayerId);
+        console.log('🎮 My player ID:', window.onlineMultiplayer.playerId);
+        console.log('🎮 Is my turn:', isMyTurn);
+
+        if (!isMyTurn) {
             console.warn('⚠️ Not your turn!');
             alert('⏳ Please wait for your turn!');
             return;
@@ -139,6 +156,14 @@ window.showPlayerSelection = async function(team) {
         console.log('   - players:', window.gameState.players);
         console.log('   - currentPlayerIndex:', window.gameState.currentPlayerIndex);
         console.log('   - current player:', window.gameState.players[window.gameState.currentPlayerIndex]);
+
+        // Broadcast that this player is selecting (so other player can see)
+        await window.onlineMultiplayer.db.ref(`games/${window.onlineMultiplayer.gameId}/currentAction`).set({
+            playerId: window.onlineMultiplayer.playerId,
+            action: 'selecting_player',
+            team: team.name,
+            timestamp: Date.now()
+        });
     }
 
     // Call original function

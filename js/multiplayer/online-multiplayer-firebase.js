@@ -508,7 +508,7 @@ class OnlineMultiplayerSystem {
             console.log('👂 Demo mode - no real-time listener');
             return;
         }
-        
+
         try {
             this.gameRef = this.db.ref(`games/${this.gameId}`);
             this.unsubscribe = this.gameRef.on('value', (snapshot) => {
@@ -517,11 +517,34 @@ class OnlineMultiplayerSystem {
                     this.handleGameUpdate();
                 }
             });
-            
+
+            // Listen for current action updates (wheel spins, player selections, etc.)
+            this.db.ref(`games/${this.gameId}/currentAction`).on('value', (snapshot) => {
+                const action = snapshot.val();
+                if (action) {
+                    this.showCurrentAction(action);
+                }
+            });
+
             console.log('👂 Real-time listener established');
-            
+
         } catch (error) {
             console.error('❌ Error setting up game listener:', error);
+        }
+    }
+
+    // Show what the current player is doing
+    showCurrentAction(action) {
+        if (!action || action.playerId === this.playerId) {
+            // Don't show our own actions
+            return;
+        }
+
+        const playerData = this.gameData.players[action.playerId];
+        const result = document.getElementById('dream-result');
+
+        if (result && action.action === 'selecting_player') {
+            result.innerHTML = `⏳ <strong style="color: #888;">${playerData.name}</strong> is selecting a player from <strong>${action.team}</strong>...`;
         }
     }
 
@@ -542,6 +565,8 @@ class OnlineMultiplayerSystem {
                 if (!this.isHost) {
                     this.transitionToGameplay();
                 }
+                // Update the multiplayer display (for turn changes)
+                this.updateOnlineMultiplayerDisplay();
                 break;
             case 'completed':
                 this.showGameResults(this.gameData.finalResults);
