@@ -102,6 +102,7 @@ const originalShowPlayerSelection = window.showPlayerSelection;
 window.showPlayerSelection = async function(team) {
     console.log('🎮 showPlayerSelection called with team:', team);
     console.log('🎮 Game type:', window.gameState?.gameType);
+    console.log('🎮 Current gameState.players:', window.gameState?.players);
 
     // Check if we're in online multiplayer mode
     if (window.gameState?.gameType === 'online' && window.onlineMultiplayer) {
@@ -120,21 +121,24 @@ window.showPlayerSelection = async function(team) {
             return;
         }
 
-        // Set up fake gameState.players for compatibility with showPlayerSelection
-        const currentPlayerData = window.onlineMultiplayer.gameData.players[window.onlineMultiplayer.playerId];
-        const currentPlayerIndex = window.onlineMultiplayer.gameData.playerOrder.indexOf(window.onlineMultiplayer.playerId);
+        // Set up ALL players in gameState.players for compatibility
+        const allPlayers = [];
+        window.onlineMultiplayer.gameData.playerOrder.forEach((playerId, index) => {
+            const playerData = window.onlineMultiplayer.gameData.players[playerId];
+            allPlayers[index] = {
+                name: playerData.name,
+                id: index
+            };
+        });
 
-        // Create temporary players array for compatibility
-        if (!window.gameState.players) {
-            window.gameState.players = [];
-        }
-        window.gameState.players[currentPlayerIndex] = {
-            name: currentPlayerData.name,
-            id: currentPlayerIndex
-        };
-        window.gameState.currentPlayerIndex = currentPlayerIndex;
+        // Set gameState with all players
+        window.gameState.players = allPlayers;
+        window.gameState.currentPlayerIndex = window.onlineMultiplayer.gameData.playerOrder.indexOf(window.onlineMultiplayer.playerId);
 
-        console.log('✅ Set up gameState.players for online multiplayer:', window.gameState.players);
+        console.log('✅ Set up gameState for online multiplayer:');
+        console.log('   - players:', window.gameState.players);
+        console.log('   - currentPlayerIndex:', window.gameState.currentPlayerIndex);
+        console.log('   - current player:', window.gameState.players[window.gameState.currentPlayerIndex]);
     }
 
     // Call original function
