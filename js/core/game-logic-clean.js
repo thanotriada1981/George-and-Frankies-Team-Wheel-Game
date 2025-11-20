@@ -88,15 +88,38 @@ function buildTeamLookupTable() {
 function findTeamByDegree(degree) {
     // Normalize degree to 0-360 range
     degree = ((degree % 360) + 360) % 360;
-    
+
     for (let entry of teamLookupTable) {
         if (degree >= entry.minDegree && degree < entry.maxDegree) {
             return entry;
         }
     }
-    
+
     console.warn("⚠️ No team found for degree:", degree);
     return teamLookupTable[0]; // Fallback to first team
+}
+
+// Convert lookup table team entry to full team object for player selection
+function convertLookupTeamToFullTeam(lookupTeam) {
+    // Find the full team data from nbaTeams array
+    const fullTeam = nbaTeams.find(team =>
+        team.name === lookupTeam.teamName ||
+        team.full_name === lookupTeam.teamName
+    );
+
+    if (fullTeam) {
+        console.log("✅ Found full team data:", fullTeam);
+        return fullTeam;
+    }
+
+    // Fallback: create a basic team object
+    console.warn("⚠️ Full team data not found, using lookup team");
+    return {
+        name: lookupTeam.teamName,
+        full_name: lookupTeam.teamName,
+        teamName: lookupTeam.teamName,
+        color_primary: '#000000'
+    };
 }
 
 // ✅ PROVEN METHOD: Spin wheel using successful implementation pattern
@@ -213,12 +236,16 @@ function applyRealisticSpin(wheelContainer, rotation, winningTeam) {
         if (isDreamTeamMode) {
             // For Dream Team Builder mode, trigger player selection
             console.log("🏆 Dream Team Builder mode - triggering player selection");
-            console.log("🏆 Winning team object:", winningTeam);
+            console.log("🏆 Winning team from lookup:", winningTeam);
+
+            // Convert lookup table team to full team object
+            const fullTeam = convertLookupTeamToFullTeam(winningTeam);
+            console.log("🏆 Converted to full team:", fullTeam);
             console.log("🏆 showPlayerSelection function exists:", typeof showPlayerSelection === 'function');
-            
+
             if (typeof showPlayerSelection === 'function') {
                 try {
-                    showPlayerSelection(winningTeam);
+                    showPlayerSelection(fullTeam);
                     console.log("✅ showPlayerSelection called successfully");
                 } catch (error) {
                     console.error("❌ Error in showPlayerSelection:", error);

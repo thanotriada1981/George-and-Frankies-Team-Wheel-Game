@@ -119,6 +119,22 @@ window.showPlayerSelection = async function(team) {
             alert('⏳ Please wait for your turn!');
             return;
         }
+
+        // Set up fake gameState.players for compatibility with showPlayerSelection
+        const currentPlayerData = window.onlineMultiplayer.gameData.players[window.onlineMultiplayer.playerId];
+        const currentPlayerIndex = window.onlineMultiplayer.gameData.playerOrder.indexOf(window.onlineMultiplayer.playerId);
+
+        // Create temporary players array for compatibility
+        if (!window.gameState.players) {
+            window.gameState.players = [];
+        }
+        window.gameState.players[currentPlayerIndex] = {
+            name: currentPlayerData.name,
+            id: currentPlayerIndex
+        };
+        window.gameState.currentPlayerIndex = currentPlayerIndex;
+
+        console.log('✅ Set up gameState.players for online multiplayer:', window.gameState.players);
     }
 
     // Call original function
