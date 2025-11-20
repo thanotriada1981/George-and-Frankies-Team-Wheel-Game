@@ -230,6 +230,12 @@ async function startOnlineGame() {
             window.gameState.currentMode = 'dreamteam';
         }
 
+        // CRITICAL: Render the wheel with all team logos
+        if (typeof WheelLoader !== 'undefined' && WheelLoader.renderPrebuiltWheel) {
+            console.log('🎨 Rendering wheel with team logos...');
+            WheelLoader.renderPrebuiltWheel('wheel', 'nba');
+        }
+
         console.log('🎮 Online multiplayer game is now active!');
     } else {
         alert('Failed to start game. Please try again.');

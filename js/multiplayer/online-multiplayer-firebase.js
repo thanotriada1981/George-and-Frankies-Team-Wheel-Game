@@ -512,6 +512,12 @@ class OnlineMultiplayerSystem {
             window.gameState.currentMode = 'dreamteam';
         }
 
+        // CRITICAL: Render the wheel with all team logos
+        if (typeof WheelLoader !== 'undefined' && WheelLoader.renderPrebuiltWheel) {
+            console.log('🎨 Rendering wheel with team logos...');
+            WheelLoader.renderPrebuiltWheel('wheel', 'nba');
+        }
+
         console.log('✅ Transitioned to gameplay');
     }
 
