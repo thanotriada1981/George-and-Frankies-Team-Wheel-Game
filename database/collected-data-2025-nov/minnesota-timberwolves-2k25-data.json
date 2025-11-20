@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Minnesota Timberwolves",
+    "abbreviation": "",
+    "city": "Minnesota",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Anthony Edwards",
+      "position": "N/A",
+      "overall_rating": 95,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Julius Randle",
+      "position": "N/A",
+      "overall_rating": 86,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Rudy Gobert",
+      "position": "N/A",
+      "overall_rating": 84,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Naz Reid",
+      "position": "N/A",
+      "overall_rating": 82,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Jaden McDaniels",
+      "position": "N/A",
+      "overall_rating": 82,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Mike Conley",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Donte DiVincenzo",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Rob Dillingham",
+      "position": "N/A",
+      "overall_rating": 74,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Joe Ingles",
+      "position": "N/A",
+      "overall_rating": 73,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Terrence Shannon Jr.",
+      "position": "N/A",
+      "overall_rating": 73,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

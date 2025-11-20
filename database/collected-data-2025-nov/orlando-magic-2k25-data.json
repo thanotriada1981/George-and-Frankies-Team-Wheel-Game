@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Orlando Magic",
+    "abbreviation": "",
+    "city": "Orlando",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Paolo Banchero",
+      "position": "N/A",
+      "overall_rating": 90,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Franz Wagner",
+      "position": "N/A",
+      "overall_rating": 86,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Desmond Bane",
+      "position": "N/A",
+      "overall_rating": 83,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Jalen Suggs",
+      "position": "N/A",
+      "overall_rating": 82,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Wendell Carter Jr.",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Anthony Black",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Tyus Jones",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Moritz Wagner",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Goga Bitadze",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Tristan da Silva",
+      "position": "N/A",
+      "overall_rating": 74,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

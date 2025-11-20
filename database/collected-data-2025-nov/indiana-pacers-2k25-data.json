@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Indiana Pacers",
+    "abbreviation": "",
+    "city": "Indiana",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Tyrese Haliburton",
+      "position": "N/A",
+      "overall_rating": 93,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Pascal Siakam",
+      "position": "N/A",
+      "overall_rating": 89,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Andrew Nembhard",
+      "position": "N/A",
+      "overall_rating": 81,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Aaron Nesmith",
+      "position": "N/A",
+      "overall_rating": 81,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "T.J. McConnell",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Obi Toppin",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Bennedict Mathurin",
+      "position": "N/A",
+      "overall_rating": 79,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Jay Huff",
+      "position": "N/A",
+      "overall_rating": 76,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Ben Sheppard",
+      "position": "N/A",
+      "overall_rating": 74,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Jeremiah Robinson-Earl",
+      "position": "N/A",
+      "overall_rating": 74,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

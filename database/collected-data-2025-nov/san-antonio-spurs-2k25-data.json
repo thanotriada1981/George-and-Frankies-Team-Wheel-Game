@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "San Antonio Spurs",
+    "abbreviation": "",
+    "city": "San Antonio",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Victor Wembanyama",
+      "position": "N/A",
+      "overall_rating": 94,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "De'Aaron Fox",
+      "position": "N/A",
+      "overall_rating": 85,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Stephon Castle",
+      "position": "N/A",
+      "overall_rating": 82,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Devin Vassell",
+      "position": "N/A",
+      "overall_rating": 81,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Harrison Barnes",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Keldon Johnson",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Dylan Harper",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Jeremy Sochan",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Kelly Olynyk",
+      "position": "N/A",
+      "overall_rating": 76,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Luke Kornet",
+      "position": "N/A",
+      "overall_rating": 76,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

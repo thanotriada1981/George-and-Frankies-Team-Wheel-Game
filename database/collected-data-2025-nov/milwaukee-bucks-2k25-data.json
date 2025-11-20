@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Milwaukee Bucks",
+    "abbreviation": "",
+    "city": "Milwaukee",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Giannis Antetokounmpo",
+      "position": "N/A",
+      "overall_rating": 97,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Myles Turner",
+      "position": "N/A",
+      "overall_rating": 83,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Bobby Portis",
+      "position": "N/A",
+      "overall_rating": 81,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Kyle Kuzma",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Gary Trent Jr.",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Cole Anthony",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Kevin Porter Jr.",
+      "position": "N/A",
+      "overall_rating": 76,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Taurean Prince",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Ryan Rollins",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "AJ Green",
+      "position": "N/A",
+      "overall_rating": 74,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

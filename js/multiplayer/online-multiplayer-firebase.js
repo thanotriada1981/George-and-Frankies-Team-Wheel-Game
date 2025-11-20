@@ -245,71 +245,143 @@ class OnlineMultiplayerSystem {
         }
     }
 
-    // Handle player's turn (spin wheel and select team)
-    async submitPlayerTurn(selectedTeam, position = null) {
+    // Handle player's turn (after player selects a player for a position)
+    async submitPlayerTurn(selectedPlayer, position) {
         try {
+            console.log(`🎮 submitPlayerTurn called - Player: ${selectedPlayer.full_name || selectedPlayer.first_name + ' ' + selectedPlayer.last_name}, Position: ${position}`);
+
             if (this.isFirebaseReady) {
                 // Get current game data
                 const gameSnapshot = await this.db.ref(`games/${this.gameId}`).once('value');
                 const currentGameData = gameSnapshot.val();
-                
+
+                // Verify it's actually this player's turn
+                const currentPlayerId = currentGameData.playerOrder[currentGameData.currentPlayerIndex];
+                if (currentPlayerId !== this.playerId) {
+                    console.warn('⚠️ Not your turn!');
+                    return false;
+                }
+
                 // Update player's roster
                 const playerRosterRef = this.db.ref(`games/${this.gameId}/players/${this.playerId}/currentRoster`);
                 const rosterSnapshot = await playerRosterRef.once('value');
                 const currentRoster = rosterSnapshot.val() || [];
-                
+
                 const newSelection = {
-                    team: selectedTeam,
-                    round: currentGameData.currentRound,
-                    position: position || (currentRoster.length + 1),
+                    player: selectedPlayer,
+                    position: position,
                     timestamp: Date.now()
                 };
-                
+
                 currentRoster.push(newSelection);
                 await playerRosterRef.set(currentRoster);
-                
-                // Calculate and update score
-                const teamScore = await this.calculateTeamScore(selectedTeam);
-                const roundScoreRef = this.db.ref(`games/${this.gameId}/players/${this.playerId}/roundScores/${currentGameData.currentRound - 1}`);
-                const currentRoundScore = ((await roundScoreRef.once('value')).val() || 0) + teamScore;
-                await roundScoreRef.set(currentRoundScore);
-                
-                // Move to next player
-                const nextPlayerIndex = (currentGameData.currentPlayerIndex + 1) % currentGameData.playerOrder.length;
-                await this.db.ref(`games/${this.gameId}/currentPlayerIndex`).set(nextPlayerIndex);
-                
+
+                console.log(`✅ Player added to roster in Firebase: ${selectedPlayer.full_name || selectedPlayer.first_name + ' ' + selectedPlayer.last_name} at ${position}`);
+
+                // Check if current player's team is complete
+                if (currentRoster.length >= 8) {
+                    console.log(`✅ ${this.playerName}'s team is complete!`);
+                }
+
+                // Move to next player (alternating turns)
+                await this.moveToNextPlayer();
+
                 // Update last activity
                 await this.db.ref(`games/${this.gameId}/lastActivity`).set(Date.now());
-                
+
             } else {
                 // Demo mode
                 const currentPlayer = this.gameData.players[this.playerId];
-                
+
+                if (!currentPlayer.currentRoster) {
+                    currentPlayer.currentRoster = [];
+                }
+
                 currentPlayer.currentRoster.push({
-                    team: selectedTeam,
-                    round: this.gameData.currentRound,
-                    position: position || (currentPlayer.currentRoster.length + 1),
+                    player: selectedPlayer,
+                    position: position,
                     timestamp: Date.now()
                 });
-                
-                const teamScore = await this.calculateTeamScore(selectedTeam);
-                currentPlayer.roundScores[this.gameData.currentRound - 1] = 
-                    (currentPlayer.roundScores[this.gameData.currentRound - 1] || 0) + teamScore;
-                
-                this.gameData.currentPlayerIndex = 
-                    (this.gameData.currentPlayerIndex + 1) % this.gameData.playerOrder.length;
+
+                console.log(`✅ Demo mode: Player added to roster`);
+
+                // Move to next player
+                await this.moveToNextPlayer();
             }
 
-            console.log(`✅ Turn submitted for ${this.playerName}: ${selectedTeam.name}`);
-            
-            // Check if round/game is complete
-            await this.checkRoundComplete();
-            
             return true;
-            
+
         } catch (error) {
             console.error('❌ Failed to submit turn:', error);
             return false;
+        }
+    }
+
+    // New method: Move to next player's turn (with skip logic for complete teams)
+    async moveToNextPlayer() {
+        try {
+            if (this.isFirebaseReady) {
+                const gameSnapshot = await this.db.ref(`games/${this.gameId}`).once('value');
+                const currentGameData = gameSnapshot.val();
+
+                // Move to next player (always alternate turns)
+                let nextPlayerIndex = (currentGameData.currentPlayerIndex + 1) % currentGameData.playerOrder.length;
+
+                // Skip players whose teams are already complete
+                let attempts = 0;
+                while (attempts < currentGameData.playerOrder.length) {
+                    const nextPlayerId = currentGameData.playerOrder[nextPlayerIndex];
+                    const nextPlayer = currentGameData.players[nextPlayerId];
+                    const filledPositions = nextPlayer.currentRoster?.length || 0;
+
+                    if (filledPositions < 8) {
+                        // Found a player with incomplete team
+                        break;
+                    }
+
+                    // This player's team is complete, try next
+                    nextPlayerIndex = (nextPlayerIndex + 1) % currentGameData.playerOrder.length;
+                    attempts++;
+                }
+
+                // Check if all teams are complete
+                const allComplete = Object.values(currentGameData.players).every(player => {
+                    return (player.currentRoster?.length || 0) >= 8;
+                });
+
+                if (allComplete) {
+                    console.log('🎉 All teams complete! Game finished!');
+                    await this.db.ref(`games/${this.gameId}/gameState`).set('completed');
+                    this.showOnlineBattlePhase();
+                    return;
+                }
+
+                // Update current player index
+                await this.db.ref(`games/${this.gameId}/currentPlayerIndex`).set(nextPlayerIndex);
+
+                console.log(`🔄 Moved to next player index: ${nextPlayerIndex}`);
+
+            } else {
+                // Demo mode
+                this.gameData.currentPlayerIndex = (this.gameData.currentPlayerIndex + 1) % this.gameData.playerOrder.length;
+            }
+
+        } catch (error) {
+            console.error('❌ Error moving to next player:', error);
+        }
+    }
+
+    // New method: Show battle phase for online multiplayer
+    showOnlineBattlePhase() {
+        console.log('🎮 Showing online battle phase...');
+
+        // Use existing battle system
+        if (typeof startBattlePhase === 'function') {
+            startBattlePhase();
+        } else if (typeof tryStartBattle === 'function') {
+            tryStartBattle();
+        } else {
+            alert('🎉 All teams complete! Battle system will be available soon.');
         }
     }
 
@@ -485,38 +557,41 @@ class OnlineMultiplayerSystem {
         const waitingScreen = document.getElementById('joined-player-waiting');
         if (waitingScreen) waitingScreen.style.display = 'none';
 
-        // Show mode selection buttons
+        // Hide setup and mode selection (online multiplayer goes straight to dream team mode)
+        const setupPhase = document.getElementById('setup-phase');
         const modeSelection = document.getElementById('mode-selection');
-        if (modeSelection) modeSelection.style.display = 'flex';
+        const classicMode = document.getElementById('classic-mode');
+
+        if (setupPhase) setupPhase.style.display = 'none';
+        if (modeSelection) modeSelection.style.display = 'none';
+        if (classicMode) classicMode.style.display = 'none';
 
         // Show sport selector
         const sportSelection = document.getElementById('sport-selection');
         if (sportSelection) sportSelection.style.display = 'block';
 
-        // IMPORTANT: Show BOTH wheel (classic-mode) AND roster (dream-team-mode) for multiplayer
-        const classicMode = document.getElementById('classic-mode');
+        // Show dream team mode for online multiplayer
         const dreamTeamMode = document.getElementById('dream-team-mode');
-
-        if (classicMode) {
-            classicMode.style.display = 'block';
-            console.log('✅ Wheel (classic-mode) now visible');
-        }
-
         if (dreamTeamMode) {
             dreamTeamMode.style.display = 'block';
-            console.log('✅ Roster slots (dream-team-mode) now visible');
+            console.log('✅ Dream Team mode now visible');
         }
 
-        // Set game state to dreamteam mode
+        // Set game state to online multiplayer dream team mode
         if (window.gameState) {
-            window.gameState.currentMode = 'dreamteam';
+            window.gameState.currentMode = 'dream-team';
+            window.gameState.phase = 'playing';
+            window.gameState.gameType = 'online';
         }
 
-        // CRITICAL: Render the wheel with all team logos
-        if (typeof WheelLoader !== 'undefined' && WheelLoader.renderPrebuiltWheel) {
-            console.log('🎨 Rendering wheel with team logos...');
-            WheelLoader.renderPrebuiltWheel('wheel', 'nba');
+        // CRITICAL: Initialize the wheel for online multiplayer
+        if (typeof initializeMultiplayerWheel === 'function') {
+            console.log('🎨 Initializing multiplayer wheel...');
+            initializeMultiplayerWheel();
         }
+
+        // Update the multiplayer display to show whose turn it is
+        this.updateOnlineMultiplayerDisplay();
 
         console.log('✅ Transitioned to gameplay');
     }
@@ -547,26 +622,174 @@ class OnlineMultiplayerSystem {
         }
     }
 
-    // Update gameplay UI
+    // Update gameplay UI (for online multiplayer)
     updateGameplayUI() {
         const currentPlayerIndex = this.gameData.currentPlayerIndex;
         const currentPlayerId = this.gameData.playerOrder[currentPlayerIndex];
         const currentPlayer = this.gameData.players[currentPlayerId];
-        
-        // Show/hide spin button based on if it's this player's turn
+
+        // Check if it's this player's turn
         const isMyTurn = currentPlayerId === this.playerId;
-        const spinButton = document.getElementById('classicSpinButton');
-        
+
+        // Use dream team spin button for online multiplayer
+        const spinButton = document.getElementById('dreamSpinButton');
+
         if (spinButton) {
-            spinButton.style.display = isMyTurn ? 'block' : 'none';
             spinButton.disabled = !isMyTurn;
+            if (isMyTurn) {
+                spinButton.textContent = `🎯 Your Turn - SPIN! 🎯`;
+            } else {
+                spinButton.textContent = `⏳ ${currentPlayer.name}'s Turn...`;
+            }
         }
-        
+
         // Update turn indicator
         this.updateTurnIndicator(currentPlayer.name, isMyTurn);
-        
+
         // Update round info
         this.updateRoundInfo();
+
+        // Update team displays for all players
+        this.updateAllTeamDisplays();
+    }
+
+    // New method: Update display for online multiplayer (mirrors local multiplayer)
+    updateOnlineMultiplayerDisplay() {
+        if (!this.gameData) return;
+
+        const currentPlayerIndex = this.gameData.currentPlayerIndex;
+        const currentPlayerId = this.gameData.playerOrder[currentPlayerIndex];
+        const currentPlayer = this.gameData.players[currentPlayerId];
+        const isMyTurn = currentPlayerId === this.playerId;
+
+        console.log(`🔄 updateOnlineMultiplayerDisplay - Current player: ${currentPlayer.name} (isMyTurn: ${isMyTurn})`);
+
+        // Update result display
+        const result = document.getElementById('dream-result');
+        if (result) {
+            if (isMyTurn) {
+                result.innerHTML = `🎯 <strong style="color: #ff6b6b;">Your Turn!</strong> Spin the wheel! 🎯`;
+            } else {
+                result.innerHTML = `⏳ <strong style="color: #888;">${currentPlayer.name}'s Turn</strong> - Please wait... ⏳`;
+            }
+        }
+
+        // Update spin button
+        const spinButton = document.getElementById('dreamSpinButton');
+        if (spinButton) {
+            spinButton.disabled = !isMyTurn;
+            if (isMyTurn) {
+                spinButton.textContent = `🎯 SPIN FOR PLAYER! 🎯`;
+            } else {
+                spinButton.textContent = `⏳ ${currentPlayer.name}'s Turn...`;
+            }
+        }
+
+        // Update spin counter with player's progress
+        const spinCounter = document.getElementById('spinCounter');
+        if (spinCounter && currentPlayer.currentRoster) {
+            const filledPositions = currentPlayer.currentRoster.length;
+            const positionsRemaining = 8 - filledPositions;
+
+            if (isMyTurn) {
+                spinCounter.textContent = `🎯 Your Team - ${filledPositions}/8 positions filled (${positionsRemaining} left)`;
+            } else {
+                spinCounter.textContent = `⏳ ${currentPlayer.name}'s Team - ${filledPositions}/8 positions filled`;
+            }
+        }
+
+        // Update all team displays
+        this.updateAllTeamDisplays();
+
+        // Update turn order display
+        this.updateOnlineTurnOrderDisplay();
+    }
+
+    // New method: Update all team displays
+    updateAllTeamDisplays() {
+        if (!this.gameData) return;
+
+        // For now, just update the current player's team display
+        // In future, could show all players' teams side-by-side
+        const currentPlayerId = this.gameData.playerOrder[this.gameData.currentPlayerIndex];
+        const currentPlayer = this.gameData.players[currentPlayerId];
+
+        if (currentPlayer && currentPlayer.currentRoster) {
+            // Update roster display based on Firebase data
+            this.updateOnlineTeamDisplay(currentPlayer.currentRoster);
+        }
+    }
+
+    // New method: Update team display from Firebase roster data
+    updateOnlineTeamDisplay(roster) {
+        const positions = ['pg', 'sg', 'sf', 'pf', 'c', 'sixth', 'seventh', 'coach'];
+
+        // Convert roster array to position map
+        const teamPositions = {};
+        roster.forEach(selection => {
+            if (selection.position) {
+                teamPositions[selection.position] = selection.player;
+            }
+        });
+
+        positions.forEach(position => {
+            const slot = document.getElementById(`slot-${position}`);
+            if (slot) {
+                const playerDiv = slot.querySelector('.position-player');
+                if (teamPositions[position]) {
+                    const player = teamPositions[position];
+                    playerDiv.textContent = player.full_name || `${player.first_name} ${player.last_name}`;
+                    playerDiv.classList.add('filled');
+                    slot.classList.add('filled');
+                } else {
+                    playerDiv.textContent = 'Empty';
+                    playerDiv.classList.remove('filled');
+                    slot.classList.remove('filled');
+                }
+            }
+        });
+    }
+
+    // New method: Update turn order display for online multiplayer
+    updateOnlineTurnOrderDisplay() {
+        let turnOrderDiv = document.getElementById('turnOrderDisplay');
+        if (!turnOrderDiv) {
+            turnOrderDiv = document.createElement('div');
+            turnOrderDiv.id = 'turnOrderDisplay';
+            turnOrderDiv.className = 'turn-order-display';
+            turnOrderDiv.style.cssText = `
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 10px;
+                border-radius: 8px;
+                margin: 10px 0;
+                font-size: 14px;
+                text-align: center;
+            `;
+
+            const spinCounter = document.getElementById('spinCounter');
+            if (spinCounter && spinCounter.parentNode) {
+                spinCounter.parentNode.insertBefore(turnOrderDiv, spinCounter.nextSibling);
+            }
+        }
+
+        // Build turn order display
+        let turnOrderHTML = '<strong>🔄 Turn Order:</strong><br>';
+
+        this.gameData.playerOrder.forEach((playerId, index) => {
+            const player = this.gameData.players[playerId];
+            const filledPositions = player.currentRoster?.length || 0;
+            const isCurrentTurn = index === this.gameData.currentPlayerIndex;
+
+            if (filledPositions < 8) {
+                const status = isCurrentTurn ? '🎯 CURRENT' : '⏳ Waiting';
+                turnOrderHTML += `${player.name}: ${filledPositions}/8 ${status}<br>`;
+            } else {
+                turnOrderHTML += `${player.name}: ✅ Complete<br>`;
+            }
+        });
+
+        turnOrderDiv.innerHTML = turnOrderHTML;
     }
 
     // Calculate team score using NBA2K ratings

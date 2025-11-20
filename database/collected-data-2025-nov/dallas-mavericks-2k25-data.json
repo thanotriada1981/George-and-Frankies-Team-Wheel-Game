@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Dallas Mavericks",
+    "abbreviation": "",
+    "city": "Dallas",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Anthony Davis",
+      "position": "N/A",
+      "overall_rating": 93,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Kyrie Irving",
+      "position": "N/A",
+      "overall_rating": 90,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Cooper Flagg",
+      "position": "N/A",
+      "overall_rating": 82,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Daniel Gafford",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Dereck Lively II",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Klay Thompson",
+      "position": "N/A",
+      "overall_rating": 79,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "PJ Washington",
+      "position": "N/A",
+      "overall_rating": 79,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "D'Angelo Russell",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Naji Marshall",
+      "position": "N/A",
+      "overall_rating": 78,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Dante Exum",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

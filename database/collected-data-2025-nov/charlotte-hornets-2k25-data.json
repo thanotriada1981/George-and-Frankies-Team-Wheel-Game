@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Charlotte Hornets",
+    "abbreviation": "",
+    "city": "Charlotte",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "LaMelo Ball",
+      "position": "N/A",
+      "overall_rating": 87,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Brandon Miller",
+      "position": "N/A",
+      "overall_rating": 82,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Miles Bridges",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Collin Sexton",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Mason Plumlee",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Tre Mann",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Kon Knueppel",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Grant Williams",
+      "position": "N/A",
+      "overall_rating": 73,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Josh Green",
+      "position": "N/A",
+      "overall_rating": 73,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Moussa Diabate",
+      "position": "N/A",
+      "overall_rating": 73,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

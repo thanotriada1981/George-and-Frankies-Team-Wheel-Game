@@ -1,0 +1,117 @@
+{
+  "team": {
+    "name": "Houston Rockets",
+    "abbreviation": "",
+    "city": "Houston",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.hoopshype.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K25",
+    "notes": "Current roster from HoopsHype"
+  },
+  "roster": [
+    {
+      "name": "Kevin Durant",
+      "position": "N/A",
+      "overall_rating": 93,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Alperen Sengun",
+      "position": "N/A",
+      "overall_rating": 87,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Amen Thompson",
+      "position": "N/A",
+      "overall_rating": 87,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Fred VanVleet",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Tari Eason",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Jabari Smith Jr.",
+      "position": "N/A",
+      "overall_rating": 80,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Dorian Finney-Smith",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Clint Capela",
+      "position": "N/A",
+      "overall_rating": 77,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Steven Adams",
+      "position": "N/A",
+      "overall_rating": 75,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    },
+    {
+      "name": "Josh Okogie",
+      "position": "N/A",
+      "overall_rating": 74,
+      "jersey_number": "N/A",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "N/A"
+      }
+    }
+  ]
+}

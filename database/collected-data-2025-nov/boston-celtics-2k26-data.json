@@ -1,0 +1,127 @@
+{
+  "team": {
+    "name": "Boston Celtics",
+    "abbreviation": "",
+    "city": "Boston",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.2kratings.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K26",
+    "notes": "Top 10 players from current roster"
+  },
+  "roster": [
+    {
+      "name": "Jayson Tatum     PF /",
+      "position": "SF",
+      "overall_rating": 94,
+      "jersey_number": "28",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'8\"",
+        "archetype": "2-Way 3-Level Shot Creator"
+      }
+    },
+    {
+      "name": "Jaylen Brown     SF /",
+      "position": "SG",
+      "overall_rating": 91,
+      "jersey_number": "21",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'6\"",
+        "archetype": "2-Way Mid-Paint Point Forward"
+      }
+    },
+    {
+      "name": "Derrick White     SG /",
+      "position": "PG",
+      "overall_rating": 84,
+      "jersey_number": "15",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'4\"",
+        "archetype": "Defensive Playmaker"
+      }
+    },
+    {
+      "name": "Payton Pritchard",
+      "position": "PG",
+      "overall_rating": 80,
+      "jersey_number": "10",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'1\"",
+        "archetype": "Dime-Dropping 3PT Gunner"
+      }
+    },
+    {
+      "name": "Anfernee Simons     SG /",
+      "position": "PG",
+      "overall_rating": 78,
+      "jersey_number": "11",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'3\"",
+        "archetype": "Iso Savant"
+      }
+    },
+    {
+      "name": "Josh Minott      SF /",
+      "position": "PF",
+      "overall_rating": 76,
+      "jersey_number": "4",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'8\"",
+        "archetype": "Ball-Hawking Mid-Paint Scorer"
+      }
+    },
+    {
+      "name": "Sam Hauser     SF /",
+      "position": "PF",
+      "overall_rating": 76,
+      "jersey_number": "4",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'7\"",
+        "archetype": "Crafty Sharpshooter"
+      }
+    },
+    {
+      "name": "Neemias Queta",
+      "position": "C",
+      "overall_rating": 76,
+      "jersey_number": "4",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "7'0\"",
+        "archetype": "Shot-Erasing Putback Pro"
+      }
+    },
+    {
+      "name": "Luka Garza",
+      "position": "C",
+      "overall_rating": 73,
+      "jersey_number": "3",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'10\"",
+        "archetype": "Crafty Stretch Five Crasher"
+      }
+    },
+    {
+      "name": "Chris Boucher     C /",
+      "position": "PF",
+      "overall_rating": 73,
+      "jersey_number": "6",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'9\"",
+        "archetype": "Stretch Lob Threat"
+      }
+    }
+  ]
+}

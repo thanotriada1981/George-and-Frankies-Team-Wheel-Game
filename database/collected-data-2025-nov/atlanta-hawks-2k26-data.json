@@ -1,0 +1,127 @@
+{
+  "team": {
+    "name": "Atlanta Hawks",
+    "abbreviation": "",
+    "city": "Atlanta",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.2kratings.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K26",
+    "notes": "Top 10 players from current roster"
+  },
+  "roster": [
+    {
+      "name": "Trae Young",
+      "position": "PG",
+      "overall_rating": 88,
+      "jersey_number": "16",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'1\"",
+        "archetype": "Crafty Offensive Engine"
+      }
+    },
+    {
+      "name": "Kristaps Porzingis     C /",
+      "position": "PF",
+      "overall_rating": 85,
+      "jersey_number": "15",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "7'2\"",
+        "archetype": "Shot-Erasing Post-Up Stretch"
+      }
+    },
+    {
+      "name": "Jalen Johnson     PF /",
+      "position": "SF",
+      "overall_rating": 85,
+      "jersey_number": "15",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'8\"",
+        "archetype": "Crafty Dual-Finishing Cleaner"
+      }
+    },
+    {
+      "name": "Dyson Daniels     PG /",
+      "position": "SG",
+      "overall_rating": 82,
+      "jersey_number": "14",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'7\"",
+        "archetype": "Clamp Thief"
+      }
+    },
+    {
+      "name": "Onyeka Okongwu",
+      "position": "C",
+      "overall_rating": 81,
+      "jersey_number": "11",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'10\"",
+        "archetype": "Mid-Paint Scorer"
+      }
+    },
+    {
+      "name": "Nickeil Alexander-Walker     SG /",
+      "position": "SF",
+      "overall_rating": 80,
+      "jersey_number": "11",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'5\"",
+        "archetype": "2-Way 3-Level Scorer"
+      }
+    },
+    {
+      "name": "Zaccharie Risacher     SF /",
+      "position": "SG",
+      "overall_rating": 78,
+      "jersey_number": "8",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'10\"",
+        "archetype": "2-Way Crafty 3PT Sniper"
+      }
+    },
+    {
+      "name": "Luke Kennard     SG /",
+      "position": "PG",
+      "overall_rating": 75,
+      "jersey_number": "5",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'5\"",
+        "archetype": "Crafty Sharpshooter"
+      }
+    },
+    {
+      "name": "Mouhamed Gueye     PF /",
+      "position": "C",
+      "overall_rating": 74,
+      "jersey_number": "4",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'10\"",
+        "archetype": "Disruptive Rim Rocker"
+      }
+    },
+    {
+      "name": "Caleb Houstan     SG /",
+      "position": "SF",
+      "overall_rating": 73,
+      "jersey_number": "3",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'8\"",
+        "archetype": "2-Way Sharpshooter"
+      }
+    }
+  ]
+}

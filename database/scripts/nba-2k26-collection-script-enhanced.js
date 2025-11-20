@@ -143,12 +143,16 @@ function collectSimplified2KPlayersData() {
         }
     });
     
-    return players.filter(p => 
-        p.name !== 'Unknown Player' && 
-        !p.name.match(/^(Name|Player|Overall)$/i) &&
-        p.overall_rating >= 50 && 
-        p.overall_rating <= 99
-    );
+    // Filter valid players, sort by rating (highest first), and take only top 10
+    return players
+        .filter(p =>
+            p.name !== 'Unknown Player' &&
+            !p.name.match(/^(Name|Player|Overall)$/i) &&
+            p.overall_rating >= 50 &&
+            p.overall_rating <= 99
+        )
+        .sort((a, b) => b.overall_rating - a.overall_rating)  // Sort by rating descending
+        .slice(0, 10);  // Take only top 10 players
 }
 
 function extractSimplified2KPlayerData(element, index) {

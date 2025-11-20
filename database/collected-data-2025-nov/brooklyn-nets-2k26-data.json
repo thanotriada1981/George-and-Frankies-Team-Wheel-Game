@@ -1,0 +1,127 @@
+{
+  "team": {
+    "name": "Brooklyn Nets",
+    "abbreviation": "",
+    "city": "Brooklyn",
+    "conference": "",
+    "division": ""
+  },
+  "data_source": {
+    "website": "https://www.2kratings.com/",
+    "collection_date": "2025-11-19",
+    "game_version": "NBA 2K26",
+    "notes": "Top 10 players from current roster"
+  },
+  "roster": [
+    {
+      "name": "Michael Porter Jr.     SF /",
+      "position": "PF",
+      "overall_rating": 83,
+      "jersey_number": "11",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'10\"",
+        "archetype": "Ankle Taker"
+      }
+    },
+    {
+      "name": "Cameron Thomas     SG /",
+      "position": "SF",
+      "overall_rating": 81,
+      "jersey_number": "10",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'3\"",
+        "archetype": "Crafty Iso Savant"
+      }
+    },
+    {
+      "name": "Nic Claxton",
+      "position": "C",
+      "overall_rating": 80,
+      "jersey_number": "9",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'11\"",
+        "archetype": "Shot-Obliterating Lock"
+      }
+    },
+    {
+      "name": "Terance Mann     SG /",
+      "position": "SF",
+      "overall_rating": 77,
+      "jersey_number": "3",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'5\"",
+        "archetype": "Shot-Creating Point Forward"
+      }
+    },
+    {
+      "name": "Ziaire Williams     SF /",
+      "position": "SG",
+      "overall_rating": 76,
+      "jersey_number": "2",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'9\"",
+        "archetype": "Athletic Blow-By Ace"
+      }
+    },
+    {
+      "name": "Day’Ron Sharpe",
+      "position": "C",
+      "overall_rating": 74,
+      "jersey_number": "7",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'9\"",
+        "archetype": "Ball Snatcher"
+      }
+    },
+    {
+      "name": "Tyrese Martin     SF /",
+      "position": "SG",
+      "overall_rating": 74,
+      "jersey_number": "2",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'6\"",
+        "archetype": "Diming Sharpshooter"
+      }
+    },
+    {
+      "name": "Jalen Wilson     SF /",
+      "position": "PF",
+      "overall_rating": 74,
+      "jersey_number": "1",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'6\"",
+        "archetype": "Mid-Range Menace"
+      }
+    },
+    {
+      "name": "Haywood Highsmith     PF /",
+      "position": "SF",
+      "overall_rating": 73,
+      "jersey_number": "7",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'5\"",
+        "archetype": "Crafty 3 & D Wing"
+      }
+    },
+    {
+      "name": "Noah Clowney     C /",
+      "position": "PF",
+      "overall_rating": 73,
+      "jersey_number": "4",
+      "detailed_attributes": null,
+      "physical_stats": {
+        "height": "6'9\"",
+        "archetype": "Stretch Rim Wrecker"
+      }
+    }
+  ]
+}

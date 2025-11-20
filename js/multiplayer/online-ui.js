@@ -203,37 +203,40 @@ async function startOnlineGame() {
         const inviteStep = document.getElementById('invite-step');
         if (inviteStep) inviteStep.style.display = 'none';
 
-        // Show mode selection buttons
+        // Hide mode selection and classic mode for online multiplayer
         const modeSelection = document.getElementById('mode-selection');
-        if (modeSelection) modeSelection.style.display = 'flex';
+        const classicMode = document.getElementById('classic-mode');
+
+        if (modeSelection) modeSelection.style.display = 'none';
+        if (classicMode) classicMode.style.display = 'none';
 
         // Show sport selector
         const sportSelection = document.getElementById('sport-selection');
         if (sportSelection) sportSelection.style.display = 'block';
 
-        // IMPORTANT: Show BOTH wheel (classic-mode) AND roster (dream-team-mode) for multiplayer
-        const classicMode = document.getElementById('classic-mode');
+        // Show dream team mode for online multiplayer
         const dreamTeamMode = document.getElementById('dream-team-mode');
-
-        if (classicMode) {
-            classicMode.style.display = 'block';
-            console.log('✅ Wheel (classic-mode) now visible');
-        }
-
         if (dreamTeamMode) {
             dreamTeamMode.style.display = 'block';
-            console.log('✅ Roster slots (dream-team-mode) now visible');
+            console.log('✅ Dream Team mode now visible');
         }
 
-        // Set game state to dreamteam mode
+        // Set game state to online multiplayer dream team mode
         if (window.gameState) {
-            window.gameState.currentMode = 'dreamteam';
+            window.gameState.currentMode = 'dream-team';
+            window.gameState.phase = 'playing';
+            window.gameState.gameType = 'online';
         }
 
-        // CRITICAL: Render the wheel with all team logos
-        if (typeof WheelLoader !== 'undefined' && WheelLoader.renderPrebuiltWheel) {
-            console.log('🎨 Rendering wheel with team logos...');
-            WheelLoader.renderPrebuiltWheel('wheel', 'nba');
+        // CRITICAL: Initialize the wheel for online multiplayer
+        if (typeof initializeMultiplayerWheel === 'function') {
+            console.log('🎨 Initializing multiplayer wheel...');
+            await initializeMultiplayerWheel();
+        }
+
+        // Update the multiplayer display to show whose turn it is
+        if (window.onlineMultiplayer.updateOnlineMultiplayerDisplay) {
+            window.onlineMultiplayer.updateOnlineMultiplayerDisplay();
         }
 
         console.log('🎮 Online multiplayer game is now active!');

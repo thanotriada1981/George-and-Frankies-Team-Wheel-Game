@@ -1,0 +1,921 @@
+{
+  "timestamp": "2025-11-19T00:11:14.447Z",
+  "summary": {
+    "teamsUpdated": 30,
+    "playersAdded": 98,
+    "playersRemoved": 83,
+    "ratingChanges": 0
+  },
+  "details": [
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Kristaps Porzingis     C /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Jalen Johnson     PF /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Dyson Daniels     PG /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Nickeil Alexander-Walker     SG /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Zaccharie Risacher     SF /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Luke Kennard     SG /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Mouhamed Gueye     PF /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_ADDED",
+      "player": "Caleb Houstan     SG /"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Kobe Bufkin"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Dyson Daniels"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Nickeil Alexander-Walker"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Zaccharie Risacher"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Jalen Johnson"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Kristaps Porziņģis"
+    },
+    {
+      "team": "Atlanta Hawks",
+      "change": "PLAYER_REMOVED",
+      "player": "Quin Snyder"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Jayson Tatum     PF /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Jaylen Brown     SF /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Derrick White     SG /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Payton Pritchard"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Anfernee Simons     SG /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Josh Minott      SF /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Sam Hauser     SF /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Neemias Queta"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Luka Garza"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_ADDED",
+      "player": "Chris Boucher     C /"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_REMOVED",
+      "player": "Derrick White"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_REMOVED",
+      "player": "Anfernee Simons"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_REMOVED",
+      "player": "Jaylen Brown"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_REMOVED",
+      "player": "Jayson Tatum"
+    },
+    {
+      "team": "Boston Celtics",
+      "change": "PLAYER_REMOVED",
+      "player": "Joe Mazzulla"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Michael Porter Jr.     SF /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Cameron Thomas     SG /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Nic Claxton"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Terance Mann     SG /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Ziaire Williams     SF /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Day’Ron Sharpe"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Tyrese Martin     SF /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Jalen Wilson     SF /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Haywood Highsmith     PF /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_ADDED",
+      "player": "Noah Clowney     C /"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_REMOVED",
+      "player": "Terance Mann"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_REMOVED",
+      "player": "Cameron Thomas"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_REMOVED",
+      "player": "Michael Porter Jr."
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_REMOVED",
+      "player": "Nicolas Claxton"
+    },
+    {
+      "team": "Brooklyn Nets",
+      "change": "PLAYER_REMOVED",
+      "player": "Jordi Fernandez"
+    },
+    {
+      "team": "Charlotte Hornets",
+      "change": "PLAYER_ADDED",
+      "player": "Tre Mann"
+    },
+    {
+      "team": "Charlotte Hornets",
+      "change": "PLAYER_ADDED",
+      "player": "Moussa Diabate"
+    },
+    {
+      "team": "Charlotte Hornets",
+      "change": "PLAYER_REMOVED",
+      "player": "Spencer Dinwiddie"
+    },
+    {
+      "team": "Charlotte Hornets",
+      "change": "PLAYER_REMOVED",
+      "player": "Charles Lee"
+    },
+    {
+      "team": "Chicago Bulls",
+      "change": "PLAYER_ADDED",
+      "player": "Nikola Vucevic"
+    },
+    {
+      "team": "Chicago Bulls",
+      "change": "PLAYER_ADDED",
+      "player": "Tre Jones"
+    },
+    {
+      "team": "Chicago Bulls",
+      "change": "PLAYER_REMOVED",
+      "player": "Nikola Vučević"
+    },
+    {
+      "team": "Chicago Bulls",
+      "change": "PLAYER_REMOVED",
+      "player": "Billy Donovan"
+    },
+    {
+      "team": "Cleveland Cavaliers",
+      "change": "PLAYER_ADDED",
+      "player": "Max Strus"
+    },
+    {
+      "team": "Cleveland Cavaliers",
+      "change": "PLAYER_ADDED",
+      "player": "Larry Nance Jr."
+    },
+    {
+      "team": "Cleveland Cavaliers",
+      "change": "PLAYER_REMOVED",
+      "player": "Jaylon Tyson"
+    },
+    {
+      "team": "Cleveland Cavaliers",
+      "change": "PLAYER_REMOVED",
+      "player": "Kenny Atkinson"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_ADDED",
+      "player": "Dereck Lively II"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_ADDED",
+      "player": "D'Angelo Russell"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_ADDED",
+      "player": "Dante Exum"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_REMOVED",
+      "player": "D’Angelo Russell"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_REMOVED",
+      "player": "Max Christie"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_REMOVED",
+      "player": "Derrick Lively II"
+    },
+    {
+      "team": "Dallas Mavericks",
+      "change": "PLAYER_REMOVED",
+      "player": "Jason Kidd"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_ADDED",
+      "player": "Nikola Jokic"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_ADDED",
+      "player": "Cameron Johnson"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_ADDED",
+      "player": "Christian Braun"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_ADDED",
+      "player": "Jonas Valanciunas"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_ADDED",
+      "player": "Julian Strawther"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_REMOVED",
+      "player": "Cam Johnson"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_REMOVED",
+      "player": "Zeke Nnaji"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_REMOVED",
+      "player": "Nikola Jokić"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_REMOVED",
+      "player": "Jonas Valančiūnas"
+    },
+    {
+      "team": "Denver Nuggets",
+      "change": "PLAYER_REMOVED",
+      "player": "Michael Malone"
+    },
+    {
+      "team": "Detroit Pistons",
+      "change": "PLAYER_ADDED",
+      "player": "Jaden Ivey"
+    },
+    {
+      "team": "Detroit Pistons",
+      "change": "PLAYER_ADDED",
+      "player": "Ronald Holland II"
+    },
+    {
+      "team": "Detroit Pistons",
+      "change": "PLAYER_REMOVED",
+      "player": "J.B. Bickerstaff"
+    },
+    {
+      "team": "Golden State Warriors",
+      "change": "PLAYER_ADDED",
+      "player": "Al Horford"
+    },
+    {
+      "team": "Golden State Warriors",
+      "change": "PLAYER_ADDED",
+      "player": "Gary Payton II"
+    },
+    {
+      "team": "Golden State Warriors",
+      "change": "PLAYER_ADDED",
+      "player": "De'Anthony Melton"
+    },
+    {
+      "team": "Golden State Warriors",
+      "change": "PLAYER_REMOVED",
+      "player": "Trayce Jackson-Davis"
+    },
+    {
+      "team": "Golden State Warriors",
+      "change": "PLAYER_REMOVED",
+      "player": "Quentin Post"
+    },
+    {
+      "team": "Golden State Warriors",
+      "change": "PLAYER_REMOVED",
+      "player": "Steve Kerr"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_ADDED",
+      "player": "Alperen Sengun"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_ADDED",
+      "player": "Clint Capela"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_ADDED",
+      "player": "Josh Okogie"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_REMOVED",
+      "player": "Reed Sheppard"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_REMOVED",
+      "player": "Aaron Holiday"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_REMOVED",
+      "player": "Alperen Şengün"
+    },
+    {
+      "team": "Houston Rockets",
+      "change": "PLAYER_REMOVED",
+      "player": "Ime Udoka"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_ADDED",
+      "player": "T.J. McConnell"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_ADDED",
+      "player": "Jay Huff"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_ADDED",
+      "player": "Ben Sheppard"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_ADDED",
+      "player": "Jeremiah Robinson-Earl"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_REMOVED",
+      "player": "TJ McConnell"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_REMOVED",
+      "player": "Isiah Jackson"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_REMOVED",
+      "player": "Thomas Bryant"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_REMOVED",
+      "player": "James Wiseman"
+    },
+    {
+      "team": "Indiana Pacers",
+      "change": "PLAYER_REMOVED",
+      "player": "Rick Carlisle"
+    },
+    {
+      "team": "LA Clippers",
+      "change": "NEW_TEAM",
+      "playerCount": 10
+    },
+    {
+      "team": "Los Angeles Lakers",
+      "change": "PLAYER_ADDED",
+      "player": "Luka Doncic"
+    },
+    {
+      "team": "Los Angeles Lakers",
+      "change": "PLAYER_REMOVED",
+      "player": "Luka Dončić"
+    },
+    {
+      "team": "Los Angeles Lakers",
+      "change": "PLAYER_REMOVED",
+      "player": "Bronny James Jr."
+    },
+    {
+      "team": "Los Angeles Lakers",
+      "change": "PLAYER_REMOVED",
+      "player": "JJ Redick"
+    },
+    {
+      "team": "Memphis Grizzlies",
+      "change": "PLAYER_ADDED",
+      "player": "Jock Landale"
+    },
+    {
+      "team": "Memphis Grizzlies",
+      "change": "PLAYER_REMOVED",
+      "player": "GG Jackson"
+    },
+    {
+      "team": "Memphis Grizzlies",
+      "change": "PLAYER_REMOVED",
+      "player": "Taylor Jenkins"
+    },
+    {
+      "team": "Miami Heat",
+      "change": "PLAYER_ADDED",
+      "player": "Kel'el Ware"
+    },
+    {
+      "team": "Miami Heat",
+      "change": "PLAYER_ADDED",
+      "player": "Nikola Jovic"
+    },
+    {
+      "team": "Miami Heat",
+      "change": "PLAYER_ADDED",
+      "player": "Terry Rozier"
+    },
+    {
+      "team": "Miami Heat",
+      "change": "PLAYER_ADDED",
+      "player": "Pelle Larsson"
+    },
+    {
+      "team": "Miami Heat",
+      "change": "PLAYER_REMOVED",
+      "player": "Nikola Jović"
+    },
+    {
+      "team": "Miami Heat",
+      "change": "PLAYER_REMOVED",
+      "player": "Erik Spoelstra"
+    },
+    {
+      "team": "Milwaukee Bucks",
+      "change": "PLAYER_ADDED",
+      "player": "Bobby Portis"
+    },
+    {
+      "team": "Milwaukee Bucks",
+      "change": "PLAYER_ADDED",
+      "player": "Ryan Rollins"
+    },
+    {
+      "team": "Milwaukee Bucks",
+      "change": "PLAYER_REMOVED",
+      "player": "Gary Harris"
+    },
+    {
+      "team": "Milwaukee Bucks",
+      "change": "PLAYER_REMOVED",
+      "player": "Doc Rivers"
+    },
+    {
+      "team": "Minnesota Timberwolves",
+      "change": "PLAYER_ADDED",
+      "player": "Terrence Shannon Jr."
+    },
+    {
+      "team": "Minnesota Timberwolves",
+      "change": "PLAYER_REMOVED",
+      "player": "Chris Finch"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_ADDED",
+      "player": "Herbert Jones"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_ADDED",
+      "player": "Yves Missi"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_ADDED",
+      "player": "Karlo Matkovic"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_ADDED",
+      "player": "DeAndre Jordan"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_REMOVED",
+      "player": "Herb Jones"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_REMOVED",
+      "player": "Kevon Looney"
+    },
+    {
+      "team": "New Orleans Pelicans",
+      "change": "PLAYER_REMOVED",
+      "player": "Willie Green"
+    },
+    {
+      "team": "New York Knicks",
+      "change": "PLAYER_ADDED",
+      "player": "Guerschon Yabusele"
+    },
+    {
+      "team": "New York Knicks",
+      "change": "PLAYER_ADDED",
+      "player": "Landry Shamet"
+    },
+    {
+      "team": "New York Knicks",
+      "change": "PLAYER_REMOVED",
+      "player": "Tom Thibodeau"
+    },
+    {
+      "team": "Oklahoma City Thunder",
+      "change": "PLAYER_ADDED",
+      "player": "Isaiah Joe"
+    },
+    {
+      "team": "Oklahoma City Thunder",
+      "change": "PLAYER_ADDED",
+      "player": "Kenrich Williams"
+    },
+    {
+      "team": "Oklahoma City Thunder",
+      "change": "PLAYER_REMOVED",
+      "player": "Jaylin Williams"
+    },
+    {
+      "team": "Oklahoma City Thunder",
+      "change": "PLAYER_REMOVED",
+      "player": "Mark Daigneault"
+    },
+    {
+      "team": "Orlando Magic",
+      "change": "PLAYER_ADDED",
+      "player": "Goga Bitadze"
+    },
+    {
+      "team": "Orlando Magic",
+      "change": "PLAYER_ADDED",
+      "player": "Tristan da Silva"
+    },
+    {
+      "team": "Orlando Magic",
+      "change": "PLAYER_REMOVED",
+      "player": "Jonathan Isaac"
+    },
+    {
+      "team": "Orlando Magic",
+      "change": "PLAYER_REMOVED",
+      "player": "Jamahl Mosley"
+    },
+    {
+      "team": "Philadelphia 76ers",
+      "change": "PLAYER_ADDED",
+      "player": "Jared McCain"
+    },
+    {
+      "team": "Philadelphia 76ers",
+      "change": "PLAYER_ADDED",
+      "player": "Justin Edwards"
+    },
+    {
+      "team": "Philadelphia 76ers",
+      "change": "PLAYER_REMOVED",
+      "player": "Nick Nurse"
+    },
+    {
+      "team": "Phoenix Suns",
+      "change": "PLAYER_ADDED",
+      "player": "Ryan Dunn"
+    },
+    {
+      "team": "Phoenix Suns",
+      "change": "PLAYER_ADDED",
+      "player": "Jordan Goodwin"
+    },
+    {
+      "team": "Phoenix Suns",
+      "change": "PLAYER_REMOVED",
+      "player": "Mike Budenholzer"
+    },
+    {
+      "team": "Portland Trail Blazers",
+      "change": "PLAYER_ADDED",
+      "player": "Damian Lillard"
+    },
+    {
+      "team": "Portland Trail Blazers",
+      "change": "PLAYER_ADDED",
+      "player": "Toumani Camara"
+    },
+    {
+      "team": "Portland Trail Blazers",
+      "change": "PLAYER_ADDED",
+      "player": "Robert Williams"
+    },
+    {
+      "team": "Portland Trail Blazers",
+      "change": "PLAYER_REMOVED",
+      "player": "Kris Murray"
+    },
+    {
+      "team": "Portland Trail Blazers",
+      "change": "PLAYER_REMOVED",
+      "player": "Robert Williams III"
+    },
+    {
+      "team": "Portland Trail Blazers",
+      "change": "PLAYER_REMOVED",
+      "player": "Chauncey Billups"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_ADDED",
+      "player": "Russell Westbrook"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_ADDED",
+      "player": "Dennis Schroder"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_ADDED",
+      "player": "Precious Achiuwa"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_ADDED",
+      "player": "Dario Saric"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_REMOVED",
+      "player": "Dennis Schröder"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_REMOVED",
+      "player": "Doug McDermott"
+    },
+    {
+      "team": "Sacramento Kings",
+      "change": "PLAYER_REMOVED",
+      "player": "Mike Brown"
+    },
+    {
+      "team": "San Antonio Spurs",
+      "change": "PLAYER_ADDED",
+      "player": "De'Aaron Fox"
+    },
+    {
+      "team": "San Antonio Spurs",
+      "change": "PLAYER_ADDED",
+      "player": "Dylan Harper"
+    },
+    {
+      "team": "San Antonio Spurs",
+      "change": "PLAYER_REMOVED",
+      "player": "De’Aaron Fox"
+    },
+    {
+      "team": "San Antonio Spurs",
+      "change": "PLAYER_REMOVED",
+      "player": "Gregg Popovich"
+    },
+    {
+      "team": "Toronto Raptors",
+      "change": "PLAYER_ADDED",
+      "player": "Sandro Mamukelashvili"
+    },
+    {
+      "team": "Toronto Raptors",
+      "change": "PLAYER_ADDED",
+      "player": "Jonathan Mogbo"
+    },
+    {
+      "team": "Toronto Raptors",
+      "change": "PLAYER_ADDED",
+      "player": "Ja'Kobe Walter"
+    },
+    {
+      "team": "Toronto Raptors",
+      "change": "PLAYER_REMOVED",
+      "player": "Garrett Temple"
+    },
+    {
+      "team": "Toronto Raptors",
+      "change": "PLAYER_REMOVED",
+      "player": "Darko Rajaković"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_ADDED",
+      "player": "Isaiah Collier"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_ADDED",
+      "player": "Jusuf Nurkic"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_ADDED",
+      "player": "Brice Sensabaugh"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_ADDED",
+      "player": "Georges Niang"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_REMOVED",
+      "player": "Cody Williams"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_REMOVED",
+      "player": "Kevin Love"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_REMOVED",
+      "player": "Will Hardy"
+    },
+    {
+      "team": "Utah Jazz",
+      "change": "PLAYER_REMOVED",
+      "player": "Walter Clayton Jr."
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_ADDED",
+      "player": "Alexandre Sarr"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_ADDED",
+      "player": "Bub Carrington"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_ADDED",
+      "player": "Cam Whitmore"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_ADDED",
+      "player": "Tre Johnson"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_ADDED",
+      "player": "Justin Champagnie"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_REMOVED",
+      "player": "Tristan Vukčević"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_REMOVED",
+      "player": "Alex Sarr"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_REMOVED",
+      "player": "Marvin Bagley III"
+    },
+    {
+      "team": "Washington Wizards",
+      "change": "PLAYER_REMOVED",
+      "player": "Brian Keefe"
+    }
+  ]
+}
